@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Express Admin</title>
+        
+        <link id="bootstrap" href="/csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/jquery.chosen.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+        
+        <script src="/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/jquery.chosen.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    
+    <body id="express-admin" class="container-fluid">
+        <section id="content">
+            <h5>recipe</h5>
+
+            <form class="form-horizontal" action="#" method="post" accept-charset="utf-8">
+                <fieldset>
+                    <table class="table table-bordered ex-table ex-table-view">
+                        <tbody>
+                            <tr class="head hidden">
+                                <td>
+                                    <input type="hidden" name="view[recipe][records][0][pk]" value="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">id</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[recipe][records][0][columns][id]" value="1" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">Name</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[recipe][records][0][columns][name]" value="recipe 1" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">Recipe Types</label>
+                                        <div class="controls">
+                                            <select name="view[recipe][records][0][columns][recipe_type]" class="chzn-select" data-placeholder="Select" multiple="multiple">
+                                                <option value="NULL"></option>
+                                                <option value="1">type1</option>
+                                                <option value="2" selected="selected">type2</option>
+                                                <option value="3">type3</option>
+                                                <option value="4" selected="selected">type4</option>
+                                                <option value="5" selected="selected">type5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">Recipe Methods</label>
+                                        <div class="controls">
+                                            <select name="view[recipe][records][0][columns][recipe_method]" class="chzn-select" data-placeholder="Select" multiple="multiple">
+                                                <option value="NULL"></option>
+                                                <option value="1">method1</option>
+                                                <option value="2" selected="selected">method2</option>
+                                                <option value="3">method3</option>
+                                                <option value="4" selected="selected">method4</option>
+                                                <option value="5">method5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </form>
+        </section>
+    </body>
+</html>

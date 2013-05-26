@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Express Admin</title>
+        
+        <link id="bootstrap" href="/csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/jquery.chosen.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+
+        <script src="/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/jquery.chosen.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    
+    <body id="express-admin" class="container-fluid">	
+        <section id="content">
+            <h5>purchase</h5>
+
+            <form class="form-horizontal" action="#" method="post" accept-charset="utf-8">
+                <fieldset>
+                    <table class="table table-bordered ex-table ex-table-view">
+                        <tbody>
+                            <tr class="head hidden">
+                                <td>
+                                    <input type="hidden" name="view[purchase][records][0][pk]" value="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">id</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[purchase][records][0][columns][id]" value="1" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">item_id</label>
+                                        <div class="controls">
+                                            <select name="view[purchase][records][0][columns][item_id]" class="chzn-select" data-placeholder="Select">
+                                                <option value="NULL"></option>
+                                                <option value="1" selected="selected">coffee</option>
+                                                <option value="2">tea</option>
+                                                <option value="3">energy</option>
+                                                <option value="4">cherries</option>
+                                                <option value="5">chocolate</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">user_id</label>
+                                        <div class="controls">
+                                            <select name="view[purchase][records][0][columns][user_id]" class="chzn-select" data-placeholder="Select">
+                                                <option value="NULL"></option>
+                                                <option value="1">Jeff Cox</option>
+                                                <option value="2">Ann Hart</option>
+                                                <option value="3" selected="selected">Jack Dean</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">cache</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[purchase][records][0][columns][cache]" value="17.50" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">date</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[purchase][records][0][columns][date]" value="2012-01-27 00:00:00" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </form>
+        </section>
+    </body>
+</html>

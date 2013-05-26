@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov" />
+    <meta name="copyright" content="Simeon Velichkov" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+
+    <link href="/csslib/prism.css" rel="stylesheet" type="text/css" />
+    <link href="public/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link rel="shortcut icon" href="css/images/favicon.ico" />
+
+    <script src="/jslib/prism.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/jslib/prism-autolinker.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/jslib/bootstrap-scrollspy.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="public/js/events.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body data-spy="scroll" data-target="#navigation">
+
+<section id="content">
+    
+    <article id="about">{{>about}}</article>
+    <article id="install">{{>install}}</article>
+    <article id="settings">{{>settings}}</article>
+
+    <article id="one-to-many">{{>oneToMany}}</article>
+    <article id="many-to-many">{{>manyToMany}}</article>
+    <article id="one-to-one">{{>oneToOne}}</article>
+    <article id="many-to-one">{{>manyToOne}}</article>
+    <article id="all-together">{{>allTogether}}</article>
+    
+    <article id="themes">{{>themes}}</article>
+    <article id="datepicker">{{>datepicker}}</article>
+    <article id="textarea">{{>textarea}}</article>
+    <article id="ckeditor">{{>ckeditor}}</article>
+    <article id="tinymce">{{>tinymce}}</article>
+    <article id="multiple">{{>multiple}}</article>
+
+    <article id="custom">{{>custom}}</article>
+
+    <article id="nginx">{{>nginx}}</article>
+    <article id="apache">{{>apache}}</article>
+    <article id="scripts">{{>scripts}}</article>
+
+</section>
+
+<a href="https://github.com/simov/express-admin" id="forkme-badge"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+{{>navigation}}
+    
+</body>
+</html>

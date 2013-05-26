@@ -1,0 +1,99 @@
+
+<h2><a href="#many-to-one" name="many-to-one">Many to One</a></h2>
+
+<!-- SCHEMA -->
+
+<div class="box">
+    <h4>Schema <a href="#" class="btn-info">expand</a></h4>
+
+    <img src="images/many-to-one.png" alt="" />
+
+    <div class="info">
+
+<!-- code -->
+<pre><code class="language-sql">-- -----------------------------------------------------
+-- Table `car`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `car` ;
+
+CREATE  TABLE IF NOT EXISTS `car` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `model` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `repair`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `repair` ;
+
+CREATE  TABLE IF NOT EXISTS `repair` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `car_id` INT NOT NULL ,
+  `date` DATE NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_repair_car1` (`car_id` ASC) ,
+  CONSTRAINT `fk_repair_car1`
+    FOREIGN KEY (`car_id` )
+    REFERENCES `car` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `driver`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `driver` ;
+
+CREATE  TABLE IF NOT EXISTS `driver` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `car_id` INT NOT NULL ,
+  `name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_driver_car1` (`car_id` ASC) ,
+  CONSTRAINT `fk_driver_car1`
+    FOREIGN KEY (`car_id` )
+    REFERENCES `car` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;</code></pre>
+<!-- code -->
+
+    </div>
+</div>
+
+<!-- CONFIG -->
+
+<div class="box">
+    <h4>Config <a href="#" class="btn-info">expand</a></h4>
+    <p>In <em>settings.json</em> find the table you are searching for and under its <em>editview</em> key add a <em>manyToOne</em> key</p>
+
+    <div class="col col1">
+<!-- code -->
+<pre><code class="language-javascript">"manyToOne": {
+    "repair": "car_id",
+    "driver": "car_id"
+}</code></pre>
+<!-- code -->
+    </div>
+    <div class="info">
+        <ul>
+            <li><strong>manyToOne</strong> - contains information about the tables that are referencing this one
+                <ul>
+                    <li>Inside there is a list of key-value pairs where the <em>key</em> is the referencing table and the <em>value</em> is its foreign key</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
+    </div>
+</div>
+
+<!-- RESULT -->
+
+<div class="box">
+    <h4>Result <a href="#" class="btn-info">expand</a></h4>
+
+    <div class="info">
+        <iframe class="example-many-to-one" data-src="examples/many-to-one.html" src="about:blank"></iframe>
+    </div>
+</div>

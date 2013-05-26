@@ -1,0 +1,65 @@
+
+<h2><a href="#nginx" name="nginx">Nginx</a></h2>
+
+<!-- NGINX -->
+
+<div class="box">
+    <h4>Virtual Host</h4>
+    <ul>
+        <li>You can serve all your static files with <em>Nginx</em>.</li>
+    </ul>
+    <div class="col col1">
+
+<!-- code -->
+<pre><code class="language-bash">server {
+    listen 80;
+    
+    # vhost
+    server_name admin.example.com;
+    
+    #log
+    access_log /var/log/nginx/admin-access.log;
+    error_log /var/log/nginx/admin-error.log debug;
+
+    # NODE
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # NGINX
+
+    # static
+    location ~ \.(jpg|jpeg|png|gif|swf|flv|mp4|mov|avi|wmv|m4v|mkv|ico|css|js|txt|html|htm)$ {
+        root /;
+        try_files
+            # express admin
+            /absolute/path/to/express-admin/public/$uri
+
+            # custom views
+            /absolute/path/to/your/project/custom/app1/public/$uri
+            /absolute/path/to/your/project/custom/app2/public/$uri
+        /;
+    }
+
+    # LIBS
+
+    # csslib
+    location ^~ /csslib/ {
+        alias /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/;
+    }
+    # jslib
+    location ^~ /jslib/ {
+        alias /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/;
+    }
+    # bootswatch
+    location ^~ /bootswatch/ {
+        alias /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/;
+    }
+}</code></pre>
+<!-- code -->
+
+    </div>
+</div>

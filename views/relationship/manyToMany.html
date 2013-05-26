@@ -1,0 +1,211 @@
+
+<h2><a href="#many-to-many" name="many-to-many">Many to Many</a></h2>
+
+<!-- SCHEMA -->
+
+<div class="box">
+    <h4>Schema <a href="#" class="btn-info">expand</a></h4>
+
+    <img src="images/many-to-many.png" alt="" />
+
+    <div class="info">
+
+<!-- code -->
+<pre><code class="language-sql">-- -----------------------------------------------------
+-- Table `recipe`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `recipe` ;
+
+CREATE  TABLE IF NOT EXISTS `recipe` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `recipe_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `recipe_type` ;
+
+CREATE  TABLE IF NOT EXISTS `recipe_type` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `title` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `recipe_method`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `recipe_method` ;
+
+CREATE  TABLE IF NOT EXISTS `recipe_method` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `title` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `recipe_has_recipe_types`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `recipe_has_recipe_types` ;
+
+CREATE  TABLE IF NOT EXISTS `recipe_has_recipe_types` (
+  `recipe_id` INT NOT NULL ,
+  `recipe_type_id` INT NOT NULL ,
+  PRIMARY KEY (`recipe_id`, `recipe_type_id`) ,
+  INDEX `fk_recipe_has_recipe_type_recipe_type1` (`recipe_type_id` ASC) ,
+  INDEX `fk_recipe_has_recipe_type_recipe1` (`recipe_id` ASC) ,
+  CONSTRAINT `fk_recipe_has_recipe_type_recipe1`
+    FOREIGN KEY (`recipe_id` )
+    REFERENCES `recipe` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recipe_has_recipe_type_recipe_type1`
+    FOREIGN KEY (`recipe_type_id` )
+    REFERENCES `recipe_type` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `recipe_has_recipe_methods`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `recipe_has_recipe_methods` ;
+
+CREATE  TABLE IF NOT EXISTS `recipe_has_recipe_methods` (
+  `recipe_id` INT NOT NULL ,
+  `recipe_method_id` INT NOT NULL ,
+  PRIMARY KEY (`recipe_id`, `recipe_method_id`) ,
+  INDEX `fk_recipe_has_recipe_methods_recipe_method1` (`recipe_method_id` ASC) ,
+  INDEX `fk_recipe_has_recipe_methods_recipe1` (`recipe_id` ASC) ,
+  CONSTRAINT `fk_recipe_has_recipe_methods_recipe1`
+    FOREIGN KEY (`recipe_id` )
+    REFERENCES `recipe` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recipe_has_recipe_methods_recipe_method1`
+    FOREIGN KEY (`recipe_method_id` )
+    REFERENCES `recipe_method` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;</code></pre>
+<!-- code -->
+
+    </div>
+</div>
+
+<!-- CONFIG -->
+
+<div class="box">
+    <h4>Config <a href="#" class="btn-info">expand</a></h4>
+    <p>In <em>settings.json</em> find the table you are searching for and insert this object into its columns array</p>
+
+    <div class="col col2">
+
+<!-- code -->
+<pre><code class="language-javascript">{
+    "verbose": "Recipe Types",
+    "name": "recipe_type",
+    "control": {
+        "select": true,
+        "multiple": true
+    },
+    "type": "int(11)",
+    "allowNull": false,
+    "editview": {
+        "show": true
+    },
+    "manyToMany": {
+        "link": {
+            "table": "recipe_has_recipe_types",
+            "parentPk": "recipe_id",
+            "childPk": "recipe_type_id"
+        },
+        "ref": {
+            "table": "recipe_type",
+            "pk": "id",
+            "columns": [
+                "title"
+            ]
+        }
+    }
+}</code></pre>
+<!-- code -->
+
+    </div>
+    <div class="col col2">
+
+<!-- code -->
+<pre><code class="language-javascript">{
+    "verbose": "Recipe Methods",
+    "name": "recipe_method",
+    "control": {
+        "select": true,
+        "multiple": true
+    },
+    "type": "int(11)",
+    "allowNull": true,
+    "editview": {
+        "show": true
+    },
+    "manyToMany": {
+        "link": {
+            "table": "recipe_has_recipe_methods",
+            "parentPk": "recipe_id",
+            "childPk": "recipe_method_id"
+        },
+        "ref": {
+            "table": "recipe_method",
+            "pk": "id",
+            "columns": [
+                "title"
+            ]
+        }
+    }
+}</code></pre>
+<!-- code -->
+
+    </div>
+    <div class="info">
+        <ul>
+            <li><strong>verbose</strong> - exactly as a regular column this is the name that's shown inside the admin for this column</li>
+            <li><strong>name</strong> - should be unique among all other columns in this table</li>
+            <li><strong>control</strong> - the control type (you won't change this)</li>
+            <li><strong>type</strong> - you won't change this</li>
+            <li><strong>allowNull</strong> - this flag indicates whether you'll be able to save a record without selecting any item from the referenced table or not</li>
+            <li><strong>editview</strong>
+                <ul>
+                    <li><i>show</i> - show or hide this column from the editview</li>
+                </ul>
+            </li>
+            <li><strong>manyToMany</strong> - indicates that this is not a regular table column
+                <ul>
+                    <li><strong>link</strong> - linking table information
+                        <ul>
+                            <li><i>table</i> - name of the link table</li>
+                            <li><i>parentPk</i> - name of the primary key for the parent table</li>
+                            <li><i>childPk</i> - name of the primary key for the child table</li>
+                        </ul>
+                    </li>
+                    <li><strong>ref</strong> - information about the referenced table
+                        <ul>
+                            <li><i>table</i> - name of the table that you are referencing</li>
+                            <li><i>pk</i> - name of the primary key column for the table you are referencing</li>
+                            <li><i>columns</i> - array of columns that you want to see for each record of the table you are referencing</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
+    </div>
+</div>
+
+<!-- RESULT -->
+
+<div class="box result result2">
+    <h4>Result <a href="#" class="btn-info">expand</a></h4>
+    <div class="info">
+        <iframe class="example-many-to-many" data-src="examples/many-to-many.html" src="about:blank"></iframe>
+    </div>
+</div>

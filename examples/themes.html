@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Express Admin</title>
+        
+        <link id="bootstrap" href="/csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <script type="text/javascript">
+            (function () {
+                var bootstrap = document.getElementById('bootstrap'),
+                    theme = localStorage.getItem('theme') || 'default';
+                bootstrap.href = '/bootswatch/' + theme + '/bootstrap.min.css';
+            }());
+        </script>
+        <link href="/csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+        <style type="text/css">
+            .brand {
+                margin: 0 150px 0 25px !important;
+            }
+            #content {
+                padding: 70px 0 0 0;
+            }
+            /*.dropdown { margin: 0 100px 0 0; }*/
+            @media (max-width: 979px) {
+                .page {
+                    padding-top: 100px;
+                }
+                .page h2 {
+                    text-align: center;
+                }
+                .navbar-fixed-top {
+                    position: fixed;
+                }
+            }
+        </style>
+        
+        <script src="/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            $(function () {
+                $('.breadcrumb a, button, .brand').on('click', function (e) {
+                    
+                    return false;
+                });
+            });
+        </script>
+    </head>
+    
+    <body id="express-admin" class="container">
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">	<a href="#" class="brand">Express Admin</a>
+
+                    <div id="top-nav">
+                        <ul class="nav">
+                            <li class="dropdown">	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+
+                                <ul id="theme" class="dropdown-menu">
+                                    <li><a href="#default">Default</a>
+                                    </li>
+                                    <li><a href="#amelia">Amelia</a>
+                                    </li>
+                                    <li><a href="#cerulean">Cerulean</a>
+                                    </li>
+                                    <li><a href="#cosmo">Cosmo</a>
+                                    </li>
+                                    <li><a href="#cyborg">Cyborg</a>
+                                    </li>
+                                    <li><a href="#flatly">Flatly</a>
+                                    </li>
+                                    <li><a href="#journal">Journal</a>
+                                    </li>
+                                    <li><a href="#readable">Readable</a>
+                                    </li>
+                                    <li><a href="#simplex">Simplex</a>
+                                    </li>
+                                    <li><a href="#slate">Slate</a>
+                                    </li>
+                                    <li><a href="#spacelab">Spacelab</a>
+                                    </li>
+                                    <li><a href="#spruce">Spruce</a>
+                                    </li>
+                                    <li><a href="#superhero">Superhero</a>
+                                    </li>
+                                    <li><a href="#united">United</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section id="content">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a>  <span class="divider">/</span>
+                </li>
+                <li><a href="#">Item</a>  <span class="divider">/</span>
+                </li>
+                <li class="active">1</li>
+            </ul>
+                <h2>Item</h2>
+
+            <form class="form-horizontal" action="#" method="get" accept-charset="utf-8">
+                <fieldset>
+                    <table class="table table-bordered ex-table ex-table-view">
+                        <tbody>
+                            <tr class="head hidden">
+                                <td>
+                                    <input type="hidden" name="view[item][records][0][pk]" value="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">name</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="view[item][records][0][columns][name]" value="coffee" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <fieldset id="one">
+                    <table class="table table-bordered ex-table ex-table-inline" data-table="property">
+                        <thead>
+                            <tr class="label-inverse">
+                                <th>property</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="head">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="oneToOne[property][records][0][pk]" value="1" />
+                                    <label>
+                                        <input type="checkbox" name="oneToOne[property][records][0][remove]" /> <small>Remove</small>
+
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">name</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="oneToOne[property][records][0][columns][name]" value="caffeine" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="head blank hidden">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="oneToOne[property][blank][index][insert]" value="true" />	<a href="#" class="remove" data-table="property"><i class="icon-remove-sign"></i></a>
+
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">id</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="oneToOne[property][blank][index][columns][id]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">item_id</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="oneToOne[property][blank][index][columns][item_id]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">name</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="oneToOne[property][blank][index][columns][name]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hidden">
+                            <tr>
+                                <td><a href="#" class="add-another" data-table="property"><small>Add another property</small></a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </fieldset>
+                <fieldset id="many">
+                    <table class="table table-bordered ex-table ex-table-inline" data-table="type">
+                        <thead>
+                            <tr class="label-inverse">
+                                <th>type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="head">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="manyToOne[type][records][0][pk]" value="1" />
+                                    <label>
+                                        <input type="checkbox" name="manyToOne[type][records][0][remove]" /> <small>Remove</small>
+
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">name</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="manyToOne[type][records][0][columns][name]" value="Espresso" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="head">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="manyToOne[type][records][1][pk]" value="2" />
+                                    <label>
+                                        <input type="checkbox" name="manyToOne[type][records][1][remove]" /> <small>Remove</small>
+
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">name</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="manyToOne[type][records][1][columns][name]" value="Cappuccino" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="head">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="manyToOne[type][records][2][pk]" value="3" />
+                                    <label>
+                                        <input type="checkbox" name="manyToOne[type][records][2][remove]" /> <small>Remove</small>
+
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">name</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="manyToOne[type][records][2][columns][name]" value="Caffe Latte" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="head blank hidden">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="manyToOne[type][blank][index][insert]" value="true" />	<a href="#" class="remove" data-table="type"><i class="icon-remove-sign"></i></a>
+
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">name</label>
+                                        <div class="controls">
+                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
+                                            <input type="text" name="manyToOne[type][blank][index][columns][name]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><a href="#" class="add-another" data-table="type"><small>Add another type</small></a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </fieldset>
+                <fieldset id="controls">
+                    <button type="submit" class="btn btn-danger" name="action[remove]">Delete</button>
+                    <button type="submit" class="btn" name="action[another]">Save and add another</button>
+                    <button type="submit" class="btn" name="action[continue]">Save and continue editing</button>
+                    <button type="submit" class="btn btn-primary" name="action[save]">Save</button>
+                    <input type="hidden" name="_csrf" value="zXPGCc4b5AjCcKSt/MifIyPh" />
+                </fieldset>
+            </form>
+        </section>
+    </body>
+
+</html>

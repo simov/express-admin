@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Express Admin</title>
+        
+        <link id="bootstrap" href="/csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+        <style type="text/css">
+            textarea { min-width: 480px !important; }
+        </style>
+    </head>
+    
+    <body id="express-admin" class="container-fluid">
+        <section id="content">
+            <form class="form-horizontal" action="/item/1" method="post" accept-charset="utf-8">
+                <fieldset>
+                    <table class="table table-bordered ex-table ex-table-view">
+                        <tbody>
+                            <tr class="head hidden">
+                                <td>
+                                    <input type="hidden" name="view[item][records][0][pk]" value="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">name</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[item][records][0][columns][name]" value="coffee" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">notes</label>
+                                        <div class="controls">
+                                            <textarea name="view[item][records][0][columns][notes]" rows="8" cols="1" class="editor"></textarea>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </form>
+        </section>
+    </body>
+
+</html>

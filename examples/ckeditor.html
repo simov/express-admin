@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Express Admin</title>
+
+        <link id="bootstrap" href="/csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+        <style type="text/css">
+            textarea { min-width: 480px !important; }
+        </style>
+
+        <script src="/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            $(function () {
+                if (typeof CKEDITOR !== 'undefined') {
+                    // filter out all textareas with 'ck-compact' class name
+                    // and customize their instances
+                    CKEDITOR.replaceAll(function (textarea, config) {
+                        if (textarea.className !== 'ck-compact') return false;
+                        // toolbar
+                        config.toolbarGroups = [
+                            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                            { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ]},
+                            '/',
+                            { name: 'styles' },
+                            { name: 'colors' }
+                        ];
+                        config.removeButtons = 'Smiley,SpecialChar,PageBreak,Iframe,CreateDiv';
+                    });
+                }
+            });
+        </script>
+    </head>
+    
+    <body id="express-admin" class="container-fluid">
+        <section id="content">
+            <form class="form-horizontal" action="/item/1" method="post" accept-charset="utf-8">
+                <fieldset>
+                    <table class="table table-bordered ex-table ex-table-view">
+                        <tbody>
+                            <tr class="head hidden">
+                                <td>
+                                    <input type="hidden" name="view[item][records][0][pk]" value="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">notes</label>
+                                        <div class="controls">
+                                            <textarea name="view[item][records][0][columns][notes]" rows="8" cols="1" class="ck-compact"></textarea>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </form>
+        </section>
+    </body>
+
+</html>

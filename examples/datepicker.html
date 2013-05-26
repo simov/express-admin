@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Express Admin</title>
+        
+        <link id="bootstrap" href="/csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+        
+        <script src="/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/jquery.ui.datepicker.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    
+    <body id="express-admin" class="container-fluid">	
+        <section id="content">
+            <form class="form-horizontal" action="/item/1" method="post" accept-charset="utf-8">
+                <fieldset>
+                    <table class="table table-bordered ex-table ex-table-view">
+                        <tbody>
+                            <tr class="head hidden">
+                                <td>
+                                    <input type="hidden" name="view[item][records][0][pk]" value="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">date</label>
+                                        <div class="controls">
+                                            <input type="text" name="manyToOne[repair][records][0][columns][date]" value="2013-01-13" class="datepicker" autocomplete="off" />	<a href="#" class="btn-today">Today</a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </form>
+        </section>
+    </body>
+
+</html>

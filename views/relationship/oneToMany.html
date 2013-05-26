@@ -1,0 +1,127 @@
+
+<h2><a href="#one-to-many" name="one-to-many">One to Many</a></h2>
+
+<!-- SCHEMA -->
+
+<div class="box">
+    <h4>Schema <a href="#" class="btn-info">expand</a></h4>
+
+    <img src="images/one-to-many.png" alt="" />
+
+    <div class="info">
+
+<!-- code -->
+<pre><code class="language-sql">-- -----------------------------------------------------
+-- Table `item`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `item` ;
+
+CREATE  TABLE IF NOT EXISTS `item` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  `description` TEXT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user` ;
+
+CREATE  TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `firstname` VARCHAR(45) NOT NULL ,
+  `lastname` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `purchase`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `purchase` ;
+
+CREATE  TABLE IF NOT EXISTS `purchase` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `item_id` INT NOT NULL ,
+  `user_id` INT NULL ,
+  `cache` DECIMAL(6,2) UNSIGNED NOT NULL ,
+  `date` DATETIME NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_purchase_user` (`user_id` ASC) ,
+  INDEX `fk_purchase_item1` (`item_id` ASC) ,
+  CONSTRAINT `fk_purchase_user`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `user` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_purchase_item1`
+    FOREIGN KEY (`item_id` )
+    REFERENCES `item` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;</code></pre>
+<!-- code -->
+
+    </div>
+</div>
+
+<!-- CONFIG -->
+
+<div class="box">
+    <h4>Config <a href="#" class="btn-info">expand</a></h4>
+    <p>In <em>settings.json</em> find the table you are searching for and under its columns find the column by its <em>name</em> key<br />
+    Inside that column's object insert <em>oneToMany</em> key</p>
+
+    <div class="col col2">
+<!-- code -->
+<pre><code class="language-javascript">"control": {
+    "select": true
+},
+"oneToMany": {
+    "table": "item",
+    "pk": "id",
+    "columns": [
+        "name"
+    ]
+}</code></pre>
+<!-- code -->
+
+    </div>
+    <div class="col col2">
+
+<!-- code -->
+<pre><code class="language-javascript">"control": {
+    "select": true
+},
+"oneToMany": {
+    "table": "user",
+    "pk": "id",
+    "columns": [
+        "firstname",
+        "lastname"
+    ]
+}</code></pre>
+<!-- code -->
+    </div>
+    <div class="info">
+        <ul>
+            <li><strong>oneToMany</strong> - contains information about the table that this foreign key is referencing to
+                <ul>
+                    <li><i>table</i> - name of the table that you are referencing</li>
+                    <li><i>pk</i> - name of the primary key column for the table you are referencing</li>
+                    <li><i>columns</i> - array of columns that you want to see for each record of the table you are referencing</li>
+                </ul>
+            </li>
+        </ul>
+        <p>The control type for this column should be changed to <em>select</em></p>
+    </div>
+</div>
+
+<!-- RESULT -->
+
+<div class="box result result1">
+    <h4>Result <a href="#" class="btn-info">expand</a></h4>
+    <div class="info">
+        <iframe class="example-one-to-many" data-src="examples/one-to-many.html" src="about:blank"></iframe>
+    </div>
+</div>

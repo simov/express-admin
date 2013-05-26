@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Express Admin</title>
+        
+        <link id="bootstrap" href="/csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+
+        <script src="/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    
+    <body id="express-admin" class="container-fluid">
+        <section id="content">
+            <h5>user</h5>
+
+            <form class="form-horizontal" action="#" method="post" accept-charset="utf-8">
+                <fieldset>
+                    <table class="table table-bordered ex-table ex-table-view">
+                        <tbody>
+                            <tr class="head hidden">
+                                <td>
+                                    <input type="hidden" name="view[user][records][0][pk]" value="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">id</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[user][records][0][columns][id]" value="1" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">firstname</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[user][records][0][columns][firstname]" value="Jeff" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">lastname</label>
+                                        <div class="controls">
+                                            <input type="text" name="view[user][records][0][columns][lastname]" value="Cox" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <fieldset id="one">
+                    <table class="table table-bordered ex-table ex-table-inline" data-table="address">
+                        <thead>
+                            <tr class="label-inverse">
+                                <th>address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="head">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="oneToOne[address][records][0][pk]" value="1" />
+                                    <label>
+                                        <input type="checkbox" name="oneToOne[address][records][0][remove]" /> <small>Remove</small>
+
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">id</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[address][records][0][columns][id]" value="1" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">user_id</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[address][records][0][columns][user_id]" value="1" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">street</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[address][records][0][columns][street]" value="South Lake" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="head blank hidden">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="oneToOne[address][blank][index][insert]" value="true" />	<a href="#" class="remove" data-table="address"><i class="icon-remove-sign"></i></a>
+
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">id</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[address][blank][index][columns][id]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">user_id</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[address][blank][index][columns][user_id]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">street</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[address][blank][index][columns][street]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="hidden">
+                            <tr>
+                                <td><a href="#" class="add-another" data-table="address"><small>Add another address</small></a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <table class="table table-bordered ex-table ex-table-inline" data-table="phone">
+                        <thead>
+                            <tr class="label-inverse">
+                                <th>phone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="head blank hidden">
+                                <td class="hero-unit">
+                                    <input type="hidden" name="oneToOne[phone][blank][index][insert]" value="true" />	<a href="#" class="remove" data-table="phone"><i class="icon-remove-sign"></i></a>
+
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">id</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[phone][blank][index][columns][id]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">user_id</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[phone][blank][index][columns][user_id]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="blank hidden">
+                                <td>
+                                    <div class="control-group ">
+                                        <label class="control-label">mobile</label>
+                                        <div class="controls">
+                                            <input type="text" name="oneToOne[phone][blank][index][columns][mobile]" value="" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><a href="#" class="add-another" data-table="phone"><small>Add another phone</small></a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </fieldset>
+            </form>
+        </section>
+    </body>
+</html>
