@@ -1,0 +1,90 @@
+
+var fs = require('fs'),
+    path = require('path');
+var db = require('../../lib/utils/database'),
+    Schema = require('../../lib/utils/schema');
+
+
+describe('schema', function () {
+    var schema = null;
+    before(function (done) {
+        db.connect('liolio', 'karamba', function (err) {
+            if (err) return done(err);
+            var fpath = path.resolve(
+                '../express-admin-examples/fixtures/simple/schema.sql'),
+                sql = fs.readFileSync(fpath, 'utf8');
+            db.connection.query(sql, function (err) {
+                if (err) return done(err);
+                db.use('express-admin', function (err) {
+                    if (err) return done(err);
+                    schema = new Schema(db);
+                    done();
+                });
+            });
+        });
+    });
+
+    it('get table names', function (done) {
+        schema.getTables(function (err, tables) {
+            if (err) return done(err);
+            tables.join().should.equal(
+                'item,property,purchase,recipe,recipe_ref,recipe_type,subtype,type,user');
+            done();
+        });
+    });
+    it('get table columns info', function (done) {
+        schema.getTables(function (err, tables) {
+            if (err) return done(err);
+            schema.getColumns(tables[0], function (err, info) {
+                if (err) return done(err);
+                var columns = Object.keys(info);
+                columns.join().should.equal('id,name,notes');
+                // may test column properties too
+                done();
+            });
+        });
+    });
+    it('get schema columns info', function (done) {
+        schema.getAllColumns(function (err, columns) {
+            if (err) return done(err);
+            var tables = Object.keys(columns);
+            tables.join().should.equal(
+                'item,property,purchase,recipe,recipe_ref,recipe_type,subtype,type,user');
+            done();
+        });
+    });
+    it('get schema references', function (done) {
+        schema.getReferences(function (err, ref) {
+            if (err) return done(err);
+            var tables = Object.keys(ref);
+            tables.join().should.equal('property,purchase,recipe,recipe_ref,type');
+            // may test column properties too
+            done();
+        });
+    });
+    it('get table indexes', function (done) {
+        schema.getIndexes('purchase', function (err, indexes) {
+            if (err) return done(err);
+            Object.keys(indexes).join()
+                .should.equal('PRIMARY,fk_purchase_user,fk_purchase_item1');
+            done();
+        });
+    });
+    it('get schema indexes', function (done) {
+        schema.getAllIndexes(function (err, indexes) {
+            if (err) return done(err);
+            var tables = Object.keys(indexes);
+            tables.join().should.equal(
+                'item,property,purchase,recipe,recipe_ref,recipe_type,subtype,type,user');
+            // may test column properties too
+            done();
+        });
+    });
+
+    after(function (done) {
+        db.connection.query('drop schema if exists `express-admin`;', function (err) {
+            if (err) return done(err);
+            done();
+        });
+    });
+});
