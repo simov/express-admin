@@ -93,8 +93,11 @@
             return false;
         });
     }
-    // it's important to initialize only the visible textareas
-    $('tr:not(.blank) .tinymce').tinymce({});
+    
+    if (typeof tinyMCE !== 'undefined')
+        // it's important to initialize only the visible textareas
+        $('tr:not(.blank) .tinymce').tinymce({});
+    }
 });
 
 // ckeditor only
@@ -114,20 +117,25 @@ function setCustomConfig (config) {
 
 // executed each time an inline is added
 function onAddInline (rows) {
-    // for each of the new rows containing textareas
-    $('textarea', rows).each(function (index) {
-        // get the DOM instance
-        var textarea = $(this)[0];
-        // textareas with this class name will get the default configuration
-        if (textarea.className === 'ck-full') return CKEDITOR.replace(textarea);
-        // textareas with this class name will have custom configuration
-        if (textarea.className === 'ck-compact')
-            return CKEDITOR.replace(textarea, setCustomConfig());
-        // all other textareas won't be initialized as ckeditors
-        return false;
-    });
-    // init tinymce editors
-    $('.tinymce', rows).tinymce({});
+    if (typeof CKEDITOR !== 'undefined') {
+        // for each of the new rows containing textareas
+        $('textarea', rows).each(function (index) {
+            // get the DOM instance
+            var textarea = $(this)[0];
+            // textareas with this class name will get the default configuration
+            if (textarea.className === 'ck-full') return CKEDITOR.replace(textarea);
+            // textareas with this class name will have custom configuration
+            if (textarea.className === 'ck-compact')
+                return CKEDITOR.replace(textarea, setCustomConfig());
+            // all other textareas won't be initialized as ckeditors
+            return false;
+        });
+    }
+
+    if (typeof tinyMCE !== 'undefined')
+        // init tinymce editors
+        $('.tinymce', rows).tinymce({});
+    }
 }</code></pre>
 <!-- code -->
     </div>

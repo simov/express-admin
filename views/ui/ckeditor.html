@@ -76,15 +76,17 @@
 
 // executed each time an inline is added
 function onAddInline (rows) {
-    // for each of the new rows containing textareas
-    $('textarea', rows).each(function (index) {
-        // get the DOM instance
-        var textarea = $(this)[0];
-        // textareas with this class name will get the default configuration
-        if (textarea.className === 'class-name') return CKEDITOR.replace(textarea);
-        // all other textareas won't be initialized as ckeditors
-        return false;
-    });
+    if (typeof CKEDITOR !== 'undefined') {
+        // for each of the new rows containing textareas
+        $('textarea', rows).each(function (index) {
+            // get the DOM instance
+            var textarea = $(this)[0];
+            // textareas with this class name will get the default configuration
+            if (textarea.className === 'class-name') return CKEDITOR.replace(textarea);
+            // all other textareas won't be initialized as ckeditors
+            return false;
+        });
+    }
 }</code></pre>
 <!-- code -->
 
