@@ -1,21 +1,21 @@
 @font-face {
     font-family: 'LeagueGothic';
-    src: url('/font/LeagueGothic-Regular-webfont.eot');
-    src: url('/font/LeagueGothic-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/font/LeagueGothic-Regular-webfont.woff') format('woff'),
-         url('/font/LeagueGothic-Regular-webfont.ttf') format('truetype'),
-         url('/font/LeagueGothic-Regular-webfont.svg#LeagueGothic-Regular-webfont') format('svg');
+    src: url('../../font/LeagueGothic-Regular-webfont.eot');
+    src: url('../../font/LeagueGothic-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../font/LeagueGothic-Regular-webfont.woff') format('woff'),
+         url('../../font/LeagueGothic-Regular-webfont.ttf') format('truetype'),
+         url('../../font/LeagueGothic-Regular-webfont.svg#LeagueGothic-Regular-webfont') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Floralia';
-    src: url('/font/Floralia-webfont.eot');
-    src: url('/font/Floralia-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/font/Floralia-webfont.woff') format('woff'),
-         url('/font/Floralia-webfont.ttf') format('truetype'),
-         url('/font/Floralia-webfont.svg#Floralia-webfont') format('svg');
+    src: url('../../font/Floralia-webfont.eot');
+    src: url('../../font/Floralia-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../font/Floralia-webfont.woff') format('woff'),
+         url('../../font/Floralia-webfont.ttf') format('truetype'),
+         url('../../font/Floralia-webfont.svg#Floralia-webfont') format('svg');
     font-weight: normal;
     font-style: normal;
 }
