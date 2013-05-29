@@ -40,7 +40,7 @@ var db = require('./lib/utils/database'),
     Schema = require('./lib/utils/schema'),
     settings = require('./lib/utils/settings'),
     routes = require('./lib/utils/routes');
-debugger;
+
 var r = require('./routes'),
     c = require(path.join(dpath, 'config.json'))||{},
     p = {

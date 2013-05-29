@@ -25,7 +25,7 @@
         "hogan.js"         : "latest",
         "mysql"            : "2.0.0-alpha2",
         "mysql-validator"  : ">=0.1.4",
-        "pwd"              : "*",
+        "pwd"              : "git://github.com/jlubawy/node-pwd.git",
         "commander"        : "*",
         "colors"           : "*",
         "slugify"          : "*",
