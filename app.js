@@ -62,9 +62,16 @@ db.connect(c.database.user, c.database.pass, function (err) {
                 // write back the settings
                 fs.writeFileSync(p.settings, JSON.stringify(settings, null, 4), 'utf8');
 
-                var args = initSettings(settings);
-                
-                initServer(args);
+                db.empty(c.database.name, function (err, empty) {
+                    if (err) throw err;
+                    if (empty) {
+                        console.log('Empty Database!'.red);
+                        process.exit();
+                    } else {
+                        var args = initSettings(settings);
+                        initServer(args);
+                    }
+                });
             });
         });
     });
