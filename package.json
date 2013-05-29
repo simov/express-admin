@@ -24,7 +24,7 @@
         "consolidate"      : ">=0.6.0",
         "hogan.js"         : "latest",
         "mysql"            : "2.0.0-alpha2",
-        "mysql-validator"  : ">=0.1.3",
+        "mysql-validator"  : ">=0.1.4",
         "pwd"              : "*",
         "commander"        : "*",
         "colors"           : "*",
