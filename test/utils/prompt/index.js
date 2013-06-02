@@ -18,7 +18,7 @@ describe('prompt', function () {
             // text.should.equal('Database credentials are required!'.red);
         },
         function success (text) {
-            text.should.equal('Database name:');
+            text.indexOf('Database name:').should.not.equal(-1);
             done();
         });
     });
