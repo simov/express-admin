@@ -51,7 +51,7 @@ describe('schema', function () {
         schema.getReferences(function (err, ref) {
             if (err) return done(err);
             var tables = Object.keys(ref);
-            tables.join().should.equal('purchase,property,recipe,recipe_ref,type');
+            tables.join().should.equal('property,purchase,recipe,recipe_ref,type');
             // may test column properties too
             done();
         });
