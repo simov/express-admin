@@ -1,6 +1,6 @@
 ![express admin][1]
 
-#[Documentation][2]
+#[Documentation][2] [![Build Status](https://travis-ci.org/simov/express-admin.png)](https://travis-ci.org/simov/express-admin)
 
 #License
 (The MIT License)
