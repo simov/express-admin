@@ -1,7 +1,12 @@
 language: node_js
 node_js:
-  - "0.10"
-  - "0.8"
+  - 0.8
+  - 0.10
+services:
+  - mysql
 before_script:
-  - mysql -e 'create database `express-admin-simple`;'
-  - mysql -e 'create database `express-admin-stress`;'
+  - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS `express-admin-simple` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
+  - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS `express-admin-stress` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
+  - mysql -uroot -e "CREATE USER liolio@localhost IDENTIFIED BY 'karamba';"
+  - mysql -uroot -e "GRANT ALL PRIVILEGES ON `express-admin-simple`.* TO liolio@localhost IDENTIFIED BY 'karamba';"
+  - mysql -uroot -e "GRANT ALL PRIVILEGES ON `express-admin-stress`.* TO liolio@localhost IDENTIFIED BY 'karamba';"
