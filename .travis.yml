@@ -1,7 +1,7 @@
 language: node_js
- node_js:
-   - "0.10"
-   - "0.8"
+node_js:
+  - "0.10"
+  - "0.8"
 before_script:
   - mysql -e 'create database express-admin-simple;'
   - mysql -e 'create database express-admin-stress;'
