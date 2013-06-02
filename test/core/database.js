@@ -6,12 +6,12 @@ var should = require('should'),
 var db = require('../../lib/utils/database'),
     editview = require('../../lib/core/editview'),
     database = require('../../lib/core/database');
-var c = require('../../../express-admin-examples/stress/config/config');
+var c = require('../fixtures/stress/config');
 
 
 describe('core/database', function () {
     var args = {
-        settings : require('../../../express-admin-examples/stress/config/settings'),
+        settings : require('../fixtures/stress/settings'),
         debug    : true,
         name     : 'item'
     };

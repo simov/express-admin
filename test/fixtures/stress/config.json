@@ -1,0 +1,15 @@
+{
+    "database": {
+        "name": "express-admin-stress",
+        "user": "liolio",
+        "pass": "karamba"
+    },
+    "server": {
+        "port": 3000
+    },
+    "app": {
+        "layouts": true,
+        "themes": true,
+        "languages": true
+    }
+}

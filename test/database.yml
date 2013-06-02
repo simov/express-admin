@@ -1,0 +1,8 @@
+mysql:
+  adapter: "mysql2"
+  username: "liolio"
+  database: "express-admin-simple"
+mysql:
+  adapter: "mysql2"
+  username: "liolio"
+  database: "express-admin-stress"

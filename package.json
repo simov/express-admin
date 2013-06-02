@@ -41,5 +41,8 @@
     "main": "./app",
     "bin": {
         "admin": "./bin/admin"
+    },
+    "scripts": {
+        "test": "make test"
     }
 }

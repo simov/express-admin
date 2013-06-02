@@ -9,14 +9,6 @@ var db = require('../../lib/utils/database');
 
 
 describe('database', function () {
-    before(function (done) {
-        c.query('drop schema if exists `express-admin`;'+
-                'create schema `express-admin` ;', function (err) {
-            if (err) return done(err);
-            done();
-        });
-    });
-
     it('give error on connect', function (done) {
         db.connect('dsajhdka', 'jhsakjhsakd', function (err) {
             err.message.should.equal(
@@ -40,7 +32,7 @@ describe('database', function () {
         });
     });
     it('existing privileges', function (done) {
-        db.grants('express-admin', function (err, grant) {
+        db.grants('express-admin-simple', function (err, grant) {
             if (err) return done(err);
             grant.should.equal(true);
             done();
@@ -55,28 +47,25 @@ describe('database', function () {
         });
     });
     it('existing database', function (done) {
-        db.exists('express-admin', function (err, exist) {
+        db.exists('express-admin-simple', function (err, exist) {
             if (err) return done(err);
             exist.should.equal(true);
             done();
         });
     });
 
-    it('empty database', function (done) {
-        db.empty('express-admin', function (err, empty) {
+    it.skip('empty database', function (done) {
+        db.empty('express-admin-simple', function (err, empty) {
             if (err) return done(err);
             empty.should.equal(true);
             done();
         });
     });
     it('not empty database', function (done) {
-        c.query('use `express-admin`; create table `table1` (`id` int);', function (err) {
+        db.empty('express-admin-simple', function (err, empty) {
             if (err) return done(err);
-            db.empty('express-admin', function (err, empty) {
-                if (err) return done(err);
-                empty.should.equal(false);
-                done();
-            });
+            empty.should.equal(false);
+            done();
         });
     });
 
@@ -88,16 +77,9 @@ describe('database', function () {
         });
     });
     it('use schema success', function (done) {
-        db.use('express-admin', function (err) {
+        db.use('express-admin-simple', function (err) {
             if (err) return done(err);
-            db.connection.config.database.should.equal('express-admin');
-            done();
-        });
-    });
-
-    after(function (done) {
-        c.query('drop schema `express-admin`;', function (err) {
-            if (err) return done(err);
+            db.connection.config.database.should.equal('express-admin-simple');
             done();
         });
     });

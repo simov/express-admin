@@ -10,16 +10,10 @@ describe('schema', function () {
     before(function (done) {
         db.connect('liolio', 'karamba', function (err) {
             if (err) return done(err);
-            var fpath = path.resolve(
-                '../express-admin-examples/fixtures/simple/schema.sql'),
-                sql = fs.readFileSync(fpath, 'utf8');
-            db.connection.query(sql, function (err) {
+            db.use('express-admin-simple', function (err) {
                 if (err) return done(err);
-                db.use('express-admin', function (err) {
-                    if (err) return done(err);
-                    schema = new Schema(db);
-                    done();
-                });
+                schema = new Schema(db);
+                done();
             });
         });
     });
@@ -57,7 +51,7 @@ describe('schema', function () {
         schema.getReferences(function (err, ref) {
             if (err) return done(err);
             var tables = Object.keys(ref);
-            tables.join().should.equal('property,purchase,recipe,recipe_ref,type');
+            tables.join().should.equal('purchase,property,recipe,recipe_ref,type');
             // may test column properties too
             done();
         });
@@ -66,7 +60,7 @@ describe('schema', function () {
         schema.getIndexes('purchase', function (err, indexes) {
             if (err) return done(err);
             Object.keys(indexes).join()
-                .should.equal('PRIMARY,fk_purchase_user,fk_purchase_item1');
+                .should.equal('PRIMARY,fk_purchase_user_idx,fk_purchase_item1_idx');
             done();
         });
     });
@@ -77,13 +71,6 @@ describe('schema', function () {
             tables.join().should.equal(
                 'item,property,purchase,recipe,recipe_ref,recipe_type,subtype,type,user');
             // may test column properties too
-            done();
-        });
-    });
-
-    after(function (done) {
-        db.connection.query('drop schema if exists `express-admin`;', function (err) {
-            if (err) return done(err);
             done();
         });
     });
