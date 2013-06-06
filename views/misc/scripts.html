@@ -26,13 +26,24 @@
 
 </div>
 
-<!-- NODEMON -->
+<!-- SUPERVISOR -->
 
-<!-- <div class="box">
-    <h4>Nodemon</h4>
-    <p>Restart the admin on file changed <a href="https://github.com/remy/nodemon" target="_blank">nodemon</a>.</p> -->
+<div class="box">
+    <h4>Supervisor</h4>
+    <p>Auto reload your project while configuring it using <a href="https://github.com/isaacs/node-supervisor" target="_blank">supervisor</a>.</p>
+    
+    <p>Suppose you create the folder for your project's config like this.</p>
 <!-- code -->
-<!-- <pre><code class="language-bash">$ nodemon path/to/express-admin/app path/to/project/config/</code></pre> -->
+<pre><code class="language-bash">$ mkdir project</code></pre>
 <!-- code -->
 
-<!-- </div> -->
+<p>Then while you're still there you can use <em>supervisor</em> to watch your <em>project</em> folder, specifying that the extensions are <em>json</em> like this.</p>
+<!-- code -->
+<pre><code class="language-bash">$ supervisor -w project -e json -- path/to/express-admin/app -v project/</code></pre>
+<!-- code -->
+
+<p>Here the <em>-v</em> flag that you're passing to the Express Admin app means that you are running the admin in <em>development</em> mode. In this mode the authentication and the database operations are disabled.</p>
+
+<p>Make sure you take a look at the <a href="http://www.youtube.com/watch?v=1CdoCB96QNk" target="_blank">Introductory Screencast</a> about Express Admin.</p>
+
+</div>
