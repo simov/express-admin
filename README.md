@@ -1,5 +1,7 @@
 ![express admin][1]
 
+#[Introductory Screencast][3]
+
 #[Documentation][2] [![Build Status](https://travis-ci.org/simov/express-admin.png)](https://travis-ci.org/simov/express-admin)
 
 #License
@@ -15,3 +17,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   [1]: http://i.imgur.com/rd1cqPv.png
   [2]: http://simov.github.io/express-admin-site/
+  [3]: http://www.youtube.com/watch?v=1CdoCB96QNk
