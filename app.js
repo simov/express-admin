@@ -200,11 +200,11 @@ function initServer (args) {
             var vpath = args.custom[key].path;
             if (vpath) {
                 var view = require(vpath);
-                app.use(view); // should have restriction somehow
+                app.use(view);
                 have = true;
             }
         }
-        if (have) app.get(routes.custom, r.auth.restrict, r.render.admin);
+        if (have) app.all(routes.custom, r.auth.restrict, r.render.admin);
     }());
 
     // login/logout
