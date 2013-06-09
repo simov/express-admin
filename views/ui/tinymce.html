@@ -62,7 +62,7 @@
     
 <!-- code -->
 <pre><code class="language-javascript">$(function () {
-    if (typeof tinyMCE !== 'undefined')
+    if (typeof tinyMCE !== 'undefined') {
         // it's important to initialize only the visible textareas
         $('tr:not(.blank) .tinymce').tinymce({});
     }
@@ -70,7 +70,7 @@
 
 // executed each time an inline is added
 function onAddInline (rows) {
-    if (typeof tinyMCE !== 'undefined')
+    if (typeof tinyMCE !== 'undefined') {
         // init tinymce editors
         $('.tinymce', rows).tinymce({});
     }
