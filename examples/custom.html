@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Express Admin</title>
+
+    <link id="bootstrap" href="../csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+    
+
+    <script src="../jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body id="express-admin" class="container">
+<div id="wrapper">
+    
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+                <a href="" class="brand">Express Admin</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="content">
+        
+        <ul class="breadcrumb">
+        
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+
+            
+
+        
+            <li class="active">Statistics</li>
+    
+</ul>
+        
+        
+        <style type="text/css">
+            .form-horizontal.well .control-group { margin: 0; }
+            #readme { float: none; margin: 0 auto; }
+            [name=month] { width: 100px !important; }
+        </style>
+        
+        <!-- this library is loaded locally only for this view -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highcharts/3.0.2/highcharts.js" type="text/javascript" charset="utf-8"></script>
+        
+        <!-- Le View -->
+        <h2>Statistics</h2>
+        
+        <form action="/stats" method="post" accept-charset="utf-8" class="form-horizontal well">
+            <fieldset class="control-group">
+                <label class="control-label">Month</label>
+                <div class="controls">
+                    <select name="month" class="span2">
+                        <!-- this is one way to have selected element in mustache -->
+                        <option value="january" selected="selected">	January
+                        </option>
+                <!-- this is one way to have selected element in mustache -->
+                        <option value="february" >	February
+                        </option>
+                <!-- this is one way to have selected element in mustache -->
+                        <option value="mart" >	Mart
+                        </option>
+                <!-- this is one way to have selected element in mustache -->
+                        <option value="april" >	April
+                        </option>
+                <!-- this is one way to have selected element in mustache -->
+                        <option value="may" >	May
+                        </option>
+                <!-- this is one way to have selected element in mustache -->
+                        <option value="june" >	June
+                        </option>
+            </select>
+                </div>
+                <!-- if you're going to post data this line is required! -->
+                <input type="hidden" name="_csrf" value="85tNZKsM9k769ECIOt8QpHg1" />
+            </fieldset>
+        </form>
+        
+        <section id="chart">
+            <script type="text/javascript" charset="utf-8">
+                $(function () {
+                    $('a').on('click', function (e) {
+                        
+                        return false;
+                    });
+
+                    var options = {
+                        january: '{"chart":{"renderTo":"chart-pie","plotBackgroundColor":null,"plotBorderWidth":null,"plotShadow":false},"title":{"text":"$136.00 spend for goods in january"},"tooltip":{"pointFormat":"{series.name}: <b>{point.percentage}%</b>","percentageDecimals":1,"formatter":"all callback functions are defined in the browser!"},"plotOptions":{"pie":{"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":true,"color":"#000000","connectorColor":"#000000","formatter":"all callback functions are defined in the browser!"}}},"series":[{"type":"pie","name":"Spend","data":[{"name":"coffee","y":61.4,"total":83},{"name":"tea","y":27.57,"total":37},{"name":"cherries","y":11.03,"total":15}]}]}',
+                        february: '{"chart":{"renderTo":"chart-pie","plotBackgroundColor":null,"plotBorderWidth":null,"plotShadow":false},"title":{"text":"$138.90 spend for goods in february"},"tooltip":{"pointFormat":"{series.name}: <b>{point.percentage}%</b>","percentageDecimals":1,"formatter":"all callback functions are defined in the browser!"},"plotOptions":{"pie":{"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":true,"color":"#000000","connectorColor":"#000000","formatter":"all callback functions are defined in the browser!"}}},"series":[{"type":"pie","name":"Spend","data":[{"name":"coffee","y":13.61,"total":18},{"name":"tea","y":71.99,"total":100},{"name":"cherries","y":14.4,"total":20}]}]}',
+                        mart: '{"chart":{"renderTo":"chart-pie","plotBackgroundColor":null,"plotBorderWidth":null,"plotShadow":false},"title":{"text":"$80.50 spend for goods in mart"},"tooltip":{"pointFormat":"{series.name}: <b>{point.percentage}%</b>","percentageDecimals":1,"formatter":"all callback functions are defined in the browser!"},"plotOptions":{"pie":{"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":true,"color":"#000000","connectorColor":"#000000","formatter":"all callback functions are defined in the browser!"}}},"series":[{"type":"pie","name":"Spend","data":[{"name":"tea","y":66.46,"total":53},{"name":"energy","y":22.36,"total":18},{"name":"chocolate","y":11.18,"total":9}]}]}',
+                        april: '{"chart":{"renderTo":"chart-pie","plotBackgroundColor":null,"plotBorderWidth":null,"plotShadow":false},"title":{"text":"$114.80 spend for goods in april"},"tooltip":{"pointFormat":"{series.name}: <b>{point.percentage}%</b>","percentageDecimals":1,"formatter":"all callback functions are defined in the browser!"},"plotOptions":{"pie":{"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":true,"color":"#000000","connectorColor":"#000000","formatter":"all callback functions are defined in the browser!"}}},"series":[{"type":"pie","name":"Spend","data":[{"name":"coffee","y":10.98,"total":12},{"name":"tea","y":13.94,"total":16},{"name":"energy","y":38.76,"total":44},{"name":"cherries","y":19.77,"total":22},{"name":"chocolate","y":16.55,"total":19}]}]}',
+                        may: '{"chart":{"renderTo":"chart-pie","plotBackgroundColor":null,"plotBorderWidth":null,"plotShadow":false},"title":{"text":"$65.80 spend for goods in may"},"tooltip":{"pointFormat":"{series.name}: <b>{point.percentage}%</b>","percentageDecimals":1,"formatter":"all callback functions are defined in the browser!"},"plotOptions":{"pie":{"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":true,"color":"#000000","connectorColor":"#000000","formatter":"all callback functions are defined in the browser!"}}},"series":[{"type":"pie","name":"Spend","data":[{"name":"tea","y":60.79,"total":40},{"name":"energy","y":25.53,"total":16},{"name":"cherries","y":13.68,"total":9}]}]}',
+                        june: '{"chart":{"renderTo":"chart-pie","plotBackgroundColor":null,"plotBorderWidth":null,"plotShadow":false},"title":{"text":"$185.00 spend for goods in june"},"tooltip":{"pointFormat":"{series.name}: <b>{point.percentage}%</b>","percentageDecimals":1,"formatter":"all callback functions are defined in the browser!"},"plotOptions":{"pie":{"allowPointSelect":true,"cursor":"pointer","dataLabels":{"enabled":true,"color":"#000000","connectorColor":"#000000","formatter":"all callback functions are defined in the browser!"}}},"series":[{"type":"pie","name":"Spend","data":[{"name":"coffee","y":37.84,"total":70},{"name":"tea","y":21.62,"total":40},{"name":"energy","y":30.27,"total":56},{"name":"chocolate","y":10.27,"total":19}]}]}'
+
+                    };
+                    
+                    function createChart (month) {
+                        var settings = JSON.parse(options[month]);
+        
+                        // can't have functions in json
+                        settings.tooltip.formatter = function () {
+                            return '<strong>'+this.point.name+'</strong>: $'
+                                    +this.point.options.total;
+                        };
+                        // so the callbacks are here
+                        settings.plotOptions.pie.dataLabels.formatter = function () {
+                            return '<strong>'+this.point.name+'</strong>: '
+                                    +parseFloat(this.percentage.toFixed(2))+'%';
+                        }
+            
+                        // create the chart
+                        var pieChart = new Highcharts.Chart(settings);
+                    }
+
+                    $('[name=month]').on('change', function (e) {
+                        createChart($(this).val());
+                    });
+
+                    createChart('january');
+                });
+            </script>
+            <div id="chart-pie">
+                <!-- the chart will be rendered here -->
+            </div>
+        </section>
+    </section>
+
+    <div id="footer-push">&nbsp;</div>
+</div>
+<footer>
+    <p><small><a href="http://simov.github.io/express-admin-site/" target="_blank" class="muted">Express Admin</a></small></p>
+</footer>
+</body>
+</html>
