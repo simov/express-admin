@@ -26,7 +26,7 @@
         "mysql"            : "2.0.0-alpha2",
         "mysql-validator"  : ">=0.1.4",
         "pwd"              : "git://github.com/jlubawy/node-pwd.git",
-        "commander"        : "*",
+        "commander"        : "1.3.2",
         "colors"           : "*",
         "slugify"          : "*",
         "sr-pagination"    : "*",
