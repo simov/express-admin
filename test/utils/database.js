@@ -10,14 +10,14 @@ var db = require('../../lib/utils/database');
 
 describe('database', function () {
     it('give error on connect', function (done) {
-        db.connect('dsajhdka', 'jhsakjhsakd', function (err) {
+        db.connect({user: 'dsajhdka', password: 'jhsakjhsakd'}, function (err) {
             err.message.should.equal(
                 'Non existing user or misspelled username or password');
             done();
         });
     });
     it('connect existing user', function (done) {
-        db.connect('liolio', 'karamba', function (err) {
+        db.connect({user: 'liolio', password: 'karamba'}, function (err) {
             if (err) return done(err);
             // db.connection ...
             done();

@@ -1,8 +1,8 @@
 {
-    "database": {
-        "name": "express-admin-stress",
+    "mysql": {
+        "database": "express-admin-stress",
         "user": "liolio",
-        "pass": "karamba"
+        "password": "karamba"
     },
     "server": {
         "port": 3000

@@ -16,9 +16,9 @@ describe('core/database', function () {
         name     : 'item'
     };
     before(function (done) {
-        db.connect(c.database.user, c.database.pass, function (err) {
+        db.connect(c.mysql, function (err) {
             if (err) throw err;
-            db.use(c.database.name, function (err) {
+            db.use(c.mysql.database, function (err) {
                 if (err) throw err;
                 args.db = db;
                 done();

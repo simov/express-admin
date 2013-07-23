@@ -8,7 +8,7 @@ var db = require('../../lib/utils/database'),
 describe('schema', function () {
     var schema = null;
     before(function (done) {
-        db.connect('liolio', 'karamba', function (err) {
+        db.connect({user: 'liolio', password: 'karamba'}, function (err) {
             if (err) return done(err);
             db.use('express-admin-simple', function (err) {
                 if (err) return done(err);

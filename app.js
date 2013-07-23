@@ -50,9 +50,9 @@ var r = require('./routes'),
     };
 
 
-db.connect(c.database.user, c.database.pass, function (err) {
+db.connect(c.mysql, function (err) {
     if (err) throw err;
-    db.use(c.database.name, function (err) {
+    db.use(c.mysql.database, function (err) {
         if (err) throw err;
         var schema = new Schema(db);
         schema.getAllColumns(function (err, info) {
@@ -62,7 +62,7 @@ db.connect(c.database.user, c.database.pass, function (err) {
                 // write back the settings
                 fs.writeFileSync(p.settings, JSON.stringify(settings, null, 4), 'utf8');
 
-                db.empty(c.database.name, function (err, empty) {
+                db.empty(c.mysql.database, function (err, empty) {
                     if (err) throw err;
                     if (empty) {
                         console.log('Empty Database!'.red);
