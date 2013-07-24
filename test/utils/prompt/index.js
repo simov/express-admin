@@ -91,9 +91,9 @@ describe('prompt', function () {
         function success (data) {
             var json = JSON.parse(data);
             if (json.err) return done(new Error(json.err));
-            json.database.name.should.equal('express-admin');
-            json.database.user.should.equal('liolio');
-            json.database.password.should.equal('karamba');
+            json.mysql.database.should.equal('express-admin');
+            json.mysql.user.should.equal('liolio');
+            json.mysql.password.should.equal('karamba');
             json.server.port.should.equal(4444);
             json.user.name.should.equal('admin');
             json.user.pass.should.equal('aa11AA');
