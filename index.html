@@ -94,14 +94,14 @@
 <p>At this point you can navigate to <em>localhost:[specified port]</em> and see your admin up and running. The next thing is to configure it.</p>
 
     <div class="info">
-        <p>The application settings are stored inside the <em>config.json</em> file.</p>
+        <p>The application settings are stored inside the <em>config.json</em> file. The <em>mysql</em> key accepts any option from the <em>node-mysql</em>'s <a href="https://github.com/felixge/node-mysql#connection-options" target="_blank">connection options</a>.</p>
 
 <!-- code -->
 <pre><code class="language-javascript">{
-    "database": {
-        "name": "express-admin-examples",
+    "mysql": {
+        "database": "express-admin-examples",
         "user": "liolio",
-        "pass": "karamba"
+        "password": "karamba"
     },
     "server": {
         "port": 3000
