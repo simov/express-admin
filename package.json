@@ -1,6 +1,6 @@
 {
     "name": "express-admin",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "MySql database admin built with Express and Bootstrap.",
     "keywords": [
         "mysql",
