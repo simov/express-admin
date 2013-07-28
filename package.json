@@ -36,7 +36,8 @@
     },
     "devDependencies": {
         "mocha" : "*",
-        "should": "*"
+        "should": "*",
+        "recursive-fs": "*"
     },
     "main": "./app",
     "bin": {
