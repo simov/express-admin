@@ -22,7 +22,7 @@ exports.restrict = function (req, res, next) {
     res.redirect('login');
 }
 
-exports.login = function (req, res, next) {
+exports.login = function (req, res) {
     // query the db for the given username
     var user = res.locals._admin.users[req.body.username];
     if (!user) {
@@ -55,7 +55,7 @@ exports.login = function (req, res, next) {
     });
 }
 
-exports.logout = function (req, res, next) {
+exports.logout = function (req, res) {
     // destroy the user's session to log them out
     // will be re-created next request
     req.session.destroy(function () {
