@@ -4,51 +4,43 @@ var path = require('path'),
 require('colors');
 
 var child = null,
-    error = null,
-    success = null;
+    response = null,
+    count = 1,
+    messages = [];
 
 
-exports.start = function (cb) {
+exports.start = function (callback) {
+    response = callback;
+
     var mpath = path.resolve(__dirname, 'wrapper.js');
     child = spawn('node', [mpath]);
     child.stdin.setEncoding('utf8');
 
-    var started = false;
     child.stdout.on('data', function (data) {
         // console.log('> ' + data);
         var text = data.toString().trim();
-
-        switch (text) {
-            case 'Database name:':
-                !started ? cb() : success(text);
-                started = true;
-                break;
-            case 'Database credentials are required!'.red:
-                error(text);
-                break;
-            case 'Administrator user name is required!'.red:
-                error(text);
-                break;
-            case ('Must contains at least:\n'+
-                '2 lower case letters, 2 upper case letters,'+
-                '2 digits').red:
-                error(text);
-                break;
-            default:
-                success(text);
-                break;
-        }
+        
+        messages.push(text);
+        if (messages.length == count)
+            response(messages);
     });
+    
     child.stderr.on('data', function (data) {
         console.log('! ' + data);
     });
+    
     child.on('exit', function (code, signal) {
         console.log('$ ' + code + ' ' + signal);
     });
 }
 
-exports.next = function (input, _error, _success) {
-    error = _error;
-    success = _success;
+exports.next = function (input, _count, callback) {
+    if (typeof(_count) == 'function') {
+        callback = _count;
+        _count = 1;
+    }
+    messages = [];
+    count = _count;
+    response = callback;
     child.stdin.write(input);
 }
