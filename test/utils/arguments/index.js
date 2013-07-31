@@ -14,15 +14,6 @@ describe('arguments', function () {
             child.kill();
             done();
         });
-        // child.send({ hello: 'world' });
-    });
-    it.skip('get config path from --watch flag', function (done) {
-        var child = fork(mpath, ['-w', tpath]);
-        child.on('message', function (message) {
-            message.path.should.equal(tpath);
-            child.kill();
-            done();
-        });
     });
     it('get config path from --dev flag', function (done) {
         var child = fork(mpath, ['-v', tpath]);
