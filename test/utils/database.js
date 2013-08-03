@@ -12,7 +12,8 @@ describe('database', function () {
     it('give error on connect', function (done) {
         db.connect({user: 'dsajhdka', password: 'jhsakjhsakd'}, function (err) {
             err.message.should.equal(
-                'Non existing user or misspelled username or password');
+                'ER_ACCESS_DENIED_ERROR: Access denied for user '+
+                    '\'dsajhdka\'@\'localhost\' (using password: YES)');
             done();
         });
     });

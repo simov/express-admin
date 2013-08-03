@@ -37,6 +37,7 @@
     "devDependencies": {
         "mocha" : "*",
         "should": "*",
+        "supertest": "*",
         "recursive-fs": "*"
     },
     "main": "./app",
@@ -44,6 +45,6 @@
         "admin": "./bin/admin"
     },
     "scripts": {
-        "test": "make test"
+        "test": "node_modules/mocha/bin/mocha --require should --reporter spec test/index.js"
     }
 }

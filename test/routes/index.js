@@ -1,4 +1,4 @@
 
-describe('route tests', function () {
+describe('routes', function () {
     require('./auth');
 });

@@ -21,10 +21,22 @@ test-routes:
 		$(MOCHA_OPTS) \
 		test/routes/index.js
 
+test-app:
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+		--reporter $(REPORTER) \
+		$(MOCHA_OPTS) \
+		test/app/index.js
+
 test-core:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		$(MOCHA_OPTS) \
 		test/core/index.js
 
-.PHONY: test import test-utils test-routes test-core
+test-all:
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+		--reporter $(REPORTER) \
+		$(MOCHA_OPTS) \
+		test/index.js
+
+.PHONY: test import test-all

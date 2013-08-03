@@ -1,12 +1,15 @@
 
+var path = require('path');
 require('colors');
 
-var prompt = require('./prompt');
+var prompt = require('../../common/prompt');
 
 
 describe('prompt', function () {
     before(function (done) {
-        prompt.start(function (text) {
+        var params = [path.resolve(__dirname, 'wrapper.js')];
+
+        prompt.start(params, function (text) {
             text[0].should.equal('Database name:');
             done();
         });

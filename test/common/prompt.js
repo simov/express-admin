@@ -1,19 +1,23 @@
 
-var path = require('path'),
-    spawn = require('child_process').spawn;
-require('colors');
+var spawn = require('child_process').spawn;
 
 var child = null,
-    response = null,
+    messages = [],
     count = 1,
+    response = null,
+    closing = false;
+
+
+exports.start = function (params, _closing, callback) {
+    if (typeof(_closing) == 'function') {
+        var callback = _closing;
+        closing = false;
+    }
     messages = [];
-
-
-exports.start = function (callback) {
+    count = 1;
     response = callback;
 
-    var mpath = path.resolve(__dirname, 'wrapper.js');
-    child = spawn('node', [mpath]);
+    child = spawn('node', params);
     child.stdin.setEncoding('utf8');
 
     child.stdout.on('data', function (data) {
@@ -30,7 +34,8 @@ exports.start = function (callback) {
     });
     
     child.on('exit', function (code, signal) {
-        console.log('$ ' + code + ' ' + signal);
+        // console.log('$ ' + code + ' ' + signal);
+        if (closing) response();
     });
 }
 
@@ -41,6 +46,12 @@ exports.next = function (input, _count, callback) {
     }
     messages = [];
     count = _count;
+    response = callback;
+    child.stdin.write(input);
+}
+
+exports.end = function (input, callback) {
+    closing = true;
     response = callback;
     child.stdin.write(input);
 }

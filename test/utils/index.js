@@ -1,5 +1,5 @@
 
-describe('utils tests', function () {
+describe('lib/utils', function () {
     require('./arguments');
     require('./prompt');
 

@@ -1,4 +1,4 @@
 
-describe('core tests', function () {
+describe('lib/core', function () {
     require('./database');
 });
