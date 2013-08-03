@@ -45,6 +45,6 @@
         "admin": "./bin/admin"
     },
     "scripts": {
-        "test": "node_modules/mocha/bin/mocha --require should --reporter spec test/index.js"
+        "test": "node_modules/mocha/bin/mocha --require should --reporter spec --timeout 10000 test/index.js"
     }
 }
