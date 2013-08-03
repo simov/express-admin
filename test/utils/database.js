@@ -55,8 +55,8 @@ describe('database', function () {
         });
     });
 
-    it.skip('empty database', function (done) {
-        db.empty('express-admin-simple', function (err, empty) {
+    it('empty database', function (done) {
+        db.empty('express-admin-empty', function (err, empty) {
             if (err) return done(err);
             empty.should.equal(true);
             done();
