@@ -1,6 +1,7 @@
 
-var path = require('path'),
-    fork = require('child_process').fork;
+var path = require('path');
+
+var prompt = require('../../common/prompt');
 
 
 describe('arguments', function () {
@@ -8,26 +9,19 @@ describe('arguments', function () {
         tpath = path.resolve('../some/test/path');
 
     it('get config path without flags', function (done) {
-        var child = fork(mpath, [tpath]);
-        child.on('message', function (message) {
-            message.path.should.equal(tpath);
-            child.kill();
+        var params = [mpath, tpath];
+
+        prompt.start(params, true, function (text) {
+            text[0].should.equal(tpath);
             done();
         });
     });
+    
     it('get config path from --dev flag', function (done) {
-        var child = fork(mpath, ['-v', tpath]);
-        child.on('message', function (message) {
-            message.path.should.equal(tpath);
-            child.kill();
-            done();
-        });
-    });
-    it.skip('get config path from multiple flags', function (done) {
-        var child = fork(mpath, ['-wve', tpath]);
-        child.on('message', function (message) {
-            message.path.should.equal(tpath);
-            child.kill();
+        var params = [mpath, '-v', tpath];
+
+        prompt.start(params, true, function (text) {
+            text[0].should.equal(tpath);
             done();
         });
     });
