@@ -9,5 +9,5 @@ var args = {
 }
 
 app.initCommandLine(args, function () {
-    process.exit();
+    console.log('end');
 });

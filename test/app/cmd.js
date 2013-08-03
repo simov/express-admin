@@ -17,30 +17,24 @@ describe('command line', function () {
     });
 
     it('should return an error on non existent directory', function (done) {
-        var params = [path.resolve(__dirname, '../../app.js'), 'non-existing-dir'];
+        var params = [path.resolve(__dirname, '../../app.js'), 'non-existing-dir'],
+            expected = 'Config directory path doesn\'t exists!'.red;
         
-        prompt.start(params, function (text) {
-            text[0].should.equal('Config directory path doesn\'t exists!'.red);
-            done();
+        prompt.start(params, expected, function (err) {
+            done(err);
         });
     });
 
     it('should prompt for data on non existent config files', function (done) {	
         var params = [path.resolve(__dirname, 'wrapper.js'), 'test/app/project'];
         // it's silly I know
-        prompt.start(params, function (text) {
-            text[0].should.equal('Database name:');
-            prompt.next('express-admin-simple', function (text) {
-                text[0].should.equal('Database user:');
-                prompt.next('liolio', function (text) {
-                    text[0].should.equal('Database password:');
-                    prompt.next('karamba', function (text) {
-                        text[0].should.equal('Server port:');
-                        prompt.next('\n', function (text) {
-                            text[0].should.equal('Admin user:');
-                            prompt.next('admin', function (text) {
-                                text[0].should.equal('Admin password:');
-                                prompt.end('11aaAA', function (text) {
+        prompt.start(params, 'Database name:', function (err) {
+            prompt.next('express-admin-simple', 'Database user:', function (err) {
+                prompt.next('liolio', 'Database password:', function (err) {
+                    prompt.next('karamba', 'Server port:', function (err) {
+                        prompt.next('\n', 'Admin user:', function (err) {
+                            prompt.next('admin', 'Admin password:', function (err) {
+                                prompt.next('11aaAA', 'end', function (err) {
                                     JSON.stringify(require('./project/custom')).should.equal('{}');
                                     JSON.stringify(require('./project/settings')).should.equal('{}');
                                     JSON.stringify(require('./project/config')).should.equal('{"mysql":{"database":"express-admin-simple","user":"liolio","password":"karamba"},"server":{"port":3000},"app":{"layouts":true,"themes":true,"languages":true}}');
@@ -58,7 +52,7 @@ describe('command line', function () {
     it('should start the admin on existent config files', function (done) {
         var params = [path.resolve(__dirname, 'wrapper.js'), 'test/app/project'];
         
-        prompt.start(params, true, function () {
+        prompt.start(params, 'end', function () {
             done();
         });
     });

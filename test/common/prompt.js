@@ -2,19 +2,15 @@
 var spawn = require('child_process').spawn;
 
 var child = null,
-    messages = [],
-    count = 1,
+    output = '',
+    expected = '',
     response = null,
-    closing = false;
+    timeout = null;
 
 
-exports.start = function (params, _closing, callback) {
-    if (typeof(_closing) == 'function') {
-        var callback = _closing;
-        closing = false;
-    }
-    messages = [];
-    count = 1;
+exports.start = function (params, expect, callback) {
+    output = '';
+    expected = expect;
     response = callback;
 
     child = spawn('node', params);
@@ -22,11 +18,14 @@ exports.start = function (params, _closing, callback) {
 
     child.stdout.on('data', function (data) {
         // console.log('> ' + data);
-        var text = data.toString().trim();
+        output += data.toString().trim().replace(/\r?\n|\r/g, '');
         
-        messages.push(text);
-        if (messages.length == count)
-            response(messages);
+        if (output == expected) response();
+
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            response(new Error('Operation timed out!'));
+        }, 1500);
     });
     
     child.stderr.on('data', function (data) {
@@ -35,23 +34,12 @@ exports.start = function (params, _closing, callback) {
     
     child.on('exit', function (code, signal) {
         // console.log('$ ' + code + ' ' + signal);
-        if (closing) response();
     });
 }
 
-exports.next = function (input, _count, callback) {
-    if (typeof(_count) == 'function') {
-        callback = _count;
-        _count = 1;
-    }
-    messages = [];
-    count = _count;
-    response = callback;
-    child.stdin.write(input);
-}
-
-exports.end = function (input, callback) {
-    closing = true;
+exports.next = function (input, expect, callback) {
+    output = '';
+    expected = expect;
     response = callback;
     child.stdin.write(input);
 }

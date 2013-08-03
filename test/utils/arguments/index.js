@@ -11,18 +11,16 @@ describe('arguments', function () {
     it('get config path without flags', function (done) {
         var params = [mpath, tpath];
 
-        prompt.start(params, true, function (text) {
-            text[0].should.equal(tpath);
-            done();
+        prompt.start(params, tpath, function (err) {
+            done(err);
         });
     });
     
     it('get config path from --dev flag', function (done) {
         var params = [mpath, '-v', tpath];
 
-        prompt.start(params, true, function (text) {
-            text[0].should.equal(tpath);
-            done();
+        prompt.start(params, tpath, function (err) {
+            done(err);
         });
     });
 });
