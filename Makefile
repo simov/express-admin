@@ -4,7 +4,7 @@ REPORTER = spec
 
 check: test
 
-test: import test-utils test-routes test-core
+test: import test-all
 
 import:
 	@NODE_ENV=test node test/import.js
@@ -39,4 +39,4 @@ test-all:
 		$(MOCHA_OPTS) \
 		test/index.js
 
-.PHONY: test import test-all
+.PHONY: test
