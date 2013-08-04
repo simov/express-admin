@@ -1,11 +1,16 @@
 ![express admin][1]
 
+<hr />
+
+[![Build Status](https://travis-ci.org/simov/express-admin.png)](https://travis-ci.org/simov/express-admin)
+
 <br />
+
 [![NPM](https://nodei.co/npm/express-admin.png?downloads=true)](https://nodei.co/npm/express-admin/)
 
 #[Introductory Screencast][3]
 
-#[Documentation][2] [![Build Status](https://travis-ci.org/simov/express-admin.png)](https://travis-ci.org/simov/express-admin)
+#[Documentation][2]
 
 #License
 (The MIT License)
