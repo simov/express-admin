@@ -4,8 +4,6 @@
 
 [![Build Status](https://travis-ci.org/simov/express-admin.png)](https://travis-ci.org/simov/express-admin)
 
-<br />
-
 [![NPM](https://nodei.co/npm/express-admin.png?downloads=true)](https://nodei.co/npm/express-admin/)
 
 #[Introductory Screencast][3]
