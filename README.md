@@ -6,9 +6,11 @@
 
 [![NPM](https://nodei.co/npm/express-admin.png?downloads=true)](https://nodei.co/npm/express-admin/)
 
-#[Introductory Screencast][3]
+#[Introductory Screencast][2]
 
-#[Documentation][2]
+#[Documentation][3]
+
+#[Examples][4]
 
 #License
 (The MIT License)
@@ -22,5 +24,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
   [1]: http://i.imgur.com/rd1cqPv.png
-  [2]: http://simov.github.io/express-admin-site/
-  [3]: http://www.youtube.com/watch?v=1CdoCB96QNk
+  [2]: http://www.youtube.com/watch?v=1CdoCB96QNk
+  [3]: http://simov.github.io/express-admin-site/
+  [4]: http://github.com/simov/express-admin-examples/
