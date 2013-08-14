@@ -1,4 +1,5 @@
 
+var should = require('should');
 var auth = require('../../routes/auth'),
     user = require('../../lib/utils/user');
 
@@ -60,7 +61,7 @@ describe('user authentication', function () {
                 req.session.regenerate = function (cb) {cb()}
                 res.redirect = function (path) {
                     path.should.equal('/');
-                    JSON.stringify(req.session.user).should.equal(JSON.stringify(user));
+                    should.deepEqual(req.session.user, user);
                     done();
                 }
                 auth.login(req, res);

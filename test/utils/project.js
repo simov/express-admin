@@ -50,8 +50,8 @@ describe('project', function () {
             users: require('./project/users')
         };
 
-        JSON.stringify(c.custom).should.equal(JSON.stringify({}));
-        JSON.stringify(c.settings).should.equal(JSON.stringify({}));
+        should.deepEqual(c.custom, {});
+        should.deepEqual(c.settings, {});
 
         var config = {
             mysql: {
@@ -68,7 +68,7 @@ describe('project', function () {
                 languages: true
             }
         };
-        JSON.stringify(c.config).should.equal(JSON.stringify(config));
+        should.deepEqual(c.config, config);
 
         // users
         c.users.admin.name.should.equal('admin');

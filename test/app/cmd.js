@@ -1,6 +1,7 @@
 
 var fs = require('fs'),
     path = require('path'),
+    should = require('should'),
     recursive = require('recursive-fs');
 require('colors');
 
@@ -27,25 +28,34 @@ describe('command line', function () {
 
     it('should prompt for data on non existent config files', function (done) {	
         var params = [path.resolve(__dirname, 'wrapper.js'), 'test/app/project'];
-        // it's silly I know
+        var data = [
+            {in: 'express-admin-simple', out: 'Database user:'},
+            {in: 'liolio', out: 'Database password:'},
+            {in: 'karamba', out: 'Server port:'},
+            {in: '\n', out: 'Admin user:'},
+            {in: 'admin', out: 'Admin password:'},
+            {in: '11aaAA', out: 'end'}
+        ];
         prompt.start(params, 'Database name:', function (err) {
-            prompt.next('express-admin-simple', 'Database user:', function (err) {
-                prompt.next('liolio', 'Database password:', function (err) {
-                    prompt.next('karamba', 'Server port:', function (err) {
-                        prompt.next('\n', 'Admin user:', function (err) {
-                            prompt.next('admin', 'Admin password:', function (err) {
-                                prompt.next('11aaAA', 'end', function (err) {
-                                    JSON.stringify(require('./project/custom')).should.equal('{}');
-                                    JSON.stringify(require('./project/settings')).should.equal('{}');
-                                    JSON.stringify(require('./project/config')).should.equal('{"mysql":{"database":"express-admin-simple","user":"liolio","password":"karamba"},"server":{"port":3000},"app":{"layouts":true,"themes":true,"languages":true}}');
-                                    JSON.stringify(require('./project/users')).should.match(/\{"admin":\{"name":"admin","root":true,"salt":".*","hash":".*"\}\}/);
-                                    done();
-                                });
-                            });
-                        });
-                    });
+            (function loop (i, cb) {
+                if (i == 6) return cb();
+                prompt.next(data[i].in, data[i].out, function (err) {
+                    if (err) return cb(err);
+                    loop(++i, cb);
                 });
-            });
+            }(0, function (err) {
+                if (err) return done(err);
+                should.deepEqual(require('./project/custom'), {});
+                should.deepEqual(require('./project/settings'), {});
+                should.deepEqual(require('./project/config'), {
+                    mysql: {database: 'express-admin-simple', user: 'liolio', password:'karamba'},
+                    server: {port: 3000},
+                    app: {layouts: true, themes: true, languages: true}
+                });
+                JSON.stringify(require('./project/users'))
+                    .should.match(/\{"admin":\{"name":"admin","root":true,"salt":".*","hash":".*"\}\}/);
+                done();
+            }));
         });
     });
 

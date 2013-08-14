@@ -1,6 +1,7 @@
 
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    should = require('should');
 var db = require('../../lib/utils/database'),
     Schema = require('../../lib/utils/schema');
 
@@ -51,7 +52,7 @@ describe('schema', function () {
         schema.getReferences(function (err, ref) {
             if (err) return done(err);
             var tables = Object.keys(ref);
-            tables.join().should.equal('property,purchase,recipe,recipe_ref,type');
+            should.deepEqual(tables, ['purchase','property','recipe','recipe_ref','type']);
             // may test column properties too
             done();
         });
