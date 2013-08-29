@@ -8,12 +8,16 @@
         <link id="bootstrap" href="../csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
         <link href="../csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
         <link href="../csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+        <style type="text/css">
+            body { background: #f8f8f8; }
+            table { background: #fff; }
+        </style>
 
         <script src="../jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
     </head>
     
-    <body id="express-admin" class="container-fluid">
+    <body id="express-admin" class="container">
         <section id="content">
             <h5>car</h5>
 
@@ -98,48 +102,6 @@
                                         <div class="controls">
                                             <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
                                             <input type="text" name="manyToOne[repair][records][0][columns][date]" value="2013-01-13" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="head">
-                                <td class="hero-unit">
-                                    <input type="hidden" name="manyToOne[repair][records][1][pk]" value="2" />
-                                    <label>
-                                        <input type="checkbox" name="manyToOne[repair][records][1][remove]" /> <small>Remove</small>
-
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">id</label>
-                                        <div class="controls">
-                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
-                                            <input type="text" name="manyToOne[repair][records][1][columns][id]" value="2" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">car_id</label>
-                                        <div class="controls">
-                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
-                                            <input type="text" name="manyToOne[repair][records][1][columns][car_id]" value="1" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">date</label>
-                                        <div class="controls">
-                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
-                                            <input type="text" name="manyToOne[repair][records][1][columns][date]" value="2013-04-07" />
                                         </div>
                                     </div>
                                 </td>
@@ -236,48 +198,6 @@
                                         <div class="controls">
                                             <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
                                             <input type="text" name="manyToOne[driver][records][0][columns][name]" value="John" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="head">
-                                <td class="hero-unit">
-                                    <input type="hidden" name="manyToOne[driver][records][1][pk]" value="2" />
-                                    <label>
-                                        <input type="checkbox" name="manyToOne[driver][records][1][remove]" /> <small>Remove</small>
-
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">id</label>
-                                        <div class="controls">
-                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
-                                            <input type="text" name="manyToOne[driver][records][1][columns][id]" value="2" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">car_id</label>
-                                        <div class="controls">
-                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
-                                            <input type="text" name="manyToOne[driver][records][1][columns][car_id]" value="1" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">name</label>
-                                        <div class="controls">
-                                            <!-- data-type-name=d ata-type-range="" data-allow-null="false" data-default-value="" -->
-                                            <input type="text" name="manyToOne[driver][records][1][columns][name]" value="Ross" />
                                         </div>
                                     </div>
                                 </td>

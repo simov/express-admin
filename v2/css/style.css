@@ -1,0 +1,29 @@
+
+#navigation { position: fixed; top: 70px; right: 8%; z-index: 1; cursor: default; background: #f8f8f2; background: #eee; border-radius: 3px; padding: 3px; }
+#navigation ul { list-style: none; }
+#navigation > ul { background-color: #fff; border: 1px solid #CACACA; padding: 10px; }
+#navigation li { font-size: 15px; line-height: 1.7; font-weight: bold; padding: 10px 0 0 0; }
+#navigation li:before { content: ''; padding: 0; }
+#navigation li:first-child { padding: 0; }
+#navigation a { color: #4183c4; }
+#navigation a:hover {  }
+#navigation a.active { color: #d14; }
+#navigation li ul { padding: 0 0 0 10px; }
+#navigation li ul li { font-weight: normal; padding: 0; }
+#navigation li ul li a { color: #999988; }
+
+@media (max-width: 900px) {
+    #forkme-badge { display: none; }
+    #navigation { right: 1%; }
+}
+
+.example { width: 100%; border: 1px solid #ddd; border-radius: 3px; box-sizing: border-box; display: none; }
+.example.one-to-many { height: 300px; }
+.example.many-to-many { height: 325px; }
+.example.many-to-one { height: 640px; }
+.example.one-to-one { height: 640px; }
+.example.custom-views-apps { height: 700px; }
+.example.themes { height: 650px; }
+
+.file h1 { margin-top: 0; }
+.file img { border: 1px solid #ddd; border-radius: 3px; }

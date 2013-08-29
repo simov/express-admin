@@ -11,1588 +11,1060 @@
 
     <title>Express Admin</title>
 
-    <link href="csslib/prism.css" rel="stylesheet" type="text/css" />
-    <link href="public/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="v2/css/github1.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="v2/css/github2.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="v2/css/style.css" media="all" rel="stylesheet" type="text/css" />
 
-    <link rel="shortcut icon" href="css/images/favicon.ico" />
-
-    <script src="jslib/prism.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jslib/prism-autolinker.js" type="text/javascript" charset="utf-8"></script>
-    
     <script src="jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jslib/bootstrap-scrollspy.js" type="text/javascript" charset="utf-8"></script>
-
-    <script src="public/js/events.js" type="text/javascript" charset="utf-8"></script>
+    <script src="v2/js/events.js" type="text/javascript" charset="utf-8"></script>
 </head>
-<body data-spy="scroll" data-target="#navigation">
-
-<section id="content">
-    
-    <article id="about">
-<h2><a href="#about" name="about">Express Admin</a></h2>
-
-<!-- ABOUT -->
-
-<div class="box">
-    <h4>About</h4>
-    <p>Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL databases.<br />
-    It's built with: <a href="http://twitter.github.io/hogan.js/" target="_blank">Hogan.js</a> (<a href="https://github.com/janl/mustache.js" target="_blank">mustache.js</a>), <a href="http://expressjs.com/" target="_blank">Express</a>, <a href="https://github.com/felixge/node-mysql" target="_blank">mysql</a> and <a href="http://twitter.github.io/bootstrap/" target="_blank">Bootstrap</a>.</p>
-    <p>The configuration is done through hand editing json files, although in the future there might be some sort of a GUI tool for that.</p>
-</div>
-
-<!-- FEATURES -->
-
-<div class="box">
-    <h4>Features</h4>
-    <ul>
-        <li>All types of sql table relationships</li>
-        <li>Internationalization</li>
-        <li>Custom views</li>
-        <li>All kinds of browser side libraries and controls</li>
-        <li>All themes from <a href="http://bootswatch.com/" target="_blank">Bootswatch</a></li>
-    </ul>
-</div>
-
-<!-- RESOURCES -->
-
-<div class="box">
-    <h4>Resources</h4>
-    <ul>
-        <li><a href="http://www.youtube.com/watch?v=1CdoCB96QNk" target="_blank">Introductory Screencast</a></li>
-        <li><a href="https://github.com/simov/express-admin" target="_blank">Express Admin's GitHub Repository</a></li>
-        <li><a href="https://github.com/simov/express-admin-examples" target="_blank">Repository for all the examples</a></li>
-        <li><a href="https://github.com/simov/express-admin-site" target="_blank">This site's repository</a></li>
-        <li><a href="https://github.com/simov/express-admin/issues" target="_blank">Forum / Issue Tracker</a></li>
-    </ul>
-</div>
-</article>
-    <article id="install">
-<h2><a href="#install" name="install">Install</a></h2>
-
-<div class="box">
-    <h4>Get the module</h4>
-<!-- code -->
-<pre><code class="language-javascript">$ [sudo] npm install -g express-admin</code></pre>
-<!-- code -->
-    <p>or</p>
-<!-- code -->
-<pre><code class="language-javascript">$ npm install express-admin</code></pre>
-<!-- code -->
-</div>
-
-<div class="box">
-    <h4>Create a Project <a href="#" class="btn-info">expand</a></h4>
-    <p>Depending on how you installed it creating a project is as follows</p>
-<!-- code -->
-<pre><code class="language-javascript">$ admin path/to/config</code></pre>
-<!-- code -->
-    <p>or</p>
-<!-- code -->
-<pre><code class="language-javascript">$ node path/to/express-admin/app.js path/to/config</code></pre>
-<!-- code -->
-<p>Either way the config path should exist. If there isn't config files in it already you will be prompted to add some required information for your database, server port and admin account.</p>
-<p>At this point you can navigate to <em>localhost:[specified port]</em> and see your admin up and running. The next thing is to configure it.</p>
-
-    <div class="info">
-        <p>The application settings are stored inside the <em>config.json</em> file. The <em>mysql</em> key accepts any option from the <em>node-mysql</em>'s <a href="https://github.com/felixge/node-mysql#connection-options" target="_blank">connection options</a>.</p>
-
-<!-- code -->
-<pre><code class="language-javascript">{
-    "mysql": {
-        "database": "express-admin-examples",
-        "user": "liolio",
-        "password": "karamba"
-    },
-    "server": {
-        "port": 3000
-    },
-    "app": {
-        "layouts": true,
-        "themes": true,
-        "languages": true
-    }
-}</code></pre>
-<!-- code -->
-    </div>
-</div>
-</article>
-    <article id="settings">
-<h2><a href="#settings" name="settings">Settings</a></h2>
-
-<!-- ABOUT -->
-
-<div class="box visible">
-    <h4>About</h4>
-    <div class="info">
-        <p>The main place for setting up the express admin is the <em>settings.json</em> file which is autamatically generated with default values at first start up.</p>
-        <p>For setting up custom views and client side code see the <a href="#custom">Custom Views</a> section.</p>
-    </div>
-</div>
-
-<!-- TABLE -->
-
-<div class="box visible">
-    <h4>Table</h4>
-    <div class="col col1">
-
-<!-- code -->
-<pre><code class="language-javascript">"table_name": {
-    "slug": "unique-slug",
-    "table": {
-        "name": "table_name",
-        "pk": "pk_name",
-        "verbose": "Verbose Name"
-    },
-    "columns": [
-        {...}, // see column definition below
-        // [{ "manyToMany" ... }](#many-to-many)
-    ],
-    "mainview": {
-        "show": true
-    },
-    "listview": {
-        "order": {
-            "column_name1": "asc",
-            "column_name2": "desc"
-        },
-        "page": 25
-    },
-    "editview": {
-        "readonly": false,
-        // ["oneToOne": { ... },](#one-to-one)
-        // ["manyToOne": { ... }](#many-to-one)
-    }
-}</code></pre>
-<!-- code -->
-
-    </div>
-    <p>In <em>settings.json</em> there is a list of table objects each of wich contains:</p>
-    <div class="info">
-        <ul>
-            <li><strong>slug</strong> - unique slug amongs all other tables</li>
-            <li><strong>table</strong> - contains table settings where:
-                <ul>
-                    <li><i>name</i> - is the database name of this table. Tipically you won't change this</li>
-                    <li><i>pk</i> - is the primary key for this table. It will be set automatically but it can be changed from here if it's needed.</li>
-                    <li><i>verbose</i> - name for this table used inside the admin's interface</li>
-                </ul>
-            </li>
-            <li><strong>columns</strong> - is an array of all columns inside this table. To reorder the columns appearance cut the entire column object and paste it on the desired position inside this array</li>
-            <li><strong>mainview</strong> - settings for the mainview which is the home page for the admin
-                <ul>
-                    <li>show - toggle table visibility inside the mainview table's list. Typically you want to hide tables that will be modified as <a href="#many-to-one">inlines</a> of other tables, or tables that are used as links for <a href="#many-to-many">many-to-many</a> relationships</li>
-                </ul>
-            </li>
-            <li><strong>listview</strong> - contains settings related to the page where all the records for a table are listed:
-                <ul>
-                    <li>order - is a list of columns by wich to sort and their respective order direction</li>
-                    <li>page - how many records to show per page</li>
-                </ul>
-            </li>
-            <li><strong>editview</strong> - settings specifically related to the page where the record is edited
-                <ul>
-                    <li>readonly - this will omit the save and delete buttons at the bottom of the page effectively making the table's records readonly</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-- COLUMNS -->
-
-<div class="box visible">
-    <h4>Column</h4>
-    <div class="col col1">
-
-<!-- code -->
-<pre><code class="language-javascript">{
-    "verbose": "Verbose Name",
-    "name": "column_name",
-    "control": {
-        "text": true
-    },
-    "type": "varchar(45)",
-    "allowNull": false,
-    "defaultValue": null,
-    "listview": {
-        "show": true
-    },
-    "editview": {
-        "show": true
-    },
-    // ["oneToMany": { ... }](#one-to-many)
-}</code></pre>
-<!-- code -->
-
-    </div>
-    <div class="info">
-        <ul>
-            <li><strong>verbose</strong> - this is what is shown for column name inside the admin</li>
-            <li><strong>name</strong> - this is the sql name of this column inside the database's table. Typically you won't change this.</li>
-            <li><strong>control</strong> - this is the control type for this column. Supported control types are: text, <a href="#textarea">textarea</a>, <a href="#datepicker">date</a> and <a href="#one-to-many">select</a>.</li>
-            <li><strong>type</strong> - this is the data type of this column. Typically you won't change this.</li>
-            <li><strong>allowNull</strong> - this flag controls whether this column can be null or not</li>
-            <li><strong>defaultValue</strong> - currently not used</li>
-            <li><strong>listview</strong>
-                <ul>
-                    <li>show - toggle visibility of this column inside the listview which is the page where all records from this table are listed. Typically you want to see only colums that have short and meaningful data describing the record clearly. Primary key columns and columns that contain large amount of text should be hidden inside this view.</li>
-                </ul>
-            </li>
-            <li><strong>editview</strong>
-                <ul>
-                    <li>show - toggle visibility of this column inside the editview which is the page where a record can be edited.<br />
-                    Typically primary key columns should be hidden, especially those that have <em>auto_increment</em> flag set to true. Foreign keys for inline tables should be hidden too as they are set automatically.<br />
-                    Keep in mind that columns that can't be <em>null</em> inside your database can't be hidden here as this will result in a mysql error when you try to insert/update the record.</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-</article>
-
-    <article id="one-to-many">
-<h2><a href="#one-to-many" name="one-to-many">One to Many</a></h2>
-
-<!-- SCHEMA -->
-
-<div class="box">
-    <h4>Schema <a href="#" class="btn-info">expand</a></h4>
-
-    <img src="images/one-to-many.png" alt="" />
-
-    <div class="info">
-
-<!-- code -->
-<pre><code class="language-sql">-- -----------------------------------------------------
--- Table `item`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `item` ;
-
-CREATE  TABLE IF NOT EXISTS `item` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
-  `description` TEXT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
-CREATE  TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `firstname` VARCHAR(45) NOT NULL ,
-  `lastname` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `purchase`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `purchase` ;
-
-CREATE  TABLE IF NOT EXISTS `purchase` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `item_id` INT NOT NULL ,
-  `user_id` INT NULL ,
-  `cache` DECIMAL(6,2) UNSIGNED NOT NULL ,
-  `date` DATETIME NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `fk_purchase_user` (`user_id` ASC) ,
-  INDEX `fk_purchase_item1` (`item_id` ASC) ,
-  CONSTRAINT `fk_purchase_user`
-    FOREIGN KEY (`user_id` )
-    REFERENCES `user` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_purchase_item1`
-    FOREIGN KEY (`item_id` )
-    REFERENCES `item` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;</code></pre>
-<!-- code -->
-
-    </div>
-</div>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config <a href="#" class="btn-info">expand</a></h4>
-    <p>In <em>settings.json</em> find the table you are searching for and under its columns find the column by its <em>name</em> key<br />
-    Inside that column's object insert <em>oneToMany</em> key</p>
-
-    <div class="col col2">
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "select": true
-},
-"oneToMany": {
-    "table": "item",
-    "pk": "id",
-    "columns": [
-        "name"
-    ]
-}</code></pre>
-<!-- code -->
-
-    </div>
-    <div class="col col2">
-
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "select": true
-},
-"oneToMany": {
-    "table": "user",
-    "pk": "id",
-    "columns": [
-        "firstname",
-        "lastname"
-    ]
-}</code></pre>
-<!-- code -->
-    </div>
-    <div class="info">
-        <ul>
-            <li><strong>oneToMany</strong> - contains information about the table that this foreign key is referencing to
-                <ul>
-                    <li><i>table</i> - name of the table that you are referencing</li>
-                    <li><i>pk</i> - name of the primary key column for the table you are referencing</li>
-                    <li><i>columns</i> - array of columns that you want to see for each record of the table you are referencing</li>
-                </ul>
-            </li>
-        </ul>
-        <p>The control type for this column should be changed to <em>select</em></p>
-    </div>
-</div>
-
-<!-- RESULT -->
-
-<div class="box result result1">
-    <h4>Result <a href="#" class="btn-info">expand</a></h4>
-    <div class="info">
-        <iframe class="example-one-to-many" data-src="examples/one-to-many.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="many-to-many">
-<h2><a href="#many-to-many" name="many-to-many">Many to Many</a></h2>
-
-<!-- SCHEMA -->
-
-<div class="box">
-    <h4>Schema <a href="#" class="btn-info">expand</a></h4>
-
-    <img src="images/many-to-many.png" alt="" />
-
-    <div class="info">
-
-<!-- code -->
-<pre><code class="language-sql">-- -----------------------------------------------------
--- Table `recipe`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `recipe` ;
-
-CREATE  TABLE IF NOT EXISTS `recipe` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `recipe_type`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `recipe_type` ;
-
-CREATE  TABLE IF NOT EXISTS `recipe_type` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `title` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `recipe_method`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `recipe_method` ;
-
-CREATE  TABLE IF NOT EXISTS `recipe_method` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `title` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `recipe_has_recipe_types`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `recipe_has_recipe_types` ;
-
-CREATE  TABLE IF NOT EXISTS `recipe_has_recipe_types` (
-  `recipe_id` INT NOT NULL ,
-  `recipe_type_id` INT NOT NULL ,
-  PRIMARY KEY (`recipe_id`, `recipe_type_id`) ,
-  INDEX `fk_recipe_has_recipe_type_recipe_type1` (`recipe_type_id` ASC) ,
-  INDEX `fk_recipe_has_recipe_type_recipe1` (`recipe_id` ASC) ,
-  CONSTRAINT `fk_recipe_has_recipe_type_recipe1`
-    FOREIGN KEY (`recipe_id` )
-    REFERENCES `recipe` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_recipe_has_recipe_type_recipe_type1`
-    FOREIGN KEY (`recipe_type_id` )
-    REFERENCES `recipe_type` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `recipe_has_recipe_methods`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `recipe_has_recipe_methods` ;
-
-CREATE  TABLE IF NOT EXISTS `recipe_has_recipe_methods` (
-  `recipe_id` INT NOT NULL ,
-  `recipe_method_id` INT NOT NULL ,
-  PRIMARY KEY (`recipe_id`, `recipe_method_id`) ,
-  INDEX `fk_recipe_has_recipe_methods_recipe_method1` (`recipe_method_id` ASC) ,
-  INDEX `fk_recipe_has_recipe_methods_recipe1` (`recipe_id` ASC) ,
-  CONSTRAINT `fk_recipe_has_recipe_methods_recipe1`
-    FOREIGN KEY (`recipe_id` )
-    REFERENCES `recipe` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_recipe_has_recipe_methods_recipe_method1`
-    FOREIGN KEY (`recipe_method_id` )
-    REFERENCES `recipe_method` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;</code></pre>
-<!-- code -->
-
-    </div>
-</div>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config <a href="#" class="btn-info">expand</a></h4>
-    <p>In <em>settings.json</em> find the table you are searching for and insert this object into its columns array</p>
-
-    <div class="col col2">
-
-<!-- code -->
-<pre><code class="language-javascript">{
-    "verbose": "Recipe Types",
-    "name": "recipe_type",
-    "control": {
-        "select": true,
-        "multiple": true
-    },
-    "type": "int(11)",
-    "allowNull": false,
-    "editview": {
-        "show": true
-    },
-    "manyToMany": {
-        "link": {
-            "table": "recipe_has_recipe_types",
-            "parentPk": "recipe_id",
-            "childPk": "recipe_type_id"
-        },
-        "ref": {
-            "table": "recipe_type",
-            "pk": "id",
-            "columns": [
-                "title"
-            ]
-        }
-    }
-}</code></pre>
-<!-- code -->
-
-    </div>
-    <div class="col col2">
-
-<!-- code -->
-<pre><code class="language-javascript">{
-    "verbose": "Recipe Methods",
-    "name": "recipe_method",
-    "control": {
-        "select": true,
-        "multiple": true
-    },
-    "type": "int(11)",
-    "allowNull": true,
-    "editview": {
-        "show": true
-    },
-    "manyToMany": {
-        "link": {
-            "table": "recipe_has_recipe_methods",
-            "parentPk": "recipe_id",
-            "childPk": "recipe_method_id"
-        },
-        "ref": {
-            "table": "recipe_method",
-            "pk": "id",
-            "columns": [
-                "title"
-            ]
-        }
-    }
-}</code></pre>
-<!-- code -->
-
-    </div>
-    <div class="info">
-        <ul>
-            <li><strong>verbose</strong> - exactly as a regular column this is the name that's shown inside the admin for this column</li>
-            <li><strong>name</strong> - should be unique among all other columns in this table</li>
-            <li><strong>control</strong> - the control type (you won't change this)</li>
-            <li><strong>type</strong> - you won't change this</li>
-            <li><strong>allowNull</strong> - this flag indicates whether you'll be able to save a record without selecting any item from the referenced table or not</li>
-            <li><strong>editview</strong>
-                <ul>
-                    <li><i>show</i> - show or hide this column from the editview</li>
-                </ul>
-            </li>
-            <li><strong>manyToMany</strong> - indicates that this is not a regular table column
-                <ul>
-                    <li><strong>link</strong> - linking table information
-                        <ul>
-                            <li><i>table</i> - name of the link table</li>
-                            <li><i>parentPk</i> - name of the primary key for the parent table</li>
-                            <li><i>childPk</i> - name of the primary key for the child table</li>
-                        </ul>
-                    </li>
-                    <li><strong>ref</strong> - information about the referenced table
-                        <ul>
-                            <li><i>table</i> - name of the table that you are referencing</li>
-                            <li><i>pk</i> - name of the primary key column for the table you are referencing</li>
-                            <li><i>columns</i> - array of columns that you want to see for each record of the table you are referencing</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- RESULT -->
-
-<div class="box result result2">
-    <h4>Result <a href="#" class="btn-info">expand</a></h4>
-    <div class="info">
-        <iframe class="example-many-to-many" data-src="examples/many-to-many.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="one-to-one">
-<h2><a href="#one-to-one" name="one-to-one">One to One</a></h2>
-
-<!-- SCHEMA -->
-
-<div class="box">
-    <h4>Schema <a href="#" class="btn-info">expand</a></h4>
-
-    <img src="images/one-to-one.png" alt="" />
-
-    <div class="info">
-
-<!-- code -->
-<pre><code class="language-sql">-- -----------------------------------------------------
--- Table `user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
-CREATE  TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `firstname` VARCHAR(45) NOT NULL ,
-  `lastname` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `address`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `address` ;
-
-CREATE  TABLE IF NOT EXISTS `address` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `user_id` INT NOT NULL ,
-  `street` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `fk_address_user1` (`user_id` ASC) ,
-  CONSTRAINT `fk_address_user1`
-    FOREIGN KEY (`user_id` )
-    REFERENCES `user` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `phone`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `phone` ;
-
-CREATE  TABLE IF NOT EXISTS `phone` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `user_id` INT NOT NULL ,
-  `mobile` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `fk_phone_user1` (`user_id` ASC) ,
-  CONSTRAINT `fk_phone_user1`
-    FOREIGN KEY (`user_id` )
-    REFERENCES `user` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;</code></pre>
-<!-- code -->
-
-    </div>
-</div>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config <a href="#" class="btn-info">expand</a></h4>
-    <p>In <em>settings.json</em> find the table you are searching for and under its <em>editview</em> key add a <em>oneToOne</em> key</p>
-
-    <div class="col col1">
-
-<!-- code -->
-<pre><code class="language-javascript">"oneToOne": {
-    "address": "user_id",
-    "phone": "user_id"
-}</code></pre>
-<!-- code -->
-
-    </div>
-    <div class="info">
-        <ul>
-            <li><strong>oneToOne</strong> - contains information about the tables that are referencing this one
-                <ul>
-                    <li>Inside there is a list of key-value pairs where the <em>key</em> is the referencing table and the <em>value</em> is its foreign key</li>
-                </ul>
-            </li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- RESULT -->
-
-<div class="box">
-    <h4>Result <a href="#" class="btn-info">expand</a></h4>
-
-    <div class="info">
-        <iframe class="example-one-to-one" data-src="examples/one-to-one.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="many-to-one">
-<h2><a href="#many-to-one" name="many-to-one">Many to One</a></h2>
-
-<!-- SCHEMA -->
-
-<div class="box">
-    <h4>Schema <a href="#" class="btn-info">expand</a></h4>
-
-    <img src="images/many-to-one.png" alt="" />
-
-    <div class="info">
-
-<!-- code -->
-<pre><code class="language-sql">-- -----------------------------------------------------
--- Table `car`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `car` ;
-
-CREATE  TABLE IF NOT EXISTS `car` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `model` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `repair`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `repair` ;
-
-CREATE  TABLE IF NOT EXISTS `repair` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `car_id` INT NOT NULL ,
-  `date` DATE NOT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `fk_repair_car1` (`car_id` ASC) ,
-  CONSTRAINT `fk_repair_car1`
-    FOREIGN KEY (`car_id` )
-    REFERENCES `car` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `driver`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `driver` ;
-
-CREATE  TABLE IF NOT EXISTS `driver` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `car_id` INT NOT NULL ,
-  `name` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `fk_driver_car1` (`car_id` ASC) ,
-  CONSTRAINT `fk_driver_car1`
-    FOREIGN KEY (`car_id` )
-    REFERENCES `car` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;</code></pre>
-<!-- code -->
-
-    </div>
-</div>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config <a href="#" class="btn-info">expand</a></h4>
-    <p>In <em>settings.json</em> find the table you are searching for and under its <em>editview</em> key add a <em>manyToOne</em> key</p>
-
-    <div class="col col1">
-<!-- code -->
-<pre><code class="language-javascript">"manyToOne": {
-    "repair": "car_id",
-    "driver": "car_id"
-}</code></pre>
-<!-- code -->
-    </div>
-    <div class="info">
-        <ul>
-            <li><strong>manyToOne</strong> - contains information about the tables that are referencing this one
-                <ul>
-                    <li>Inside there is a list of key-value pairs where the <em>key</em> is the referencing table and the <em>value</em> is its foreign key</li>
-                </ul>
-            </li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- RESULT -->
-
-<div class="box">
-    <h4>Result <a href="#" class="btn-info">expand</a></h4>
-
-    <div class="info">
-        <iframe class="example-many-to-one" data-src="examples/many-to-one.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="all-together">
-<h2><a href="#all-together" name="all-together">All Together</a></h2>
-
-<!-- SCHEMA -->
-
-<div class="box visible">
-    <h4>Schema</h4>
-
-    <p>This table have multiple <em>One to Many</em> and <em>Many to Many</em> relationships.</p>
-
-    <img src="images/all-together.png" alt="" />
-
-    <p>The exact same table can have multiple <em>One to One</em> and <em>Many to One</em> relationships as well.</p>
-
-    <img src="images/all-together2.png" alt="" />
-    
-    <p>The inlines <strong>are not recursive</strong>!</p>
-    <p>Take a look at the <a href="#">examples repository</a>.</p>
-</div>
-</article>
-    
-    <article id="themes">
-<h2><a href="#themes" name="themes">Themes</a></h2>
-
-<!-- THEMES -->
-
-<div class="box">
-    <h4>Themes <a href="#" class="btn-info">expand</a></h4>
-    <div class="info">
-        <p>Use the <em>Themes</em> button to switch between the themes.</p>
-        <iframe class="example-themes" data-src="examples/themes.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="datepicker">
-<h2><a href="#datepicker" name="datepicker">Datepicker</a></h2>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config</h4>
-    <p>In <em>settings.json</em> change the column's control type to <em>date</em> </p>
-
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "date": true
-}</code></pre>
-<!-- code -->
-</div>
-
-<!-- RESULT -->
-
-<div class="box">
-    <h4>Result <a href="#" class="btn-info">expand</a></h4>
-    <div class="info">
-        <iframe class="example-datepicker" data-src="examples/datepicker.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="textarea">
-<h2><a href="#textarea" name="textarea">Textarea</a></h2>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config</h4>
-    <p>In <em>settings.json</em> change the column's control type to <em>textarea</em> </p>
-
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "textarea": true
-}</code></pre>
-<!-- code -->
-</div>
-
-<!-- RESULT -->
-
-<div class="box">
-    <h4>Result <a href="#" class="btn-info">expand</a></h4>
-    <div class="info">
-        <iframe class="example-textarea" data-src="examples/textarea.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="ckeditor">
-<h2><a href="#ckeditor" name="ckeditor">CKEditor</a></h2>
-
-<!-- INSTALL -->
-
-<div class="box visible">
-    <h4>Install</h4>
-    <div class="info">
-        <ul>
-            <li>Download the editor from <a href="http://ckeditor.com/" target="_blank">ckeditor.com</a></li>
-            <li>Extract the archive somewhere on your hard drive</li>
-        </ul>
-    </div>
-</div>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config</h4>
-    <p>In <em>settings.json</em> add additional <em>editor</em> property to the column's <em>control</em> key specifiyng the class name for this editor instance</p>
-
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "textarea": true,
-    "editor": "class-name"
-}</code></pre>
-<!-- code -->
-
-    <p>In <em>custom.json</em> add a unique key for your custom stuff</p>
-<!-- code -->
-<pre><code class="language-javascript">"unique-key-here": {
-    "public": {
-        "path": "/absolute/path/to/custom/files/location",
-        "js": [
-            "/relative/to/above/path/ckeditor/ckeditor.js",
-            "/relative/to/above/path/my-custom.js"
-        ]
-    }
-}</code></pre>
-<!-- code -->
-
-    <div class="info">
-        <ul>
-            <li><strong>public</strong> - information about static files
-                <ul>
-                    <li><i>path</i> - absolute path to the static files location</li>
-                    <li><i>css</i> - list of stylesheet files to be included</li>
-                    <li><i>js</i> - list of javascript files to be included</li>
-                </ul>
-            </li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- JAVASCRIPT -->
-
-<div class="box">
-    <h4>Javascript <a href="#" class="btn-info">expand</a></h4>
-    <p>Add this code to <em>my-custom.js</em></p>
-
-    <div class="col col1">
-<!-- code -->
-<pre><code class="language-javascript">$(function () {
-    if (typeof CKEDITOR !== 'undefined') {
-        CKEDITOR.replaceAll(function (textarea, config) {
-            // exclude textareas that are inside hidden inline rows
-            if ($(textarea).parents('tr').hasClass('blank')) return false;
-            // textareas with this class name will get the default configuration
-            if (textarea.className === 'class-name') return true;
-            // all other textareas won't be initialized as ckeditors
-            return false;
-        });
-    }
-});
-
-// executed each time an inline is added
-function onAddInline (rows) {
-    if (typeof CKEDITOR !== 'undefined') {
-        // for each of the new rows containing textareas
-        $('textarea', rows).each(function (index) {
-            // get the DOM instance
-            var textarea = $(this)[0];
-            // textareas with this class name will get the default configuration
-            if (textarea.className === 'class-name') return CKEDITOR.replace(textarea);
-            // all other textareas won't be initialized as ckeditors
-            return false;
-        });
-    }
-}</code></pre>
-<!-- code -->
-
-    </div>
-    <div class="info">
-        <ul>
-            <li>Here <em>class-name</em> is the same class name specified in <em>settings.json</em> for this column</li>
-            <li>The upper part of the script shows how the ckeditor instances should be initialized. The most important bit is where all textareas that are hidden are excluded</li>
-            <li>The <em>onAddInline</em> function is called each time an inline record is appended to the list of records. This is the place to initialize any editors that are contained inside an inline table's record</li>
-            <li>For a full list of all CKEditor's options go to <a href="http://ckeditor.com/" target="_blank">ckeditor.com</a></li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- RESULT -->
-
-<div class="box">
-    <h4>Result <a href="#" class="btn-info">expand</a></h4>
-    <div class="info">
-        <iframe class="example-ckeditor" data-src="examples/ckeditor.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="tinymce">
-<h2><a href="#tinymce" name="tinymce">TinyMCE</a></h2>
-
-<!-- INSTALL -->
-
-<div class="box visible">
-    <h4>Install</h4>
-    <div class="info">
-        <ul>
-            <li>Download the editor from <a href="http://www.tinymce.com/" target="_blank">tinymce.com</a> (the jQuery package)</li>
-            <li>Extract the archive somewhere on your hard drive</li>
-        </ul>
-    </div>
-</div>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config</h4>
-    <p>In <em>settings.json</em> add additional <em>editor</em> property to the column's <em>control</em> key specifiyng the class name for this editor instance</p>
-    
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "textarea": true,
-    "editor": "class-name"
-}</code></pre>
-<!-- code -->
-
-    <p>In <em>custom.json</em> add a unique key for your custom stuff</p>
-<!-- code -->
-<pre><code class="language-javascript">"unique-key-here": {
-    "public": {
-        "path": "/absolute/path/to/custom/files/location",
-        "js": [
-            "/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js",
-            "/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js",
-            "/relative/to/above/path/my-custom.js"
-        ]
-    }
-}</code></pre>
-<!-- code -->
-
-    <div class="info">
-        <ul>
-            <li><strong>public</strong> - information about static files
-                <ul>
-                    <li><i>path</i> - absolute path to the static files location</li>
-                    <li><i>css</i> - list of stylesheet files to be included</li>
-                    <li><i>js</i> - list of javascript files to be included</li>
-                </ul>
-            </li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- JAVASCRIPT -->
-
-<div class="box">
-    <h4>Javascript <a href="#" class="btn-info">expand</a></h4>
-    <p>Add this code to <em>my-custom.js</em></p>
-    
-<!-- code -->
-<pre><code class="language-javascript">$(function () {
-    if (typeof tinyMCE !== 'undefined') {
-        // it's important to initialize only the visible textareas
-        $('tr:not(.blank) .tinymce').tinymce({});
-    }
-});
-
-// executed each time an inline is added
-function onAddInline (rows) {
-    if (typeof tinyMCE !== 'undefined') {
-        // init tinymce editors
-        $('.tinymce', rows).tinymce({});
-    }
-}</code></pre>
-<!-- code -->
-
-    <div class="info">
-        <ul>
-            <li>Here <em>class-name</em> is the same class name specified in <em>settings.json</em> for this column</li>
-            <li>The upper part of the script shows how the ckeditor instances should be initialized. The most important bit is where all textareas that are hidden are excluded</li>
-            <li>The <em>onAddInline</em> function is called each time an inline record is appended to the list of records. This is the place to initialize any editors that are contained inside an inline table's record</li>
-            <li>For a full list of all TinyMCE's options go to <a href="http://www.tinymce.com/" target="_blank">tinymce.com</a></li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- RESULT -->
-
-<div class="box">
-    <h4>Result <a href="#" class="btn-info">expand</a></h4>
-    <div class="info">
-        <iframe class="example-tinymce" data-src="examples/tinymce.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-    <article id="multiple">
-<h2><a href="#multiple" name="multiple">Multiple Editors</a></h2>
-
-<!-- INSTALL -->
-
-<div class="box visible">
-    <h4>Install</h4>
-    <ul>
-        <li>Download CKEditor from <a href="http://ckeditor.com/" target="_blank">ckeditor.com</a></li>
-        <li>Download TinyMCE from <a href="http://www.tinymce.com/" target="_blank">tinymce.com</a> (the jQuery package)</li>
-        <li>Extract them somewhere on your hard drive</li>
-        <li>Alternatively you can use <a href="http://cdnjs.com/" target="_blank">cdnjs.com</a>, just paste the provided path inside the <em>js</em> array.</li>
-    </ul>
-</div>
-
-<!-- CONFIG -->
-
-<div class="box">
-    <h4>Config <a href="#" class="btn-info">expand</a></h4>
-    <p>In <em>settings.json</em> specify the type of editor to use for each column</p>
-
-    <div class="col col3">
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "textarea": true,
-    "editor": "ck-full"
-}</code></pre>
-<!-- code -->
-    </div>
-    <div class="col col3">
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "textarea": true,
-    "editor": "ck-compact"
-}</code></pre>
-<!-- code -->
-    </div>
-    <div class="col col3">
-<!-- code -->
-<pre><code class="language-javascript">"control": {
-    "textarea": true,
-    "editor": "tinymce"
-}</code></pre>
-<!-- code -->
-    </div>
-    <p>In <em>custom.json</em> add a unique key for your custom stuff</p>
-    <div class="col col1">
-<!-- code -->
-<pre><code class="language-javascript">"unique-key-here": {
-    "public": {
-        "path": "/absolute/path/to/custom/files/location",
-        "js": [
-            "//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js",
-            "/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js",
-            "/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js",
-            "/relative/to/above/path/my-custom.js"
-        ]
-    }
-}</code></pre>
-<!-- code -->
-    </div>
-    <div class="info">
-        <ul>
-            <li><strong>public</strong> - information about static files
-                <ul>
-                    <li><i>path</i> - absolute path to the static files location</li>
-                    <li><i>css</i> - list of stylesheet files to be included</li>
-                    <li><i>js</i> - list of javascript files to be included</li>
-                </ul>
-            </li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<div class="box">
-    <h4>Javascript <a href="#" class="btn-info">expand</a></h4>
-    <p>Add this code to <em>my-custom.js</em></p>
-
-    <div class="col col1">
-<!-- code -->
-<pre><code class="language-javascript">$(function () {
-    if (typeof CKEDITOR !== 'undefined') {
-        CKEDITOR.replaceAll(function (textarea, config) {
-            // exclude textareas that are inside hidden inline rows
-            if ($(textarea).parents('tr').hasClass('blank')) return false;
-            // textareas with this class name will get the default configuration
-            if (textarea.className === 'ck-full') return true;
-            // textareas with this class name will have custom configuration
-            if (textarea.className === 'ck-compact')
-                return setCustomConfig(config);
-            // all other textareas won't be initialized as ckeditors
-            return false;
-        });
-    }
-    
-    if (typeof tinyMCE !== 'undefined') {
-        // it's important to initialize only the visible textareas
-        $('tr:not(.blank) .tinymce').tinymce({});
-    }
-});
-
-// ckeditor only
-function setCustomConfig (config) {
-    config = config || {};
-    // toolbar
-    config.toolbarGroups = [
-        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-        { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
-        '/',
-        { name: 'styles' },
-        { name: 'colors' }
-    ];
-    config.removeButtons = 'Smiley,SpecialChar,PageBreak,Iframe,CreateDiv';
-    return config;
-}
-
-// executed each time an inline is added
-function onAddInline (rows) {
-    if (typeof CKEDITOR !== 'undefined') {
-        // for each of the new rows containing textareas
-        $('textarea', rows).each(function (index) {
-            // get the DOM instance
-            var textarea = $(this)[0];
-            // textareas with this class name will get the default configuration
-            if (textarea.className === 'ck-full') return CKEDITOR.replace(textarea);
-            // textareas with this class name will have custom configuration
-            if (textarea.className === 'ck-compact')
-                return CKEDITOR.replace(textarea, setCustomConfig());
-            // all other textareas won't be initialized as ckeditors
-            return false;
-        });
-    }
-
-    if (typeof tinyMCE !== 'undefined') {
-        // init tinymce editors
-        $('.tinymce', rows).tinymce({});
-    }
-}</code></pre>
-<!-- code -->
-    </div>
-    <div class="info">
-        <p>For a full list of all editor's options go to their official sites: <a href="http://ckeditor.com/" target="_blank">ckeditor.com</a>, <a href="http://www.tinymce.com/" target="_blank">tinymce.com</a></p>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-        <p>The example also includes a custom app that shows how to <em>upload images</em> from inside the ckeditor!</p>
-    </div>
-</div>
-</article>
-
-    <article id="custom">
-<h2><a href="#custom-simple" name="settings">Custom Views</a></h2>
-
-<!-- ABOUT -->
-
-<div class="box visible">
-    <h4>About</h4>
-    <div class="info">
-        <p>The admin's custom views follow the <a href="http://vimeo.com/56166857" target="_blank">Modular web applications with Node.js and Express</a> approach presented by <a href="https://github.com/visionmedia" target="_blank">TJ Holowaychuk</a>.</p>
-        <p>The only difference here is that we're dealing with <em>mustache</em> templates.</p>
-        <p>You should definitely run the examples from the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a> as each of the custom views(apps) presented there are self documented.</p>
-    </div>
-</div>
-
-<!-- CONFIG -->
-
-<div class="box visible">
-    <h4>Config</h4>
-    <p>In <em>custom.json</em> create a unique key for your custom view</p>
-
-<!-- code -->
-<pre><code class="language-javascript">"unique-key-here": {
-    "path"  : "/absolute/path/to/custom/app.js",
-    "slug": "unique-slug",
-    "verbose": "Verbose Name",
-    "public": {
-        "path": "/absolute/path/to/public-dir",
-        "css": [
-            "/relative/to/above/global.css"
-        ],
-        "js": [
-            "/relative/to/above/global.js"
-        ]
-    },
-    "mainview": {
-        "show": true
-    }
-}</code></pre>
-<!-- code -->
-
-    <div class="info">
-        <ul>
-            <li><strong>path</strong> - is the absolute path to your custom <em>app.js</em> file</li>
-            <li><strong>slug</strong> - this is the entry point for all other routes inside this app and it must be compleatly unique among all other slugs including: admin's, table's and other custom slugs</li>
-            <li><strong>verbose</strong> - verbose name to use for this view inside the admin's UI</li>
-            <li><strong>mainview</strong>
-                <ul>
-                    <li><i>show</i> - show or hide this custom view from the list of custom views inside admin's mainview</li>
-                </ul>
-            </li>
-            <li><strong>public</strong> - information about static files
-                <ul>
-                    <li><i>path</i> - absolute path to the static files location</li>
-                    <li><i>css</i> - list of stylesheet files to be included</li>
-                    <li><i>js</i> - list of javascript files to be included</li>
-                </ul>
-            </li>
-        </ul>
-        <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- CUSTOM APPLICATION -->
-
-<div class="box visible">
-    <h4>Custom application</h4>
-    <p>This is the minimum required code for a custom view</p>
-
-<!-- code -->
-<pre><code class="language-javascript">var express = require('express');
-var app = module.exports = express();
-var path = require('path');
-
-// set your custom views path
-app.set('views', path.join(__dirname, 'views'));
-
-app.get('/view1', function (req, res, next) {
-
-    // create a realtive from the admin's view folder to your custom folder
-    var relative = path.relative(res.locals._admin.views, app.get('views'));
-    
-    res.locals.partials = {
-
-        // set the path to your templates like this
-        // the content partial is declared inside the admin's base.html
-        // this is the entry point for all your custom stuff
-        content: path.join(relative, 'template')
-    };
-
-    // typically you want your stuff to be rendered inside the admin's UI
-    // so no need to render here
-    next();
-});</code></pre>
-<!-- code -->
-
-    <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-</div>
-
-<!-- ROUTE VARIABLES -->
-
-<div class="box">
-    <h4>Route wide variables</h4>
-    <div class="col col1">
-    <p>There are a few variables available inside each of your custom view's route callbacks</p>
-
-<!-- code -->
-<pre><code class="language-javascript"> // the content of the _admin variable
- // is for internal purposes only and is not being rendered
-res.locals._admin.db.connection  // the admin's database connection can be reused from here
-res.locals._admin.config         // the contents of the config.json file
-res.locals._admin.settings       // the contents of the settings.json file
-res.locals._admin.custom         // the contents of the custom.json file
-res.locals._admin.users          // the contents of the users.json file
-
-// shortcut variables that are being rendered
-res.locals.libs       // list of all client side libraries
-res.locals.themes     // list of all themes
-res.locals.layouts    // flag indicating layouts button visibility
-res.locals.languages  // list of all languages
-
-// holds the absolute path to the admin's view directory
-res.locals._admin.views</code></pre>
-<!-- code -->
-    
-    <p>Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a></p>
-    </div>
-</div>
-
-<!-- EXAMPLE -->
-
-<div class="box">
-    <h4>Example <a href="#" class="btn-info">expand</a></h4>
-    <p>Here is an example of how a custom view might look like. The code for all of the examples is very well documented! Take a look at the the <a href="https://github.com/simov/express-admin-examples" target="_blank">examples repository</a>.</p>
-    <div class="info">
-        <iframe class="example-custom" data-src="examples/custom.html" src="about:blank"></iframe>
-    </div>
-</div>
-</article>
-
-    <article id="nginx">
-<h2><a href="#nginx" name="nginx">Nginx</a></h2>
-
-<!-- NGINX -->
-
-<div class="box">
-    <h4>Virtual Host</h4>
-    <ul>
-        <li>You can serve all your static files with <em>Nginx</em>.</li>
-    </ul>
-    <div class="col col1">
-
-<!-- code -->
-<pre><code class="language-bash">server {
+<body>
+<div class="container">
+
+    <div class="repository-with-sidebar repo-container with-full-navigation">
+        <div class="repository-content context-loader-container">
+
+            <section id="readme" class="clearfix announce instapaper_body md">
+                <article class="markdown-body entry-content" itemprop="mainContentOfPage">
+<div class="file"><h1>
+<a name="express-admin" class="anchor" href="#express-admin"><span class="octicon octicon-link"></span></a>Express Admin</h1>
+
+<p>Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL databases.</p>
+
+<p>It's built with: <a href="http://twitter.github.io/hogan.js/">Hogan.js</a> (<a href="https://github.com/janl/mustache.js/">mustache.js</a>), <a href="http://expressjs.com/">Express</a>, <a href="https://github.com/felixge/node-mysql">mysql</a> and <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>.</p>
+
+<p>The configuration is done through hand editing <code>json</code> files, although in the future there might be some kind of a GUI tool for that.</p>
+
+<h3>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>All types of sql table relationships</li>
+<li>Internationalization</li>
+<li>Custom views</li>
+<li>All kinds of browser side libraries and controls</li>
+<li>All themes from <a href="http://bootswatch.com/">Bootswatch</a>
+</li>
+</ul><h3>
+<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h3>
+
+<ul>
+<li><a href="http://www.youtube.com/watch?v=1CdoCB96QNk">Introductory Screencast</a></li>
+<li><a href="https://github.com/simov/express-admin">GitHub Repository</a></li>
+<li><a href="https://github.com/simov/express-admin-examples">Examples</a></li>
+</ul><p><br /></p><hr /></div><div class="file"><h2>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<h3>
+<a name="get-the-module" class="anchor" href="#get-the-module"><span class="octicon octicon-link"></span></a>Get the module</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install <span class="o">[</span>-g<span class="o">]</span> express-admin
+</pre></div>
+
+<h3>
+<a name="create-a-project" class="anchor" href="#create-a-project"><span class="octicon octicon-link"></span></a>Create a project</h3>
+
+<p>Depending on how you installed it creating a project is simple</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>admin path/to/config/dir
+<span class="c"># or</span>
+<span class="nv">$ </span>node path/to/express-admin/app.js path/to/config/dir
+</pre></div>
+
+<p>Either way the config path should exist. If it doesn't contains any config files in it already you'll be prompted to add required information for your database, server port and admin account credentials.</p>
+
+<p>After that you can navigate to <code>localhost:[specified port]</code> and see your admin up and running.</p>
+
+<p>The next step is to configure it.</p><p><br /></p><hr /></div><div class="file"><h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<h3>
+<a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
+
+<p>The application's configuration is stored inside the <code>config.json</code> file. The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">"mysql"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"database"</span><span class="o">:</span> <span class="s2">"express-admin-examples"</span><span class="p">,</span>
+        <span class="s2">"user"</span><span class="o">:</span> <span class="s2">"liolio"</span><span class="p">,</span>
+        <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"karamba"</span>
+    <span class="p">},</span>
+    <span class="s2">"server"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"port"</span><span class="o">:</span> <span class="mi">3000</span>
+    <span class="p">},</span>
+    <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"layouts"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"themes"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"languages"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>mysql</strong> - mysql connection options
+
+<ul>
+<li>
+<strong>database</strong> - name of the database to use for this connection</li>
+<li>
+<strong>user</strong> - the MySQL user to authenticate as</li>
+<li>
+<strong>password</strong> - the password of that MySQL user</li>
+</ul>
+</li>
+<li>
+<strong>server</strong> - server configuration
+
+<ul>
+<li>
+<strong>port</strong> - the server's port number (default: 3000)</li>
+</ul>
+</li>
+<li>
+<strong>app</strong> - admin application configuration
+
+<ul>
+<li>
+<strong>layouts</strong> - toggle the layout button</li>
+<li>
+<strong>themes</strong> - toggle the themes button</li>
+<li>
+<strong>languages</strong> - toggle the languages button</li>
+</ul>
+</li>
+</ul><p><br /></p><hr /></div><div class="file"><h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<h3>
+<a name="settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h3>
+
+<p>All settings related to the default Express Admin view are in the <code>settings.json</code> file which is automatically generated with default values at first start up.</p>
+
+<div class="highlight"><pre><span class="s2">"table_name"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"unique-slug"</span><span class="p">,</span>
+    <span class="s2">"table"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"table_name"</span><span class="p">,</span>
+        <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"pk_name"</span><span class="p">,</span>
+        <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span>
+    <span class="p">},</span>
+    <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{...},</span> <span class="c1">// see column definition below</span>
+        <span class="c1">// { "manyToMany" ... } // see 'Many to Many' documentation</span>
+    <span class="p">],</span>
+    <span class="s2">"mainview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"order"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"column_name1"</span><span class="o">:</span> <span class="s2">"asc"</span><span class="p">,</span>
+            <span class="s2">"column_name2"</span><span class="o">:</span> <span class="s2">"desc"</span>
+        <span class="p">},</span>
+        <span class="s2">"page"</span><span class="o">:</span> <span class="mi">25</span>
+    <span class="p">},</span>
+    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"readonly"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="c1">// "manyToOne": { ... }, // see 'Many to Many' documentation</span>
+        <span class="c1">// "oneToOne": { ... } // see 'One to One' documentation</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><code>settings.json</code> contains a list of objects representing the database's tables. Each <code>table</code> object contains:</p>
+
+<ul>
+<li>
+<strong>slug</strong> - unique slug among all other tables</li>
+<li>
+<strong>table</strong> - contains table's settings
+
+<ul>
+<li>
+<strong>name</strong> - table's database name (typically you won't change this)</li>
+<li>
+<strong>pk</strong> - table's primary key (it will be set automatically)</li>
+<li>
+<strong>verbose</strong> - table's name used inside the admin's user interface</li>
+</ul>
+</li>
+<li>
+<strong>columns</strong> - array of all table's columns. To reorder the columns appearance cut the entire column object and paste it on the desired position in this array</li>
+<li>
+<strong>mainview</strong> - table's settings for admin's root page
+
+<ul>
+<li>
+<strong>show</strong> - toggle table visibility inside the mainview table's list. Typically you want to hide tables that will be edited as <a href="#many-to-one">inlines</a> of other tables, or tables that are used as links for <a href="#many-to-many">many-to-many</a> relationships</li>
+</ul>
+</li>
+<li>
+<strong>listview</strong> - table's settings for the admin's listview
+
+<ul>
+<li>
+<strong>order</strong> - list of columns by which to sort and their respective order direction</li>
+<li>
+<strong>page</strong> - how many records to show per page</li>
+</ul>
+</li>
+<li>
+<strong>editview</strong> - settings specifically related to the page where the record is edited
+
+<ul>
+<li>
+<strong>readonly</strong> - this will omit the save and delete buttons at the bottom of the page effectively making the table's records readonly</li>
+<li>
+<strong>manyToOne</strong> - see <code>Many to One</code> documentation</li>
+<li>
+<strong>oneToOne</strong> - see <code>One to One</code> documentation</li>
+</ul>
+</li>
+</ul><h4>
+<a name="column" class="anchor" href="#column"><span class="octicon octicon-link"></span></a>Column</h4>
+
+<p>Each <code>table</code> object contains an array of colums. Each <code>column</code> object have:</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"column_name"</span><span class="p">,</span>
+    <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"varchar(45)"</span><span class="p">,</span>
+    <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="c1">// "oneToMany": { ... }, // see 'One to Many' documentation</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>verbose</strong> - column's name inside the admin's UI</li>
+<li>
+<strong>name</strong> - column's database name (typically you won't change this)</li>
+<li>
+<p><strong>control</strong> - one of these</p>
+
+<div class="highlight"><pre><span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="text"</span>
+<span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// textarea</span>
+<span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"some-class"</span><span class="p">}</span> <span class="c1">// html editor (see the docs)</span>
+<span class="p">{</span><span class="s2">"date"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datepicker</span>
+<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select (used for one-to-many relationships)</span>
+<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select multiple (used for many-to-many relationships)</span>
+</pre></div>
+</li>
+<li><p><strong>type</strong> - column's data type (typically you won't change this)</p></li>
+<li><p><strong>allowNull</strong> - allowed to be null inside the database</p></li>
+<li><p><strong>defaultValue</strong> - currently not used</p></li>
+<li>
+<p><strong>listview</strong> - settings about how this column should behave in admin's listview</p>
+
+<ul>
+<li>
+<strong>show</strong> - column's visibility inside the listview which is the page where all records from the table are listed. Typically you want to see only colums that have short and meaningful data describing the record clearly. Primary key columns and columns that contain large amount of text should be hidden in this view</li>
+</ul>
+</li>
+<li>
+<p><strong>editview</strong> - settings about how this column should behave in admin's editview</p>
+
+<ul>
+<li>
+<strong>show</strong> - column's visibility inside the listview which is the page where a record can be edited.<br><strong>All auto increment columns should be hidden!</strong><br><strong>Foreign keys for inline tables should be hidden!</strong><br>
+Columns that can't be <code>null</code> inside the database, can't be hidden here as this will result in a mysql error when insert/update the record</li>
+</ul>
+</li>
+<li><p><strong>oneToMany</strong> - see <code>One to Many</code> documentation</p></li>
+</ul><p><br /></p><hr /></div><div class="file"><h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<h3>
+<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
+
+<p>All objects in this file are user created. The <code>public</code> key is related entirely to inclusion of custom <em>static files</em>. It's possible to have an object only with public key inside as well as object without public key at all.</p>
+
+<div class="highlight"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"path"</span>  <span class="o">:</span> <span class="s2">"/absolute/path/to/custom/app.js"</span><span class="p">,</span>
+    <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"unique-slug"</span><span class="p">,</span>
+    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span><span class="p">,</span>
+    <span class="s2">"mainview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/public-dir"</span><span class="p">,</span>
+        <span class="s2">"css"</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">"/relative/to/above/global.css"</span>
+        <span class="p">],</span>
+        <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">"/relative/to/above/global.js"</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>path</strong> - absolute path to the custom view's <code>app.js</code> file</li>
+<li>
+<strong>slug</strong> - entry point for all routes of this custom app</li>
+<li>
+<strong>verbose</strong> - view's name inside the admin's UI</li>
+<li>
+<strong>mainview</strong> - settings related to the mainview
+
+<ul>
+<li>
+<strong>show</strong> - include/exclude from admin's list of custom views</li>
+</ul>
+</li>
+<li>
+<strong>public</strong> - custom static files
+
+<ul>
+<li>
+<strong>path</strong> - absolute path to the static files location</li>
+<li>
+<strong>css</strong> - list of stylesheet files to be included</li>
+<li>
+<strong>js</strong> - list of javascript files to be included</li>
+</ul>
+</li>
+</ul><p>See the custom view's documentation and the examples.</p><p><br /></p><hr /></div><div class="file"><h2>
+<a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
+
+<h3>
+<a name="one-to-many" class="anchor" href="#one-to-many"><span class="octicon octicon-link"></span></a>One to Many</h3>
+
+<p><a href="images/one-to-many.png" target="_blank"><img src="images/one-to-many.png" alt="One to Many" style="max-width:100%;"></a></p>
+
+<p>In <code>settings.json</code> find the table you are searching for and under its columns find the foreign key columnt by its name key. Inside the column's object insert <code>oneToMany</code> key. Also don't forget to change the column's control type to <code>select</code>.</p>
+
+<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">},</span>
+<span class="s2">"oneToMany"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"user"</span><span class="p">,</span>
+    <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"id"</span><span class="p">,</span>
+    <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">"firstname"</span><span class="p">,</span>
+        <span class="s2">"lastname"</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>oneToMany</strong> - contains information about the table that this foreign key references
+
+<ul>
+<li>
+<strong>table</strong> - name of the table that you are referencing</li>
+<li>
+<strong>pk</strong> - name of the referenced table's primary key column</li>
+<li>
+<strong>columns</strong> - array of columns that you want to see for each record of the referenced table</li>
+</ul>
+</li>
+</ul><p><br /></p><hr /></div><div class="file"><h2>
+<a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
+
+<h3>
+<a name="many-to-many" class="anchor" href="#many-to-many"><span class="octicon octicon-link"></span></a>Many to Many</h3>
+
+<p><a href="images/many-to-many.png" target="_blank"><img src="images/many-to-many.png" alt="Many to Many" style="max-width:100%;"></a></p>
+
+<p>In <code>settings.json</code> find the table you are searching for and insert this object inside its columns array.</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Recipe Types"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"recipe_type"</span><span class="p">,</span>
+    <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"int(11)"</span><span class="p">,</span>
+    <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"manyToMany"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"link"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"recipe_has_recipe_types"</span><span class="p">,</span>
+            <span class="s2">"parentPk"</span><span class="o">:</span> <span class="s2">"recipe_id"</span><span class="p">,</span>
+            <span class="s2">"childPk"</span><span class="o">:</span> <span class="s2">"recipe_type_id"</span>
+        <span class="p">},</span>
+        <span class="s2">"ref"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"recipe_type"</span><span class="p">,</span>
+            <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"id"</span><span class="p">,</span>
+            <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"title"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>verbose</strong> - exactly as a regular column this is the name that's shown inside the admin UI for this column</li>
+<li>
+<strong>name</strong> - should be unique among all other columns in this table</li>
+<li>
+<strong>control</strong> - the control type (you won't change this)</li>
+<li>
+<strong>type</strong> - you won't change this</li>
+<li>
+<strong>allowNull</strong> - indicates whether you'll be able to save a record without selecting any item from the referenced table or not</li>
+<li>
+<strong>editview</strong> - 
+
+<ul>
+<li>
+<strong>show</strong> - include or exclude this column from the editview</li>
+</ul>
+</li>
+<li>
+<strong>manyToMany</strong> - indicates that this is not a regular table column
+
+<ul>
+<li>
+<strong>link</strong> - linking table information
+
+<ul>
+<li>
+<strong>table</strong> - name of the link table</li>
+<li>
+<strong>parentPk</strong> - name of the primary key for the parent table</li>
+<li>
+<strong>childPk</strong> - name of the primary key for the child table</li>
+</ul>
+</li>
+<li>
+<strong>ref</strong> - information about the referenced table
+
+<ul>
+<li>
+<strong>table</strong> - name of the table that you are referencing</li>
+<li>
+<strong>pk</strong> - name of the referenced table's primary key columns</li>
+<li>
+<strong>columns</strong> - array of columns that you want to see for each record of the referenced table</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><p><br /></p><hr /></div><div class="file"><h2>
+<a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
+
+<h3>
+<a name="many-to-one" class="anchor" href="#many-to-one"><span class="octicon octicon-link"></span></a>Many to One</h3>
+
+<p><a href="images/many-to-one.png" target="_blank"><img src="images/many-to-one.png" alt="Many to One" style="max-width:100%;"></a></p>
+
+<p>In <code>settings.json</code> find the table you are searching for and under its <code>editview</code> key add a <code>manyToOne</code> key.</p>
+
+<div class="highlight"><pre><span class="s2">"manyToOne"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"repair"</span><span class="o">:</span> <span class="s2">"car_id"</span><span class="p">,</span>
+    <span class="s2">"driver"</span><span class="o">:</span> <span class="s2">"car_id"</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>manyToOne</strong> - contains information about the tables that are referencing this one
+
+<ul>
+<li>
+<strong>table:fk</strong> - Inside there is a list of key-value pairs where the <code>key</code> is the name of the table that is referencing this one and the <code>value</code> is its foreign key</li>
+</ul>
+</li>
+</ul><p><br /></p><hr /></div><div class="file"><h2>
+<a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
+
+<h3>
+<a name="one-to-one" class="anchor" href="#one-to-one"><span class="octicon octicon-link"></span></a>One to One</h3>
+
+<p><a href="images/one-to-one.png" target="_blank"><img src="images/one-to-one.png" alt="One to One" style="max-width:100%;"></a></p>
+
+<p>In <code>settings.json</code> find the table you are searching for and under its <code>editview</code> key add a <code>oneToOne</code> key.</p>
+
+<div class="highlight"><pre><span class="s2">"oneToOne"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"address"</span><span class="o">:</span> <span class="s2">"user_id"</span><span class="p">,</span>
+    <span class="s2">"phone"</span><span class="o">:</span> <span class="s2">"user_id"</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>oneToOne</strong> - contains information about the tables that are referencing this one
+
+<ul>
+<li>
+<strong>table:fk</strong> - Inside there is a list of key-value pairs where the <code>key</code> is the name of the table that is referencing this one and the <code>value</code> is its foreign key</li>
+</ul>
+</li>
+</ul><p><br /></p><hr /></div><div class="file"><h2>
+<a name="editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
+
+<h3>
+<a name="ckeditor" class="anchor" href="#ckeditor"><span class="octicon octicon-link"></span></a>CKEditor</h3>
+
+<h4>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
+
+<p>You should either download CKEditor from <a href="http://ckeditor.com">ckeditor.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <code>//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js</code></p>
+
+<h4>
+<a name="settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
+
+<p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for this editor instance.</p>
+
+<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"class-name"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
+
+<p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
+
+<div class="highlight"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
+        <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">"/relative/to/above/path/ckeditor/ckeditor.js"</span><span class="p">,</span>
+            <span class="s2">"/relative/to/above/path/my-custom.js"</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>public</strong> - static files configuration
+
+<ul>
+<li>
+<strong>path</strong> - absolute path to the static files location</li>
+<li>
+<strong>css</strong> - list of stylesheet files to be included</li>
+<li>
+<strong>js</strong> - list of javascript files to be included</li>
+</ul>
+</li>
+</ul><h4>
+<a name="my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
+
+<p>Your custom editor is initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// exclude textareas that are inside hidden inline rows</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">textarea</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">'blank'</span><span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="c1">// textareas with this class name will get the default configuration</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">.</span><span class="nx">className</span> <span class="o">===</span> <span class="s1">'class-name'</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="c1">// all other textareas won't be initialized as ckeditors</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// executed each time an inline is added</span>
+<span class="kd">function</span> <span class="nx">onAddInline</span> <span class="p">(</span><span class="nx">rows</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// for each of the new rows containing textareas</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'textarea'</span><span class="p">,</span> <span class="nx">rows</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// get the DOM instance</span>
+            <span class="kd">var</span> <span class="nx">textarea</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="c1">// textareas with this class name will get the default configuration</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">.</span><span class="nx">className</span> <span class="o">===</span> <span class="s1">'class-name'</span><span class="p">)</span> <span class="k">return</span> <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">textarea</span><span class="p">);</span>
+            <span class="c1">// all other textareas won't be initialized as ckeditors</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Here <code>class-name</code> is the same class name you specified in <code>settings.json</code> for this column.</p>
+
+<p>The <code>CKEDITOR.replaceAll</code> loop throgh all textareas on the page and filter out only those that need to be initialized as ckeditors. The most important bit is that you should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
+
+<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
+<a name="editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
+
+<h3>
+<a name="tinymce" class="anchor" href="#tinymce"><span class="octicon octicon-link"></span></a>TinyMCE</h3>
+
+<h4>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
+
+<p>You should either download TinyMCE from <a href="http://www.tinymce.com">tinymce.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <code>//cdnjs.cloudflare.com/ajax/libs/tinymce/3.5.8/tiny_mce.js</code></p>
+
+<h4>
+<a name="settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
+
+<p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for this editor instance.</p>
+
+<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"class-name"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
+
+<p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
+
+<div class="highlight"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
+        <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js"</span><span class="p">,</span>
+            <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js"</span><span class="p">,</span>
+            <span class="s2">"/relative/to/above/path/my-custom.js"</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>public</strong> - static files configuration
+
+<ul>
+<li>
+<strong>path</strong> - absolute path to the static files location</li>
+<li>
+<strong>css</strong> - list of stylesheet files to be included</li>
+<li>
+<strong>js</strong> - list of javascript files to be included</li>
+</ul>
+</li>
+</ul><h4>
+<a name="my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
+
+<p>Your custom editor is initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tinyMCE</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// it's important to initialize only the visible textareas</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'tr:not(.blank) .class-name'</span><span class="p">).</span><span class="nx">tinymce</span><span class="p">({});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// executed each time an inline is added</span>
+<span class="kd">function</span> <span class="nx">onAddInline</span> <span class="p">(</span><span class="nx">rows</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tinyMCE</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// init tinymce editors</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'.class-name'</span><span class="p">,</span> <span class="nx">rows</span><span class="p">).</span><span class="nx">tinymce</span><span class="p">({});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Here <code>class-name</code> is the same class name you specified in <code>settings.json</code> for this column.</p>
+
+<p>The <code>tr:not(.blank) .tinymce</code> selector filter only to those textareas that have the <code>class-name</code> specified in <code>settings.json</code> but not contained inside hidden rows. You should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
+
+<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we initialize only those textareas that have the class we specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
+<a name="editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
+
+<h3>
+<a name="multiple" class="anchor" href="#multiple"><span class="octicon octicon-link"></span></a>Multiple</h3>
+
+<h4>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
+
+<p>You should either download CKEditor and TinyMCE from their official sites <a href="http://ckeditor.com">ckedtor.com</a> and <a href="http://www.tinymce.com">tinymce.com</a> or use them directly from <a href="http://cdnjs.com">cdnjs.com</a>.</p>
+
+<h4>
+<a name="settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
+
+<p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for each editor instance.</p>
+
+<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"ck-full"</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"ck-compact"</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"tinymce"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
+
+<p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
+
+<div class="highlight"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
+        <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">"//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js"</span><span class="p">,</span>
+            <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js"</span><span class="p">,</span>
+            <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js"</span><span class="p">,</span>
+            <span class="s2">"/relative/to/above/path/my-custom.js"</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>public</strong> - static files configuration
+
+<ul>
+<li>
+<strong>path</strong> - absolute path to the static files location</li>
+<li>
+<strong>css</strong> - list of stylesheet files to be included</li>
+<li>
+<strong>js</strong> - list of javascript files to be included</li>
+</ul>
+</li>
+</ul><h4>
+<a name="my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
+
+<p>Your custom editors are initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// exclude textareas that are inside hidden inline rows</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">textarea</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">'blank'</span><span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="c1">// textareas with this class name will get the default configuration</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">.</span><span class="nx">className</span> <span class="o">===</span> <span class="s1">'ck-full'</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="c1">// textareas with this class name will have custom configuration</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">.</span><span class="nx">className</span> <span class="o">===</span> <span class="s1">'ck-compact'</span><span class="p">)</span>
+                <span class="k">return</span> <span class="nx">setCustomConfig</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+            <span class="c1">// all other textareas won't be initialized as ckeditors</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tinyMCE</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// it's important to initialize only the visible textareas</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'tr:not(.blank) .tinymce'</span><span class="p">).</span><span class="nx">tinymce</span><span class="p">({});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// ckeditor only</span>
+<span class="kd">function</span> <span class="nx">setCustomConfig</span> <span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">config</span> <span class="o">=</span> <span class="nx">config</span> <span class="o">||</span> <span class="p">{};</span>
+    <span class="c1">// toolbar</span>
+    <span class="nx">config</span><span class="p">.</span><span class="nx">toolbarGroups</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'basicstyles'</span><span class="p">,</span> <span class="nx">groups</span><span class="o">:</span> <span class="p">[</span> <span class="s1">'basicstyles'</span><span class="p">,</span> <span class="s1">'cleanup'</span> <span class="p">]</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'paragraph'</span><span class="p">,</span>   <span class="nx">groups</span><span class="o">:</span> <span class="p">[</span> <span class="s1">'list'</span><span class="p">,</span> <span class="s1">'indent'</span><span class="p">,</span> <span class="s1">'blocks'</span><span class="p">,</span> <span class="s1">'align'</span> <span class="p">]</span> <span class="p">},</span>
+        <span class="s1">'/'</span><span class="p">,</span>
+        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'styles'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">'colors'</span> <span class="p">}</span>
+    <span class="p">];</span>
+    <span class="nx">config</span><span class="p">.</span><span class="nx">removeButtons</span> <span class="o">=</span> <span class="s1">'Smiley,SpecialChar,PageBreak,Iframe,CreateDiv'</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">config</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// executed each time an inline is added</span>
+<span class="kd">function</span> <span class="nx">onAddInline</span> <span class="p">(</span><span class="nx">rows</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// for each of the new rows containing textareas</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'textarea'</span><span class="p">,</span> <span class="nx">rows</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// get the DOM instance</span>
+            <span class="kd">var</span> <span class="nx">textarea</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="c1">// textareas with this class name will get the default configuration</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">.</span><span class="nx">className</span> <span class="o">===</span> <span class="s1">'ck-full'</span><span class="p">)</span> <span class="k">return</span> <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">textarea</span><span class="p">);</span>
+            <span class="c1">// textareas with this class name will have custom configuration</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">.</span><span class="nx">className</span> <span class="o">===</span> <span class="s1">'ck-compact'</span><span class="p">)</span>
+                <span class="k">return</span> <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">textarea</span><span class="p">,</span> <span class="nx">setCustomConfig</span><span class="p">());</span>
+            <span class="c1">// all other textareas won't be initialized as ckeditors</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tinyMCE</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// init tinymce editors</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'.tinymce'</span><span class="p">,</span> <span class="nx">rows</span><span class="p">).</span><span class="nx">tinymce</span><span class="p">({});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Here based on the specific <code>class-name</code> specified in <code>settings.json</code> each textarea is initialized accordingly.</p>
+
+<p>The <code>CKEDITOR.replaceAll</code> loop throgh all textareas on the page and filter out only those that need to be initialized as ckeditors. The most important bit is that you should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
+
+<p>The <code>tr:not(.blank) .tinymce</code> selector filter only to those textareas that have the <code>class-name</code> specified in <code>settings.json</code> but not contained inside hidden rows. You should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
+
+<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we initialize all textareas according to their specific <code>class-name</code> specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
+<a name="custom-views-apps" class="anchor" href="#custom-views-apps"><span class="octicon octicon-link"></span></a>Custom views (apps)</h2>
+
+<p>The admin's custom views follow the <a href="http://vimeo.com/56166857">Modular web applications with Node.js and Express</a> approach presented by <a href="https://github.com/visionmedia">TJ Holowaychuk</a>.</p>
+
+<p>The only difference here is that we're dealing with <code>mustache</code> templates.</p>
+
+<h3>
+<a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
+
+<div class="highlight"><pre><span class="s2">"view1"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/app.js"</span><span class="p">,</span>
+    <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"view1"</span><span class="p">,</span>
+    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"View 1"</span><span class="p">,</span>
+    <span class="s2">"mainview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="appjs" class="anchor" href="#appjs"><span class="octicon octicon-link"></span></a>app.js</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="c1">// set your custom views path</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'views'</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'views'</span><span class="p">));</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/view1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// create a realtive from the admin's view folder to your custom folder</span>
+    <span class="kd">var</span> <span class="nx">relative</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">relative</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">views</span><span class="p">,</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'views'</span><span class="p">));</span>
+
+    <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">partials</span> <span class="o">=</span> <span class="p">{</span>
+
+        <span class="c1">// set the path to your templates like this</span>
+        <span class="c1">// the content partial is declared inside the admin's base.html</span>
+        <span class="c1">// this is the entry point for all your custom stuff</span>
+        <span class="nx">content</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">relative</span><span class="p">,</span> <span class="s1">'template'</span><span class="p">)</span>
+    <span class="p">};</span>
+
+    <span class="c1">// typically you want your stuff to be rendered inside the admin's UI</span>
+    <span class="c1">// so no need to render here</span>
+    <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>You should definitely run the examples from the <a href="https://github.com/simov/express-admin-examples">examples repository</a> as each of the custom views (apps) presented there is really well commented.</p>
+
+<h3>
+<a name="route-wide-variables" class="anchor" href="#route-wide-variables"><span class="octicon octicon-link"></span></a>Route wide variables</h3>
+
+<p>Several variables are exposed to every route callback.</p>
+
+<div class="highlight"><pre><span class="c1">// _admin's variable content is for internal purposes only and is not being rendered</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">connection</span><span class="c1">// the admin's database connection can be reused from here</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">config</span>       <span class="c1">// the contents of the config.json file</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">settings</span>     <span class="c1">// the contents of the settings.json file</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">custom</span>       <span class="c1">// the contents of the custom.json file</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">users</span>        <span class="c1">// the contents of the users.json file</span>
+
+<span class="c1">// shortcut variables that are being rendered</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">libs</span>       <span class="c1">// list of all client side libraries</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">themes</span>     <span class="c1">// list of all themes</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">layouts</span>    <span class="c1">// flag indicating layouts button visibility</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">languages</span>  <span class="c1">// list of all languages</span>
+
+<span class="c1">// holds the absolute path to the admin's view directory</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">views</span>
+</pre></div><p><br /></p><hr /></div><div class="file"><h2>
+<a name="themes" class="anchor" href="#themes"><span class="octicon octicon-link"></span></a>Themes</h2>
+
+<p>Use the <code>Themes</code> button to switch between the themes.</p><p><br /></p><hr /></div><div class="file"><h2>
+<a name="tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
+
+<h3>
+<a name="shell" class="anchor" href="#shell"><span class="octicon octicon-link"></span></a>Shell</h3>
+
+<h4>
+<a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h4>
+
+<p>Set a <code>breakpoint</code> somewhere inside your custom view files and debug as usual.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>admin --debug-brk path/to/project/config/
+<span class="c"># or</span>
+<span class="nv">$ </span>node --debug-brk path/to/express-admin/app path/to/project/config/
+</pre></div>
+
+<h4>
+<a name="supervisor" class="anchor" href="#supervisor"><span class="octicon octicon-link"></span></a>Supervisor</h4>
+
+<p>Auto reload your project while configuring it using <a href="https://github.com/isaacs/node-supervisor">supervisior</a>.</p>
+
+<p>Create a folder for your project's configuration files.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>mkdir project
+</pre></div>
+
+<p>Then while you're still there you can use <code>supervisor</code> to watch your <code>project</code> folder, specifying that the extensions are <code>json</code>.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>supervisor -w project -e json -- path/to/express-admin/app -v project/
+</pre></div>
+
+<p>The <code>-v</code> flag that you're passing to the Express Admin app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
+
+<h4>
+<a name="forever" class="anchor" href="#forever"><span class="octicon octicon-link"></span></a>Forever</h4>
+
+<p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a>.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>forever start path/to/express-admin/app path/to/project/config/
+</pre></div><p><br /></p><hr /></div><div class="file"><h2>
+<a name="tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
+
+<h3>
+<a name="nginx" class="anchor" href="#nginx"><span class="octicon octicon-link"></span></a>NginX</h3>
+
+<p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a>.</p>
+
+<div class="highlight"><pre>server <span class="o">{</span>
     listen 80;
-    
-    # vhost
+
+    <span class="c"># vhost</span>
     server_name admin.example.com;
-    
-    #log
+
+    <span class="c">#log</span>
     access_log /var/log/nginx/admin-access.log;
     error_log /var/log/nginx/admin-error.log debug;
 
-    # NODE
-    location / {
+    <span class="c"># NODE</span>
+    location / <span class="o">{</span>
         proxy_pass http://127.0.0.1:3000;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
+        proxy_set_header Host <span class="nv">$http_host</span>;
+        proxy_set_header X-Real-IP <span class="nv">$remote_addr</span>;
+        proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span>;
+    <span class="o">}</span>
 
-    # NGINX
+    <span class="c"># NGINX</span>
 
-    # static
-    location ~ \.(jpg|jpeg|png|gif|swf|flv|mp4|mov|avi|wmv|m4v|mkv|ico|css|js|txt|html|htm)$ {
+    <span class="c"># static</span>
+    location ~ <span class="se">\.</span><span class="o">(</span>jpg|jpeg|png|gif|swf|flv|mp4|mov|avi|wmv|m4v|mkv|ico|css|js|txt|html|htm<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
         root /;
         try_files
-            # express admin
-            /absolute/path/to/express-admin/public/$uri
+            <span class="c"># express admin</span>
+            /absolute/path/to/express-admin/public/<span class="nv">$uri</span>
 
-            # custom views
-            /absolute/path/to/your/project/custom/app1/public/$uri
-            /absolute/path/to/your/project/custom/app2/public/$uri
+            <span class="c"># custom views</span>
+            /absolute/path/to/your/project/custom/app1/public/<span class="nv">$uri</span>
+            /absolute/path/to/your/project/custom/app2/public/<span class="nv">$uri</span>
         /;
-    }
+    <span class="o">}</span>
 
-    # LIBS
+    <span class="c"># LIBS</span>
 
-    # csslib
-    location ^~ /csslib/ {
-        alias /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/;
-    }
-    # jslib
-    location ^~ /jslib/ {
-        alias /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/;
-    }
-    # bootswatch
-    location ^~ /bootswatch/ {
-        alias /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/;
-    }
-}</code></pre>
-<!-- code -->
+    <span class="c"># csslib</span>
+    location ^~ /csslib/ <span class="o">{</span>
+        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/;
+    <span class="o">}</span>
+    <span class="c"># jslib</span>
+    location ^~ /jslib/ <span class="o">{</span>
+        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/;
+    <span class="o">}</span>
+    <span class="c"># bootswatch</span>
+    location ^~ /bootswatch/ <span class="o">{</span>
+        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/;
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div><p><br /></p><hr /></div><div class="file"><h2>
+<a name="tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
 
-    </div>
-</div>
-</article>
-    <article id="apache">
-<h2><a href="#apache" name="apache">Apache</a></h2>
+<h3>
+<a name="apache" class="anchor" href="#apache"><span class="octicon octicon-link"></span></a>Apache</h3>
 
-<!-- APACHE -->
+<p>If some of your custom view's requests need to be handled by <a href="http://httpd.apache.org/">Apache</a>, add this to the nginx vhost file.</p>
 
-<div class="box">
-    <h4>Config</h4>
-    <ul>
-        <li>If some of your custom view's requests need to be handled by <em>Apache</em>, add this to the nginx vhost file
-
-<!-- code -->
-<pre><code class="language-bash"># apache
-location /some-slug/ {
+<div class="highlight"><pre><span class="c"># apache</span>
+location /some-slug/ <span class="o">{</span>
     proxy_pass http://127.0.0.1:8008/some-slug/;
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}</code></pre>
-<!-- code -->
+    proxy_set_header Host <span class="nv">$http_host</span>;
+    proxy_set_header X-Real-IP <span class="nv">$remote_addr</span>;
+    proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span>;
+<span class="o">}</span>
+</pre></div>
 
-        </li>
-        <li>Edit <em>/etc/apache2/ports.conf</em>
+<p>Edit <code>/etc/apache2/ports.conf</code>.</p>
 
-<!-- code -->
-<pre><code class="language-bash"># When nginx is set as proxy
+<div class="highlight"><pre><span class="c"># When nginx is set as proxy</span>
 NameVirtualHost 127.0.0.1:8008
-Listen 127.0.0.1:8008</code></pre>
-<!-- code -->
+Listen 127.0.0.1:8008
+</pre></div>
 
-        </li>
-        <li>Create apache vhost
+<p>Create apache's virtual host file.</p>
 
-<!-- code -->
-<pre><code class="language-bash">&lt;VirtualHost 127.0.0.1:8008&gt;
+<div class="highlight"><pre>&lt;VirtualHost 127.0.0.1:8008&gt;
     ServerAdmin admin@localhost
-    # apache's vhost name MUST MATCH the nginx's vhost name
+    <span class="c"># apache's vhost name MUST MATCH the nginx's vhost name</span>
     ServerName admin.example.com
     ServerAlias admin.example.com
-    # some aliases etc.
+    <span class="c"># some aliases etc.</span>
     Alias /some-slug /path/to/some/dir
     &lt;Location /some-slug&gt;
-        # some options ...
+        <span class="c"># some options ...</span>
     &lt;/Location&gt;
-    # log
+    <span class="c"># log</span>
     ErrorLog /var/log/apache2/admin-error.log
     CustomLog /var/log/apache2/admin-access.log combined
-&lt;/VirtualHost&gt;</code></pre>
-<!-- code -->
-        </li>
-    </ul>
-</div>
-</article>
-    <article id="scripts">
-<h2><a href="#scripts" name="scripts">Scripts</a></h2>
+&lt;/VirtualHost&gt;
+</pre></div></div>				</article>
+            </section>
+            
+        </div>
 
-<!-- DEBUGGING -->
-
-<div class="box">
-    <h4>Debug</h4>
-    <p>Debug the admin app as usual</p>
-<!-- code -->
-<pre><code class="language-bash">$ admin --debug-brk path/to/project/config/</code></pre>
-<!-- code -->
-    <p>or</p>
-<!-- code -->
-<pre><code class="language-bash">$ node --debug-brk path/to/express-admin/app path/to/project/config/</code></pre>
-<!-- code -->
-</div>
-
-<!-- FOREVER -->
-
-<div class="box">
-    <h4>Forever</h4>
-    <p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever" target="_blank">forever</a></p>
-<!-- code -->
-<pre><code class="language-bash">$ forever start path/to/express-admin/app path/to/project/config/</code></pre>
-<!-- code -->
-
-</div>
-
-<!-- SUPERVISOR -->
-
-<div class="box">
-    <h4>Supervisor</h4>
-    <p>Auto reload your project while configuring it using <a href="https://github.com/isaacs/node-supervisor" target="_blank">supervisor</a>.</p>
-    
-    <p>Suppose you create the folder for your project's config like this.</p>
-<!-- code -->
-<pre><code class="language-bash">$ mkdir project</code></pre>
-<!-- code -->
-
-<p>Then while you're still there you can use <em>supervisor</em> to watch your <em>project</em> folder, specifying that the extensions are <em>json</em> like this.</p>
-<!-- code -->
-<pre><code class="language-bash">$ supervisor -w project -e json -- path/to/express-admin/app -v project/</code></pre>
-<!-- code -->
-
-<p>Here the <em>-v</em> flag that you're passing to the Express Admin app means that you are running the admin in <em>development</em> mode. In this mode the authentication and the database operations are disabled.</p>
-
-<p>Make sure you take a look at the <a href="http://www.youtube.com/watch?v=1CdoCB96QNk" target="_blank">Introductory Screencast</a> about Express Admin.</p>
-
-</div>
-</article>
-
-</section>
-
-<a href="https://github.com/simov/express-admin" id="forkme-badge"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-
-
-<nav id="navigation">
-    <ul class="nav">
-        <li>Express What?
+        <nav id="navigation" class="repository-sidebar">
             <ul>
-                <li><a href="#about">About</a></li>
+                <li><a href="#express-admin">Express Admin</a></li>
                 <li><a href="#install">Install</a></li>
-                <li><a href="#settings">Settings</a></li>
-            </ul>
-        </li>
-        <li>Relationships
-            <ul>
-                <li><a href="#one-to-many">One to Many</a></li>
-                <li><a href="#many-to-many">Many to Many</a></li>
-                <li><a href="#one-to-one">One to One</a></li>
-                <li><a href="#many-to-one">Many to One</a></li>
-                <li><a href="#all-together">All Together</a></li>
-            </ul>
-        </li>
-        <li>UI
-            <ul>
+                <li><a href="#configuration">Configuration</a>
+                    <ul>
+                        <li><a href="#configjson">config.json</a></li>
+                        <li><a href="#settingsjson">settings.json</a></li>
+                        <li><a href="#customjson">custom.json</a></li>
+                    </ul>
+                </li>
+                <li><a href="#relationships">Relationships</a>
+                    <ul>
+                        <li><a href="#one-to-many">one to many</a></li>
+                        <li><a href="#many-to-many">many to many</a></li>
+                        <li><a href="#many-to-one">many to one</a></li>
+                        <li><a href="#one-to-one">one to one</a></li>
+                    </ul>
+                </li>
+                <li><a href="#editors">Editors</a>
+                    <ul>
+                        <li><a href="#ckeditor">ckeditor</a></li>
+                        <li><a href="#tinymce">tinymce</a></li>
+                        <li><a href="#multiple">multiple</a></li>
+                    </ul>
+                </li>
+                <li><a href="#custom-views-apps">Custom Views</a></li>
                 <li><a href="#themes">Themes</a></li>
-                <li><a href="#datepicker">Datepicker</a></li>
-                <li><a href="#textarea">Textarea</a></li>
-                <li><a href="#ckeditor">CKEditor</a></li>
-                <li><a href="#tinymce">TinyMCE</a></li>
-                <li><a href="#multiple">Multiple Editors</a></li>
+                <li><a href="#tools">Tools</a>
+                    <ul>
+                        <li><a href="#shell">shell</a></li>
+                        <li><a href="#nginx">nginx</a></li>
+                        <li><a href="#apache">apache</a></li>
+                    </ul>
+                </li>
             </ul>
-        </li>
-        <li>Custom Views
-            <ul>
-                <li><a href="#custom">Config</a></li>
-            </ul>
-        </li>
-        <li>Misc
-            <ul>
-                <li><a href="#nginx">Nginx</a></li>
-                <li><a href="#apache">Apache</a></li>
-                <li><a href="#scripts">Scripts</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
-    
+        </nav>
+    </div>
+
+    <a href="https://github.com/simov/express-admin" id="forkme-badge"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+</div>
 </body>
 </html>
