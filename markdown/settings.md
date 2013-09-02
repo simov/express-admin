@@ -28,7 +28,7 @@ All settings related to the default Express Admin views are in the `settings.jso
     },
     "editview": {
         "readonly": false,
-        // "manyToOne": { ... }, // see 'Many to Many' documentation
+        // "manyToOne": { ... }, // see 'Many to One' documentation
         // "oneToOne": { ... } // see 'One to One' documentation
     }
 }
