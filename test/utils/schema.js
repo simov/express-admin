@@ -52,7 +52,7 @@ describe('schema', function () {
         schema.getReferences(function (err, ref) {
             if (err) return done(err);
             var tables = Object.keys(ref);
-            should.deepEqual(tables, ['purchase','property','recipe','recipe_ref','type']);
+            should.deepEqual(tables, ['property','purchase','recipe','recipe_ref','type']);
             // may test column properties too
             done();
         });
