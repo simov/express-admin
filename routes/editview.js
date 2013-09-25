@@ -54,7 +54,11 @@ exports.post = function (req, res, next) {
         }
 
         database.update(args, function (err) {
-            if (err) return next(err);
+            if (err) {
+                req.session.error = err.message;
+                res.redirect(args.slug);
+                return;
+            }
 
             // print out
             if (args.debug) {

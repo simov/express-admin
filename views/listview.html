@@ -11,6 +11,13 @@
 </div>
 {{/show.success}}
 
+{{#show.error}}
+<div class="alert alert-error">
+    <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+    <strong>{{string.error}}:</strong> {{show.error}}.
+</div>
+{{/show.error}}
+
 <table class="table table-bordered table-striped table-hover ex-table ex-table-list">
     <thead>
         <tr class="label-inverse">
