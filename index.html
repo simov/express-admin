@@ -16,6 +16,7 @@
     <link href="v2/css/style.css" media="all" rel="stylesheet" type="text/css" />
 
     <script src="jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="v2/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
     <script src="v2/js/events.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
@@ -58,7 +59,7 @@
 <h3>
 <a name="get-the-module" class="anchor" href="#get-the-module"><span class="octicon octicon-link"></span></a>Get the module</h3>
 
-<div class="highlight"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install <span class="o">[</span>-g<span class="o">]</span> express-admin
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install <span class="o">[</span>-g<span class="o">]</span> express-admin
 </pre></div>
 
 <h3>
@@ -66,7 +67,7 @@
 
 <p>Depending on how you installed it creating a project is simple</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>admin path/to/config/dir
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>admin path/to/config/dir
 <span class="c"># or</span>
 <span class="nv">$ </span>node path/to/express-admin/app.js path/to/config/dir
 </pre></div>
@@ -83,7 +84,7 @@
 
 <p>The application's configuration is stored inside the <code>config.json</code> file. The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.</p>
 
-<div class="highlight"><pre><span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="p">{</span>
     <span class="s2">"mysql"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"database"</span><span class="o">:</span> <span class="s2">"express-admin-examples"</span><span class="p">,</span>
         <span class="s2">"user"</span><span class="o">:</span> <span class="s2">"liolio"</span><span class="p">,</span>
@@ -141,7 +142,7 @@
 
 <p>All settings related to the default Express Admin views are in the <code>settings.json</code> file which is automatically generated with default values at first start up.</p>
 
-<div class="highlight"><pre><span class="s2">"table_name"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"table_name"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"unique-slug"</span><span class="p">,</span>
     <span class="s2">"table"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"table_name"</span><span class="p">,</span>
@@ -224,7 +225,7 @@
 
 <p>Each <code>table</code> object contains an array of colums. Each <code>column</code> object have:</p>
 
-<div class="highlight"><pre><span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="p">{</span>
     <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span><span class="p">,</span>
     <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"column_name"</span><span class="p">,</span>
     <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
@@ -251,7 +252,7 @@
 <li>
 <p><strong>control</strong> - one of these</p>
 
-<div class="highlight"><pre><span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="text"</span>
+<div class="highlight highlight-js"><pre><span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="text"</span>
 <span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// textarea</span>
 <span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"some-class"</span><span class="p">}</span> <span class="c1">// html editor (see the docs)</span>
 <span class="p">{</span><span class="s2">"date"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datepicker</span>
@@ -288,7 +289,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>All objects in this file are user created. The <code>public</code> key is related entirely to inclusion of custom <em>static files</em>. It's possible to have an object only with public key inside as well as object without public key at all.</p>
 
-<div class="highlight"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"path"</span>  <span class="o">:</span> <span class="s2">"/absolute/path/to/custom/app.js"</span><span class="p">,</span>
     <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"unique-slug"</span><span class="p">,</span>
     <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span><span class="p">,</span>
@@ -344,7 +345,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>settings.json</code> find the table you are searching for and under its columns find the foreign key columnt by its name key. Inside the column's object insert <code>oneToMany</code> key. Also don't forget to change the column's control type to <code>select</code>.</p>
 
-<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span>
 <span class="p">},</span>
 <span class="s2">"oneToMany"</span><span class="o">:</span> <span class="p">{</span>
@@ -380,7 +381,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>settings.json</code> find the table you are searching for and insert this object inside its columns array.</p>
 
-<div class="highlight"><pre><span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="p">{</span>
     <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Recipe Types"</span><span class="p">,</span>
     <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"recipe_type"</span><span class="p">,</span>
     <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
@@ -468,7 +469,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>settings.json</code> find the table you are searching for and under its <code>editview</code> key add a <code>manyToOne</code> key.</p>
 
-<div class="highlight"><pre><span class="s2">"manyToOne"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"manyToOne"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"repair"</span><span class="o">:</span> <span class="s2">"car_id"</span><span class="p">,</span>
     <span class="s2">"driver"</span><span class="o">:</span> <span class="s2">"car_id"</span>
 <span class="p">}</span>
@@ -493,7 +494,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>settings.json</code> find the table you are searching for and under its <code>editview</code> key add a <code>oneToOne</code> key.</p>
 
-<div class="highlight"><pre><span class="s2">"oneToOne"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"oneToOne"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"address"</span><span class="o">:</span> <span class="s2">"user_id"</span><span class="p">,</span>
     <span class="s2">"phone"</span><span class="o">:</span> <span class="s2">"user_id"</span>
 <span class="p">}</span>
@@ -524,7 +525,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for this editor instance.</p>
 
-<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"class-name"</span>
 <span class="p">}</span>
@@ -535,7 +536,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
 
-<div class="highlight"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
         <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
@@ -564,7 +565,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>Your custom editor is initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
 
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// exclude textareas that are inside hidden inline rows</span>
@@ -613,7 +614,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for this editor instance.</p>
 
-<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"class-name"</span>
 <span class="p">}</span>
@@ -624,7 +625,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
 
-<div class="highlight"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
         <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
@@ -654,7 +655,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>Your custom editor is initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
 
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tinyMCE</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// it's important to initialize only the visible textareas</span>
         <span class="nx">$</span><span class="p">(</span><span class="s1">'tr:not(.blank) .class-name'</span><span class="p">).</span><span class="nx">tinymce</span><span class="p">({});</span>
@@ -690,19 +691,19 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for each editor instance.</p>
 
-<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"ck-full"</span>
 <span class="p">}</span>
 </pre></div>
 
-<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"ck-compact"</span>
 <span class="p">}</span>
 </pre></div>
 
-<div class="highlight"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"tinymce"</span>
 <span class="p">}</span>
@@ -713,7 +714,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
 
-<div class="highlight"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
         <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
@@ -744,7 +745,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>Your custom editors are initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
 
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// exclude textareas that are inside hidden inline rows</span>
@@ -820,7 +821,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <h3>
 <a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
 
-<div class="highlight"><pre><span class="s2">"view1"</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="s2">"view1"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/app.js"</span><span class="p">,</span>
     <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"view1"</span><span class="p">,</span>
     <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"View 1"</span><span class="p">,</span>
@@ -833,7 +834,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <h3>
 <a name="appjs" class="anchor" href="#appjs"><span class="octicon octicon-link"></span></a>app.js</h3>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 <span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
 
@@ -866,7 +867,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>Several variables are exposed to every route callback.</p>
 
-<div class="highlight"><pre><span class="c1">// _admin's variable content is for internal purposes only and is not being rendered</span>
+<div class="highlight highlight-js"><pre><span class="c1">// _admin's variable content is for internal purposes only and is not being rendered</span>
 <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">connection</span><span class="c1">// the admin's database connection can be reused from here</span>
 <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">config</span>       <span class="c1">// the contents of the config.json file</span>
 <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">settings</span>     <span class="c1">// the contents of the settings.json file</span>
@@ -895,7 +896,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>Set a <code>breakpoint</code> somewhere inside your custom view files and debug as usual.</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>admin --debug-brk path/to/project/config/
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>admin --debug-brk path/to/project/config/
 <span class="c"># or</span>
 <span class="nv">$ </span>node --debug-brk path/to/express-admin/app path/to/project/config/
 </pre></div>
@@ -907,12 +908,12 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>Create a folder for your project's configuration files.</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>mkdir project
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>mkdir project
 </pre></div>
 
 <p>Then while you're still there you can use <code>supervisor</code> to watch your <code>project</code> folder, specifying that the extensions are <code>json</code>.</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>supervisor -w project -e json -- path/to/express-admin/app -v project/
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>supervisor -w project -e json -- path/to/express-admin/app -v project/
 </pre></div>
 
 <p>The <code>-v</code> flag that you're passing to the Express Admin app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
@@ -922,7 +923,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a>.</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>forever start path/to/express-admin/app path/to/project/config/
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>forever start path/to/express-admin/app path/to/project/config/
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
 <a name="tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
 
@@ -931,7 +932,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a>.</p>
 
-<div class="highlight"><pre>server <span class="o">{</span>
+<div class="highlight highlight-bash"><pre>server <span class="o">{</span>
     listen 80;
 
     <span class="c"># vhost</span>
@@ -987,7 +988,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>If some of your custom view's requests need to be handled by <a href="http://httpd.apache.org/">Apache</a>, add this to the nginx vhost file.</p>
 
-<div class="highlight"><pre><span class="c"># apache</span>
+<div class="highlight highlight-bash"><pre><span class="c"># apache</span>
 location /some-slug/ <span class="o">{</span>
     proxy_pass http://127.0.0.1:8008/some-slug/;
     proxy_set_header Host <span class="nv">$http_host</span>;
@@ -998,14 +999,14 @@ location /some-slug/ <span class="o">{</span>
 
 <p>Edit <code>/etc/apache2/ports.conf</code>.</p>
 
-<div class="highlight"><pre><span class="c"># When nginx is set as proxy</span>
+<div class="highlight highlight-bash"><pre><span class="c"># When nginx is set as proxy</span>
 NameVirtualHost 127.0.0.1:8008
 Listen 127.0.0.1:8008
 </pre></div>
 
 <p>Create apache's virtual host file.</p>
 
-<div class="highlight"><pre>&lt;VirtualHost 127.0.0.1:8008&gt;
+<div class="highlight highlight-bash"><pre>&lt;VirtualHost 127.0.0.1:8008&gt;
     ServerAdmin admin@localhost
     <span class="c"># apache's vhost name MUST MATCH the nginx's vhost name</span>
     ServerName admin.example.com

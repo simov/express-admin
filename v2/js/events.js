@@ -38,35 +38,7 @@ $(function () {
         return false;
     });
 
-    var refresh = (function scrollspy () {
-        var links = $('#navigation a'), offset = [];
-        
-        function refresh () {
-            offset = [];
-            links.each(function (index) {
-                var anchor = $(this).attr('href').replace('#','');
-                if ($('a[name='+anchor+']').length) {
-                    offset.push($('a[name='+anchor+']').offset().top);
-                }
-            });
-        }
-        
-        var win = $(window);
-        win.on('scroll', function (e) {
-            links.removeClass('active');
-            var top = win.scrollTop()+10;
-            for (var i=0; i < offset.length; i++) {
-                if (i < offset.length) {
-                    if (top >= offset[i] && top <= offset[i+1]) {
-                        links.eq(i).addClass('active');
-                    }
-                } else {
-                    links.eq(offset.length-1).addClass('active');
-                }		
-            }
-        });
-
-        return refresh;
-    }());
-    refresh();
+    var scrollpsy = $('#navigation a').scrollpsy({
+        offset: 5
+    });
 });
