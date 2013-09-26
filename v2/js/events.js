@@ -1,4 +1,6 @@
 
+var scrollpsy;
+
 $(function () {
     (function addExamples () {
         var files = [
@@ -28,7 +30,7 @@ $(function () {
         }
         iframe.toggle();
         window.setTimeout(function () {
-            refresh();
+            scrollpsy.refresh();
         }, 1000);
         
         $(this).text().indexOf('expand') != -1
@@ -37,8 +39,10 @@ $(function () {
 
         return false;
     });
+});
 
-    var scrollpsy = $('#navigation a').scrollpsy({
+$(window).on('load', function (e) {
+    scrollpsy = $('#navigation a').scrollpsy({
         offset: 5
     });
 });
