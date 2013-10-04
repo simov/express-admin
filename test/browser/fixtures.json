@@ -1,0 +1,32 @@
+{
+	"initial": [
+		"manyToOne[controls][records][0][pk]",
+		"manyToOne[controls][records][0][columns][controls_choice_id]",
+		"manyToOne[controls][records][0][columns][group]",
+		"manyToOne[controls][records][0][columns][text]",
+		"manyToOne[controls][records][0][columns][date]",
+		"manyToOne[controls][records][0][columns][textarea]",
+		"manyToOne[controls][blank][index][insert]",
+		"manyToOne[controls][blank][index][columns][controls_choice_id]",
+		"manyToOne[controls][blank][index][columns][group]",
+		"manyToOne[controls][blank][index][columns][text]",
+		"manyToOne[controls][blank][index][columns][date]",
+		"manyToOne[controls][blank][index][columns][textarea]"
+	],
+	"one": [
+		"manyToOne[controls][records][1][insert]",
+		"manyToOne[controls][records][1][columns][controls_choice_id]",
+		"manyToOne[controls][records][1][columns][group]",
+		"manyToOne[controls][records][1][columns][text]",
+		"manyToOne[controls][records][1][columns][date]",
+		"manyToOne[controls][records][1][columns][textarea]"
+	],
+	"two": [
+		"manyToOne[controls][records][2][insert]",
+		"manyToOne[controls][records][2][columns][controls_choice_id]",
+		"manyToOne[controls][records][2][columns][group]",
+		"manyToOne[controls][records][2][columns][text]",
+		"manyToOne[controls][records][2][columns][date]",
+		"manyToOne[controls][records][2][columns][textarea]"
+	]
+}

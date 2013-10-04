@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>Express Admin Browser Tests</title>
+
+	<!-- style -->
+	<link href="/csslib/mocha.css" rel="stylesheet" type="text/css" media="all" />
+	<style type="text/css">
+		#admin { width: 100%; height: 600px; border: 0; }
+	</style>
+	
+	<!-- test libs -->
+	<script src="/jslib/mocha.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/jslib/chai.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- components -->
+	<script src="sr-file.js" type="text/javascript" charset="utf-8"></script>
+
+	<!-- jquery -->
+	<script src="/jslib/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- test suite -->
+	<script src="tests.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="mocha"></div>
+	
+	<iframe id="admin" src="http://examples/controls/1"></iframe>
+</body>
+</html>

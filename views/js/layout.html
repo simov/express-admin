@@ -1,0 +1,7 @@
+<script type="text/javascript">
+	(function () {
+		var body = document.getElementById('express-admin'),
+			layout = localStorage.getItem('layout') || 'fluid';
+		body.className = (layout == 'fixed') ? 'container' : 'container-fluid';
+	}());
+</script>

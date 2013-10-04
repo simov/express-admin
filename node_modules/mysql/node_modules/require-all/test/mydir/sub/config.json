@@ -1,0 +1,15 @@
+{
+    "mysql": {
+        "database": "biu",
+        "user": "biu",
+        "password": "nerobiu"
+    },
+    "server": {
+        "port": 3000
+    },
+    "app": {
+        "layouts": true,
+        "themes": true,
+        "languages": true
+    }
+}
