@@ -128,7 +128,7 @@
             },
             {
                 "name": "url",
-                "verbose": "url",
+                "verbose": "URL",
                 "control": {
                     "text": true
                 },
@@ -360,7 +360,7 @@
             }
         ],
         "mainview": {
-            "show": true
+            "show": false
         },
         "filterview": {
             "order": {},
@@ -544,7 +544,7 @@
         "columns": [
             {
                 "name": "uid",
-                "verbose": "uid",
+                "verbose": "User ID",
                 "control": {
                     "text": true
                 },
@@ -559,24 +559,77 @@
                 }
             },
             {
-                "name": "planid",
-                "verbose": "planid",
+                "name": "uid",
+                "verbose": "Firstname",
                 "control": {
-                    "text": true
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "users",
+                    "pk": "uid",
+                    "columns": [
+                        "firstname"
+                    ]
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "uid",
+                "verbose": "Lastname",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "users",
+                    "pk": "uid",
+                    "columns": [
+                        "lastname"
+                    ]
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "planid",
+                "verbose": "Plan",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "plans",
+                    "pk": "id",
+                    "columns": [
+                        "name"
+                    ]
                 },
                 "type": "int(5) unsigned",
                 "allowNull": false,
                 "defaultValue": null,
-                "filterview": {
+                "editview": {
                     "show": true
                 },
-                "editview": {
+                "filterview": {
                     "show": true
                 }
             },
             {
                 "name": "created",
-                "verbose": "created",
+                "verbose": "Created",
                 "control": {
                     "text": true
                 },
@@ -592,7 +645,7 @@
             },
             {
                 "name": "modified",
-                "verbose": "modified",
+                "verbose": "Modified",
                 "control": {
                     "text": true
                 },
@@ -608,7 +661,7 @@
             },
             {
                 "name": "free",
-                "verbose": "free",
+                "verbose": "Free",
                 "control": {
                     "text": true
                 },
@@ -624,7 +677,7 @@
             },
             {
                 "name": "used",
-                "verbose": "used",
+                "verbose": "Used",
                 "control": {
                     "text": true
                 },
@@ -640,7 +693,7 @@
             },
             {
                 "name": "total",
-                "verbose": "total",
+                "verbose": "Total",
                 "control": {
                     "text": true
                 },
@@ -676,7 +729,7 @@
         "columns": [
             {
                 "name": "id",
-                "verbose": "id",
+                "verbose": "ID",
                 "control": {
                     "text": true
                 },
@@ -738,7 +791,7 @@
             },
             {
                 "name": "provider",
-                "verbose": "provider",
+                "verbose": "Provider",
                 "control": {
                     "text": true
                 },
@@ -754,7 +807,7 @@
             },
             {
                 "name": "type",
-                "verbose": "type",
+                "verbose": "Type",
                 "control": {
                     "text": true
                 },
@@ -770,9 +823,16 @@
             },
             {
                 "name": "planid",
-                "verbose": "planid",
+                "verbose": "Plan",
                 "control": {
-                    "text": true
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "plans",
+                    "pk": "id",
+                    "columns": [
+                        "name"
+                    ]
                 },
                 "type": "int(5) unsigned",
                 "allowNull": false,
@@ -786,7 +846,7 @@
             },
             {
                 "name": "created",
-                "verbose": "created",
+                "verbose": "Created",
                 "control": {
                     "text": true
                 },
@@ -802,7 +862,7 @@
             },
             {
                 "name": "modified",
-                "verbose": "modified",
+                "verbose": "Modified",
                 "control": {
                     "text": true
                 },
@@ -818,11 +878,91 @@
             },
             {
                 "name": "provider_id",
-                "verbose": "provider_id",
+                "verbose": "Provider ID",
                 "control": {
                     "text": true
                 },
                 "type": "varchar(128)",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "expirationdate",
+                "verbose": "Expiration Date",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "state",
+                "verbose": "State",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('inactive','active','canceled','expired')",
+                "allowNull": false,
+                "defaultValue": "inactive",
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "source",
+                "verbose": "Source",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('cleverbridge','itok')",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "source_id",
+                "verbose": "Source ID",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "source_info",
+                "verbose": "Source Info",
+                "control": {
+                    "text": true
+                },
+                "type": "text",
                 "allowNull": true,
                 "defaultValue": null,
                 "editview": {
@@ -841,91 +981,11 @@
                 "type": "datetime",
                 "allowNull": false,
                 "defaultValue": null,
-                "editview": {
-                    "show": true
-                },
                 "filterview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "expirationdate",
-                "verbose": "expirationdate",
-                "control": {
-                    "text": true
+                    "show": false
                 },
-                "type": "datetime",
-                "allowNull": true,
-                "defaultValue": null,
                 "editview": {
-                    "show": true
-                },
-                "filterview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "state",
-                "verbose": "state",
-                "control": {
-                    "text": true
-                },
-                "type": "enum('inactive','active','canceled','expired')",
-                "allowNull": false,
-                "defaultValue": "inactive",
-                "editview": {
-                    "show": true
-                },
-                "filterview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "source",
-                "verbose": "source",
-                "control": {
-                    "text": true
-                },
-                "type": "enum('cleverbridge','itok')",
-                "allowNull": true,
-                "defaultValue": null,
-                "editview": {
-                    "show": true
-                },
-                "filterview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "source_id",
-                "verbose": "source_id",
-                "control": {
-                    "text": true
-                },
-                "type": "varchar(128)",
-                "allowNull": true,
-                "defaultValue": null,
-                "editview": {
-                    "show": true
-                },
-                "filterview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "source_info",
-                "verbose": "source_info",
-                "control": {
-                    "text": true
-                },
-                "type": "text",
-                "allowNull": true,
-                "defaultValue": null,
-                "editview": {
-                    "show": true
-                },
-                "filterview": {
-                    "show": true
+                    "show": false
                 }
             }
         ],
@@ -1090,10 +1150,10 @@
                 "allowNull": false,
                 "defaultValue": null,
                 "filterview": {
-                    "show": true
+                    "show": false
                 },
                 "editview": {
-                    "show": true
+                    "show": false
                 }
             },
             {
@@ -1106,15 +1166,15 @@
                 "allowNull": false,
                 "defaultValue": null,
                 "filterview": {
-                    "show": true
+                    "show": false
                 },
                 "editview": {
-                    "show": true
+                    "show": false
                 }
             }
         ],
         "mainview": {
-            "show": true
+            "show": false
         },
         "filterview": {
             "order": {},
@@ -1134,7 +1194,7 @@
         "columns": [
             {
                 "name": "uid",
-                "verbose": "uid",
+                "verbose": "User ID",
                 "control": {
                     "text": true
                 },
@@ -1145,12 +1205,12 @@
                     "show": true
                 },
                 "editview": {
-                    "show": false
+                    "show": true
                 }
             },
             {
                 "name": "firstname",
-                "verbose": "firstname",
+                "verbose": "Firstname",
                 "control": {
                     "text": true
                 },
@@ -1166,7 +1226,7 @@
             },
             {
                 "name": "lastname",
-                "verbose": "lastname",
+                "verbose": "Lastname",
                 "control": {
                     "text": true
                 },
@@ -1182,7 +1242,7 @@
             },
             {
                 "name": "email",
-                "verbose": "email",
+                "verbose": "E-Mail",
                 "control": {
                     "text": true
                 },
@@ -1198,7 +1258,7 @@
             },
             {
                 "name": "app",
-                "verbose": "app",
+                "verbose": "App",
                 "control": {
                     "text": true
                 },
@@ -1214,7 +1274,7 @@
             },
             {
                 "name": "created",
-                "verbose": "created",
+                "verbose": "Created",
                 "control": {
                     "text": true
                 },
@@ -1230,7 +1290,7 @@
             },
             {
                 "name": "modified",
-                "verbose": "modified",
+                "verbose": "Modified",
                 "control": {
                     "text": true
                 },
@@ -1246,7 +1306,7 @@
             },
             {
                 "name": "ncsuser_id",
-                "verbose": "ncsuser_id",
+                "verbose": "NCS ID",
                 "control": {
                     "text": true
                 },
@@ -1262,7 +1322,7 @@
             },
             {
                 "name": "lang",
-                "verbose": "lang",
+                "verbose": "Language",
                 "control": {
                     "text": true
                 },
@@ -1278,7 +1338,7 @@
             },
             {
                 "name": "country",
-                "verbose": "country",
+                "verbose": "Country",
                 "control": {
                     "text": true
                 },
@@ -1294,7 +1354,7 @@
             },
             {
                 "name": "tos_acceptdate",
-                "verbose": "tos_acceptdate",
+                "verbose": "ToS Accepted",
                 "control": {
                     "text": true
                 },
@@ -1318,7 +1378,7 @@
                 "allowNull": false,
                 "defaultValue": "0",
                 "filterview": {
-                    "show": true
+                    "show": false
                 },
                 "editview": {
                     "show": true
@@ -1326,7 +1386,7 @@
             },
             {
                 "name": "partner",
-                "verbose": "partner",
+                "verbose": "Partner",
                 "control": {
                     "text": true
                 },
@@ -1342,7 +1402,7 @@
             },
             {
                 "name": "stats_lastlogin",
-                "verbose": "stats_lastlogin",
+                "verbose": "Last Login",
                 "control": {
                     "text": true
                 },
@@ -1358,7 +1418,7 @@
             },
             {
                 "name": "stats_logincount",
-                "verbose": "stats_logincount",
+                "verbose": "Login Count",
                 "control": {
                     "text": true
                 },
