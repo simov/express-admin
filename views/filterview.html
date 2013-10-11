@@ -1,0 +1,70 @@
+
+
+<h2>
+	{{string.select}} {{view.name}} {{string.to-change}}.
+	<a href="#filterModal" role="button" class="btn" data-toggle="modal">{{string.filter}} {{view.name}}</a>
+	<a href="/{{view.slug}}/add" class="btn">{{string.add}} {{view.name}}</a>
+</h2>
+
+<!-- Modal -->
+<div id="filterModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="filterLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="filterLabel">{{string.filter}} {{view.name}}</h3>
+  </div>
+  <form action="/{{view.slug}}/" method="post">
+  <div class="modal-body" max-height="400">
+  	<table class="table table-bordered table-striped table-hover ex-table ex-table-list">
+  		{{#columns}}
+  		<tr>
+			<td>{{.}} : </td>
+			<td><input type="text" name="{{.}}"></td>
+		</tr>
+		{{/columns}}
+	  	<input type="hidden" name="_csrf" value="{{csrf}}" />
+  	</table>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <input type="submit" class="btn btn-primary" ></input>
+  </div>
+  </form>
+</div>
+
+{{#show.success}}
+<div class="alert alert-success">
+	<a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+	<strong>{{string.success}}:</strong> {{string.saved}}.
+</div>
+{{/show.success}}
+
+{{#show.error}}
+<div class="alert alert-error">
+	<a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+	<strong>{{string.error}}:</strong> {{show.error}}.
+</div>
+{{/show.error}}
+
+<table class="table table-bordered table-striped table-hover ex-table ex-table-list">
+	<thead>
+		<tr class="label-inverse">
+		{{#columns}}
+			<th>{{.}}</th>
+		{{/columns}}
+		</tr>
+	</thead>
+	<tbody>
+	{{#records}}
+		<tr>
+		{{#pk}}
+			<td><a href="/{{view.slug}}/{{id}}">{{text}}</a></td>
+		{{/pk}}
+		{{#values}}
+			<td>{{.}}</td>
+		{{/values}}
+		</tr>
+	{{/records}}
+	</tbody>
+</table>
+
+{{>pagination}}

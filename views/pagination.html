@@ -1,18 +1,33 @@
 
+<script type="text/javascript">
+function formSubmit(link) {
+	var form = document.getElementById("persist");
+	form.action = link;
+	form.submit();
+	return false;
+}
+</script>
+<form id="persist" method="post">
+<input type="hidden" name="test" value="WORKS" />
+{{#post}}
+<input type="hidden" name="{{key}}" value="{{value}}"/>
+{{/post}}
+<input type="hidden" name="_csrf" value="{{csrf}}" />
+</form>
 <div class="pagination pagination-centered">
 	<ul>
 	{{#pagination}}
 		
 		{{#first}}
-		<li><a href="/{{view.slug}}">«</a></li>
+		<li><a href="/{{view.slug}}" onclick="return formSubmit(this.href);" >«</a></li>
 		{{/first}}
 
 		{{#prev}}
-		<li><a href="/{{view.slug}}/?p={{index}}">‹</a></li>
+		<li><a href="/{{view.slug}}/?p={{index}}" onclick="return formSubmit(this.href);" >‹</a></li>
 		{{/prev}}
 
 		{{#page}}
-		<li><a href="/{{view.slug}}/?p={{index}}">{{index}}</a></li>
+		<li><a href="/{{view.slug}}/?p={{index}}" onclick="return formSubmit(this.href);" >{{index}}</a></li>
 		{{/page}}
 
 		{{#active}}
@@ -20,11 +35,11 @@
 		{{/active}}
 
 		{{#next}}
-		<li><a href="/{{view.slug}}/?p={{index}}">›</a></li>
+		<li><a href="/{{view.slug}}/?p={{index}}" onclick="return formSubmit(this.href);" >›</a></li>
 		{{/next}}
 
 		{{#last}}
-		<li><a href="/{{view.slug}}/?p={{index}}">»</a></li>
+		<li><a href="/{{view.slug}}/?p={{index}}" onclick="return formSubmit(this.href);" >»</a></li>
 		{{/last}}
 
 	{{/pagination}}

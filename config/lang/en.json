@@ -26,6 +26,7 @@
 	"add-another"       : "Add another",
 	"remove"            : "Remove",
 	"add"               : "Add",
+	"filter"			: "Filter",
 	"change"            : "Change",
 	"delete"            : "Delete",
 	"save"              : "Save",

@@ -199,7 +199,11 @@ function initServer (args) {
 	app.post(routes.editview, r.auth.restrict, r.editview.post, r.render.admin);
 
 	// listview
-	app.get(routes.listview, r.auth.restrict, r.listview.get, r.render.admin);
+	//app.get(routes.listview, r.auth.restrict, r.listview.get, r.render.admin);
+
+	//filterview
+	app.get(routes.filterview, r.auth.restrict,	r.filterview.get, r.render.admin);
+	app.post(routes.filterview, r.auth.restrict, r.filterview.get, r.render.admin);
 
 	// mainview
 	app.get(routes.mainview, r.auth.restrict, r.mainview.get, r.render.admin);
