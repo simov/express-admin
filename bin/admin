@@ -1,0 +1,83 @@
+#!/usr/bin/env node
+
+var path = require('path'),
+	spawn = require('child_process').spawn;
+var args = [path.resolve(__dirname, '../app')];
+
+
+/**
+ * This tiny wrapper file checks for known node flags and appends them
+ * when found, before invoking the "real" executable.
+ */
+
+process.argv.slice(2).forEach(function (arg) {
+	switch (arg) {
+		case '-d':
+			args.unshift('--debug');
+			break;
+		case 'debug':
+		case '--debug':
+		case '--debug-brk':
+			args.unshift(arg);
+			break;
+		case '-gc':
+		case '--expose-gc':
+			args.unshift('--expose-gc');
+			break;
+		case '--gc-global':
+		case '--harmony':
+		case '--harmony-proxies':
+		case '--harmony-collections':
+			args.unshift(arg);
+			break;
+		default:
+			if (0 == arg.indexOf('--trace')) args.unshift(arg);
+			else args.push(arg);
+			break;
+	}
+});
+
+
+var child = null,
+	watching = false;
+startChild();
+
+function startChild () {
+	child = spawn(process.argv[0], args);
+	child.stdout.setEncoding('utf8');
+	child.stderr.setEncoding('utf8');
+
+	process.stdin.pipe(child.stdin);
+	child.stdout.pipe(process.stdout);
+	child.stderr.pipe(process.stderr);
+
+	child.on('exit', function (code, signal) {
+		if (watching) {
+			startChild();
+		} else {
+			child.kill();
+			process.exit();
+		}
+	});
+}
+
+process.on('SIGHUP', function (code, signal) {
+	onSignal(code, signal);
+});
+process.on('SIGINT', function (code, signal) {
+	onSignal(code, signal);
+});
+process.on('SIGTERM', function (code, signal) {
+	onSignal(code, signal);
+});
+process.on('exit', function (code, signal) {
+	child.kill();
+});
+
+function onSignal (code, signal) {
+	if (signal) {
+		process.kill(process.pid, signal);
+	} else {
+		process.exit(code);
+	}
+}
