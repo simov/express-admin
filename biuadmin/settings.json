@@ -1,0 +1,1447 @@
+{
+    "cartitems": {
+        "slug": "cartitems",
+        "table": {
+            "name": "cartitems",
+            "pk": "id",
+            "verbose": "Cart Items"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(5) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "app",
+                "verbose": "App",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('biu')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "provider",
+                "verbose": "Provider",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('cleverbridge')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "type",
+                "verbose": "Type",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('plan','plan_promo')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "created",
+                "verbose": "Created",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "modified",
+                "verbose": "Modified",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "planid",
+                "verbose": "Plan",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "plans",
+                    "pk": "id",
+                    "columns": [
+                        "name"
+                    ]
+                },
+                "type": "int(5) unsigned",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "url",
+                "verbose": "URL",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "controldata": {
+        "slug": "controldata",
+        "table": {
+            "name": "controldata",
+            "pk": "id",
+            "verbose": "Control Data"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(10) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "app",
+                "verbose": "app",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('all','biu')",
+                "allowNull": true,
+                "defaultValue": "all",
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "schema_version",
+                "verbose": "schema_version",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "tos_date",
+                "verbose": "tos_date",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "planidmap": {
+        "slug": "planidmap",
+        "table": {
+            "name": "planidmap",
+            "pk": "app",
+            "verbose": "Plan ID Map"
+        },
+        "columns": [
+            {
+                "name": "app",
+                "verbose": "app",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('biu')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "provider",
+                "verbose": "provider",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('cleverbridge')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "provplanid",
+                "verbose": "provplanid",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "planid",
+                "verbose": "planid",
+                "control": {
+                    "text": true
+                },
+                "type": "int(5) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "period",
+                "verbose": "period",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('yearly','monthly')",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "created",
+                "verbose": "created",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "modified",
+                "verbose": "modified",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "plans": {
+        "slug": "plans",
+        "table": {
+            "name": "plans",
+            "pk": "id",
+            "verbose": "Plans"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(5) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "app",
+                "verbose": "app",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('biu')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "provider",
+                "verbose": "provider",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('pogoplug')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "type",
+                "verbose": "type",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('storage')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "created",
+                "verbose": "created",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "modified",
+                "verbose": "modified",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "provplanid",
+                "verbose": "provplanid",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "name",
+                "verbose": "name",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "details",
+                "verbose": "details",
+                "control": {
+                    "text": true
+                },
+                "type": "text",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "storageusage": {
+        "slug": "storageusage",
+        "table": {
+            "name": "storageusage",
+            "pk": "uid",
+            "verbose": "Usage"
+        },
+        "columns": [
+            {
+                "name": "uid",
+                "verbose": "User ID",
+                "control": {
+                    "text": true
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "uid",
+                "verbose": "Firstname",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "users",
+                    "pk": "uid",
+                    "columns": [
+                        "firstname"
+                    ]
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "uid",
+                "verbose": "Lastname",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "users",
+                    "pk": "uid",
+                    "columns": [
+                        "lastname"
+                    ]
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "planid",
+                "verbose": "Plan",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "plans",
+                    "pk": "id",
+                    "columns": [
+                        "name"
+                    ]
+                },
+                "type": "int(5) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "created",
+                "verbose": "Created",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "modified",
+                "verbose": "Modified",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "free",
+                "verbose": "Free",
+                "control": {
+                    "text": true
+                },
+                "type": "bigint(20)",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "used",
+                "verbose": "Used",
+                "control": {
+                    "text": true
+                },
+                "type": "bigint(20)",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "total",
+                "verbose": "Total",
+                "control": {
+                    "text": true
+                },
+                "type": "bigint(20)",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "subscriptions": {
+        "slug": "subscriptions",
+        "table": {
+            "name": "subscriptions",
+            "pk": "id",
+            "verbose": "Subscriptions"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "ID",
+                "control": {
+                    "text": true
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": false
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "uid",
+                "verbose": "Firstname",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "users",
+                    "pk": "uid",
+                    "columns": [
+                        "firstname"
+                    ]
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "uid",
+                "verbose": "Lastname",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "users",
+                    "pk": "uid",
+                    "columns": [
+                        "lastname"
+                    ]
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "provider",
+                "verbose": "Provider",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('pogoplug')",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "type",
+                "verbose": "Type",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('storage')",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "planid",
+                "verbose": "Plan",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "plans",
+                    "pk": "id",
+                    "columns": [
+                        "name"
+                    ]
+                },
+                "type": "int(5) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "created",
+                "verbose": "Created",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "modified",
+                "verbose": "Modified",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "provider_id",
+                "verbose": "Provider ID",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "expirationdate",
+                "verbose": "Expiration Date",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "state",
+                "verbose": "State",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('inactive','active','canceled','expired')",
+                "allowNull": false,
+                "defaultValue": "inactive",
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "source",
+                "verbose": "Source",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('cleverbridge','itok')",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "source_id",
+                "verbose": "Source ID",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "source_info",
+                "verbose": "Source Info",
+                "control": {
+                    "text": true
+                },
+                "type": "text",
+                "allowNull": true,
+                "defaultValue": null,
+                "editview": {
+                    "show": true
+                },
+                "filterview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "creationdate",
+                "verbose": "creationdate",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": false
+                },
+                "editview": {
+                    "show": false
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "editview": {
+            "readonly": false
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        }
+    },
+    "temptokens": {
+        "slug": "temptokens",
+        "table": {
+            "name": "temptokens",
+            "pk": "token",
+            "verbose": "temptokens"
+        },
+        "columns": [
+            {
+                "name": "token",
+                "verbose": "token",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(32)",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "created",
+                "verbose": "created",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "modified",
+                "verbose": "modified",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "uid",
+                "verbose": "uid",
+                "control": {
+                    "text": true
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "type",
+                "verbose": "type",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('activate','forgot','cart')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "expires",
+                "verbose": "expires",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "used",
+                "verbose": "used",
+                "control": {
+                    "text": true
+                },
+                "type": "tinyint(1)",
+                "allowNull": false,
+                "defaultValue": "0",
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "upgradepaths": {
+        "slug": "upgradepaths",
+        "table": {
+            "name": "upgradepaths",
+            "pk": "from_planid",
+            "verbose": "Upgrades"
+        },
+        "columns": [
+            {
+                "name": "from_planid",
+                "verbose": "from_planid",
+                "control": {
+                    "text": true
+                },
+                "type": "int(5) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": false
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "to_planid",
+                "verbose": "to_planid",
+                "control": {
+                    "text": true
+                },
+                "type": "int(5) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": false
+                },
+                "editview": {
+                    "show": false
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "users": {
+        "slug": "users",
+        "table": {
+            "name": "users",
+            "pk": "uid",
+            "verbose": "Users"
+        },
+        "columns": [
+            {
+                "name": "uid",
+                "verbose": "User ID",
+                "control": {
+                    "text": true
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "firstname",
+                "verbose": "Firstname",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "lastname",
+                "verbose": "Lastname",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "email",
+                "verbose": "E-Mail",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "app",
+                "verbose": "App",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('biu')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "created",
+                "verbose": "Created",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "modified",
+                "verbose": "Modified",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "ncsuser_id",
+                "verbose": "NCS ID",
+                "control": {
+                    "text": true
+                },
+                "type": "bigint(20) unsigned",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "lang",
+                "verbose": "Language",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(10)",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "country",
+                "verbose": "Country",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(10)",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "tos_acceptdate",
+                "verbose": "ToS Accepted",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "flags_active",
+                "verbose": "flags_active",
+                "control": {
+                    "text": true
+                },
+                "type": "tinyint(1)",
+                "allowNull": false,
+                "defaultValue": "0",
+                "filterview": {
+                    "show": false
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "partner",
+                "verbose": "Partner",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('itok')",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "stats_lastlogin",
+                "verbose": "Last Login",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "stats_logincount",
+                "verbose": "Login Count",
+                "control": {
+                    "text": true
+                },
+                "type": "int(20)",
+                "allowNull": true,
+                "defaultValue": "0",
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    }
+}
