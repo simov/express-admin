@@ -19,7 +19,7 @@ exports.get = function (req, res, next) {
 	var queries= filterview.query(args, req.body);
 	args.query = queries.records;
 	args.total = queries.total;
-query.dump("QUERY = ", args.query);
+
 	filterview.data(args, function (err, data) {
 
 		pagination(args, function (err, pager) {
