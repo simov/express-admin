@@ -1443,5 +1443,121 @@
         "editview": {
             "readonly": false
         }
+    },
+    "coupons": {
+        "slug": "coupons",
+        "table": {
+            "name": "coupons",
+            "pk": "app",
+            "verbose": "coupons"
+        },
+        "columns": [
+            {
+                "name": "app",
+                "verbose": "app",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('biu')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "provider",
+                "verbose": "provider",
+                "control": {
+                    "text": true
+                },
+                "type": "enum('cleverbridge')",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "code",
+                "verbose": "code",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(20)",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "created",
+                "verbose": "created",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "modified",
+                "verbose": "modified",
+                "control": {
+                    "text": true
+                },
+                "type": "datetime",
+                "allowNull": false,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "planid",
+                "verbose": "planid",
+                "control": {
+                    "text": true
+                },
+                "type": "int(5) unsigned",
+                "allowNull": true,
+                "defaultValue": null,
+                "filterview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "filterview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
     }
 }
