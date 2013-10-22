@@ -1,0 +1,159 @@
+{
+    "view": {
+        "item": {
+            "records": [
+                {
+                    "pk": "",
+                    "insert": "true",
+                    "columns": {
+                        "item_choice1_id": "1",
+                        "item_choice2_id": "2",
+                        "item_group1": "1",
+                        "item_group2": [
+                            "2",
+                            "3"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "oneToOne": {
+        "inline_one1": {
+            "records": [
+                {
+                    "pk": "",
+                    "insert": "true",
+                    "columns": {
+                        "inline_one1_choice1_id": "1",
+                        "inline_one1_choice2_id": "2",
+                        "group1": "1",
+                        "group2": [
+                            "2",
+                            "3"
+                        ]
+                    }
+                }
+            ],
+            "blank": {
+                "index": {
+                    "insert": "true",
+                    "columns": {
+                        "inline_one1_choice1_id": "NULL",
+                        "inline_one1_choice2_id": "NULL"
+                    }
+                }
+            }
+        },
+        "inline_one2": {
+            "records": [
+                {
+                    "pk": "",
+                    "insert": "true",
+                    "columns": {
+                        "inline_one2_choice1_id": "1",
+                        "inline_one2_choice2_id": "2",
+                        "group1": "1",
+                        "group2": [
+                            "2",
+                            "3"
+                        ]
+                    }
+                }
+            ],
+            "blank": {
+                "index": {
+                    "insert": "true",
+                    "columns": {
+                        "inline_one2_choice1_id": "NULL",
+                        "inline_one2_choice2_id": "NULL"
+                    }
+                }
+            }
+        }
+    },
+    "manyToOne": {
+        "inline_many1": {
+            "records": [
+                {
+                    "pk": "",
+                    "insert": "true",
+                    "columns": {
+                        "inline_many1_choice1_id": "1",
+                        "inline_many1_choice2_id": "2",
+                        "group1": "1",
+                        "group2": [
+                            "2",
+                            "3"
+                        ]
+                    }
+                },
+                {
+                    "pk": "",
+                    "insert": "true",
+                    "columns": {
+                        "inline_many1_choice1_id": "1",
+                        "inline_many1_choice2_id": "2",
+                        "group1": "1",
+                        "group2": [
+                            "2",
+                            "3"
+                        ]
+                    }
+                }
+            ],
+            "blank": {
+                "index": {
+                    "insert": "true",
+                    "columns": {
+                        "inline_many1_choice1_id": "NULL",
+                        "inline_many1_choice2_id": "NULL"
+                    }
+                }
+            }
+        },
+        "inline_many2": {
+            "records": [
+                {
+                    "pk": "",
+                    "insert": "true",
+                    "columns": {
+                        "inline_many2_choice1_id": "1",
+                        "inline_many2_choice2_id": "2",
+                        "group1": "1",
+                        "group2": [
+                            "2",
+                            "3"
+                        ]
+                    }
+                },
+                {
+                    "pk": "",
+                    "insert": "true",
+                    "columns": {
+                        "inline_many2_choice1_id": "1",
+                        "inline_many2_choice2_id": "2",
+                        "group1": "1",
+                        "group2": [
+                            "2",
+                            "3"
+                        ]
+                    }
+                }
+            ],
+            "blank": {
+                "index": {
+                    "insert": "true",
+                    "columns": {
+                        "inline_many2_choice1_id": "NULL",
+                        "inline_many2_choice2_id": "NULL"
+                    }
+                }
+            }
+        }
+    },
+    "action": {
+        "continue": ""
+    },
+    "_csrf": "VfQw2FjasJO+SiD7Uy4XMGaM"
+}

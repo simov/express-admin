@@ -1,4 +1,3 @@
-
 <script type="text/javascript">
 function formSubmit(link) {
 	var form = document.getElementById("persist");
@@ -8,7 +7,6 @@ function formSubmit(link) {
 }
 </script>
 <form id="persist" method="post">
-<input type="hidden" name="test" value="WORKS" />
 {{#post}}
 <input type="hidden" name="{{key}}" value="{{value}}"/>
 {{/post}}
