@@ -1,0 +1,1994 @@
+{
+    "inline_many1": {
+        "slug": "inline_many1",
+        "table": {
+            "name": "inline_many1",
+            "pk": "id",
+            "verbose": "Inline Many1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "item_id",
+                "verbose": "item_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "inline_many1_choice1_id",
+                "verbose": "Choice1",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "inline_many1_choice1",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "name": "inline_many1_choice2_id",
+                "verbose": "Choice2",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "inline_many1_choice2",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "verbose": "Group1",
+                "name": "group1",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "inline_many1_has_inline_many1_group1",
+                        "parentPk": "inline_many1_id",
+                        "childPk": "inline_many1_group1_id"
+                    },
+                    "ref": {
+                        "table": "inline_many1_group1",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            },
+            {
+                "verbose": "Group2",
+                "name": "group2",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "inline_many1_has_inline_many1_group2",
+                        "parentPk": "inline_many1_id",
+                        "childPk": "inline_many1_group2_id"
+                    },
+                    "ref": {
+                        "table": "inline_many1_group2",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many1_choice1": {
+        "slug": "inline_many1_choice1",
+        "table": {
+            "name": "inline_many1_choice1",
+            "pk": "id",
+            "verbose": "inline_many1_choice1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many1_choice2": {
+        "slug": "inline_many1_choice2",
+        "table": {
+            "name": "inline_many1_choice2",
+            "pk": "id",
+            "verbose": "inline_many1_choice2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many1_group1": {
+        "slug": "inline_many1_group1",
+        "table": {
+            "name": "inline_many1_group1",
+            "pk": "id",
+            "verbose": "inline_many1_group1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many1_group2": {
+        "slug": "inline_many1_group2",
+        "table": {
+            "name": "inline_many1_group2",
+            "pk": "id",
+            "verbose": "inline_many1_group2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many1_has_inline_many1_group1": {
+        "slug": "inline_many1_has_inline_many1_group1",
+        "table": {
+            "name": "inline_many1_has_inline_many1_group1",
+            "pk": "inline_many1_id",
+            "verbose": "inline_many1_has_inline_many1_group1"
+        },
+        "columns": [
+            {
+                "name": "inline_many1_id",
+                "verbose": "inline_many1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "inline_many1_group1_id",
+                "verbose": "inline_many1_group1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many1_has_inline_many1_group2": {
+        "slug": "inline_many1_has_inline_many1_group2",
+        "table": {
+            "name": "inline_many1_has_inline_many1_group2",
+            "pk": "inline_many1_id",
+            "verbose": "inline_many1_has_inline_many1_group2"
+        },
+        "columns": [
+            {
+                "name": "inline_many1_id",
+                "verbose": "inline_many1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "inline_many1_group2_id",
+                "verbose": "inline_many1_group2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many2": {
+        "slug": "inline_many2",
+        "table": {
+            "name": "inline_many2",
+            "pk": "id",
+            "verbose": "Inline Many2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "item_id",
+                "verbose": "item_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "inline_many2_choice1_id",
+                "verbose": "Choice1",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "inline_many2_choice1",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "name": "inline_many2_choice2_id",
+                "verbose": "Choice2",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "inline_many2_choice2",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "verbose": "Group1",
+                "name": "group1",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "inline_many2_has_inline_many2_group1",
+                        "parentPk": "inline_many2_id",
+                        "childPk": "inline_many2_group1_id"
+                    },
+                    "ref": {
+                        "table": "inline_many2_group1",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            },
+            {
+                "verbose": "Group2",
+                "name": "group2",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "inline_many2_has_inline_many2_group2",
+                        "parentPk": "inline_many2_id",
+                        "childPk": "inline_many2_group2_id"
+                    },
+                    "ref": {
+                        "table": "inline_many2_group2",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many2_choice1": {
+        "slug": "inline_many2_choice1",
+        "table": {
+            "name": "inline_many2_choice1",
+            "pk": "id",
+            "verbose": "inline_many2_choice1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many2_choice2": {
+        "slug": "inline_many2_choice2",
+        "table": {
+            "name": "inline_many2_choice2",
+            "pk": "id",
+            "verbose": "inline_many2_choice2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many2_group1": {
+        "slug": "inline_many2_group1",
+        "table": {
+            "name": "inline_many2_group1",
+            "pk": "id",
+            "verbose": "inline_many2_group1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many2_group2": {
+        "slug": "inline_many2_group2",
+        "table": {
+            "name": "inline_many2_group2",
+            "pk": "id",
+            "verbose": "inline_many2_group2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many2_has_inline_many2_group1": {
+        "slug": "inline_many2_has_inline_many2_group1",
+        "table": {
+            "name": "inline_many2_has_inline_many2_group1",
+            "pk": "inline_many2_id",
+            "verbose": "inline_many2_has_inline_many2_group1"
+        },
+        "columns": [
+            {
+                "name": "inline_many2_id",
+                "verbose": "inline_many2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "inline_many2_group1_id",
+                "verbose": "inline_many2_group1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_many2_has_inline_many2_group2": {
+        "slug": "inline_many2_has_inline_many2_group2",
+        "table": {
+            "name": "inline_many2_has_inline_many2_group2",
+            "pk": "inline_many2_id",
+            "verbose": "inline_many2_has_inline_many2_group2"
+        },
+        "columns": [
+            {
+                "name": "inline_many2_id",
+                "verbose": "inline_many2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "inline_many2_group2_id",
+                "verbose": "inline_many2_group2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one1": {
+        "slug": "inline_one1",
+        "table": {
+            "name": "inline_one1",
+            "pk": "id",
+            "verbose": "Inline One1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "item_id",
+                "verbose": "item_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "inline_one1_choice1_id",
+                "verbose": "Choice1",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "inline_one1_choice1",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "name": "inline_one1_choice2_id",
+                "verbose": "Choice2",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "inline_one1_choice2",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "verbose": "Group1",
+                "name": "group1",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "inline_one1_has_inline_one1_group1",
+                        "parentPk": "inline_one1_id",
+                        "childPk": "inline_one1_group1_id"
+                    },
+                    "ref": {
+                        "table": "inline_one1_group1",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            },
+            {
+                "verbose": "Group2",
+                "name": "group2",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "inline_one1_has_inline_one1_group2",
+                        "parentPk": "inline_one1_id",
+                        "childPk": "inline_one1_group2_id"
+                    },
+                    "ref": {
+                        "table": "inline_one1_group2",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one1_choice1": {
+        "slug": "inline_one1_choice1",
+        "table": {
+            "name": "inline_one1_choice1",
+            "pk": "id",
+            "verbose": "inline_one1_choice1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one1_choice2": {
+        "slug": "inline_one1_choice2",
+        "table": {
+            "name": "inline_one1_choice2",
+            "pk": "id",
+            "verbose": "inline_one1_choice2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one1_group1": {
+        "slug": "inline_one1_group1",
+        "table": {
+            "name": "inline_one1_group1",
+            "pk": "id",
+            "verbose": "inline_one1_group1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one1_group2": {
+        "slug": "inline_one1_group2",
+        "table": {
+            "name": "inline_one1_group2",
+            "pk": "id",
+            "verbose": "inline_one1_group2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one1_has_inline_one1_group1": {
+        "slug": "inline_one1_has_inline_one1_group1",
+        "table": {
+            "name": "inline_one1_has_inline_one1_group1",
+            "pk": "inline_one1_id",
+            "verbose": "inline_one1_has_inline_one1_group1"
+        },
+        "columns": [
+            {
+                "name": "inline_one1_id",
+                "verbose": "inline_one1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "inline_one1_group1_id",
+                "verbose": "inline_one1_group1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one1_has_inline_one1_group2": {
+        "slug": "inline_one1_has_inline_one1_group2",
+        "table": {
+            "name": "inline_one1_has_inline_one1_group2",
+            "pk": "inline_one1_id",
+            "verbose": "inline_one1_has_inline_one1_group2"
+        },
+        "columns": [
+            {
+                "name": "inline_one1_id",
+                "verbose": "inline_one1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "inline_one1_group2_id",
+                "verbose": "inline_one1_group2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one2": {
+        "slug": "inline_one2",
+        "table": {
+            "name": "inline_one2",
+            "pk": "id",
+            "verbose": "Inline One2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "item_id",
+                "verbose": "item_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "inline_one2_choice1_id",
+                "verbose": "Choice1",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "inline_one2_choice1",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "name": "inline_one2_choice2_id",
+                "verbose": "Choice2",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "inline_one2_choice2",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "verbose": "Group1",
+                "name": "group1",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "inline_one2_has_inline_one2_group1",
+                        "parentPk": "inline_one2_id",
+                        "childPk": "inline_one2_group1_id"
+                    },
+                    "ref": {
+                        "table": "inline_one2_group1",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            },
+            {
+                "verbose": "Group2",
+                "name": "group2",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "inline_one2_has_inline_one2_group2",
+                        "parentPk": "inline_one2_id",
+                        "childPk": "inline_one2_group2_id"
+                    },
+                    "ref": {
+                        "table": "inline_one2_group2",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one2_choice1": {
+        "slug": "inline_one2_choice1",
+        "table": {
+            "name": "inline_one2_choice1",
+            "pk": "id",
+            "verbose": "inline_one2_choice1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one2_choice2": {
+        "slug": "inline_one2_choice2",
+        "table": {
+            "name": "inline_one2_choice2",
+            "pk": "id",
+            "verbose": "inline_one2_choice2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one2_group1": {
+        "slug": "inline_one2_group1",
+        "table": {
+            "name": "inline_one2_group1",
+            "pk": "id",
+            "verbose": "inline_one2_group1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one2_group2": {
+        "slug": "inline_one2_group2",
+        "table": {
+            "name": "inline_one2_group2",
+            "pk": "id",
+            "verbose": "inline_one2_group2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one2_has_inline_one2_group1": {
+        "slug": "inline_one2_has_inline_one2_group1",
+        "table": {
+            "name": "inline_one2_has_inline_one2_group1",
+            "pk": "inline_one2_id",
+            "verbose": "inline_one2_has_inline_one2_group1"
+        },
+        "columns": [
+            {
+                "name": "inline_one2_id",
+                "verbose": "inline_one2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "inline_one2_group1_id",
+                "verbose": "inline_one2_group1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "inline_one2_has_inline_one2_group2": {
+        "slug": "inline_one2_has_inline_one2_group2",
+        "table": {
+            "name": "inline_one2_has_inline_one2_group2",
+            "pk": "inline_one2_id",
+            "verbose": "inline_one2_has_inline_one2_group2"
+        },
+        "columns": [
+            {
+                "name": "inline_one2_id",
+                "verbose": "inline_one2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "inline_one2_group2_id",
+                "verbose": "inline_one2_group2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "item": {
+        "slug": "item",
+        "table": {
+            "name": "item",
+            "pk": "id",
+            "verbose": "Item"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "item_choice1_id",
+                "verbose": "Choice1",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "item_choice1",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "name": "item_choice2_id",
+                "verbose": "Choice2",
+                "control": {
+                    "select": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                },
+                "oneToMany": {
+                    "table": "item_choice2",
+                    "pk": "id",
+                    "columns": [
+                        "id"
+                    ]
+                }
+            },
+            {
+                "verbose": "Item Group1",
+                "name": "item_group1",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "item_has_item_group1",
+                        "parentPk": "item_id",
+                        "childPk": "item_group1_id"
+                    },
+                    "ref": {
+                        "table": "item_group1",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            },
+            {
+                "verbose": "Item Group2",
+                "name": "item_group2",
+                "control": {
+                    "select": true,
+                    "multiple": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "editview": {
+                    "show": true
+                },
+                "manyToMany": {
+                    "link": {
+                        "table": "item_has_item_group2",
+                        "parentPk": "item_id",
+                        "childPk": "item_group2_id"
+                    },
+                    "ref": {
+                        "table": "item_group2",
+                        "pk": "id",
+                        "columns": [
+                            "id"
+                        ]
+                    }
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false,
+            "oneToOne": {
+                "inline_one1": "item_id",
+                "inline_one2": "item_id"
+            },
+            "manyToOne": {
+                "inline_many1": "item_id",
+                "inline_many2": "item_id"
+            }
+        }
+    },
+    "item_choice1": {
+        "slug": "item_choice1",
+        "table": {
+            "name": "item_choice1",
+            "pk": "id",
+            "verbose": "item_choice1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "item_choice2": {
+        "slug": "item_choice2",
+        "table": {
+            "name": "item_choice2",
+            "pk": "id",
+            "verbose": "item_choice2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "item_group1": {
+        "slug": "item_group1",
+        "table": {
+            "name": "item_group1",
+            "pk": "id",
+            "verbose": "item_group1"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "item_group2": {
+        "slug": "item_group2",
+        "table": {
+            "name": "item_group2",
+            "pk": "id",
+            "verbose": "item_group2"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "item_has_item_group1": {
+        "slug": "item_has_item_group1",
+        "table": {
+            "name": "item_has_item_group1",
+            "pk": "item_id",
+            "verbose": "item_has_item_group1"
+        },
+        "columns": [
+            {
+                "name": "item_id",
+                "verbose": "item_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "item_group1_id",
+                "verbose": "item_group1_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "item_has_item_group2": {
+        "slug": "item_has_item_group2",
+        "table": {
+            "name": "item_has_item_group2",
+            "pk": "item_id",
+            "verbose": "item_has_item_group2"
+        },
+        "columns": [
+            {
+                "name": "item_id",
+                "verbose": "item_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "item_group2_id",
+                "verbose": "item_group2_id",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": false
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    }
+}
