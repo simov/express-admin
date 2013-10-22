@@ -1,52 +1,52 @@
 
 <div class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-        <div class="container">
-            <a href="{{url.home}}" class="brand">{{string.logo}}</a>
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div id="top-nav" class="nav-collapse">
-                <ul class="nav">
-                    {{#layouts}}
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{string.layout}} <b class="caret"></b></a>
-                        <ul id="layout" class="dropdown-menu">
-                            <li class="active"><a href="#fluid">{{string.fluid}}</a></li>
-                            <li><a href="#fixed">{{string.fixed}}</a></li>
-                        </ul>
-                    </li>
-                    {{/layouts}}
+	<div class="navbar-inner">
+		<div class="container">
+			<a href="{{url.home}}" class="brand">{{string.logo}}</a>
+			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div id="top-nav" class="nav-collapse">
+				<ul class="nav">
+					{{#layouts}}
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{string.layout}} <b class="caret"></b></a>
+						<ul id="layout" class="dropdown-menu">
+							<li class="active"><a href="#fluid">{{string.fluid}}</a></li>
+							<li><a href="#fixed">{{string.fixed}}</a></li>
+						</ul>
+					</li>
+					{{/layouts}}
 
-                    {{#themes}}
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{string.theme}} <b class="caret"></b></a>
-                        <ul id="theme" class="dropdown-menu">
-                            {{#theme}}
-                            <li><a href="#{{key}}">{{name}}</a></li>
-                            {{/theme}}
-                        </ul>
-                    </li>
-                    {{/themes}}
+					{{#themes}}
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{string.theme}} <b class="caret"></b></a>
+						<ul id="theme" class="dropdown-menu">
+							{{#theme}}
+							<li><a href="#{{key}}">{{name}}</a></li>
+							{{/theme}}
+						</ul>
+					</li>
+					{{/themes}}
 
-                    {{#languages}}
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{string.language}} <b class="caret"></b></a>
-                        <ul id="language" class="dropdown-menu">
-                            {{#language}}
-                            <li><a href="#{{key}}">{{name}}</a></li>
-                            {{/language}}
-                        </ul>
-                    </li>
-                    {{/languages}}
+					{{#languages}}
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{string.language}} <b class="caret"></b></a>
+						<ul id="language" class="dropdown-menu">
+							{{#language}}
+							<li><a href="#{{key}}">{{name}}</a></li>
+							{{/language}}
+						</ul>
+					</li>
+					{{/languages}}
 
-                    {{#user}}
-                    <li><a href="/logout">{{string.logout}} <strong>{{name}}</strong></a></li>
-                    {{/user}}
-                </ul>
-            </div>
-        </div>
-    </div>
+					{{#user}}
+					<li><a href="/logout">{{string.logout}} <strong>{{name}}</strong></a></li>
+        			{{/user}}
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,0 +1,1297 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"col",
+				"columns"
+			],
+			[
+				"delete",
+				"deleteSubscription"
+			],
+			[
+				"share",
+				"shareId"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"resi",
+				"resizedPath"
+			],
+			[
+				"new",
+				"newDimensions"
+			],
+			[
+				"Lantern_",
+				"Lantern_Log"
+			],
+			[
+				"getImage",
+				"getImageGeometry"
+			],
+			[
+				"canvas",
+				"canvas_map"
+			],
+			[
+				"max",
+				"max_images"
+			],
+			[
+				"full",
+				"full_row"
+			],
+			[
+				"hi",
+				"highest_full_row"
+			],
+			[
+				"canva",
+				"canvas_map"
+			],
+			[
+				"cols",
+				"cols"
+			],
+			[
+				"result",
+				"result"
+			],
+			[
+				"iterator_to",
+				"iterator_to_array"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"Im",
+				"Imagick"
+			],
+			[
+				"__",
+				"__LINE__"
+			],
+			[
+				"Lantern_Rest_",
+				"Lantern_Rest_Exception_BadRequest"
+			],
+			[
+				"Ima",
+				"ImagickException"
+			],
+			[
+				"include",
+				"includeDeleted"
+			],
+			[
+				"Lantern",
+				"Lantern_Log"
+			],
+			[
+				"utm",
+				"utm_namespace"
+			],
+			[
+				"user",
+				"userPhotos"
+			],
+			[
+				"like",
+				"like_count"
+			],
+			[
+				"me",
+				"methodName"
+			],
+			[
+				"error",
+				"errorString"
+			],
+			[
+				"fullR",
+				"fullRefreshTimeHasElapsed"
+			],
+			[
+				"var",
+				"var_export"
+			],
+			[
+				"album",
+				"albumOffset"
+			],
+			[
+				"update",
+				"updated-min"
+			],
+			[
+				"TS",
+				"minTSParams"
+			],
+			[
+				"num",
+				"num_photos"
+			],
+			[
+				"albu",
+				"albumCursor"
+			],
+			[
+				"numPhoto",
+				"numPhotosToFetch"
+			],
+			[
+				"lastFullR",
+				"lastFullRefDate"
+			],
+			[
+				"fullRefresh",
+				"fullRefreshInterval"
+			],
+			[
+				"subqu",
+				"subquery"
+			],
+			[
+				"alb",
+				"album_query"
+			],
+			[
+				"Lane",
+				"Lantern_Log"
+			],
+			[
+				"callback",
+				"callbackUrl"
+			],
+			[
+				"total",
+				"totalPages"
+			],
+			[
+				"last",
+				"lastModifiedTimeStamp"
+			],
+			[
+				"photoData",
+				"photoData"
+			],
+			[
+				"totalPh",
+				"totalPhotoSets"
+			],
+			[
+				"getUserPh",
+				"getUserPhotosByPage"
+			],
+			[
+				"getP",
+				"getPersistentData"
+			],
+			[
+				"Lanter",
+				"Lantern_Log"
+			],
+			[
+				"access",
+				"access_token"
+			],
+			[
+				"request",
+				"request_token"
+			],
+			[
+				"dele",
+				"delegate"
+			],
+			[
+				"La",
+				"Lantern_Log"
+			],
+			[
+				"search",
+				"searchMetadata"
+			],
+			[
+				"pht",
+				"photo_id"
+			],
+			[
+				"doma",
+				"DOMAIN_MAP"
+			],
+			[
+				"api",
+				"api_key"
+			],
+			[
+				"res",
+				"result"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "settings.json",
+			"settings":
+			{
+				"buffer_size": 39776,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/usr/local/lib/node_modules/express-admin/lib/utils/program.js",
+			"settings":
+			{
+				"buffer_size": 3282,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/usr/local/lib/node_modules/express-admin/lib/utils/query.js",
+			"settings":
+			{
+				"buffer_size": 3533,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/usr/local/lib/node_modules/express-admin/app.js",
+			"settings":
+			{
+				"buffer_size": 6518,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/usr/local/lib/node_modules/express-admin/lib/core/filterview.js",
+			"settings":
+			{
+				"buffer_size": 2459,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 774 files for \"query.dump\" (case sensitive)\n\n/usr/local/lib/node_modules/express-admin/lib/core/filterview.js:\n    8  exports.query = function (args, data) {\n    9  	//args.view is the object for the table [slug:<table-name>, etc...]\n   10: 	query.dump(data);\n   11  	var view = args.view,\n   12  		table = view.table,\n   ..\n   32  		}\n   33  	}\n   34: 	query.dump(joins);\n   35  	names.unshift(sql.pk(table.name, table.pk));\n   36  	var order = '';\n   ..\n   49  exports.data = function (args, cb) {\n   50  	var columns = args.view.columns;\n   51: 	query.dump(\"Columns:\", columns);\n   52  	var visible = [],\n   53  		names = [];\n   ..\n   58  	}\n   59  	columns = visible;\n   60: 	query.dump(\"Visible:\", columns);\n   61  	args.db.connection.query(args.query, function (err, rows) {\n   62  		if (err) return cb(err);\n   ..\n   75  			records.push({pk: pk, values: values});\n   76  		}\n   77: 		query.dump(\"Records:\", records);\n   78  		cb(null, {columns: names, records: records});\n   79  	});\n\n5 matches in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 1022,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "/usr/local/lib/node_modules/express-admin/routes/filterview.js",
+			"settings":
+			{
+				"buffer_size": 2048,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/usr/local/lib/node_modules/express-admin/lib/core/listview.js",
+			"settings":
+			{
+				"buffer_size": 2147,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/usr/local/lib/node_modules/express-admin/lib/utils/sql.js",
+			"settings":
+			{
+				"buffer_size": 2875,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/usr/local/lib/node_modules/express-admin/views/filterview.html",
+			"settings":
+			{
+				"buffer_size": 1974,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Disable Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 170.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) ",
+			"--ver",
+			"showver",
+			"version"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/usr/local/lib/node_modules/express-admin/routes/listview.js",
+		"/usr/local/lib/node_modules/express-admin/lib/core/listview.js",
+		"/usr/local/lib/node_modules/express-admin/lib/utils/routes.js",
+		"/usr/local/lib/node_modules/express-admin/routes/auth.js",
+		"/usr/local/lib/node_modules/express-admin/routes/index.js",
+		"/usr/local/lib/node_modules/express-admin/views/listview.html",
+		"/usr/local/lib/node_modules/express-admin/package.json",
+		"/usr/local/lib/node_modules/express-admin/node_modules/deep-copy/lib/dcopy.js",
+		"/usr/local/lib/node_modules/express-admin/routes/editview.js",
+		"/usr/local/lib/node_modules/express-admin/lib/utils/template.js",
+		"/usr/local/lib/node_modules/express-admin/node_modules/hogan.js/test/templates/list.mustache",
+		"/usr/local/lib/node_modules/express-admin/node_modules/express/lib/response.js",
+		"/usr/local/lib/node_modules/express-admin/node_modules/express/node_modules/connect/lib/middleware/csrf.js",
+		"/usr/local/lib/node_modules/express-admin/node_modules/hogan.js/test/jquery.js",
+		"/usr/local/lib/node_modules/express-admin/views/filterview.html",
+		"/usr/local/lib/node_modules/express-admin/config/lang/en.json",
+		"/usr/local/lib/node_modules/express-admin/config/lang/bg.json",
+		"/var/www/kwik-cloud/library/Lantern/Model/Assets.php",
+		"/var/www/kwik-cloud/application/modules/share/controllers/PreviewController.php",
+		"/var/www/kwik-cloud/library/Lantern/Controller/Try.php",
+		"/var/www/kwik-cloud/application/modules/try/views/scripts/page/try.phtml",
+		"/var/www/kwik-cloud/library/Lantern/View/Renderer.php",
+		"/var/www/kwik-cloud/library/Lantern/View/Renderer/NodeHTTP.php",
+		"/var/www/kwik-cloud/library/Zend/Cloud/QueueService/Message.php",
+		"/var/www/kwik-cloud/library/Lantern/Controller/Helper/ApiHelper.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Records.php",
+		"/var/www/kwik-cloud/application/modules/ncs/controllers/NcdvcController.php",
+		"/var/www/kwik-cloud/library/Lantern/Rest/AssetApi.php",
+		"/var/www/kwik-cloud/library/Lantern/Rest/AssetApi/Thumbnails.php",
+		"/var/www/kwik-cloud/library/Lantern/Tool/ImagingCalculator.php",
+		"/var/www/kwik-cloud/library/Lantern/Tool/Images.php",
+		"/var/www/kwik-cloud/library/Lantern/Storage/S3.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Assets/Thumbnails.php",
+		"/var/www/kwik-cloud/library/Zend/Service/Amazon/S3.php",
+		"/var/www/kwik-cloud/library/Lantern/Storage/Local.php",
+		"/var/www/kwik-cloud/library/Lantern/Storage/Interface.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Assets/Previews.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Shares.php",
+		"/var/www/kwik-cloud/library/Lantern/Rest/ApiBase.php",
+		"/var/www/kwik-cloud/library/Zend/Http/Client.php",
+		"/var/www/kwik-cloud/application/modules/ncs/models/Exception.php",
+		"/var/www/kwik-cloud/library/Lantern/Service/Ncnotifier.php",
+		"/var/www/kwik-cloud/application/Application.php",
+		"/var/www/kwik-cloud/application/configs/application.ini",
+		"/var/www/kwik-cloud/application/modules/api/controllers/Thumbnails/ObjectsController.php",
+		"/var/www/kwik-cloud/application/modules/admin/controllers/ThumbnailsController.php",
+		"/var/www/kwik-cloud/application/modules/share/controllers/ThumbnailsController.php",
+		"/var/www/kwik-cloud/application/modules/api/controllers/ThumbnailsController.php",
+		"/var/www/kwik-cloud/library/Lantern/Log.php",
+		"/var/www/kwik-cloud/library/Lantern/Record.php",
+		"/var/www/kwik-cloud/library/MongoRecord/BaseMongoRecord.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/ExternalAssets.php",
+		"/var/www/kwik-cloud/library/Lantern/Controller/Share.php",
+		"/var/www/kwik-cloud/library/Lantern/Record/Asset.php",
+		"/var/www/kwik-cloud/library/Lantern/Storage/Factory.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Assets/Files.php",
+		"/var/www/kwik-cloud/library/Zend/Controller/Action.php",
+		"/var/www/kwik-cloud/application/modules/default/controllers/LoginController.php",
+		"/var/www/kwik-cloud/library/Lantern/Service/Instagram.php",
+		"/var/www/kwik-cloud/library/Lantern/Service/Flickr.php",
+		"/var/www/kwik-cloud/library/MongoRecord/MongoRecordIterator.php",
+		"/var/www/kwik-cloud/library/Lantern/Rest/ApiBase/User.php",
+		"/var/www/kwik-cloud/library/Analytics/Autoload.php",
+		"/var/www/kwik-cloud/library/Lantern/Service/Ncs.php",
+		"/var/www/kwik-cloud/library/Lantern/functions.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Records/Devices.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Records/Devices/Interface.php",
+		"/var/www/kwik-cloud/application/modules/api/controllers/UserController.php",
+		"/var/www/kwik-cloud/library/Lantern/Service/Flickr/Exception.php",
+		"/var/www/kwik-cloud/library/Lantern/Job/Indexer/Flickr.php",
+		"/var/www/kwik-cloud/application/modules/share/controllers/PageController.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Connection/Flickr.php",
+		"/var/www/kwik-cloud/application/modules/default/models/Account.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Tool/RecordQuerier.php",
+		"/var/www/kwik-cloud/application/modules/default/views/scripts/features/index.phtml",
+		"/var/www/kwik-cloud/application/modules/api/controllers/Devices/FlickrController.php",
+		"/var/www/kwik-cloud/application/emails/forgot.phtml",
+		"/var/www/kwik-cloud/library/Lantern/View/Helper/Inject.php",
+		"/home/riffle/.config/sublime-text-3/Packages/Phpcs/phpcs.sublime-settings",
+		"/home/riffle/.config/sublime-text-3/Packages/User/phpcs.sublime-settings",
+		"/home/riffle/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/var/www/kwik-cloud/bin/verify_image_integrity.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Connection/Sugarsync.php",
+		"/var/www/kwik-cloud/library/Lantern/Job/Indexer/Sugarsync.php",
+		"/var/www/kwik-cloud/application/modules/default/controllers/AccountController.php",
+		"/var/www/kwik-cloud/bin/job_runner.php",
+		"/var/www/kwik-cloud/library/Zend/Http/Client/Adapter/Curl.php",
+		"/var/www/kwik-cloud/library/Lantern/Dav/Collection/Collection.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Connection/Facebook.php",
+		"/var/www/kwik-cloud/library/Zend/Application.php",
+		"/var/www/kwik-cloud/application/Bootstrap.php",
+		"/var/www/kwik-cloud/library/Zend/Application/Bootstrap/BootstrapAbstract.php",
+		"/var/www/kwik-cloud/library/System/Daemon.php",
+		"/var/www/kwik-cloud/var/log/error.log",
+		"/var/www/kwik-cloud/library/Lantern/Model/Connection/Facebook/Tags.php",
+		"/var/www/kwik-cloud/library/Lantern/Rest/AssetApi/Files.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Records/Objects.php",
+		"/var/www/kwik-cloud/library/Lantern/Rest/ModelApi.php",
+		"/var/www/kwik-cloud/application/modules/api/controllers/ObjectsController.php",
+		"/var/www/kwik-cloud/application/modules/try/controllers/PageController.php",
+		"/var/www/kwik-cloud/library/Lantern/Dav/Properties/Collection.php",
+		"/var/www/kwik-cloud/public/js/libs/jquery_mobile/jquery_mobile.js",
+		"/var/www/kwik-cloud/library/Lantern/Model/Records/Devices/Kwikmedia.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Records/Assets.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/Records/ObjectsInCollections.php",
+		"/var/www/kwik-cloud/library/Lantern/Record/ObjectInCollection.php",
+		"/var/www/kwik-cloud/library/Lantern/Dav/File/Record.php",
+		"/var/www/kwik-cloud/library/Lantern/Dav/Properties.php",
+		"/var/www/kwik-cloud/library/Lantern/Tool/RelevancyCalculator.php",
+		"/var/www/kwik-cloud/var/log/debug.log",
+		"/var/www/kwik-cloud/library/Lantern/Model/Records/Collections.php",
+		"/var/www/kwik-cloud/library/Lantern/Job/Shares.php",
+		"/var/www/kwik-cloud/application/modules/default/controllers/RegisterController.php",
+		"/var/www/kwik-cloud/library/Lantern/Job/SocialCounts.php",
+		"/var/www/kwik-cloud/library/Lantern/Model/MediaSense.php",
+		"/var/www/kwik-cloud/library/Lantern/Install/MongoTweaker.php",
+		"/var/www/kwik-cloud/library/Lantern/Dav/Properties/Object.php",
+		"/var/www/kwik-cloud/application/modules/api/controllers/DevicesController.php",
+		"/var/www/kwik-cloud/library/Lantern/Job/RefreshTrigger.php",
+		"/var/www/kwik-cloud/library/Zend/Registry.php",
+		"/var/www/kwik-cloud/library/Lantern/Rest/ExternalSourceApi.php",
+		"/var/www/kwik-cloud/application/modules/api/controllers/Devices/FacebookController.php",
+		"/var/www/kwik-cloud/application/modules/api/controllers/Devices/GplusController.php",
+		"/var/www/kwik-cloud/application/modules/api/controllers/Collections/Album/ObjectsController.php",
+		"/var/www/kwik-cloud/library/Lantern/Job/Indexer.php",
+		"/var/www/kwik-cloud/application/modules/api/controllers/Devices/DefaultController.php",
+		"/var/www/kwik-cloud/library/Zend/Form.php",
+		"/var/www/kwik-cloud/library/UnitedPrototype/GoogleAnalytics/Tracker.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"query.dump",
+			"oneToM",
+			"modal-body",
+			"data-toggle",
+			"getAllColumns",
+			"console.error",
+			"dump",
+			"}\n",
+			"dump",
+			"view",
+			"list",
+			"listview",
+			"list-view",
+			"list",
+			"listview",
+			"list",
+			"save-add",
+			"string",
+			"Add",
+			"users",
+			"Sign Up",
+			"Unauthorized requested performed to uri",
+			"Subscription",
+			"$service",
+			"){",
+			"enable",
+			"getResizedData",
+			"_getRecord",
+			"userModel",
+			"getFirstname",
+			"tapetry",
+			"canvas",
+			"images",
+			"Lantern_Assets_Minitapestry",
+			"Lantern_Model_Minitapestry",
+			"getRedirectUrl",
+			"this",
+			"::debug",
+			"debug",
+			"Imagick",
+			"debug",
+			"bucket",
+			"debug",
+			"delete",
+			"getAssetDataDimensions",
+			"getResizedData",
+			"deleteAssetRecordFiles",
+			"deleteSingleAsset",
+			"store",
+			"resizeImageInPath",
+			"TMP_PATH",
+			"proxy",
+			"getId",
+			"Unsupported content type",
+			"Lantern_Rest_AssetApi_Thumbnails",
+			"replaceExistingAsset",
+			"getFirstImageThumbnailUrl",
+			"replaceExistingAsset",
+			"s3",
+			"deleteFromS3",
+			"Lantern_Model_Assets_Thumbnails",
+			"assetModel",
+			"prox",
+			"storeAssetUsingStorageAdapter",
+			"shareId",
+			"deleteAssetRecordFiles",
+			"defaultStoradeAdapter",
+			"path",
+			"generate",
+			"images",
+			"bg",
+			"asfalt",
+			"s3",
+			"proxy",
+			"generateMini",
+			"mini",
+			"defaultStoradeAdapter",
+			"ASSETS_PATH",
+			"defaultStoradeAdapter",
+			"deviceIsEnabled",
+			"session",
+			"user",
+			"max",
+			"$cols*$rows",
+			"size",
+			"sizes",
+			"$width",
+			"$height",
+			"vbdim",
+			"$sizes[0]",
+			"hbdims",
+			"vbdims",
+			"Lantern_Service_Flickr_Exception",
+			"Exception",
+			"Flicker_Exception",
+			"130",
+			"this",
+			"SHAREPAGE_THUMBNAILURL_FORMAT",
+			"preview",
+			"LoginWithArgs",
+			"Log In",
+			"callLoginWithArgs",
+			"inject(",
+			"public",
+			"getThumbnailWithGivenSize",
+			"findAndReturnAssetData",
+			"getObjects",
+			"image_add",
+			"mriffle",
+			"assetDate",
+			"validateImage",
+			"changeUserPassword",
+			"CURLOPT_SSL_VERIFYPEER",
+			"CURLOPT_CAINFO",
+			"cacert",
+			"curl_setopt",
+			"curl",
+			"include_path",
+			"mcrypt",
+			"zend_execute",
+			"Cache",
+			"cache",
+			"countObjectsWithIds",
+			"filterUnreferencedObjects",
+			"filterUn",
+			"getCollection(",
+			"getCollection",
+			"countTotalObjectsFromCollection"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"filter",
+			"$model",
+			"Lantern_Model_Assets_Minitapestry",
+			"defaultStorageAdapter",
+			"size",
+			"$params['width']",
+			"$params['height']",
+			"$sizes[$x]",
+			"hbdim",
+			"vbdim",
+			"$edge",
+			"image",
+			"assetData",
+			"Analytics",
+			"result",
+			"albums",
+			"$albums[",
+			"$album[$this->albumCursor][",
+			"$get_data",
+			"get_data",
+			"callback",
+			"size[0]",
+			"$this->query_extras",
+			"::$step_size",
+			"datetaken",
+			"$this->step_size",
+			"",
+			"flickr",
+			"FLICKR",
+			"flickr",
+			"Flickr",
+			"Api",
+			"flickr",
+			"flickrConfig",
+			"Lantern_Model_Connection_Flickr",
+			"flickr"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "settings.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 39776,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								19767,
+								19767
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 8620.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/usr/local/lib/node_modules/express-admin/lib/utils/program.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3282,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								595,
+								595
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1326.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/usr/local/lib/node_modules/express-admin/lib/utils/query.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3533,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2921,
+								2921
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1014.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/usr/local/lib/node_modules/express-admin/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6518,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5332,
+								5332
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2133.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/usr/local/lib/node_modules/express-admin/lib/core/filterview.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2459,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1282,
+								1282
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 277.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1022,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										252,
+										262
+									],
+									[
+										364,
+										374
+									],
+									[
+										559,
+										569
+									],
+									[
+										690,
+										700
+									],
+									[
+										901,
+										911
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								378,
+								378
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/usr/local/lib/node_modules/express-admin/routes/filterview.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								481,
+								481
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 39.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/usr/local/lib/node_modules/express-admin/lib/core/listview.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								565,
+								565
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/usr/local/lib/node_modules/express-admin/lib/utils/sql.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2875,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1137,
+								1137
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 663.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/usr/local/lib/node_modules/express-admin/views/filterview.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1974,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1154,
+								1154
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 156.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "nerobiu.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"csrf",
+				"express-admin/node_modules/express/node_modules/connect/lib/middleware/csrf.js"
+			],
+			[
+				"csrf.js",
+				"express-admin/node_modules/express/node_modules/connect/lib/middleware/csrf.js"
+			],
+			[
+				"list",
+				"express-admin/node_modules/hogan.js/test/templates/list.mustache"
+			],
+			[
+				"package",
+				"express-admin/package.json"
+			],
+			[
+				"lantern/install/",
+				"library/Lantern/Install/InstagramSubscription.php"
+			],
+			[
+				"try",
+				"library/Lantern/Controller/Try.php"
+			],
+			[
+				"previewc",
+				"application/modules/share/controllers/PreviewController.php"
+			],
+			[
+				"objectcontrller",
+				"application/modules/api/controllers/Thumbnails/ObjectsController.php"
+			],
+			[
+				"ncdvcc",
+				"application/modules/ncs/controllers/NcdvcController.php"
+			],
+			[
+				"object",
+				"application/modules/api/controllers/Thumbnails/ObjectsController.php"
+			],
+			[
+				"thumbnailc",
+				"application/modules/api/controllers/ThumbnailsController.php"
+			],
+			[
+				"thumbnailscontroller",
+				"application/modules/api/controllers/Thumbnails/ObjectsController.php"
+			],
+			[
+				"thumbnailcon",
+				"application/modules/api/controllers/ThumbnailsController.php"
+			],
+			[
+				"previewcon",
+				"application/modules/share/controllers/PreviewController.php"
+			],
+			[
+				"apibase",
+				"library/Lantern/Rest/ApiBase.php"
+			],
+			[
+				"devices",
+				"library/Lantern/Model/Records/Devices.php"
+			],
+			[
+				"user.",
+				"library/Lantern/Rest/ApiBase/User.php"
+			],
+			[
+				"user.php",
+				"library/Lantern/Rest/ApiBase/User.php"
+			],
+			[
+				"mongorecor",
+				"library/MongoRecord/MongoRecordIterator.php"
+			],
+			[
+				"flickr",
+				"application/modules/api/controllers/Devices/FlickrController.php"
+			],
+			[
+				"inject",
+				"library/Lantern/View/Helper/Inject.php"
+			],
+			[
+				"assets",
+				"library/Lantern/Model/Assets.php"
+			],
+			[
+				"bootstrapabstract",
+				"library/Zend/Application/Bootstrap/BootstrapAbstract.php"
+			],
+			[
+				"application.php",
+				"library/Zend/Application.php"
+			],
+			[
+				"job_runner",
+				"bin/job_runner.php"
+			],
+			[
+				"bootstrapabrat",
+				"library/Zend/Application/Bootstrap/BootstrapAbstract.php"
+			],
+			[
+				"dae",
+				"library/System/Daemon.php"
+			],
+			[
+				"ncdvc",
+				"application/modules/ncs/controllers/NcdvcController.php"
+			],
+			[
+				"basemongorecord",
+				"library/MongoRecord/BaseMongoRecord.php"
+			],
+			[
+				"objects",
+				"library/Lantern/Model/Records/Objects.php"
+			],
+			[
+				"loader",
+				"library/Zend/Loader.php"
+			],
+			[
+				"bootstra",
+				"application/modules/default/Bootstrap.php"
+			],
+			[
+				"bootstrapabstr",
+				"library/Zend/Application/Bootstrap/BootstrapAbstract.php"
+			],
+			[
+				"",
+				"library/Lantern/Job/RefreshTrigger.php"
+			],
+			[
+				"facebook.pp",
+				"library/Lantern/Model/Connection/Facebook.php"
+			],
+			[
+				"password",
+				"application/modules/default/forms/Account/Password.php"
+			],
+			[
+				"reset",
+				"application/modules/default/views/scripts/login/reset.phtml"
+			],
+			[
+				"media",
+				"library/Lantern/Job/MediaSense.php"
+			],
+			[
+				"zend/request/http",
+				"library/Zend/Controller/Request/Http.php"
+			],
+			[
+				"zend/controller/request/",
+				"library/Zend/Controller/Request/Abstract.php"
+			],
+			[
+				"abstract",
+				"library/Zend/Session/Abstract.php"
+			],
+			[
+				"namespace",
+				"library/Zend/Session/Namespace.php"
+			],
+			[
+				"zend/controller/ac",
+				"library/Zend/Controller/Action.php"
+			],
+			[
+				"zend/oauth/token/ac",
+				"library/Zend/Oauth/Token/Access.php"
+			],
+			[
+				"client",
+				"library/Zend/Oauth/Client.php"
+			],
+			[
+				"zend/oauth/c",
+				"library/Zend/Oauth/Config.php"
+			],
+			[
+				"externalsourceapi",
+				"library/Lantern/Rest/ExternalSourceApi.php"
+			],
+			[
+				"indexer",
+				"library/Lantern/Job/Indexer.php"
+			],
+			[
+				"lantern/model/connection",
+				"library/Lantern/Model/Connection.php"
+			],
+			[
+				"mediasense",
+				"library/Lantern/Model/MediaSense.php"
+			],
+			[
+				"social_ref",
+				"public/js/admin/views/social_refresh.js"
+			],
+			[
+				"connection.phtml",
+				"application/modules/default/views/scripts/account/partials/connection.phtml"
+			],
+			[
+				"flickr.php",
+				"library/Zend/Service/Flickr.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/var/www/kwik-cloud.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 681.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 236.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/home/riffle/biuadmin"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/usr/local/lib/node_modules/express-admin"
+		}
+	]
+}

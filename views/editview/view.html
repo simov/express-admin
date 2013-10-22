@@ -1,40 +1,40 @@
 {{#view}}
 <fieldset>
-    {{#tables}}
-    <table class="table table-bordered ex-table ex-table-view">
-        <tbody>
-        {{#records}}
-            <tr class="head hidden">
-                <td>
-                {{#pk}}
-                    <input type="hidden" name="{{key}}" value="{{value}}" />
-                {{/pk}}
-                {{#insert}}
-                    <input type="hidden" name="{{key}}" value="{{value}}" />
-                {{/insert}}
-                </td>
-            </tr>
-            {{#columns}}
-            <tr>
-                {{>column}}
-            </tr>
-            {{/columns}}
-        {{/records}}
+	{{#tables}}
+	<table class="table table-bordered ex-table ex-table-view">
+		<tbody>
+		{{#records}}
+			<tr class="head hidden">
+				<td>
+				{{#pk}}
+					<input type="hidden" name="{{key}}" value="{{value}}" />
+				{{/pk}}
+				{{#insert}}
+					<input type="hidden" name="{{key}}" value="{{value}}" />
+				{{/insert}}
+				</td>
+			</tr>
+			{{#columns}}
+			<tr>
+				{{>column}}
+			</tr>
+			{{/columns}}
+		{{/records}}
 
-        {{^records}}
-            <tr class="head hidden">
-                <td>
-                    <input type="hidden" name="view[{{name}}][records][0][insert]" value="true" />
-                </td>
-            </tr>
-            {{#blank}}
-            <tr>
-                {{>column}}
-            </tr>
-            {{/blank}}
-        {{/records}}
-        </tbody>
-    </table>
-    {{/tables}}
+		{{^records}}
+			<tr class="head hidden">
+				<td>
+					<input type="hidden" name="view[{{name}}][records][0][insert]" value="true" />
+				</td>
+			</tr>
+			{{#blank}}
+			<tr>
+				{{>column}}
+			</tr>
+			{{/blank}}
+		{{/records}}
+		</tbody>
+	</table>
+	{{/tables}}
 </fieldset>
 {{/view}}

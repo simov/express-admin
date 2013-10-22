@@ -2,33 +2,33 @@
 <h2>{{string.site-admin}}</h2>
 
 <table class="table table-bordered table-striped table-hover ex-table ex-table-main">
-    <thead>
-        <tr class="label-inverse">
-            <th>{{string.tables}}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{#tables}}
-        <tr>
-            <td><a href="{{slug}}">{{name}}</a></td>
-        </tr>
-    {{/tables}}
-    </tbody>
+	<thead>
+		<tr class="label-inverse">
+			<th>{{string.tables}}</th>
+		</tr>
+	</thead>
+	<tbody>
+	{{#tables}}
+		<tr>
+			<td><a href="{{slug}}">{{name}}</a></td>
+		</tr>
+	{{/tables}}
+	</tbody>
 </table>
 
 {{#have}}
 <table class="table table-bordered table-striped table-hover ex-table ex-table-main">
-    <thead>
-        <tr class="label-inverse">
-            <th>{{string.others}}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{#views}}
-        <tr>
-            <td><a href="{{slug}}">{{name}}</a></td>
-        </tr>
-    {{/views}}
-    </tbody>
+	<thead>
+		<tr class="label-inverse">
+			<th>{{string.others}}</th>
+		</tr>
+	</thead>
+	<tbody>
+	{{#views}}
+		<tr>
+			<td><a href="{{slug}}">{{name}}</a></td>
+		</tr>
+	{{/views}}
+	</tbody>
 </table>
 {{/have}}
