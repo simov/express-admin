@@ -7,40 +7,40 @@
 {{/show.error}}
 
 <form id="login" class="form-horizontal" method="post" action="/login">
-    <fieldset>
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th class="label-inverse">{{string.login}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        {{!username}}
-                        <div class="control-group">
-                            <label class="control-label">{{string.username}}:</label>
-                            <div class="controls">
-                                <input type="text" name="username" value="{{username}}" />
-                            </div>
-                        </div>
-                        {{!password}}
-                        <div class="control-group">
-                            <label class="control-label">{{string.password}}:</label>
-                            <div class="controls">
-                                <input type="password" name="password" value="" />
-                            </div>
-                        </div>
-                        {{!submit}}
-                        <div class="control-group">
-                            <div class="controls">
-                                <input type="submit" value="{{string.login}}" class="btn" />
-                                <input type="hidden" name="_csrf" value="{{csrf}}" />
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </fieldset>
+	<fieldset>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th class="label-inverse">{{string.login}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						{{!username}}
+						<div class="control-group">
+							<label class="control-label">{{string.username}}:</label>
+							<div class="controls">
+								<input type="text" name="username" value="{{username}}" />
+							</div>
+						</div>
+						{{!password}}
+						<div class="control-group">
+							<label class="control-label">{{string.password}}:</label>
+							<div class="controls">
+								<input type="password" name="password" value="" />
+							</div>
+						</div>
+						{{!submit}}
+						<div class="control-group">
+							<div class="controls">
+								<input type="submit" value="{{string.login}}" class="btn" />
+								<input type="hidden" name="_csrf" value="{{csrf}}" />
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
 </form>

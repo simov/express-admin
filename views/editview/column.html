@@ -1,44 +1,44 @@
 
 <td>
-    <div class="control-group {{#error}}error{{/error}}">
-        <label class="control-label">{{verbose}}</label>
-        <div class="controls">
-            <!-- data-type-name={{type.name}} data-type-range="{{type.range}}" data-allow-null="{{allowNull}}" data-default-value="{{defaultValue}}" -->
-        {{#control}}
+	<div class="control-group {{#error}}error{{/error}}">
+		<label class="control-label">{{verbose}}</label>
+		<div class="controls">
+			<!-- data-type-name={{type.name}} data-type-range="{{type.range}}" data-allow-null="{{allowNull}}" data-default-value="{{defaultValue}}" -->
+		{{#control}}
 
-            {{#text}}
-            <input type="text" name="{{key}}" value="{{value}}" />
-            {{/text}}
+			{{#text}}
+			<input type="text" name="{{key}}" value="{{value}}" />
+			{{/text}}
 
-            {{#textarea}}
-            <textarea name="{{key}}" rows="8" cols="1" {{#editor}}class="{{editor}}"{{/editor}}>{{value}}</textarea>
-            {{/textarea}}
+			{{#textarea}}
+			<textarea name="{{key}}" rows="8" cols="1" {{#editor}}class="{{editor}}"{{/editor}}>{{value}}</textarea>
+			{{/textarea}}
 
-            {{#select}}
-            <select name="{{key}}" class="chzn-select" data-placeholder="Select" {{#multiple}}multiple="multiple"{{/multiple}}>
-                <option value="NULL" {{#selected}}selected="selected"{{/selected}}></option>
-                {{!oneToMany}}
-                {{#value}}
-                <option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}}>{{__text}}</option>
-                {{/value}}
-            </select>
-            {{/select}}
+			{{#select}}
+			<select name="{{key}}" class="chzn-select" data-placeholder="Select" {{#multiple}}multiple="multiple"{{/multiple}}>
+				<option value="NULL" {{#selected}}selected="selected"{{/selected}}></option>
+				{{!oneToMany}}
+				{{#value}}
+				<option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}}>{{__text}}</option>
+				{{/value}}
+			</select>
+			{{/select}}
 
-            {{#date}}
-            <input type="text" name="{{key}}" value="{{value}}" class="datepicker" autocomplete="off" />
-            <a href="#" class="btn-today">{{string.today}}</a>
-            {{/date}}
+			{{#date}}
+			<input type="text" name="{{key}}" value="{{value}}" class="datepicker" autocomplete="off" />
+			<a href="#" class="btn-today">{{string.today}}</a>
+			{{/date}}
 
-            {{#hidden}}
-            <input type="hidden" name="{{key}}" value="{{value}}" />
-            {{/hidden}}
+			{{#hidden}}
+			<input type="hidden" name="{{key}}" value="{{value}}" />
+			{{/hidden}}
 
 
-        {{/control}}
+		{{/control}}
 
-            {{#error}}
-            <span class="help-block" data-error="{{type}}">{{message}}</span>
-            {{/error}}
-        </div>
-    </div>
+			{{#error}}
+			<span class="help-block" data-error="{{type}}">{{message}}</span>
+			{{/error}}
+		</div>
+	</div>
 </td>

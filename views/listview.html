@@ -1,43 +1,46 @@
 
+
+
 <h2>
-    {{string.select}} {{view.name}} {{string.to-change}}.
-    <a href="/{{view.slug}}/add" class="btn">{{string.add}} {{view.name}}</a>
+	{{string.select}} {{view.name}} {{string.to-change}}.
+	<a href="/{{view.slug}}/filter" class="btn">{{string.filter}} {{view.name}}</a>
+	<a href="/{{view.slug}}/add" class="btn">{{string.add}} {{view.name}}</a>
 </h2>
 
 {{#show.success}}
 <div class="alert alert-success">
-    <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
-    <strong>{{string.success}}:</strong> {{string.saved}}.
+	<a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+	<strong>{{string.success}}:</strong> {{string.saved}}.
 </div>
 {{/show.success}}
 
 {{#show.error}}
 <div class="alert alert-error">
-    <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
-    <strong>{{string.error}}:</strong> {{show.error}}.
+	<a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+	<strong>{{string.error}}:</strong> {{show.error}}.
 </div>
 {{/show.error}}
 
 <table class="table table-bordered table-striped table-hover ex-table ex-table-list">
-    <thead>
-        <tr class="label-inverse">
-        {{#columns}}
-            <th>{{.}}</th>
-        {{/columns}}
-        </tr>
-    </thead>
-    <tbody>
-    {{#records}}
-        <tr>
-        {{#pk}}
-            <td><a href="/{{view.slug}}/{{id}}">{{text}}</a></td>
-        {{/pk}}
-        {{#values}}
-            <td>{{.}}</td>
-        {{/values}}
-        </tr>
-    {{/records}}
-    </tbody>
+	<thead>
+		<tr class="label-inverse">
+		{{#columns}}
+			<th>{{.}}</th>
+		{{/columns}}
+		</tr>
+	</thead>
+	<tbody>
+	{{#records}}
+		<tr>
+		{{#pk}}
+			<td><a href="/{{view.slug}}/{{id}}">{{text}}</a></td>
+		{{/pk}}
+		{{#values}}
+			<td>{{.}}</td>
+		{{/values}}
+		</tr>
+	{{/records}}
+	</tbody>
 </table>
 
 {{>pagination}}

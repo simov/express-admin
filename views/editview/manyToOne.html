@@ -1,59 +1,59 @@
 {{#manyToOne}}
 <fieldset id="many">
-    {{#tables}}
-    <table class="table table-bordered ex-table ex-table-inline" data-table="{{name}}">
-        <thead>
-            <tr class="label-inverse">
-                <th>{{verbose}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {{#records}}
-            <tr class="head">
-                <td class="hero-unit">
-                    {{#pk}}
-                    <input type="hidden" name="{{key}}" value="{{value}}" />
-                    {{/pk}}
-                    {{#insert}}
-                    <input type="hidden" name="{{key}}" value="{{value}}" />
-                    <a href="#" class="remove" data-table="{{name}}"><i class="icon-remove-sign"></i></a>
-                    {{/insert}}
-                    {{^insert}}
-                    <label>
-                        {{#remove}}
-                        <input type="checkbox" name="{{key}}" {{#value}}checked="checked"{{/value}} /> <small>{{string.remove}}</small>
-                        {{/remove}}
-                    </label>
-                    {{/insert}}
-                </td>
-            </tr>
-            {{#columns}}
-            <tr>
-                {{>column}}
-            </tr>
-            {{/columns}}
-        {{/records}}
-        
-            <tr class="head blank hidden">
-                <td class="hero-unit">
-                    {{#insert}}
-                    <input type="hidden" name="{{key}}" value="{{value}}" />
-                    {{/insert}}
-                    <a href="#" class="remove" data-table="{{name}}"><i class="icon-remove-sign"></i></a>
-                </td>
-            </tr>
-            {{#blank}}
-            <tr class="blank hidden">
-                {{>column}}
-            </tr>	
-            {{/blank}}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td><a href="#" class="add-another" data-table="{{name}}"><small>{{string.add-another}} {{verbose}}</small></a></td>
-            </tr>
-        </tfoot>
-    </table>
-    {{/tables}}
+	{{#tables}}
+	<table class="table table-bordered ex-table ex-table-inline" data-table="{{name}}">
+		<thead>
+			<tr class="label-inverse">
+				<th>{{verbose}}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{#records}}
+			<tr class="head">
+				<td class="hero-unit">
+					{{#pk}}
+					<input type="hidden" name="{{key}}" value="{{value}}" />
+					{{/pk}}
+					{{#insert}}
+					<input type="hidden" name="{{key}}" value="{{value}}" />
+					<a href="#" class="remove" data-table="{{name}}"><i class="icon-remove-sign"></i></a>
+					{{/insert}}
+					{{^insert}}
+					<label>
+						{{#remove}}
+						<input type="checkbox" name="{{key}}" {{#value}}checked="checked"{{/value}} /> <small>{{string.remove}}</small>
+						{{/remove}}
+					</label>
+					{{/insert}}
+				</td>
+			</tr>
+			{{#columns}}
+			<tr>
+				{{>column}}
+			</tr>
+			{{/columns}}
+		{{/records}}
+		
+			<tr class="head blank hidden">
+				<td class="hero-unit">
+					{{#insert}}
+					<input type="hidden" name="{{key}}" value="{{value}}" />
+					{{/insert}}
+					<a href="#" class="remove" data-table="{{name}}"><i class="icon-remove-sign"></i></a>
+				</td>
+			</tr>
+			{{#blank}}
+			<tr class="blank hidden">
+				{{>column}}
+			</tr>	
+			{{/blank}}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td><a href="#" class="add-another" data-table="{{name}}"><small>{{string.add-another}} {{verbose}}</small></a></td>
+			</tr>
+		</tfoot>
+	</table>
+	{{/tables}}
 </fieldset>
 {{/manyToOne}}

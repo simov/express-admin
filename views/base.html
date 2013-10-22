@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>{{string.logo}}</title>
-    <link rel="shortcut icon" href="/express-admin/favicon.ico" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>{{string.logo}}</title>
+	<link rel="shortcut icon" href="/express-admin/favicon.ico" />
 
-    <link id="bootstrap" href="{{libs.bootstrap}}" rel="stylesheet" type="text/css" media="all" />
-    {{>theme}}
+	<link id="bootstrap" href="{{libs.bootstrap}}" rel="stylesheet" type="text/css" media="all" />
+	{{>theme}}
 
-    {{#libs.css}}
-    <link href="{{.}}" rel="stylesheet" type="text/css" media="all" />
-    {{/libs.css}}
+	{{#libs.css}}
+	<link href="{{.}}" rel="stylesheet" type="text/css" media="all" />
+	{{/libs.css}}
 
-    {{#libs.js}}
-    <script src="{{.}}" type="text/javascript" charset="utf-8"></script>
-    {{/libs.js}}
+	{{#libs.js}}
+	<script src="{{.}}" type="text/javascript" charset="utf-8"></script>
+	{{/libs.js}}
 </head>
 <body id="express-admin" class="container-fluid">
 {{>layout}}
 <div id="wrapper">
-    {{>header}}
+	{{>header}}
 
-    <section id="content">
-        {{>breadcrumbs}}
-        
-        {{>content}}
-    </section>
+	<section id="content">
+		{{>breadcrumbs}}
+		
+		{{>content}}
+	</section>
 
-    <div id="footer-push">&nbsp;</div>
+	<div id="footer-push">&nbsp;</div>
 </div>
 <footer>
-    <p><small><a href="http://simov.github.io/express-admin-site/" target="_blank" class="muted">Express Admin</a></small></p>
+	<p><small><a href="http://simov.github.io/express-admin-site/" target="_blank" class="muted">Express Admin</a></small></p>
 </footer>
 </body>
 </html>

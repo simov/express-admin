@@ -3,32 +3,32 @@
 
 {{#show.success}}
 <div class="alert alert-success">
-    <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
-    <strong>{{string.success}}:</strong> {{string.saved}}.
+	<a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+	<strong>{{string.success}}:</strong> {{string.saved}}.
 </div>
 {{/show.success}}
 
 {{#show.error}}
 <div class="alert alert-error">
-    <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
-    <strong>{{string.error}}:</strong> {{string.checkout}}.
+	<a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+	<strong>{{string.error}}:</strong> {{string.checkout}}.
 </div>
 {{/show.error}}
 
 <form class="form-horizontal" action="{{view.action}}" method="post" accept-charset="utf-8">
-    {{>view}}
-    {{>oneToOne}}
-    {{>manyToOne}}
-    
-    {{^view.readonly}}
-    <fieldset id="controls">
-        {{#show.delete}}
-        <button type="submit" class="btn btn-danger" name="action[remove]">{{string.delete}}</button>
-        {{/show.delete}}
-        <button type="submit" class="btn" name="action[another]">{{string.save-add}}</button>
-        <button type="submit" class="btn" name="action[continue]">{{string.save-continue}}</button>
-        <button type="submit" class="btn btn-primary" name="action[save]">{{string.save}}</button>
-        <input type="hidden" name="_csrf" value="{{csrf}}" />
-    </fieldset>
-    {{/view.readonly}}
+	{{>view}}
+	{{>oneToOne}}
+	{{>manyToOne}}
+	
+	{{^view.readonly}}
+	<fieldset id="controls">
+		{{#show.delete}}
+		<button type="submit" class="btn btn-danger" name="action[remove]">{{string.delete}}</button>
+		{{/show.delete}}
+		<button type="submit" class="btn" name="action[another]">{{string.save-add}}</button>
+		<button type="submit" class="btn" name="action[continue]">{{string.save-continue}}</button>
+		<button type="submit" class="btn btn-primary" name="action[save]">{{string.save}}</button>
+		<input type="hidden" name="_csrf" value="{{csrf}}" />
+	</fieldset>
+	{{/view.readonly}}
 </form>

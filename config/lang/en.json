@@ -1,41 +1,42 @@
 {
-    "name"              : "English",
+	"name"              : "English",
 
-    "logo"              : "Express Admin",
-    
-    "layout"            : "Layout",
-    "fixed"             : "Fixed",
-    "fluid"             : "Fluid",
-    "theme"             : "Theme",
-    "language"          : "Language",
+	"logo"              : "Express Admin",
+	
+	"layout"            : "Layout",
+	"fixed"             : "Fixed",
+	"fluid"             : "Fluid",
+	"theme"             : "Theme",
+	"language"          : "Language",
 
-    "login"             : "Login",
-    "logout"            : "Logout",
-    "username"          : "Username",
-    "password"          : "Password",
+	"login"             : "Login",
+	"logout"            : "Logout",
+	"username"          : "Username",
+	"password"          : "Password",
 
-    "home"              : "Home",
-    "site-admin"        : "Site administration",
-    "tables"            : "Tables",
-    "others"            : "Others",
-    
-    "select"            : "Select",
-    "to-change"         : "to change",
-    "today"             : "Today",
+	"home"              : "Home",
+	"site-admin"        : "Site administration",
+	"tables"            : "Tables",
+	"others"            : "Others",
+	
+	"select"            : "Select",
+	"to-change"         : "to change",
+	"today"             : "Today",
 
-    "add-another"       : "Add another",
-    "remove"            : "Remove",
-    "add"               : "Add",
-    "change"            : "Change",
-    "delete"            : "Delete",
-    "save"              : "Save",
-    "save-continue"     : "Save and continue editing",
-    "save-add"          : "Save and add another",
+	"add-another"       : "Add another",
+	"remove"            : "Remove",
+	"add"               : "Add",
+	"filter"			: "Filter",
+	"change"            : "Change",
+	"delete"            : "Delete",
+	"save"              : "Save",
+	"save-continue"     : "Save and continue editing",
+	"save-add"          : "Save and add another",
 
-    "success"           : "Success",
-    "error"             : "Error",
-    "saved"             : "The record have been saved",
-    "checkout"          : "Check out the highlighted fields below",
+	"success"           : "Success",
+	"error"             : "Error",
+	"saved"             : "The record have been saved",
+	"checkout"          : "Check out the highlighted fields below",
 
-    "notfound"          : "The requested page was not found."
+	"notfound"          : "The requested page was not found."
 }

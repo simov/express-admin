@@ -1,53 +1,62 @@
 {
-    "name": "express-admin",
-    "version": "1.0.8",
-    "description": "MySql database admin built with Express and Bootstrap.",
-    "keywords": [
-        "mysql",
-        "database",
-        "admin",
-        "express",
-        "bootstrap"
-    ],
-    "license"   : "MIT",
-    "homepage"  : "https://github.com/simov/express-admin",
-    "author": {
-        "name"  : "simo",
-        "email" : "simeonvelichkov@gmail.com"
-    },
-    "repository": {
-        "type"  : "git",
-        "url"   : "git://github.com/simov/express-admin.git"
-    },
-    "dependencies": {
-        "express"          : "3.0.0rc2",
-        "consolidate"      : ">=0.6.0",
-        "hogan.js"         : "latest",
-        "mysql"            : "2.0.0-alpha2",
-        "mysql-validator"  : ">=0.1.4",
-        "pwd"              : "git://github.com/jlubawy/node-pwd.git",
-        "commander"        : "1.3.2",
-        "colors"           : "*",
-        "slugify"          : "*",
-        "sr-pagination"    : ">=1.0.1",
-        "deep-copy"        : "*",
-        "moment"           : "*",
-        "express-admin-static": "1.0.0"
-    },
-    "bundledDependencies": [
-        "pwd"
-    ],
-    "devDependencies": {
-        "mocha" : "*",
-        "should": "*",
-        "supertest": "*",
-        "recursive-fs": "*"
-    },
-    "main": "./app",
-    "bin": {
-        "admin": "./bin/admin"
-    },
-    "scripts": {
-        "test": "make test"
-    }
+  "name": "express-admin",
+  "version": "1.0.8",
+  "description": "MySql database admin built with Express and Bootstrap.",
+  "keywords": [
+    "mysql",
+    "database",
+    "admin",
+    "express",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/simov/express-admin",
+  "author": {
+    "name": "simo",
+    "email": "simeonvelichkov@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/simov/express-admin.git"
+  },
+  "dependencies": {
+    "express": "3.0.0rc2",
+    "consolidate": ">=0.6.0",
+    "hogan.js": "latest",
+    "mysql": "2.0.0-alpha2",
+    "mysql-validator": ">=0.1.4",
+    "pwd": "git://github.com/jlubawy/node-pwd.git",
+    "commander": "1.3.2",
+    "colors": "*",
+    "slugify": "*",
+    "sr-pagination": ">=1.0.1",
+    "deep-copy": "*",
+    "moment": "*",
+    "express-admin-static": "1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*",
+    "recursive-fs": "*"
+  },
+  "main": "./app",
+  "bin": {
+    "admin": "./bin/admin"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "readme": "![express admin][1]\n\n<hr />\n\n[![Build Status](https://travis-ci.org/simov/express-admin.png)](https://travis-ci.org/simov/express-admin)\n\n[![NPM](https://nodei.co/npm/express-admin.png?downloads=true)](https://nodei.co/npm/express-admin/)\n\n#[Introductory Screencast][2]\n\n#[Documentation][3]\n\n#[Examples][4]\n\n#License\n(The MIT License)\n\nCopyright (c) 2012-2013 simov &lt;simeonvelichkov@gmail.com&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n  [1]: http://i.imgur.com/rd1cqPv.png\n  [2]: http://www.youtube.com/watch?v=1CdoCB96QNk\n  [3]: http://simov.github.io/express-admin-site/\n  [4]: http://github.com/simov/express-admin-examples/",
+  "readmeFilename": "README.md",
+  "_id": "express-admin@1.0.8",
+  "bundleDependencies": [
+    "pwd"
+  ],
+  "dist": {
+    "shasum": "41adf10aa90268de820ab667acacc54357c4954a"
+  },
+  "_from": "express-admin@",
+  "_resolved": "http://registry.npmjs.org/express-admin/-/express-admin-1.0.8.tgz"
 }
+
