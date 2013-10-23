@@ -226,4 +226,58 @@ describe('core/editview', function () {
             done();
         });
     });
+
+    // getIds - get manyToMany's link table child primary keys
+    it('should store manyToMany\'s link table child primary keys in column itself after database select', function (done) {
+        var args = {
+            db: db,
+            config: {
+                columns: [
+                    {
+                        name: 'recipeTypes',
+                        manyToMany: {
+                            link: {
+                                table: 'recipe_ref',
+                                parentPk: 'recipe_id',
+                                childPk: 'recipe_type_id'
+                            }
+                        }
+                    }
+                ]
+            }
+        };
+        var rows = [{columns: {__pk: 1}}];
+        editview.test.getIds(args, rows, function (err) {
+            if (err) return done(err);
+            should.deepEqual(rows[0].columns.recipeTypes, ['2', '4', '5']);
+            done();
+        });
+    });
+
+    it('should store manyToMany\'s link table child primary keys in the record\'s ids key after post request', function (done) {
+        var args = {
+            db: db,
+            post: true,
+            config: {
+                columns: [
+                    {
+                        name: 'recipeTypes',
+                        manyToMany: {
+                            link: {
+                                table: 'recipe_ref',
+                                parentPk: 'recipe_id',
+                                childPk: 'recipe_type_id'
+                            }
+                        }
+                    }
+                ]
+            }
+        };
+        var rows = [{columns: {__pk: 1}}];
+        editview.test.getIds(args, rows, function (err) {
+            if (err) return done(err);
+            should.deepEqual(rows[0].ids.recipeTypes, ['2', '4', '5']);
+            done();
+        });
+    });
 });
