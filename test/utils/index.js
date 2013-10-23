@@ -9,4 +9,5 @@ describe('lib/utils', function () {
     require('./database');
     require('./schema');
     require('./project');
+    require('./template');
 });
