@@ -115,14 +115,15 @@ function render (req, res, next, data, args) {
     res.locals.show.error = args.error;
     res.locals.show.delete = !(req.params[1] == 'add');
 
-    res.locals.oneToOne =  data.oneToOne;
-    res.locals.manyToOne = data.manyToOne;
+    data.oneToOne.one = true;
+    data.oneToOne.type = 'one';
+    data.manyToOne.type = 'many';
+    res.locals.inline = [data.oneToOne, data.manyToOne];
         
     res.locals.partials = {
         content:  'editview',
         view:     'editview/view',
-        oneToOne: 'editview/oneToOne',
-        manyToOne:'editview/manyToOne',
+        inline:   'editview/inline',
         column:   'editview/column'
     };
     

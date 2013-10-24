@@ -1,5 +1,5 @@
-{{#manyToOne}}
-<fieldset id="many">
+{{#inline}}
+<fieldset id="{{type}}">
     {{#tables}}
     <table class="table table-bordered ex-table ex-table-inline" data-table="{{name}}">
         <thead>
@@ -33,7 +33,7 @@
             </tr>
             {{/columns}}
         {{/records}}
-        
+
             <tr class="head blank hidden">
                 <td class="hero-unit">
                     {{#insert}}
@@ -48,7 +48,7 @@
             </tr>	
             {{/blank}}
         </tbody>
-        <tfoot>
+        <tfoot {{#one}}{{#records}}class="hidden"{{/records}}{{/one}}>
             <tr>
                 <td><a href="#" class="add-another" data-table="{{name}}"><small>{{string.add-another}} {{verbose}}</small></a></td>
             </tr>
@@ -56,4 +56,4 @@
     </table>
     {{/tables}}
 </fieldset>
-{{/manyToOne}}
+{{/inline}}
