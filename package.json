@@ -1,6 +1,6 @@
 {
     "name": "express-admin",
-    "version": "1.0.9",
+    "version": "1.1.0",
     "description": "MySql database admin built with Express and Bootstrap.",
     "keywords": [
         "mysql",
@@ -32,7 +32,7 @@
         "sr-pagination"    : ">=1.0.1",
         "deep-copy"        : "*",
         "moment"           : "*",
-        "express-admin-static": "1.0.0"
+        "express-admin-static": "2.0.0"
     },
     "bundledDependencies": [
         "pwd"
