@@ -1,22 +1,22 @@
 {{#inline}}
 <fieldset id="{{type}}">
     {{#tables}}
-    <table class="table table-bordered ex-table ex-table-inline" data-table="{{name}}">
+    <table class="table table-bordered ex-table" data-table="{{name}}">
         <thead>
-            <tr class="label-inverse">
+            <tr class="label-default">
                 <th>{{verbose}}</th>
             </tr>
         </thead>
         <tbody>
         {{#records}}
             <tr class="head">
-                <td class="hero-unit">
+                <td class="jumbotron">
                     {{#pk}}
                     <input type="hidden" name="{{key}}" value="{{value}}" />
                     {{/pk}}
                     {{#insert}}
                     <input type="hidden" name="{{key}}" value="{{value}}" />
-                    <a href="#" class="remove" data-table="{{name}}"><i class="icon-remove-sign"></i></a>
+                    <a href="#" class="remove text-muted btn-xs pull-right" data-table="{{name}}"><span class="glyphicon glyphicon-remove-sign"></span></a>
                     {{/insert}}
                     {{^insert}}
                     <label>
@@ -35,11 +35,11 @@
         {{/records}}
 
             <tr class="head blank hidden">
-                <td class="hero-unit">
+                <td class="jumbotron">
                     {{#insert}}
                     <input type="hidden" name="{{key}}" value="{{value}}" />
                     {{/insert}}
-                    <a href="#" class="remove" data-table="{{name}}"><i class="icon-remove-sign"></i></a>
+                    <a href="#" class="remove text-muted btn-xs pull-right" data-table="{{name}}"><span class="glyphicon glyphicon-remove-sign"></span></a>
                 </td>
             </tr>
             {{#blank}}

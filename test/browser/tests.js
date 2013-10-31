@@ -72,12 +72,8 @@ describe('admin', function () {
 });
 
 function getControl (self) {
-    if ($('.hero-unit > input', self).length)
-        return $('.hero-unit > input', self);
-    if ($('.controls > input', self).length)
-        return $('.controls > input', self);
-    if ($('.controls > select', self).length)
-        return $('.controls > select', self);
-    if ($('.controls > textarea', self).length)
-        return $('.controls > textarea', self);
+    if ($('.jumbotron > input', self).length)
+        return $('.jumbotron > input', self);
+    if ($('.form-group .form-control', self).length)
+        return $('.form-group .form-control', self);
 }

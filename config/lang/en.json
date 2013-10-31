@@ -4,8 +4,8 @@
     "logo"              : "Express Admin",
     
     "layout"            : "Layout",
-    "fixed"             : "Fixed",
-    "fluid"             : "Fluid",
+    "centered"          : "Centered",
+    "streched"          : "Streched",
     "theme"             : "Theme",
     "language"          : "Language",
 

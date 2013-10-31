@@ -22,19 +22,20 @@ Date.prototype.toJSONLocal = function() {
     });
 }(
 (function init ($) {
-    var chzn = {
+    var chosen = {
         allow_single_deselect: true,
-        no_results_text: 'No results matched!<br /> <a href="#">Click to add</a> '
+        no_results_text: 'No results matched!<br /> <a href="#">Click to add</a> ',
+        width: '100%'
     };
+    function isMobile () {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/gi
+            .test(navigator.userAgent);
+    }
     function getControl (self) {
-        if ($('.hero-unit > input', self).length)
-            return $('.hero-unit > input', self);
-        if ($('.controls > input', self).length)
-            return $('.controls > input', self);
-        if ($('.controls > select', self).length)
-            return $('.controls > select', self);
-        if ($('.controls > textarea', self).length)
-            return $('.controls > textarea', self);
+        if ($('.jumbotron > input', self).length)
+            return $('.jumbotron > input', self);
+        if ($('.form-group .form-control', self).length)
+            return $('.form-group .form-control', self);
     }
     return {
         inlines: function () {
@@ -67,12 +68,19 @@ Date.prototype.toJSONLocal = function() {
                 $rows.appendTo(tbody);
 
                 // init controls
-                if ($('.chzn-select').length)
-                    $('.chzn-select', $rows).chosen(chzn);
-                if ($('.datepicker').length)
-                    $('.datepicker', $rows).datepicker({
-                        dateFormat: 'yy-mm-dd'
-                    });
+                if ($('.chosen-select').length)
+                    $('.chosen-select', $rows).chosen(chosen);
+                if ($('.datepicker', $rows).length) {
+                    if (isMobile()) {
+                        $('.datepicker', $rows).each(function (index) {
+                            $(this).attr('type', 'date');
+                        });
+                    } else {
+                        $('.datepicker', $rows).datepicker({
+                            dateFormat: 'yy-mm-dd'
+                        });
+                    }
+                }
                 if (typeof onAddInline === 'function')
                     onAddInline($rows);
 
@@ -94,10 +102,13 @@ Date.prototype.toJSONLocal = function() {
 
                 // re-set the indexes
                 $('.head:not(.blank)', $table).each(function (index) {
-                    var control = $('.hero-unit input', this),
-                        name = control.attr('name'),
+                    var idx = -1;
+                    
+                    $('.jumbotron input', this).each(function () {
+                        var name = $(this).attr('name');
                         idx = name.match(/.*(\[\d+\]).*/)[1];
-                    control.attr('name', name.replace(idx, '['+index+']'));
+                        $(this).attr('name', name.replace(idx, '['+index+']'));
+                    });
 
                     $(this).nextUntil('tr.head').each(function () {
 
@@ -116,11 +127,11 @@ Date.prototype.toJSONLocal = function() {
         },
         layout: function () {
             $('#layout a').on('click', function (e) {
-                $('body').removeClass();
+                $('body, #navbar').removeClass();
                 var layout = this.hash.slice(1);
                 layout == 'fixed'
-                    ? $('body').addClass('container')
-                    : $('body').addClass('container-fluid');
+                    ? $('body, #navbar').addClass('container')
+                    : $('body, #navbar').addClass('container container-fluid');
                 $('#layout li').removeClass('active');
                 $(this).parent().addClass('active');
                 localStorage.setItem('layout', layout);
@@ -148,7 +159,7 @@ Date.prototype.toJSONLocal = function() {
             });
         },
         read: function () {
-            var layout   = localStorage.getItem('layout')   || 'fluid',
+            var layout   = localStorage.getItem('layout')   || 'fixed',
                 theme    = localStorage.getItem('theme')    || 'default',
                 language = document.cookie.replace('lang=', '');
 
@@ -162,16 +173,23 @@ Date.prototype.toJSONLocal = function() {
             $('#language [href$="'+language+'"]').parent().addClass('active');
         },
         chosen: function () {
-            if ($('.chzn-select').length)
-                $('tr:not(.blank) .chzn-select').chosen(chzn);
+            if ($('.chosen-select').length)
+                $('tr:not(.blank) .chosen-select').chosen(chosen);
         },
         datepicker: function () {
-            if ($('.datepicker').length)
-                $('tr:not(.blank) .datepicker').datepicker({
-                    dateFormat: 'yy-mm-dd'
-                });
-            $('body').on('click', 'tr .controls .btn-today', function (e) {
-                $(this).prev().val(new Date().toJSONLocal());
+            if ($('.datepicker').length) {
+                if (isMobile()) {
+                    $('tr:not(.blank) .datepicker').each(function (index) {
+                        $(this).attr('type', 'date');
+                    });
+                } else {
+                    $('tr:not(.blank) .datepicker').datepicker({
+                        dateFormat: 'yy-mm-dd'
+                    });
+                }
+            }
+            $('body').on('click', 'td .form-group .btn-today', function (e) {
+                $(this).parents('td').find('input').val(new Date().toJSONLocal());
                 return false;
             });
         }

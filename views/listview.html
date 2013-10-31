@@ -1,26 +1,26 @@
 
 <h2>
     {{string.select}} {{view.name}} {{string.to-change}}.
-    <a href="/{{view.slug}}/add" class="btn">{{string.add}} {{view.name}}</a>
+    <a href="/{{view.slug}}/add" class="btn btn-default">{{string.add}} {{view.name}}</a>
 </h2>
 
 {{#show.success}}
-<div class="alert alert-success">
-    <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+<div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <strong>{{string.success}}:</strong> {{string.saved}}.
 </div>
 {{/show.success}}
 
 {{#show.error}}
-<div class="alert alert-error">
-    <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+<div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <strong>{{string.error}}:</strong> {{show.error}}.
 </div>
 {{/show.error}}
 
-<table class="table table-bordered table-striped table-hover ex-table ex-table-list">
+<table class="table table-bordered table-striped table-hover ex-table">
     <thead>
-        <tr class="label-inverse">
+        <tr class="label-default">
         {{#columns}}
             <th>{{.}}</th>
         {{/columns}}

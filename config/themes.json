@@ -10,7 +10,5 @@
     {"key": "simplex",     "name": "Simplex"},
     {"key": "slate",       "name": "Slate"},
     {"key": "spacelab",    "name": "Spacelab"},
-    {"key": "spruce",      "name": "Spruce"},
-    {"key": "superhero",   "name": "Superhero"},
     {"key": "united",      "name": "United"}
 ]

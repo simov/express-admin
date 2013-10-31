@@ -1,40 +1,42 @@
 
 {{#show.error}}
-<div class="alert alert-error login-error">
-    <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
-    <strong>{{show.error}}</strong>
+<div class=" col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>{{show.error}}</strong>
+    </div>
 </div>
 {{/show.error}}
 
-<form id="login" class="form-horizontal" method="post" action="/login">
+<form id="login" class="form-horizontal col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4" method="post" action="/login">
     <fieldset>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th class="label-inverse">{{string.login}}</th>
+                    <th class="label-default">{{string.login}}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
                         {{!username}}
-                        <div class="control-group">
-                            <label class="control-label">{{string.username}}:</label>
-                            <div class="controls">
-                                <input type="text" name="username" value="{{username}}" />
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 col-md-4 col-lg-4">{{string.username}}:</label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input type="text" name="username" value="{{username}}" class="form-control" />
                             </div>
                         </div>
                         {{!password}}
-                        <div class="control-group">
-                            <label class="control-label">{{string.password}}:</label>
-                            <div class="controls">
-                                <input type="password" name="password" value="" />
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 col-md-4 col-lg-4">{{string.password}}:</label>
+                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                <input type="password" name="password" value="" class="form-control" />
                             </div>
                         </div>
                         {{!submit}}
-                        <div class="control-group">
-                            <div class="controls">
-                                <input type="submit" value="{{string.login}}" class="btn" />
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-4 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4">
+                                <input type="submit" value="{{string.login}}" class="btn btn-default" />
                                 <input type="hidden" name="_csrf" value="{{csrf}}" />
                             </div>
                         </div>
