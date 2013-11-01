@@ -1,0 +1,48 @@
+{
+    "name"              : "Deutsch",
+
+
+    "logo"              : "Express Administrator",
+    
+    "layout"            : "Layout",
+    "centered"          : "Zentriert",
+    "streched"          : "Gestreckt",
+    "theme"             : "Thema",
+    "language"          : "Sprache",
+
+
+    "login"             : "Login",
+    "logout"            : "Logout",
+    "username"          : "Benutzername",
+    "password"          : "Passwort",
+
+
+    "home"              : "Start",
+    "site-admin"        : "Seitenadministration",
+    "tables"            : "Tabellen",
+    "others"            : "Anderes",
+    
+    "select"            : "Wähle",
+    "to-change"         : "zum Ändern",
+    "today"             : "Heute",
+
+
+    "add-another"       : "Weiteren hinzufügen",
+    "remove"            : "Entfernen",
+    "add"               : "Hinzufügen",
+    "change"            : "Bearbeiten",
+    "delete"            : "Löschen",
+    "save"              : "Speichern",
+    "save-continue"     : "Speichern und weiter bearbeiten",
+    "save-add"          : "Speichern und neuen hinzufügen",
+
+
+    "success"           : "Erfolg",
+    "error"             : "Fehler",
+    "saved"             : "Der Eintrag wurde gespeichert",
+    "checkout"          : "Überprüfen Sie die markierten Felder unten",
+
+
+    "notfound"          : "Die angeforderte Seite wurde nicht gefunden."
+}
+
