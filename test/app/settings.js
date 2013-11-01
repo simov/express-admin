@@ -1,4 +1,5 @@
 
+var should = require('should');
 var app = require('../../app');
 
 
@@ -31,8 +32,8 @@ describe('settings initialization', function () {
         args.langs.hasOwnProperty('bg').should.equal(true);
         args.langs.hasOwnProperty('en').should.equal(true);
 
-        JSON.stringify(args.languages).should.equal
-            ('{"language":[{"key":"bg","name":"Български"},{"key":"en","name":"English"}]}');
+        should.deepEqual(args.languages,
+            {language:[{key:'bg',name:'Български'},{key:'en',name:'English'}]});
 
         args.layouts.should.equal(true);
 
@@ -40,8 +41,7 @@ describe('settings initialization', function () {
         args.libs.css.length.should.equal(5);
         args.libs.js.length.should.equal(6);
 
-        JSON.stringify(args.slugs).should.equal
-            ('{"slug1":"table1","slug2":"table2","slug3":"table3"}');
+        should.deepEqual(args.slugs, {slug1:'table1',slug2:'table2',slug3:'table3'});
 
         args.themes.theme.length.should.equal(12);
 
