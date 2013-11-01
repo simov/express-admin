@@ -37,13 +37,13 @@ describe('settings initialization', function () {
         args.layouts.should.equal(true);
 
         args.libs.bootstrap.should.equal('/csslib/bootstrap.min.css');
-        args.libs.css.length.should.equal(6);
+        args.libs.css.length.should.equal(5);
         args.libs.js.length.should.equal(6);
 
         JSON.stringify(args.slugs).should.equal
             ('{"slug1":"table1","slug2":"table2","slug3":"table3"}');
 
-        args.themes.theme.length.should.equal(14);
+        args.themes.theme.length.should.equal(12);
 
         done();
     });
