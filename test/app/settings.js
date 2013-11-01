@@ -30,10 +30,12 @@ describe('settings initialization', function () {
         args.debug.should.equal(false);
 
         args.langs.hasOwnProperty('bg').should.equal(true);
+        args.langs.hasOwnProperty('de').should.equal(true);
         args.langs.hasOwnProperty('en').should.equal(true);
 
-        should.deepEqual(args.languages,
-            {language:[{key:'bg',name:'Български'},{key:'en',name:'English'}]});
+        should.deepEqual(args.languages, {language:[
+            {key:'bg',name:'Български'},{key:'de',name:'Deutsch'},{key:'en',name:'English'}
+        ]});
 
         args.layouts.should.equal(true);
 
