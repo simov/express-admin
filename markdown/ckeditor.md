@@ -52,7 +52,7 @@ $(function () {
             // exclude textareas that are inside hidden inline rows
             if ($(textarea).parents('tr').hasClass('blank')) return false;
             // textareas with this class name will get the default configuration
-            if (textarea.className === 'class-name') return true;
+            if (textarea.className.indexOf('class-name') != -1) return true;
             // all other textareas won't be initialized as ckeditors
             return false;
         });
@@ -67,7 +67,7 @@ function onAddInline (rows) {
             // get the DOM instance
             var textarea = $(this)[0];
             // textareas with this class name will get the default configuration
-            if (textarea.className === 'class-name') return CKEDITOR.replace(textarea);
+            if (textarea.className.indexOf('class-name') != -1) return CKEDITOR.replace(textarea);
             // all other textareas won't be initialized as ckeditors
             return false;
         });

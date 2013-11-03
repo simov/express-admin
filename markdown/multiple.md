@@ -66,9 +66,9 @@ $(function () {
             // exclude textareas that are inside hidden inline rows
             if ($(textarea).parents('tr').hasClass('blank')) return false;
             // textareas with this class name will get the default configuration
-            if (textarea.className === 'ck-full') return true;
+            if (textarea.className.indexOf('ck-full') != -1) return true;
             // textareas with this class name will have custom configuration
-            if (textarea.className === 'ck-compact')
+            if (textarea.className.indexOf('ck-compact') != -1)
                 return setCustomConfig(config);
             // all other textareas won't be initialized as ckeditors
             return false;
@@ -104,9 +104,9 @@ function onAddInline (rows) {
             // get the DOM instance
             var textarea = $(this)[0];
             // textareas with this class name will get the default configuration
-            if (textarea.className === 'ck-full') return CKEDITOR.replace(textarea);
+            if (textarea.className.indexOf('ck-full') != -1) return CKEDITOR.replace(textarea);
             // textareas with this class name will have custom configuration
-            if (textarea.className === 'ck-compact')
+            if (textarea.className.indexOf('ck-compact') != -1)
                 return CKEDITOR.replace(textarea, setCustomConfig());
             // all other textareas won't be initialized as ckeditors
             return false;
