@@ -44,7 +44,7 @@ exports.post = function (req, res, next) {
             // should be based on constraints
             args.action = 'remove';
 
-        } else if (view[table].records[0].hasOwnProperty('insert')) {
+        } else if ({}.hasOwnProperty.call(view[table].records[0], 'insert')) {
             if (args.error && !args.debug) return render(req, res, next, data, args);
             args.action = 'insert';
 

@@ -86,6 +86,7 @@ function initSettings (args) {
     }());
 
     args.debug = program.dev ? true : false;
+    if (!args.debug) console.warn = function(){};
 
     // template variables
     args.libs = require(path.join(__dirname, 'config/libs'));

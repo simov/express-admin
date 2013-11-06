@@ -20,7 +20,7 @@
         "url"   : "git://github.com/simov/express-admin.git"
     },
     "dependencies": {
-        "express"          : "3.0.0rc2",
+        "express"          : "3.4.4",
         "consolidate"      : ">=0.6.0",
         "hogan.js"         : "latest",
         "mysql"            : "2.0.0-alpha2",
