@@ -106,15 +106,15 @@ function initSettings (args) {
 
     args.libs.external = {css: [], js: []};
     for (var key in args.custom) {
-        var local = args.custom[key].public;
-        if (local) {
-            args.libs.js = args.libs.js.concat(local.js||[]);
-            args.libs.css = args.libs.css.concat(local.css||[]);
+        var assets = args.custom[key].public;
+        if (!assets) continue;
+        if (assets.local) {
+            args.libs.js = args.libs.js.concat(assets.local.js||[]);
+            args.libs.css = args.libs.css.concat(assets.local.css||[]);
         }
-        var external = args.custom[key].external;
-        if (external) {
-            args.libs.external.js = args.libs.external.js.concat(external.js||[]);
-            args.libs.external.css = args.libs.external.css.concat(external.css||[]);
+        if (assets.external) {
+            args.libs.external.js = args.libs.external.js.concat(assets.external.js||[]);
+            args.libs.external.css = args.libs.external.css.concat(assets.external.css||[]);
         }
     }
 }
@@ -143,10 +143,11 @@ function initServer (args) {
 
     if (!args.debug) app.set('view cache', true);
 
-    // register custom public paths
+    // register custom public local paths
     for (var key in args.custom) {
-        if (!args.custom[key].public || !args.custom[key].public.path) continue;
-        app.use(express.static(args.custom[key].public.path));
+        var assets = args.custom[key].public;
+        if (!assets || !assets.local || !assets.local.path) continue;
+        app.use(express.static(assets.local.path));
     }
 
     // pass server wide variables
@@ -181,7 +182,7 @@ function initServer (args) {
     (function () {
         var have = false;
         for (var key in args.custom) {
-            var vpath = args.custom[key].path;
+            var vpath = args.custom[key].app.path;
             if (vpath) {
                 var view = require(vpath);
                 app.use(view);

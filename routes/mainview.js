@@ -5,13 +5,15 @@ exports.get = function (req, res, next) {
 
     var tables = [];
     for (var key in settings) {
-        if (!settings[key].mainview.show || !settings[key].table.pk) continue;
-        tables.push({slug: settings[key].slug, name: settings[key].table.verbose});
+        var view = settings[key];
+        if (!view.mainview.show || !view.table.pk) continue;
+        tables.push({slug: view.slug, name: view.table.verbose});
     }
     var views = [], have = false;
     for (var key in custom) {
-        if (!custom[key].mainview || !custom[key].mainview.show) continue;
-        views.push({slug: custom[key].slug, name: custom[key].verbose});
+        var view = custom[key].app;
+        if (!view.mainview || !view.mainview.show) continue;
+        views.push({slug: view.slug, name: view.verbose});
         have = true;
     }
 
