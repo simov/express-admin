@@ -56,7 +56,7 @@ exports.post = function (req, res, next) {
         database.update(args, function (err) {
             if (err) {
                 req.session.error = err.message;
-                res.redirect(args.slug);
+                res.redirect(res.locals.root+args.slug);
                 return;
             }
 
@@ -73,20 +73,20 @@ exports.post = function (req, res, next) {
                 case action.hasOwnProperty('remove'):
                     // the message should be different for delete
                     req.session.success = true;
-                    res.redirect(args.slug);
+                    res.redirect(res.locals.root+args.slug);
                     break;
                 case action.hasOwnProperty('save'):
                     req.session.success = true;
-                    res.redirect(args.slug);
+                    res.redirect(res.locals.root+args.slug);
                     break;
                 case action.hasOwnProperty('another'):
                     req.session.success = true;
-                    res.redirect(args.slug+'/add');
+                    res.redirect(res.locals.root+args.slug+'/add');
                     break;
                 case action.hasOwnProperty('continue'):
                     req.session.success = true;
                     if (args.debug) return render(req, res, next, data, args);
-                    res.redirect(args.slug+'/'+args.id);
+                    res.redirect(res.locals.root+args.slug+'/'+args.id);
                     break;
             }
         });

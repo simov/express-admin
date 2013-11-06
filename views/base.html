@@ -4,18 +4,26 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>{{string.logo}}</title>
-    <link rel="shortcut icon" href="/express-admin/favicon.ico" />
+    <link rel="shortcut icon" href="{{root}}/express-admin/favicon.ico" />
 
-    <link id="bootstrap" href="{{libs.bootstrap}}" rel="stylesheet" type="text/css" media="all" />
+    <link id="bootstrap" href="{{root}}{{libs.bootstrap}}" rel="stylesheet" type="text/css" media="all" />
     {{>theme}}
 
     {{#libs.css}}
-    <link href="{{.}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{root}}{{.}}" rel="stylesheet" type="text/css" media="all" />
     {{/libs.css}}
 
     {{#libs.js}}
-    <script src="{{.}}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{root}}{{.}}" type="text/javascript" charset="utf-8"></script>
     {{/libs.js}}
+
+    {{#libs.external.css}}
+    <link href="{{.}}" rel="stylesheet" type="text/css" media="all" />
+    {{/libs.external.css}}
+
+    {{#libs.external.js}}
+    <script src="{{.}}" type="text/javascript" charset="utf-8"></script>
+    {{/libs.external.js}}
 </head>
 <body id="express-admin" class="container">
 

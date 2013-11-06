@@ -19,7 +19,7 @@ exports.restrict = function (req, res, next) {
 
     if (req.session.user) return next();
     req.session.error = 'Access denied!';
-    res.redirect('login');
+    res.redirect(res.locals.root+'/login');
 }
 
 exports.login = function (req, res) {
@@ -28,7 +28,7 @@ exports.login = function (req, res) {
     if (!user) {
         req.session.error = 'Cannot find user!';
         req.session.username = req.body.username;
-        res.redirect('login');
+        res.redirect(res.locals.root+'/login');
         return;
     }
 
@@ -39,7 +39,7 @@ exports.login = function (req, res) {
         if (hash !== user.hash) {
             req.session.error = 'Invalid password!';
             req.session.username = req.body.username;
-            res.redirect('login');
+            res.redirect(res.locals.root+'/login');
             return;
         }
 
@@ -50,7 +50,7 @@ exports.login = function (req, res) {
             // in the session store to be retrieved,
             // or in this case the entire user object
             req.session.user = user;
-            res.redirect('/');
+            res.redirect(res.locals.root+'/');
         });
     });
 }
@@ -60,6 +60,6 @@ exports.logout = function (req, res) {
     // will be re-created next request
     req.session.destroy(function () {
         // successfully logged out
-        res.redirect('login');
+        res.redirect(res.locals.root+'/login');
     });
 }

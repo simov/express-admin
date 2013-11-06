@@ -64,6 +64,7 @@ function initDatabase (args, cb) {
 function initSettings (args) {
     // route variables
     args.db = db;
+    if (!args.config.root) args.config.root = '';
 
     args.langs = (function () {
         var dpath = path.join(__dirname, 'config/lang'),
@@ -85,7 +86,7 @@ function initSettings (args) {
         return slugs;
     }());
 
-    args.debug = program.dev ? true : false;
+    args.debug = args.debug || (program.dev ? true : false);
     if (!args.debug) console.warn = function(){};
 
     // template variables
@@ -103,18 +104,17 @@ function initSettings (args) {
         return {language: langs};
     }());
 
+    args.libs.external = {css: [], js: []};
     for (var key in args.custom) {
-        var custom = args.custom[key].public;
-        if (!custom) continue;
-        if (custom.js) {
-            for (var i=0; i < custom.js.length; i++) {
-                args.libs.js.push(custom.js[i]);
-            }
+        var local = args.custom[key].public;
+        if (local) {
+            args.libs.js = args.libs.js.concat(local.js||[]);
+            args.libs.css = args.libs.css.concat(local.css||[]);
         }
-        if (custom.css) {
-            for (var i=0; i < custom.css.length; i++) {
-                args.libs.css.push(custom.css[i]);
-            }
+        var external = args.custom[key].external;
+        if (external) {
+            args.libs.external.js = args.libs.external.js.concat(external.js||[]);
+            args.libs.external.css = args.libs.external.css.concat(external.css||[]);
         }
     }
 }
@@ -160,6 +160,7 @@ function initServer (args) {
         res.locals.string = args.langs[lang];
         
         // shortcuts
+        res.locals.root = args.config.root;
         res.locals.libs = args.libs;
         res.locals.themes = args.themes;
         res.locals.layouts = args.layouts;
