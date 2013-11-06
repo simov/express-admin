@@ -18,8 +18,8 @@ describe('settings initialization', function () {
             },
             custom: { // add them to args.libs
                 view1: {},
-                view2: {public: {css: ['file.css']}},
-                view3: {public: {css: ['file.css'], js: ['file.js']}}
+                view2: {public: {local:{css: ['file.css']}}},
+                view3: {public: {local:{css: ['file.css'], js: ['file.js']}}}
             },
             users: {} // not used
         };
