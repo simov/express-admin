@@ -18,8 +18,9 @@ describe('settings initialization', function () {
             },
             custom: { // add them to args.libs
                 view1: {},
-                view2: {public: {local:{css: ['file.css']}}},
-                view3: {public: {local:{css: ['file.css'], js: ['file.js']}}}
+                view2: {public: {local:{css:['file.css']}, external:{css:['url']}}},
+                view3: {public: {local:{css:['file.css'], js:['file.js']},
+                                external:{css:['url'], js:['url']}}},
             },
             users: {} // not used
         };
@@ -42,6 +43,8 @@ describe('settings initialization', function () {
         args.libs.bootstrap.should.equal('/csslib/bootstrap.min.css');
         args.libs.css.length.should.equal(5);
         args.libs.js.length.should.equal(6);
+        args.libs.external.css.length.should.equal(2);
+        args.libs.external.js.length.should.equal(1);
 
         should.deepEqual(args.slugs, {slug1:'table1',slug2:'table2',slug3:'table3'});
 
