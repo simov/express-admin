@@ -128,7 +128,6 @@ function initServer (args) {
         .set('view engine', 'html')
         .engine('html', consolidate.hogan)
 
-        .use(express.favicon())
         .use(express.logger('dev'))
         .use(express.bodyParser())
 
