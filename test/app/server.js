@@ -26,8 +26,9 @@ describe('server initialization', function () {
                         slug: 'view1', verbose: 'view1', mainview: {show: true}
                     }
                 },
-                view2: {public: {local:{css:['/file1.css']}}},
-                view3: {public: {local:{path:__dirname, css:['/file2.css'], js:['/file1.js']}}}
+                view2: {public: {local:{css:['/file1.css']}, external:{css:['//url1.css']}}},
+                view3: {public: {local:{path:__dirname, css:['/file2.css'], js:['/file1.js']},
+                                external:{css:['//url2.css'], js:['//url1.js']}}}
             },
             users: {} // not used
         };
@@ -41,13 +42,16 @@ describe('server initialization', function () {
             fs.writeFileSync(path.join(__dirname, 'file2.css'));
         });
 
-        it('should include custom static files', function (done) {
+        it('should include custom local and external static files', function (done) {
             supertest(_app)
                 .get('/login')
                 .end(function (err, res) {
                     if (err) return done(err);
+                    res.text.should.match(/<link href="\/\/url1\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
+                    res.text.should.match(/<link href="\/\/url2\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
                     res.text.should.match(/<link href="\/file1\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
                     res.text.should.match(/<link href="\/file2\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
+                    res.text.should.match(/<script src="\/\/url1\.js" type="text\/javascript" charset="utf-8"><\/script>/);
                     res.text.should.match(/<script src="\/file1\.js" type="text\/javascript" charset="utf-8"><\/script>/);
                     done();
                 });

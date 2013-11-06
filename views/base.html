@@ -12,15 +12,15 @@
     {{#libs.external.css}}
     <link href="{{.}}" rel="stylesheet" type="text/css" media="all" />
     {{/libs.external.css}}
-
-    {{#libs.external.js}}
-    <script src="{{.}}" type="text/javascript" charset="utf-8"></script>
-    {{/libs.external.js}}
     
     {{#libs.css}}
     <link href="{{root}}{{.}}" rel="stylesheet" type="text/css" media="all" />
     {{/libs.css}}
 
+    {{#libs.external.js}}
+    <script src="{{.}}" type="text/javascript" charset="utf-8"></script>
+    {{/libs.external.js}}
+    
     {{#libs.js}}
     <script src="{{root}}{{.}}" type="text/javascript" charset="utf-8"></script>
     {{/libs.js}}
