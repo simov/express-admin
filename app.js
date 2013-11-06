@@ -181,9 +181,9 @@ function initServer (args) {
     (function () {
         var have = false;
         for (var key in args.custom) {
-            var vpath = args.custom[key].app.path;
-            if (vpath) {
-                var view = require(vpath);
+            var _app = args.custom[key].app;
+            if (_app && _app.path) {
+                var view = require(_app.path);
                 app.use(view);
                 have = true;
             }

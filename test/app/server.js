@@ -21,11 +21,13 @@ describe('server initialization', function () {
             },
             custom: { // add them to args.libs
                 view1: {
-                    path: path.resolve(__dirname, '../fixtures/custom-view/app'),
-                    slug: 'view1', verbose: 'view1', mainview: {show: true}
+                    app: {
+                        path: path.resolve(__dirname, '../fixtures/custom-view/app'),
+                        slug: 'view1', verbose: 'view1', mainview: {show: true}
+                    }
                 },
-                view2: {public: {css: ['/file1.css']}},
-                view3: {public: {path:__dirname, css: ['/file2.css'], js: ['/file1.js']}}
+                view2: {public: {local:{css:['/file1.css']}}},
+                view3: {public: {local:{path:__dirname, css:['/file2.css'], js:['/file1.js']}}}
             },
             users: {} // not used
         };
@@ -82,7 +84,7 @@ describe('server initialization', function () {
         supertest(_app)
             .get('/login')
             .end(function (err, res) {
-                res.headers['set-cookie'][0].should.match(/lang=en; Max-Age=900000000; Path=\/; Expires=/)
+                res.headers['set-cookie'][0].should.match(/lang=en; Max-Age=900000; Path=\/; Expires=.*\sGMT/)
                 done();
             });
     });
