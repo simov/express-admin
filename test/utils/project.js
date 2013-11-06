@@ -72,7 +72,7 @@ describe('project', function () {
 
         // users
         c.users.admin.name.should.equal('admin');
-        c.users.admin.root.should.equal(true);
+        c.users.admin.admin.should.equal(true);
         pwd.hash('11aaAA', c.users.admin.salt, function (err, hash) {
             if (err) return done(err);
             c.users.admin.hash.should.equal(hash);

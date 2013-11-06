@@ -53,7 +53,7 @@ describe('command line', function () {
                     app: {layouts: true, themes: true, languages: true}
                 });
                 JSON.stringify(require('./project/users'))
-                    .should.match(/\{"admin":\{"name":"admin","root":true,"salt":".*","hash":".*"\}\}/);
+                    .should.match(/\{"admin":\{"name":"admin","admin":true,"salt":".*","hash":".*"\}\}/);
                 done();
             }));
         });
