@@ -86,7 +86,7 @@ function initSettings (args) {
         return slugs;
     }());
 
-    args.debug = args.debug || (program.dev ? true : false);
+    args.debug = args.config.app.debug || (program.dev ? true : false);
     if (!args.debug) console.warn = function(){};
 
     // template variables
