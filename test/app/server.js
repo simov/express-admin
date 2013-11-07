@@ -12,7 +12,7 @@ describe('server initialization', function () {
         var args = {
             dpath: null, // not used
             config: { // only config.app is used
-                app: {layouts: true, themes: true, languages: true}
+                app: {layouts: true, themes: true, languages: true, debug: true, root: '/admin'}
             },
             settings: { // creates args.slugs
                 table1: {slug:'slug1'},
@@ -33,7 +33,6 @@ describe('server initialization', function () {
             users: {} // not used
         };
         app.initSettings(args);
-        args.debug = true;
         _app = app.initServer(args);
     });
     
@@ -49,10 +48,10 @@ describe('server initialization', function () {
                     if (err) return done(err);
                     res.text.should.match(/<link href="\/\/url1\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
                     res.text.should.match(/<link href="\/\/url2\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
-                    res.text.should.match(/<link href="\/file1\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
-                    res.text.should.match(/<link href="\/file2\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
+                    res.text.should.match(/<link href="\/admin\/file1\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
+                    res.text.should.match(/<link href="\/admin\/file2\.css" rel="stylesheet" type="text\/css" media="all" \/>/);
                     res.text.should.match(/<script src="\/\/url1\.js" type="text\/javascript" charset="utf-8"><\/script>/);
-                    res.text.should.match(/<script src="\/file1\.js" type="text\/javascript" charset="utf-8"><\/script>/);
+                    res.text.should.match(/<script src="\/admin\/file1\.js" type="text\/javascript" charset="utf-8"><\/script>/);
                     done();
                 });
         });
