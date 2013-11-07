@@ -64,7 +64,13 @@ function initDatabase (args, cb) {
 function initSettings (args) {
     // route variables
     args.db = db;
-    if (!args.config.app.root) args.config.app.root = '';
+    
+    if (args.config.app.root) {
+        var root = args.config.app.root;
+        if (/.*\/$/.test(root)) args.config.app.root = root.slice(0,-1);
+    } else {
+        args.config.app.root = '';
+    }
 
     args.langs = (function () {
         var dpath = path.join(__dirname, 'config/lang'),
