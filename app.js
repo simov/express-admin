@@ -64,7 +64,7 @@ function initDatabase (args, cb) {
 function initSettings (args) {
     // route variables
     args.db = db;
-    if (!args.config.root) args.config.root = '';
+    if (!args.config.app.root) args.config.app.root = '';
 
     args.langs = (function () {
         var dpath = path.join(__dirname, 'config/lang'),
@@ -160,7 +160,7 @@ function initServer (args) {
         res.locals.string = args.langs[lang];
         
         // shortcuts
-        res.locals.root = args.config.root;
+        res.locals.root = args.config.app.root;
         res.locals.libs = args.libs;
         res.locals.themes = args.themes;
         res.locals.layouts = args.layouts;
