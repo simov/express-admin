@@ -36,7 +36,7 @@ All objects in this file are user created. The `public` key is related entirely 
 }
 ```
 
-- **app**
+- **app** - expressjs application
     - **path** - absolute path to the custom view's `app.js` file
     - **slug** - entry point for all routes in this custom app
     - **verbose** - view's name inside the admin's UI

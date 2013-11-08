@@ -17,7 +17,8 @@ The application's configuration is stored inside the `config.json` file. The `my
     "app": {
         "layouts": true,
         "themes": true,
-        "languages": true
+        "languages": true,
+        "root": "/admin"
     }
 }
 ```
@@ -32,5 +33,6 @@ The application's configuration is stored inside the `config.json` file. The `my
     - **layouts** - toggle the layout button
     - **themes** - toggle the themes button
     - **languages** - toggle the languages button
+    - **root** - root location for the admin (omitted by default `/`)
 
   [1]: https://github.com/felixge/node-mysql#connection-options
