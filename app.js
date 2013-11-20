@@ -35,25 +35,22 @@ function initCommandLine (args, cb) {
 
 // modifies args.settings
 function initDatabase (args, cb) {
-    db.connect(args.config.mysql, function (err) {
+    db.connect(args.config, function (err) {
         if (err) return cb(err);
-        db.use(args.config.mysql.database, function (err) {
+        var schema = new Schema(db);
+        schema.getAllColumns(function (err, info) {
             if (err) return cb(err);
-            var schema = new Schema(db);
-            schema.getAllColumns(function (err, info) {
-                if (err) return cb(err);
 
-                settings.refresh(args.settings, info, function (settings) {
-                    // write back the settings
-                    var fpath = path.join(args.dpath, 'settings.json');
-                    fs.writeFileSync(fpath, JSON.stringify(settings, null, 4), 'utf8');
+            settings.refresh(args.settings, info, function (settings) {
+                // write back the settings
+                var fpath = path.join(args.dpath, 'settings.json');
+                fs.writeFileSync(fpath, JSON.stringify(settings, null, 4), 'utf8');
 
-                    db.empty(args.config.mysql.database, function (err, empty) {
-                        if (err) return cb(err);
-                        if (empty) return cb(new Error('Empty schema!'));
-                        args.settings = settings;
-                        cb();
-                    });
+                db.empty(db.client.config.database, function (err, empty) {
+                    if (err) return cb(err);
+                    if (empty) return cb(new Error('Empty schema!'));
+                    args.settings = settings;
+                    cb();
                 });
             });
         });
