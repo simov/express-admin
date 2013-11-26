@@ -3,6 +3,9 @@ var sql = require('../../lib/utils/sql');
 
 
 describe('sql', function () {
+    before(function () {
+        sql.client.mysql = true;
+    });
     
     it('fullName', function (done) {
         sql.fullName('table', 'id')
@@ -46,7 +49,7 @@ describe('sql', function () {
 
     it('joins', function (done) {
         sql.joins('table', 'fk', 'refTable', 'pk')
-            .should.equal(' JOIN `refTable` ON `table`.`fk` = `refTable`.`pk`');
+            .should.equal(' LEFT JOIN `refTable` ON `table`.`fk` = `refTable`.`pk`');
         done();
     });
 
