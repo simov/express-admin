@@ -8,11 +8,13 @@ The only difference here is that we're dealing with `mustache` templates.
 ###config.json
 ```js
 "view1": {
-    "path": "/absolute/path/to/custom/app.js",
-    "slug": "view1",
-    "verbose": "View 1",
-    "mainview": {
-        "show": true
+    "app": {
+        "path": "/absolute/path/to/custom/app.js",
+        "slug": "view1",
+        "verbose": "My Custom View",
+        "mainview": {
+            "show": true
+        }
     }
 }
 ```

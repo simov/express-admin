@@ -7,7 +7,7 @@ All objects in this file are user created. The `public` key is related entirely 
 ```js
 "unique-key-here": {
     "app": {
-        "path"  : "/absolute/path/to/custom/app.js",
+        "path": "/absolute/path/to/custom/app.js",
         "slug": "unique-slug",
         "verbose": "Verbose Name",
         "mainview": {
