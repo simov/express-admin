@@ -7,16 +7,15 @@ var editview = require('../../lib/core/editview'),
 describe('core/editview', function () {
     before(function (done) {
         var options = {
-            database: 'express-admin-simple',
-            user: 'liolio',
-            password: 'karamba'
+            mysql: {
+                database: 'express-admin-simple',
+                user: 'liolio',
+                password: 'karamba'
+            }
         };
         db.connect(options, function (err) {
             if (err) return done(err);
-            db.use(options.database, function (err) {
-                if (err) return done(err);
-                done();
-            });
+            done();
         });
     });
 
