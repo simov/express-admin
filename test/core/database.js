@@ -16,13 +16,10 @@ describe('core/database', function () {
         name     : 'item'
     };
     before(function (done) {
-        db.connect(c.mysql, function (err) {
+        db.connect(c, function (err) {
             if (err) throw err;
-            db.use(c.mysql.database, function (err) {
-                if (err) throw err;
-                args.db = db;
-                done();
-            });
+            args.db = db;
+            done();
         });
     });
 
