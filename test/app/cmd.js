@@ -29,6 +29,7 @@ describe('command line', function () {
     it('should prompt for data on non existent config files', function (done) {	
         var params = [path.resolve(__dirname, 'wrapper.js'), 'test/app/project'];
         var data = [
+            {in: 'mysql', out: 'Database name:'},
             {in: 'express-admin-simple', out: 'Database user:'},
             {in: 'liolio', out: 'Database password:'},
             {in: 'karamba', out: 'Server port:'},
@@ -36,9 +37,9 @@ describe('command line', function () {
             {in: 'admin', out: 'Admin password:'},
             {in: '11aaAA', out: 'end'}
         ];
-        prompt.start(params, 'Database name:', function (err) {
+        prompt.start(params, 'Database type:', function (err) {
             (function loop (i, cb) {
-                if (i == 6) return cb();
+                if (i == 7) return cb();
                 prompt.next(data[i].in, data[i].out, function (err) {
                     if (err) return cb(err);
                     loop(++i, cb);
