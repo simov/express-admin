@@ -37,6 +37,10 @@ Date.prototype.toJSONLocal = function() {
         if ($('.form-group .form-control', self).length)
             return $('.form-group .form-control', self);
     }
+    function getFileControl (self) {
+        if ($('.form-group [type=file]', self).length)
+            return $('.form-group [type=file]', self);
+    }
     return {
         inlines: function () {
             $('.add-another').on('click', function (e) {
@@ -54,6 +58,11 @@ Date.prototype.toJSONLocal = function() {
                     var control = getControl(this),
                         name = control.attr('name') || '';
                     control.attr('name', 
+                        name.replace('blank', 'records').replace('index', index));
+                    
+                    var fileControl = getFileControl(this);
+                    if (fileControl)
+                    fileControl.attr('name', 
                         name.replace('blank', 'records').replace('index', index));
                 });
                 // set keys for insert
