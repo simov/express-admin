@@ -8,7 +8,7 @@
     {{#control}}
     <!-- data-type-name={{type.name}} data-type-range="{{type.range}}" data-allow-null="{{allowNull}}" data-default-value="{{defaultValue}}" -->
 
-    <div class="{{#text}}col-sm-5 col-md-4 col-lg-3{{/text}}{{#date}}col-sm-5 col-md-4 col-lg-3{{/date}}{{#select}}col-sm-5 col-md-4 col-lg-3{{/select}}{{#textarea}}{{#editor}}col-sm-9 col-md-9 col-lg-10{{/editor}}{{/textarea}}{{#textarea}}{{^editor}}col-sm-7 col-md-6 col-lg-5{{/editor}}{{/textarea}}">
+    <div class="{{#text}}col-sm-5 col-md-4 col-lg-3{{/text}}{{#file}}col-sm-5 col-md-4 col-lg-3{{/file}}{{#date}}col-sm-5 col-md-4 col-lg-3{{/date}}{{#select}}col-sm-5 col-md-4 col-lg-3{{/select}}{{#textarea}}{{#editor}}col-sm-9 col-md-9 col-lg-10{{/editor}}{{/textarea}}{{#textarea}}{{^editor}}col-sm-7 col-md-6 col-lg-5{{/editor}}{{/textarea}}">
 
     {{#text}}
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
@@ -32,6 +32,11 @@
     <input type="text" name="{{key}}" value="{{value}}" class="datepicker form-control" autocomplete="off" />
     {{/date}}
 
+    {{#file}}
+    <p class="form-control-static">{{value}}</p>
+    <input type="hidden" name="{{key}}" value="{{value}}" class="form-control" />
+    {{/file}}
+
     {{#error}}
     <strong class="help-block" data-error="{{type}}">{{message}}</strong>
     {{/error}}
@@ -46,6 +51,11 @@
         <a href="#" class="btn-today">{{string.today}}</a>
     </div>
     {{/date}}
+    {{#file}}
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <input type="file" name="{{key}}" value="{{value}}" />
+    </div>
+    {{/file}}
 
     {{/control}}
         </div>
