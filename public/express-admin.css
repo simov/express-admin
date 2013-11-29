@@ -23,6 +23,7 @@
 
 /*editview*/
 .btn-today { line-height: 240%; }
+[type=file] { margin-top: 4px; }
 
 /*fix for all fields*/
 .ex-table .form-group { margin-bottom: 0; }
