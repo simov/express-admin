@@ -46,7 +46,7 @@ function initDatabase (args, cb) {
                 var fpath = path.join(args.dpath, 'settings.json');
                 fs.writeFileSync(fpath, JSON.stringify(settings, null, 4), 'utf8');
 
-                db.empty(db.client.config.database, function (err, empty) {
+                db.empty(db.client.config.schema, function (err, empty) {
                     if (err) return cb(err);
                     if (empty) return cb(new Error('Empty schema!'));
                     args.settings = settings;
