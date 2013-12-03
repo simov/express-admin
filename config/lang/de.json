@@ -1,7 +1,6 @@
 {
     "name"              : "Deutsch",
 
-
     "logo"              : "Express Administrator",
     
     "layout"            : "Layout",
@@ -10,12 +9,10 @@
     "theme"             : "Thema",
     "language"          : "Sprache",
 
-
     "login"             : "Login",
     "logout"            : "Logout",
     "username"          : "Benutzername",
     "password"          : "Passwort",
-
 
     "home"              : "Start",
     "site-admin"        : "Seitenadministration",
@@ -26,7 +23,6 @@
     "to-change"         : "zum Ändern",
     "today"             : "Heute",
 
-
     "add-another"       : "Weiteren hinzufügen",
     "remove"            : "Entfernen",
     "add"               : "Hinzufügen",
@@ -36,13 +32,10 @@
     "save-continue"     : "Speichern und weiter bearbeiten",
     "save-add"          : "Speichern und neuen hinzufügen",
 
-
     "success"           : "Erfolg",
     "error"             : "Fehler",
     "saved"             : "Der Eintrag wurde gespeichert",
     "checkout"          : "Überprüfen Sie die markierten Felder unten",
 
-
     "notfound"          : "Die angeforderte Seite wurde nicht gefunden."
 }
-
