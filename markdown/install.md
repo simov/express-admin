@@ -4,6 +4,8 @@
 
 ```bash
 $ [sudo] npm install [-g] express-admin
+# PostgreSQL only: run this inside the express-admin folder
+$ npm install pg@2.8.2
 ```
 
 ###Create a project

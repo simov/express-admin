@@ -30,7 +30,7 @@
 <div class="file"><h1>
 <a name="express-admin" class="anchor" href="#express-admin"><span class="octicon octicon-link"></span></a>Express Admin</h1>
 
-<p>Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL databases.</p>
+<p>Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL, MariaDB and PostgreSQL databases.</p>
 
 <p>It's built with: <a href="http://twitter.github.io/hogan.js/">Hogan.js</a> (<a href="https://github.com/janl/mustache.js/">mustache.js</a>), <a href="http://expressjs.com/">Express</a>, <a href="https://github.com/felixge/node-mysql">mysql</a> and <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>.</p>
 
@@ -60,6 +60,8 @@
 <a name="get-the-module" class="anchor" href="#get-the-module"><span class="octicon octicon-link"></span></a>Get the module</h3>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install <span class="o">[</span>-g<span class="o">]</span> express-admin
+<span class="c"># PostgreSQL only: run this inside the express-admin folder</span>
+<span class="nv">$ </span>npm install pg@2.8.2
 </pre></div>
 
 <h3>
@@ -82,13 +84,16 @@
 <h3>
 <a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
 
-<p>The application's configuration is stored inside the <code>config.json</code> file. The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.</p>
+<p>The application's configuration is stored inside the <code>config.json</code> file.<br>
+The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.<br>
+When using PostgreSQL, the <code>pg</code> key will accept any option from the <a href="https://github.com/brianc/node-postgres">node-postgres</a> connection options.</p>
 
 <div class="highlight highlight-js"><pre><span class="p">{</span>
-    <span class="s2">"mysql"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"mysql"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">// or "pg"</span>
         <span class="s2">"database"</span><span class="o">:</span> <span class="s2">"express-admin-examples"</span><span class="p">,</span>
         <span class="s2">"user"</span><span class="o">:</span> <span class="s2">"liolio"</span><span class="p">,</span>
         <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"karamba"</span>
+        <span class="c1">// "schema": "schema-name"</span>
     <span class="p">},</span>
     <span class="s2">"server"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"port"</span><span class="o">:</span> <span class="mi">3000</span>
@@ -104,7 +109,7 @@
 
 <ul>
 <li>
-<strong>mysql</strong> - mysql connection options
+<strong>mysql || pg</strong> - connection options
 
 <ul>
 <li>
@@ -113,6 +118,8 @@
 <strong>user</strong> - the MySQL user to authenticate as</li>
 <li>
 <strong>password</strong> - the password of that MySQL user</li>
+<li>
+<strong>schema</strong> - used only with PostgreSQL (default: "public")</li>
 </ul>
 </li>
 <li>

@@ -1,6 +1,6 @@
 #Express Admin
 
-Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL databases.
+Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL, MariaDB and PostgreSQL databases.
 
 It's built with: [Hogan.js][1] ([mustache.js][2]), [Express][3], [mysql][4] and [Bootstrap][5].
 
