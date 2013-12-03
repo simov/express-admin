@@ -1,9 +1,11 @@
 {
     "name": "express-admin",
-    "version": "1.1.3",
-    "description": "MySql database admin built with Express and Bootstrap.",
+    "version": "1.1.4",
+    "description": "MySql, MariaDB and PostgreSQL database admin built with Express and Bootstrap.",
     "keywords": [
         "mysql",
+        "mariadb",
+        "postgresql",
         "database",
         "admin",
         "express",
