@@ -1,7 +1,6 @@
 
 var dcopy = require('deep-copy');
-var upload = require('../lib/utils/upload'),
-    editview = require('../lib/core/editview'),
+var editview = require('../lib/core/editview'),
     database = require('../lib/core/database');
 
 
@@ -27,10 +26,6 @@ exports.get = function (req, res, next) {
         
         render(req, res, next, data, args);
     });
-}
-
-exports.upload = function (req, res, next) {
-    upload.files(req, next);
 }
 
 exports.post = function (req, res, next) {

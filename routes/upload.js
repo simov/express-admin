@@ -62,11 +62,11 @@ function getFiles (req) {
     return files;
 }
 
-exports.files = function (req, cb) {
+exports.files = function (req, res, next) {
     var files = getFiles(req);
 
     (function loop (index) {
-        if (index == files.length) return cb();
+        if (index == files.length) return next();
         var file = files[index];
         processFile(file, function (err, fname) {
             if (fname != '') setName(req, file, fname);
