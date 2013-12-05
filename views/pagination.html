@@ -4,15 +4,15 @@
     {{#pagination}}
         
         {{#first}}
-        <li><a href="/{{view.slug}}">«</a></li>
+        <li><a href="{{root}}/{{view.slug}}">«</a></li>
         {{/first}}
 
         {{#prev}}
-        <li><a href="/{{view.slug}}/?p={{index}}">‹</a></li>
+        <li><a href="{{root}}/{{view.slug}}/?p={{index}}">‹</a></li>
         {{/prev}}
 
         {{#page}}
-        <li><a href="/{{view.slug}}/?p={{index}}">{{index}}</a></li>
+        <li><a href="{{root}}/{{view.slug}}/?p={{index}}">{{index}}</a></li>
         {{/page}}
 
         {{#active}}
@@ -20,11 +20,11 @@
         {{/active}}
 
         {{#next}}
-        <li><a href="/{{view.slug}}/?p={{index}}">›</a></li>
+        <li><a href="{{root}}/{{view.slug}}/?p={{index}}">›</a></li>
         {{/next}}
 
         {{#last}}
-        <li><a href="/{{view.slug}}/?p={{index}}">»</a></li>
+        <li><a href="{{root}}/{{view.slug}}/?p={{index}}">»</a></li>
         {{/last}}
 
     {{/pagination}}
