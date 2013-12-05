@@ -69,6 +69,10 @@ function initSettings (args) {
         args.config.app.root = '';
     }
 
+    var upload = args.config.app.upload || path.join(__dirname, 'public/upload');
+    args.config.app.upload = upload;
+    if (!fs.existsSync(upload)) fs.mkdirSync(upload);
+    
     args.langs = (function () {
         var dpath = path.join(__dirname, 'config/lang'),
             files = fs.readdirSync(dpath),
@@ -201,7 +205,7 @@ function initServer (args) {
 
     // editview
     app.get(routes.editview, r.auth.restrict, r.editview.get, r.render.admin);
-    app.post(routes.editview, r.auth.restrict, r.editview.post, r.render.admin);
+    app.post(routes.editview, r.auth.restrict, r.upload.files, r.editview.post, r.render.admin);
 
     // listview
     app.get(routes.listview, r.auth.restrict, r.listview.get, r.render.admin);

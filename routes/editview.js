@@ -40,7 +40,7 @@ exports.post = function (req, res, next) {
             action = req.body.action,
             table = Object.keys(view)[0];
 
-        if (action.hasOwnProperty('remove')) {
+        if ({}.hasOwnProperty.call(action, 'remove')) {
             // should be based on constraints
             args.action = 'remove';
 
@@ -70,20 +70,20 @@ exports.post = function (req, res, next) {
 
             // based on clicked button
             switch (true) {
-                case action.hasOwnProperty('remove'):
+                case {}.hasOwnProperty.call(action, 'remove'):
                     // the message should be different for delete
                     req.session.success = true;
                     res.redirect(res.locals.root+'/'+args.slug);
                     break;
-                case action.hasOwnProperty('save'):
+                case {}.hasOwnProperty.call(action, 'save'):
                     req.session.success = true;
                     res.redirect(res.locals.root+'/'+args.slug);
                     break;
-                case action.hasOwnProperty('another'):
+                case {}.hasOwnProperty.call(action, 'another'):
                     req.session.success = true;
                     res.redirect(res.locals.root+'/'+args.slug+'/add');
                     break;
-                case action.hasOwnProperty('continue'):
+                case {}.hasOwnProperty.call(action, 'continue'):
                     req.session.success = true;
                     if (args.debug) return render(req, res, next, data, args);
                     res.redirect(res.locals.root+'/'+args.slug+'/'+args.id);
