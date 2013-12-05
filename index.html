@@ -102,7 +102,8 @@ When using PostgreSQL, the <code>pg</code> key will accept any option from the <
         <span class="s2">"layouts"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="s2">"themes"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="s2">"languages"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">"root"</span><span class="o">:</span> <span class="s2">"/admin"</span>
+        <span class="s2">"root"</span><span class="o">:</span> <span class="s2">"/admin"</span><span class="p">,</span>
+        <span class="s2">"upload"</span><span class="o">:</span> <span class="s2">"/upload/folder"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -142,6 +143,8 @@ When using PostgreSQL, the <code>pg</code> key will accept any option from the <
 <strong>languages</strong> - toggle the languages button</li>
 <li>
 <strong>root</strong> - root location for the admin (omitted by default <code>/</code>)</li>
+<li>
+<strong>upload</strong> - absolute path to the upload folder (omitted by default <code>public/upload</code>)</li>
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
@@ -263,6 +266,7 @@ When using PostgreSQL, the <code>pg</code> key will accept any option from the <
 <p><strong>control</strong> - one of these</p>
 
 <div class="highlight highlight-js"><pre><span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="text"</span>
+<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file"</span>
 <span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// textarea</span>
 <span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"some-class"</span><span class="p">}</span> <span class="c1">// html editor (see the docs)</span>
 <span class="p">{</span><span class="s2">"date"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datepicker</span>
@@ -1026,28 +1030,28 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a>.</p>
 
 <div class="highlight highlight-bash"><pre>server <span class="o">{</span>
-    listen 80;
+    listen 80<span class="p">;</span>
 
     <span class="c"># vhost</span>
-    server_name admin.example.com;
+    server_name admin.example.com<span class="p">;</span>
 
     <span class="c">#log</span>
-    access_log /var/log/nginx/admin-access.log;
-    error_log /var/log/nginx/admin-error.log debug;
+    access_log /var/log/nginx/admin-access.log<span class="p">;</span>
+    error_log /var/log/nginx/admin-error.log debug<span class="p">;</span>
 
     <span class="c"># NODE</span>
     location / <span class="o">{</span>
-        proxy_pass http://127.0.0.1:3000;
-        proxy_set_header Host <span class="nv">$http_host</span>;
-        proxy_set_header X-Real-IP <span class="nv">$remote_addr</span>;
-        proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span>;
+        proxy_pass http://127.0.0.1:3000<span class="p">;</span>
+        proxy_set_header Host <span class="nv">$http_host</span><span class="p">;</span>
+        proxy_set_header X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+        proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
     <span class="o">}</span>
 
     <span class="c"># NGINX</span>
 
     <span class="c"># static</span>
-    location ~ <span class="se">\.</span><span class="o">(</span>jpg|jpeg|png|gif|swf|flv|mp4|mov|avi|wmv|m4v|mkv|ico|css|js|txt|html|htm<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
-        root /;
+    location ~ <span class="se">\.</span><span class="o">(</span>jpg<span class="p">|</span>jpeg<span class="p">|</span>png<span class="p">|</span>gif<span class="p">|</span>swf<span class="p">|</span>flv<span class="p">|</span>mp4<span class="p">|</span>mov<span class="p">|</span>avi<span class="p">|</span>wmv<span class="p">|</span>m4v<span class="p">|</span>mkv<span class="p">|</span>ico<span class="p">|</span>css<span class="p">|</span>js<span class="p">|</span>txt<span class="p">|</span>html<span class="p">|</span>htm<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+        root /<span class="p">;</span>
         try_files
             <span class="c"># express admin</span>
             /absolute/path/to/express-admin/public/<span class="nv">$uri</span>
@@ -1055,22 +1059,22 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
             <span class="c"># custom views</span>
             /absolute/path/to/your/project/custom/app1/public/<span class="nv">$uri</span>
             /absolute/path/to/your/project/custom/app2/public/<span class="nv">$uri</span>
-        /;
+        /<span class="p">;</span>
     <span class="o">}</span>
 
     <span class="c"># LIBS</span>
 
     <span class="c"># csslib</span>
     location ^~ /csslib/ <span class="o">{</span>
-        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/;
+        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/<span class="p">;</span>
     <span class="o">}</span>
     <span class="c"># jslib</span>
     location ^~ /jslib/ <span class="o">{</span>
-        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/;
+        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/<span class="p">;</span>
     <span class="o">}</span>
     <span class="c"># bootswatch</span>
     location ^~ /bootswatch/ <span class="o">{</span>
-        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/;
+        <span class="nb">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/<span class="p">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
@@ -1083,10 +1087,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <div class="highlight highlight-bash"><pre><span class="c"># apache</span>
 location /some-slug/ <span class="o">{</span>
-    proxy_pass http://127.0.0.1:8008/some-slug/;
-    proxy_set_header Host <span class="nv">$http_host</span>;
-    proxy_set_header X-Real-IP <span class="nv">$remote_addr</span>;
-    proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span>;
+    proxy_pass http://127.0.0.1:8008/some-slug/<span class="p">;</span>
+    proxy_set_header Host <span class="nv">$http_host</span><span class="p">;</span>
+    proxy_set_header X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+    proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 

@@ -21,7 +21,8 @@ When using PostgreSQL, the `pg` key will accept any option from the [node-postgr
         "layouts": true,
         "themes": true,
         "languages": true,
-        "root": "/admin"
+        "root": "/admin",
+        "upload": "/upload/folder"
     }
 }
 ```
@@ -38,6 +39,7 @@ When using PostgreSQL, the `pg` key will accept any option from the [node-postgr
     - **themes** - toggle the themes button
     - **languages** - toggle the languages button
     - **root** - root location for the admin (omitted by default `/`)
+    - **upload** - absolute path to the upload folder (omitted by default `public/upload`)
 
   [1]: https://github.com/felixge/node-mysql#connection-options
   [2]: https://github.com/brianc/node-postgres
