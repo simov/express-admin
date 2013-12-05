@@ -20,13 +20,13 @@ function getName (target, cb) {
     }
 }
 
-function processFile (file, cb) {
+function processFile (file, dpath, cb) {
     if (!file.name) return cb(null, file.name);
     // file.name; // file-name.jpg
     // file.path; // /tmp/9c9b10b72fe71be752bd3895f1185bc8
 
     var source = file.path,
-        target = path.join(path.resolve(__dirname, '../../public/uploads'), file.name);
+        target = path.join(dpath, file.name);
 
     fs.readFile(source, function (err, data) {
         if (err) return cb(err);
@@ -63,12 +63,13 @@ function getFiles (req) {
 }
 
 exports.files = function (req, res, next) {
-    var files = getFiles(req);
+    var files = getFiles(req),
+        dpath = res.locals._admin.config.app.upload;
 
     (function loop (index) {
         if (index == files.length) return next();
         var file = files[index];
-        processFile(file, function (err, fname) {
+        processFile(file, dpath, function (err, fname) {
             if (fname != '') setName(req, file, fname);
             loop(++index);
         });

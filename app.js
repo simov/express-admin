@@ -72,6 +72,10 @@ function initSettings (args) {
         args.config.app.root = '';
     }
 
+    var upload = args.config.app.upload || path.join(__dirname, 'public/upload');
+    args.config.app.upload = upload;
+    if (!fs.existsSync(upload)) fs.mkdirSync(upload);
+    
     args.langs = (function () {
         var dpath = path.join(__dirname, 'config/lang'),
             files = fs.readdirSync(dpath),
