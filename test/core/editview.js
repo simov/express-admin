@@ -246,7 +246,7 @@ describe('core/editview', function () {
             }
         };
         var rows = [{columns: {__pk: 1}}];
-        editview.test.getIds(args, rows, function (err) {
+        editview.test.mtm.loopRecords(args, rows, function (err) {
             if (err) return done(err);
             should.deepEqual(rows[0].columns.recipeTypes, ['2', '4', '5']);
             done();
@@ -273,7 +273,7 @@ describe('core/editview', function () {
             }
         };
         var rows = [{columns: {__pk: 1}}];
-        editview.test.getIds(args, rows, function (err) {
+        editview.test.mtm.loopRecords(args, rows, function (err) {
             if (err) return done(err);
             should.deepEqual(rows[0].ids.recipeTypes, ['2', '4', '5']);
             done();
