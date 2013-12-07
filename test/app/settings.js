@@ -34,9 +34,14 @@ describe('settings initialization', function () {
         args.langs.hasOwnProperty('de').should.equal(true);
         args.langs.hasOwnProperty('en').should.equal(true);
 
-        should.deepEqual(args.languages, {language:[
+        should.deepEqual(
+            args.languages.language.sort(function (a, b) {
+                if (a.key < b.key) return -1;
+                if (a.key > b.key) return  1;
+                return 0;
+            }), [
             {key:'bg',name:'Български'},{key:'de',name:'Deutsch'},{key:'en',name:'English'}
-        ]});
+        ]);
 
         args.layouts.should.equal(true);
 
