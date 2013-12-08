@@ -20,6 +20,9 @@
 /*login header*/
 #login .label-default { color: #f8f8f2; }
 
+/*mainview*/
+.ex-table tbody td .glyphicon-plus { font-size: 8px; position: relative; top: -1px; }
+
 
 /*editview*/
 .btn-today { line-height: 240%; }

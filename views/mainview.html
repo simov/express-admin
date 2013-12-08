@@ -10,7 +10,10 @@
     <tbody>
     {{#tables}}
         <tr>
-            <td><a href="{{slug}}">{{name}}</a></td>
+            <td>
+                <a href="{{root}}/{{slug}}">{{name}}</a>
+                <a href="{{root}}/{{slug}}/add" class="glyphicon glyphicon-plus" title="{{string.add}} {{name}}"></a>
+            </td>
         </tr>
     {{/tables}}
     </tbody>
@@ -26,7 +29,9 @@
     <tbody>
     {{#views}}
         <tr>
-            <td><a href="{{slug}}">{{name}}</a></td>
+            <td>
+                <a href="{{root}}/{{slug}}">{{name}}</a>
+            </td>
         </tr>
     {{/views}}
     </tbody>
