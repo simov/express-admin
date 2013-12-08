@@ -22,6 +22,9 @@
 
 /*mainview*/
 .ex-table tbody td .glyphicon-plus { font-size: 8px; position: relative; top: -1px; }
+/*listview*/
+.ex-table tbody td .label { margin-right: 5px; }
+.ex-table tbody td .label:last-child { margin: 0; }
 
 
 /*editview*/

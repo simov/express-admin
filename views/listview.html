@@ -33,7 +33,10 @@
             <td><a href="{{root}}/{{view.slug}}/{{id}}">{{text}}</a></td>
         {{/pk}}
         {{#values}}
-            <td>{{.}}</td>
+            <td>
+                {{^mtm}}{{.}}{{/mtm}}
+                {{#mtm}}<span class="label label-default">{{.}}</span>{{/mtm}}
+            </td>
         {{/values}}
         </tr>
     {{/records}}
