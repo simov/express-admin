@@ -40,6 +40,23 @@ describe('sql', function () {
                             "CAST(`table`.`lastname` AS CHAR)) AS `name`");
         done();
     });
+    
+    it('group', function (done) {
+        var columns = ['firstname', 'lastname'];
+        columns = sql.fullNames('table', columns);
+        columns = sql.cast(columns);
+
+        sql.group(columns, 'name')
+            .should.equal("GROUP_CONCAT(DISTINCT CONCAT_WS(' ',CAST(`table`.`firstname` AS CHAR),"+
+                            "CAST(`table`.`lastname` AS CHAR))) AS `name`");
+        done();
+    });
+
+    it('groupby', function (done) {
+        sql.groupby(sql.fullName('table', 'column'))
+            .should.equal(' GROUP BY `table`.`column` ');
+        done();
+    });
 
     it('order', function (done) {
         sql.order('table', {column1: 'asc', column2: 'desc'}).join()
