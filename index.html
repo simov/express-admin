@@ -441,6 +441,9 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
     <span class="p">},</span>
     <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"int(11)"</span><span class="p">,</span>
     <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
     <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">},</span>
@@ -472,6 +475,14 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <strong>type</strong> - you won't change this</li>
 <li>
 <strong>allowNull</strong> - indicates whether you'll be able to save a record without selecting any item from the referenced table or not</li>
+<li>
+<strong>listview</strong> - 
+
+<ul>
+<li>
+<strong>show</strong> - include or exclude this column from the listview</li>
+</ul>
+</li>
 <li>
 <strong>editview</strong> - 
 

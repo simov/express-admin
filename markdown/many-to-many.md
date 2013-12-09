@@ -16,6 +16,9 @@ In `settings.json` find the table you are searching for and insert this object i
     },
     "type": "int(11)",
     "allowNull": false,
+    "listview": {
+        "show": false
+    },
     "editview": {
         "show": true
     },
@@ -41,6 +44,8 @@ In `settings.json` find the table you are searching for and insert this object i
 - **control** - the control type (you won't change this)
 - **type** - you won't change this
 - **allowNull** - indicates whether you'll be able to save a record without selecting any item from the referenced table or not
+- **listview** - 
+    - **show** - include or exclude this column from the listview
 - **editview** - 
     - **show** - include or exclude this column from the editview
 - **manyToMany** - indicates that this is not a regular table column
