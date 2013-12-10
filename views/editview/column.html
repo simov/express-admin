@@ -31,6 +31,15 @@
     {{#date}}
     <input type="text" name="{{key}}" value="{{value}}" class="datepicker form-control" autocomplete="off" />
     {{/date}}
+    {{#time}}
+    <input type="text" name="{{key}}" value="{{value}}" class="timepicker form-control" autocomplete="off" />
+    {{/time}}
+    {{#datetime}}
+    <input type="text" name="{{key}}" value="{{value}}" class="datetimepicker form-control" autocomplete="off" />
+    {{/datetime}}
+    {{#year}}
+    <input type="text" name="{{key}}" value="{{value}}" class="yearpicker form-control" autocomplete="off" />
+    {{/year}}
 
     {{#file}}
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />

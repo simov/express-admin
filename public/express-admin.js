@@ -41,6 +41,44 @@ Date.prototype.toJSONLocal = function() {
         if ($('.form-group [type=file]', self).length)
             return $('.form-group [type=file]', self);
     }
+    function initDatetimePickers (type, ctx) {
+        var options = {
+            weekStart: 1, autoclose: 1, todayHighlight: 1,
+            keyboardNavigation: 0, forceParse: 0, viewSelect: 'decade'
+        };
+        var controls = [
+            {format: 'yyyy-mm-dd',      formatViewType: 'date', startView: 2, minView: 2, maxView: 4},
+            {format: 'hh:i',            formatViewType: 'time', startView: 1, minView: 0, maxView: 1},
+            {format: 'yyyy-mm-dd hh:i', formatViewType: 'date', startView: 2, minView: 0, maxView: 4},
+            {format: 'yyyy',            formatViewType: 'date', startView: 4, minView: 4, maxView: 4}
+        ];
+        var mobile = ['date', 'time', 'datetime', 'date'];
+
+        var selectors = ['.date', '.time', '.datetime', '.year'];
+        for (var i=0; i < selectors.length; i++) {
+            selectors[i] = (type == 'static')
+                ? 'tr:not(.blank) ' + selectors[i] + 'picker'
+                : selectors[i] + 'picker';
+        }
+
+        var have = false;
+        for (var i=0; i < selectors.length; i++) {
+            if ($(selectors[i], ctx).length) {have = true; break;}
+        }
+        if (!have) return;
+
+        if (isMobile()) {
+            for (var i=0; i < selectors.length; i++) {
+                $(selectors[i], ctx).each(function (index) {
+                    $(this).attr('type', mobile[i]);
+                });
+            }
+        } else {
+            for (var i=0; i < selectors.length; i++) {
+                $(selectors[i], ctx).datetimepicker($.extend(options, controls[i]));
+            }
+        }
+    }
     return {
         inlines: function () {
             $('.add-another').on('click', function (e) {
@@ -79,17 +117,7 @@ Date.prototype.toJSONLocal = function() {
                 // init controls
                 if ($('.chosen-select').length)
                     $('.chosen-select', $rows).chosen(chosen);
-                if ($('.datepicker', $rows).length) {
-                    if (isMobile()) {
-                        $('.datepicker', $rows).each(function (index) {
-                            $(this).attr('type', 'date');
-                        });
-                    } else {
-                        $('.datepicker', $rows).datepicker({
-                            dateFormat: 'yy-mm-dd'
-                        });
-                    }
-                }
+                initDatetimePickers('dynamic', $rows);
                 if (typeof onAddInline === 'function')
                     onAddInline($rows);
 
@@ -186,17 +214,8 @@ Date.prototype.toJSONLocal = function() {
                 $('tr:not(.blank) .chosen-select').chosen(chosen);
         },
         datepicker: function () {
-            if ($('.datepicker').length) {
-                if (isMobile()) {
-                    $('tr:not(.blank) .datepicker').each(function (index) {
-                        $(this).attr('type', 'date');
-                    });
-                } else {
-                    $('tr:not(.blank) .datepicker').datepicker({
-                        dateFormat: 'yy-mm-dd'
-                    });
-                }
-            }
+            initDatetimePickers('static', document);
+            
             $('body').on('click', 'td .form-group .btn-today', function (e) {
                 $(this).parents('td').find('input').val(new Date().toJSONLocal());
                 return false;

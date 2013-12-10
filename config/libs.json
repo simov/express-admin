@@ -1,14 +1,14 @@
 {
     "bootstrap": "/csslib/bootstrap.min.css",
     "css": [
-        "/csslib/jquery.ui.datepicker.min.css",
+        "/csslib/bootstrap-datetimepicker.min.css",
         "/csslib/chosen.min.css",
         "/express-admin.css"
     ],
     "js": [
         "/jslib/jquery-1.9.1.min.js",
         "/jslib/bootstrap.min.js",
-        "/jslib/jquery.ui.datepicker.js",
+        "/jslib/bootstrap-datetimepicker.min.js",
         "/jslib/chosen.jquery.min.js",
         "/express-admin.js"
     ]
