@@ -8,7 +8,7 @@
     {{#control}}
     <!-- data-type-name={{type.name}} data-type-range="{{type.range}}" data-allow-null="{{allowNull}}" data-default-value="{{defaultValue}}" -->
 
-    <div class="{{#text}}col-sm-5 col-md-4 col-lg-3{{/text}}{{#file}}col-sm-5 col-md-4 col-lg-3{{/file}}{{#date}}col-sm-5 col-md-4 col-lg-3{{/date}}{{#select}}col-sm-5 col-md-4 col-lg-3{{/select}}{{#textarea}}{{#editor}}col-sm-9 col-md-9 col-lg-10{{/editor}}{{/textarea}}{{#textarea}}{{^editor}}col-sm-7 col-md-6 col-lg-5{{/editor}}{{/textarea}}">
+    <div class="{{#text}}col-sm-5 col-md-4 col-lg-3{{/text}}{{#file}}col-sm-5 col-md-4 col-lg-3{{/file}}{{#date}}col-sm-5 col-md-4 col-lg-3{{/date}}{{#time}}col-sm-5 col-md-4 col-lg-3{{/time}}{{#datetime}}col-sm-5 col-md-4 col-lg-3{{/datetime}}{{#year}}col-sm-5 col-md-4 col-lg-3{{/year}}{{#select}}col-sm-5 col-md-4 col-lg-3{{/select}}{{#textarea}}{{#editor}}col-sm-9 col-md-9 col-lg-10{{/editor}}{{/textarea}}{{#textarea}}{{^editor}}col-sm-7 col-md-6 col-lg-5{{/editor}}{{/textarea}}">
 
     {{#text}}
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
@@ -35,7 +35,7 @@
     <input type="text" name="{{key}}" value="{{value}}" class="timepicker form-control" autocomplete="off" />
     {{/time}}
     {{#datetime}}
-    <input type="text" name="{{key}}" value="{{value}}" class="datetimepicker form-control" autocomplete="off" />
+    <input type="text" name="{{key}}" value="{{value}}" class="datetime-picker form-control" autocomplete="off" />
     {{/datetime}}
     {{#year}}
     <input type="text" name="{{key}}" value="{{value}}" class="yearpicker form-control" autocomplete="off" />
