@@ -6,7 +6,7 @@
     /*editview buttons*/
     #controls button { float: none; width: 100% !important; margin-bottom: 15px; }
 }
-.container-fluid { max-width: none; }
+.container-fluid { width: auto; max-width: none; }
 
 /*editview buttons*/
 #controls { text-align: right; }

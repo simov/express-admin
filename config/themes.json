@@ -10,5 +10,6 @@
     {"key": "simplex",     "name": "Simplex"},
     {"key": "slate",       "name": "Slate"},
     {"key": "spacelab",    "name": "Spacelab"},
-    {"key": "united",      "name": "United"}
+    {"key": "united",      "name": "United"},
+    {"key": "yeti",        "name": "Yeti"}
 ]
