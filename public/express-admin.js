@@ -48,13 +48,13 @@ Date.prototype.toJSONLocal = function() {
         };
         var controls = [
             {format: 'yyyy-mm-dd',      formatViewType: 'date', startView: 2, minView: 2, maxView: 4},
-            {format: 'hh:i',            formatViewType: 'time', startView: 1, minView: 0, maxView: 1},
-            {format: 'yyyy-mm-dd hh:i', formatViewType: 'date', startView: 2, minView: 0, maxView: 4},
+            {format: 'hh:ii',           formatViewType: 'time', startView: 1, minView: 0, maxView: 1},
+            {format: 'yyyy-mm-dd hh:ii',formatViewType: 'date', startView: 2, minView: 0, maxView: 4},
             {format: 'yyyy',            formatViewType: 'date', startView: 4, minView: 4, maxView: 4}
         ];
         var mobile = ['date', 'time', 'datetime', 'date'];
 
-        var selectors = ['.date', '.time', '.datetime', '.year'];
+        var selectors = ['.date', '.time', '.datetime-', '.year'];
         for (var i=0; i < selectors.length; i++) {
             selectors[i] = (type == 'static')
                 ? 'tr:not(.blank) ' + selectors[i] + 'picker'
