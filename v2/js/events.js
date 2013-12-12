@@ -9,7 +9,7 @@ $(function () {
         ];
         for (var i=0; i < files.length; i++) {
             var src = 'examples/'+files[i]+'.html';
-            var example = '<h3>Example</h3>'+
+            var example = '<h3><a name="example-'+files[i]+'" class="anchor" href="#example-'+files[i]+'"><span class="octicon octicon-link"></span></a>Example</h3>'+
                     '<a href="#" class="btn-example">click to expand</a>'+
                     '<iframe class="example '+files[i]+'" data-src="'+src+'" src="about:blank"></iframe>';
             var file = $('[name='+files[i]+']').parents('.file');
