@@ -31,15 +31,13 @@ Date.prototype.toJSONLocal = function() {
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/gi
             .test(navigator.userAgent);
     }
-    function getControl (self) {
-        if ($('.jumbotron > input', self).length)
-            return $('.jumbotron > input', self);
-        if ($('.form-group .form-control', self).length)
-            return $('.form-group .form-control', self);
-    }
-    function getFileControl (self) {
-        if ($('.form-group [type=file]', self).length)
-            return $('.form-group [type=file]', self);
+    function getControls (self) {
+        return $([
+            '.jumbotron > input',
+            '.form-group .form-control',
+            '.form-group .radio-inline input',
+            '.form-group [type=file]'
+            ].join(), self);
     }
     function initDatetimePickers (type, ctx) {
         var options = {
@@ -93,15 +91,12 @@ Date.prototype.toJSONLocal = function() {
 
                 // set the column keys
                 $rows.each(function (idx) {
-                    var control = getControl(this),
-                        name = control.attr('name') || '';
-                    control.attr('name', 
-                        name.replace('blank', 'records').replace('index', index));
-                    
-                    var fileControl = getFileControl(this);
-                    if (fileControl)
-                    fileControl.attr('name', 
-                        name.replace('blank', 'records').replace('index', index));
+                    var $controls = getControls(this);
+                    $controls.each(function (i) {
+                        var name = $(this).attr('name');
+                        $(this).attr('name', 
+                            name.replace('blank', 'records').replace('index', index));
+                    });
                 });
                 // set keys for insert
                 (function () {
@@ -149,9 +144,11 @@ Date.prototype.toJSONLocal = function() {
 
                     $(this).nextUntil('tr.head').each(function () {
 
-                        var control = getControl(this),
-                            name = control.attr('name');
-                        control.attr('name', name.replace(idx, '['+index+']'));
+                        var $controls = getControls(this);
+                        $controls.each(function (i) {
+                            var name = $(this).attr('name');
+                            $(this).attr('name', name.replace(idx, '['+index+']'));
+                        });
                     });
                 });
                 
