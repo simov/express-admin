@@ -1,212 +1,340 @@
+
 <!DOCTYPE html>
 <html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Express Admin</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <link id="bootstrap" href="csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript">
+        var xAdmin = {root: ''};
+        (function () {
+            var bootstrap = document.getElementById('bootstrap'),
+                theme = localStorage.getItem('theme') || 'default';
+            bootstrap.href = xAdmin.root+'/bootswatch/'+theme+'/bootstrap.min.css';
+        }());
+    </script>
     
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <title>Express Admin</title>
+    <link href="csslib/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="csslib/chosen.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="public/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/chosen.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="public/express-admin.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/tinymce/js/tinymce/tinymce.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/tinymce/js/tinymce/jquery.tinymce.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="public/examples.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body id="express-admin" class="container">
+
+<div id="wrapper">
+    
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div id="navbar" class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">Express Admin</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="top-nav" class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Layout <b class="caret"></b></a>
+                        <ul id="layout" class="dropdown-menu">
+                            <li class="active"><a href="#fixed">Centered</a></li>
+                            <li><a href="#fluid">Streched</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+                        <ul id="theme" class="dropdown-menu">
+                            <li><a href="#default">Default</a></li>
+                        <li><a href="#amelia">Amelia</a></li>
+                        <li><a href="#cerulean">Cerulean</a></li>
+                        <li><a href="#cosmo">Cosmo</a></li>
+                        <li><a href="#cyborg">Cyborg</a></li>
+                        <li><a href="#flatly">Flatly</a></li>
+                        <li><a href="#journal">Journal</a></li>
+                        <li><a href="#readable">Readable</a></li>
+                        <li><a href="#simplex">Simplex</a></li>
+                        <li><a href="#slate">Slate</a></li>
+                        <li><a href="#spacelab">Spacelab</a></li>
+                        <li><a href="#united">United</a></li>
+                        <li><a href="#yeti">Yeti</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
+                        <ul id="language" class="dropdown-menu">
+                            <li><a href="#bg">Български</a></li>
+                        <li><a href="#de">Deutsch</a></li>
+                        <li><a href="#en">English</a></li>
+                    </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        (function () {
+            var body = document.getElementById('express-admin'),
+                navbar = document.getElementById('navbar'),
+                layout = localStorage.getItem('layout') || 'fixed';
+            body.className = navbar.className = 
+                (layout == 'fixed') ? 'container' : 'container container-fluid';
+        }());
+    </script>
+    <section id="content">
         
-        <link id="bootstrap" href="../csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="../csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="../csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
-        <style type="text/css">
-            body { background: #f8f8f8; }
-            table { background: #fff; }
-        </style>
+        <ul class="breadcrumb">
+        
+            <li><a href="/">Home</a></li>
 
-        <script src="../jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
-    </head>
+            
+
+            <li><a href="/user">User (One to One)</a></li>
+
+            
+
+        
+            <li class="active">1</li>
     
-    <body id="express-admin" class="container">
-        <section id="content">
-            <h5>user</h5>
+</ul>
+        
+        
+        <h2>User (One to One)</h2>
+        
+        
+        
+        <form class="form-horizontal" action="/user/1" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+            <fieldset>
+        <table class="table table-bordered ex-table">
+            <tbody>
+                <tr class="head hidden">
+                    <td>
+                        <input type="hidden" name="view[user][records][0][pk]" value="1" />
+                </td>
+                </tr>
+                <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">firstname</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                    <input type="text" name="view[user][records][0][columns][firstname]" value="Jeff" class="form-control" />
 
-            <form class="form-horizontal" action="#" method="post" accept-charset="utf-8">
-                <fieldset>
-                    <table class="table table-bordered ex-table ex-table-view">
-                        <tbody>
-                            <tr class="head hidden">
-                                <td>
-                                    <input type="hidden" name="view[user][records][0][pk]" value="1" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">id</label>
-                                        <div class="controls">
-                                            <input type="text" name="view[user][records][0][columns][id]" value="1" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">firstname</label>
-                                        <div class="controls">
-                                            <input type="text" name="view[user][records][0][columns][firstname]" value="Jeff" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">lastname</label>
-                                        <div class="controls">
-                                            <input type="text" name="view[user][records][0][columns][lastname]" value="Cox" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </fieldset>
-                <fieldset id="one">
-                    <table class="table table-bordered ex-table ex-table-inline" data-table="address">
-                        <thead>
-                            <tr class="label-inverse">
-                                <th>address</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="head">
-                                <td class="hero-unit">
-                                    <input type="hidden" name="oneToOne[address][records][0][pk]" value="1" />
-                                    <label>
-                                        <input type="checkbox" name="oneToOne[address][records][0][remove]" /> <small>Remove</small>
+                
+                
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">lastname</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                    <input type="text" name="view[user][records][0][columns][lastname]" value="Cox" class="form-control" />
 
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">id</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[address][records][0][columns][id]" value="1" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">user_id</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[address][records][0][columns][user_id]" value="1" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">street</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[address][records][0][columns][street]" value="South Lake" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="head blank hidden">
-                                <td class="hero-unit">
-                                    <input type="hidden" name="oneToOne[address][blank][index][insert]" value="true" />	<a href="#" class="remove" data-table="address"><i class="icon-remove-sign"></i></a>
+                
+                
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
 
-                                </td>
-                            </tr>
-                            <tr class="blank hidden">
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">id</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[address][blank][index][columns][id]" value="" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="blank hidden">
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">user_id</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[address][blank][index][columns][user_id]" value="" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="blank hidden">
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">street</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[address][blank][index][columns][street]" value="" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="hidden">
-                            <tr>
-                                <td><a href="#" class="add-another" data-table="address"><small>Add another address</small></a>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <table class="table table-bordered ex-table ex-table-inline" data-table="phone">
-                        <thead>
-                            <tr class="label-inverse">
-                                <th>phone</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="head blank hidden">
-                                <td class="hero-unit">
-                                    <input type="hidden" name="oneToOne[phone][blank][index][insert]" value="true" />	<a href="#" class="remove" data-table="phone"><i class="icon-remove-sign"></i></a>
+            </tbody>
+        </table>
+</fieldset>
+    <fieldset id="one">
+        <table class="table table-bordered ex-table" data-table="address">
+            <thead>
+                <tr class="label-default">
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="head">
+                    <td class="jumbotron">
+                        <input type="hidden" name="oneToOne[address][records][0][pk]" value="1" />
+                    <label>
+                            <input type="checkbox" name="oneToOne[address][records][0][remove]"  /> <small>Remove</small>
+                    </label>
+                </td>
+                </tr>
+                <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">street</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                    <input type="text" name="oneToOne[address][records][0][columns][street]" value="South Lake" class="form-control" />
 
-                                </td>
-                            </tr>
-                            <tr class="blank hidden">
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">id</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[phone][blank][index][columns][id]" value="" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="blank hidden">
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">user_id</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[phone][blank][index][columns][user_id]" value="" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="blank hidden">
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">mobile</label>
-                                        <div class="controls">
-                                            <input type="text" name="oneToOne[phone][blank][index][columns][mobile]" value="" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td><a href="#" class="add-another" data-table="phone"><small>Add another phone</small></a>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </fieldset>
-            </form>
-        </section>
-    </body>
+                
+                
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+
+                <tr class="head blank hidden">
+                    <td class="jumbotron">
+                        <input type="hidden" name="oneToOne[address][blank][index][insert]" value="true" />
+                    <a href="#" class="remove text-muted btn-xs pull-right" data-table="address"><span class="glyphicon glyphicon-remove-sign"></span></a>
+                    </td>
+                </tr>
+                <tr class="blank hidden">
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">street</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                    <input type="text" name="oneToOne[address][blank][index][columns][street]" value="" class="form-control" />
+
+                
+                
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>	
+        </tbody>
+            <tfoot class="hidden">
+                <tr>
+                    <td><a href="#" class="add-another" data-table="address"><small>Add another Address</small></a></td>
+                </tr>
+            </tfoot>
+        </table>
+    <table class="table table-bordered ex-table" data-table="phone">
+            <thead>
+                <tr class="label-default">
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr class="head blank hidden">
+                    <td class="jumbotron">
+                        <input type="hidden" name="oneToOne[phone][blank][index][insert]" value="true" />
+                    <a href="#" class="remove text-muted btn-xs pull-right" data-table="phone"><span class="glyphicon glyphicon-remove-sign"></span></a>
+                    </td>
+                </tr>
+                <tr class="blank hidden">
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">mobile</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                    <input type="text" name="oneToOne[phone][blank][index][columns][mobile]" value="" class="form-control" />
+
+                
+                
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>	
+        </tbody>
+            <tfoot >
+                <tr>
+                    <td><a href="#" class="add-another" data-table="phone"><small>Add another Phone</small></a></td>
+                </tr>
+            </tfoot>
+        </table>
+</fieldset>
+<fieldset id="many">
+    </fieldset>
+    
+            <fieldset id="controls">
+                <button type="submit" class="btn btn-danger form-control" name="action[remove]">Delete</button>
+
+                <button type="submit" class="btn btn-default form-control" name="action[another]">Save and add another</button>
+                
+                <button type="submit" class="btn btn-default form-control" name="action[continue]">Save and continue editing</button>
+                
+                <button type="submit" class="btn btn-primary form-control" name="action[save]">Save</button>
+                
+                <input type="hidden" name="_csrf" value="SVLEsSPELby7NTRqmRbGK5lAbOrrm2dN9Chec=" />
+            </fieldset>
+</form>
+    </section>
+
+    <div id="footer-push">&nbsp;</div>
+</div>
+<footer>
+    <p><small><a href="http://simov.github.io/express-admin-site/" target="_blank" class="text-muted">Express Admin</a></small></p>
+</footer>
+</body>
 </html>

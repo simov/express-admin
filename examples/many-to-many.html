@@ -1,95 +1,252 @@
+
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <title>Express Admin</title>
-        
-        <link id="bootstrap" href="../csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="../csslib/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="../csslib/jquery.chosen.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="../csslib/express-admin.css" rel="stylesheet" type="text/css" media="all" />
-        <style type="text/css">
-            body { background: #f8f8f8; }
-            table { background: #fff; }
-        </style>
-        
-        <script src="../jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../jslib/jquery.chosen.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../jslib/express-admin.js" type="text/javascript" charset="utf-8"></script>
-    </head>
-    
-    <body id="express-admin" class="container">
-        <section id="content">
-            <h5>recipe</h5>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Express Admin</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
 
-            <form class="form-horizontal" action="#" method="post" accept-charset="utf-8">
-                <fieldset>
-                    <table class="table table-bordered ex-table ex-table-view">
-                        <tbody>
-                            <tr class="head hidden">
-                                <td>
-                                    <input type="hidden" name="view[recipe][records][0][pk]" value="1" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">id</label>
-                                        <div class="controls">
-                                            <input type="text" name="view[recipe][records][0][columns][id]" value="1" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">Name</label>
-                                        <div class="controls">
-                                            <input type="text" name="view[recipe][records][0][columns][name]" value="recipe 1" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">Recipe Types</label>
-                                        <div class="controls">
-                                            <select name="view[recipe][records][0][columns][recipe_type]" class="chzn-select" data-placeholder="Select" multiple="multiple">
-                                                <option value="NULL"></option>
-                                                <option value="1">type1</option>
-                                                <option value="2" selected="selected">type2</option>
-                                                <option value="3">type3</option>
-                                                <option value="4" selected="selected">type4</option>
-                                                <option value="5" selected="selected">type5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="control-group ">
-                                        <label class="control-label">Recipe Methods</label>
-                                        <div class="controls">
-                                            <select name="view[recipe][records][0][columns][recipe_method]" class="chzn-select" data-placeholder="Select" multiple="multiple">
-                                                <option value="NULL"></option>
-                                                <option value="1">method1</option>
-                                                <option value="2" selected="selected">method2</option>
-                                                <option value="3">method3</option>
-                                                <option value="4" selected="selected">method4</option>
-                                                <option value="5">method5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </fieldset>
-            </form>
-        </section>
-    </body>
+    <link id="bootstrap" href="csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript">
+        var xAdmin = {root: ''};
+        (function () {
+            var bootstrap = document.getElementById('bootstrap'),
+                theme = localStorage.getItem('theme') || 'default';
+            bootstrap.href = xAdmin.root+'/bootswatch/'+theme+'/bootstrap.min.css';
+        }());
+    </script>
+    
+    <link href="csslib/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="csslib/chosen.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="public/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/chosen.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="public/express-admin.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/tinymce/js/tinymce/tinymce.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jslib/tinymce/js/tinymce/jquery.tinymce.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="public/examples.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body id="express-admin" class="container">
+
+<div id="wrapper">
+    
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div id="navbar" class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">Express Admin</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="top-nav" class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Layout <b class="caret"></b></a>
+                        <ul id="layout" class="dropdown-menu">
+                            <li class="active"><a href="#fixed">Centered</a></li>
+                            <li><a href="#fluid">Streched</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+                        <ul id="theme" class="dropdown-menu">
+                            <li><a href="#default">Default</a></li>
+                        <li><a href="#amelia">Amelia</a></li>
+                        <li><a href="#cerulean">Cerulean</a></li>
+                        <li><a href="#cosmo">Cosmo</a></li>
+                        <li><a href="#cyborg">Cyborg</a></li>
+                        <li><a href="#flatly">Flatly</a></li>
+                        <li><a href="#journal">Journal</a></li>
+                        <li><a href="#readable">Readable</a></li>
+                        <li><a href="#simplex">Simplex</a></li>
+                        <li><a href="#slate">Slate</a></li>
+                        <li><a href="#spacelab">Spacelab</a></li>
+                        <li><a href="#united">United</a></li>
+                        <li><a href="#yeti">Yeti</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
+                        <ul id="language" class="dropdown-menu">
+                            <li><a href="#bg">Български</a></li>
+                        <li><a href="#de">Deutsch</a></li>
+                        <li><a href="#en">English</a></li>
+                    </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        (function () {
+            var body = document.getElementById('express-admin'),
+                navbar = document.getElementById('navbar'),
+                layout = localStorage.getItem('layout') || 'fixed';
+            body.className = navbar.className = 
+                (layout == 'fixed') ? 'container' : 'container container-fluid';
+        }());
+    </script>
+    <section id="content">
+        
+        <ul class="breadcrumb">
+        
+            <li><a href="/">Home</a></li>
+
+            
+
+            <li><a href="/recipe">Recipe (Many to Many)</a></li>
+
+            
+
+        
+            <li class="active">1</li>
+    
+</ul>
+        
+        
+        <h2>Recipe (Many to Many)</h2>
+        
+        
+        
+        <form class="form-horizontal" action="/recipe/1" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+            <fieldset>
+        <table class="table table-bordered ex-table">
+            <tbody>
+                <tr class="head hidden">
+                    <td>
+                        <input type="hidden" name="view[recipe][records][0][pk]" value="1" />
+                </td>
+                </tr>
+                <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">Name</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                    <input type="text" name="view[recipe][records][0][columns][name]" value="recipe 1" class="form-control" />
+
+                
+                
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">Recipe Types</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                    <select name="view[recipe][records][0][columns][recipe_type]" class="chosen-select form-control" data-placeholder="Select" multiple="multiple">
+                        <option value="NULL" ></option>
+                        <option value="1" >type1</option>
+        <option value="2" selected="selected">type2</option>
+        <option value="3" >type3</option>
+        <option value="4" selected="selected">type4</option>
+        <option value="5" selected="selected">type5</option>
+    </select>
+
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">Recipe Methods</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                    <select name="view[recipe][records][0][columns][recipe_method]" class="chosen-select form-control" data-placeholder="Select" multiple="multiple">
+                        <option value="NULL" ></option>
+                        <option value="1" >method1</option>
+        <option value="2" selected="selected">method2</option>
+        <option value="3" >method3</option>
+        <option value="4" selected="selected">method4</option>
+        <option value="5" >method5</option>
+    </select>
+
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+</fieldset>
+    <fieldset id="one">
+    </fieldset>
+<fieldset id="many">
+    </fieldset>
+    
+            <fieldset id="controls">
+                <button type="submit" class="btn btn-danger form-control" name="action[remove]">Delete</button>
+
+                <button type="submit" class="btn btn-default form-control" name="action[another]">Save and add another</button>
+                
+                <button type="submit" class="btn btn-default form-control" name="action[continue]">Save and continue editing</button>
+                
+                <button type="submit" class="btn btn-primary form-control" name="action[save]">Save</button>
+                
+                <input type="hidden" name="_csrf" value="k8mOmSmEtzqGFcfIMghivc2ePzxrkrbdoNeLs=" />
+            </fieldset>
+</form>
+    </section>
+
+    <div id="footer-push">&nbsp;</div>
+</div>
+<footer>
+    <p><small><a href="http://simov.github.io/express-admin-site/" target="_blank" class="text-muted">Express Admin</a></small></p>
+</footer>
+</body>
 </html>

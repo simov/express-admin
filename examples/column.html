@@ -28,8 +28,7 @@
     <script src="jslib/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="jslib/chosen.jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="public/express-admin.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jslib/tinymce/js/tinymce/tinymce.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jslib/tinymce/js/tinymce/jquery.tinymce.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="public/editors.js" type="text/javascript" charset="utf-8"></script>
     <script src="public/examples.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body id="express-admin" class="container">
@@ -105,7 +104,7 @@
 
             
 
-            <li><a href="/car">Car (Many to One)</a></li>
+            <li><a href="/controls">Controls</a></li>
 
             
 
@@ -115,17 +114,17 @@
 </ul>
         
         
-        <h2>Car (Many to One)</h2>
+        <h2>Controls</h2>
         
         
         
-        <form class="form-horizontal" action="/car/1" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/controls/1" method="post" accept-charset="utf-8" enctype="multipart/form-data">
             <fieldset>
         <table class="table table-bordered ex-table">
             <tbody>
                 <tr class="head hidden">
                     <td>
-                        <input type="hidden" name="view[car][records][0][pk]" value="1" />
+                        <input type="hidden" name="view[controls][records][0][pk]" value="1" />
                 </td>
                 </tr>
                 <tr>
@@ -134,14 +133,362 @@
                     <div class="form-horizontal ">
                         <div class="form-group">
                     
-                        <label class="control-label col-sm-3 col-md-3 col-lg-2">model</label>
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">one to many single</label>
                     
                 
                     <div class="col-sm-5 col-md-4 col-lg-3">
                 
-                    <input type="text" name="view[car][records][0][columns][model]" value="Lamborghini Diablo" class="form-control" />
+                
+                
+                    <select name="view[controls][records][0][columns][controls_otm_single_id]" class="chosen-select form-control" data-placeholder="Select" >
+                        <option value="NULL" ></option>
+                        <option value="1" selected="selected">one</option>
+        <option value="2" >two</option>
+        <option value="3" >three</option>
+    </select>
 
                 
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">one to many multiple</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                    <select name="view[controls][records][0][columns][controls_otm_multiple_id]" class="chosen-select form-control" data-placeholder="Select" >
+                        <option value="NULL" ></option>
+                        <option value="1" selected="selected">one two</option>
+        <option value="2" >three</option>
+        <option value="3" >four five</option>
+    </select>
+
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">many to many single</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                    <select name="view[controls][records][0][columns][controls_mtm_single]" class="chosen-select form-control" data-placeholder="Select" multiple="multiple">
+                        <option value="NULL" ></option>
+                        <option value="1" selected="selected">one</option>
+        <option value="2" >two</option>
+        <option value="3" >three</option>
+    </select>
+
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">many to many multiple</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                    <select name="view[controls][records][0][columns][controls_mtm_multiple]" class="chosen-select form-control" data-placeholder="Select" multiple="multiple">
+                        <option value="NULL" ></option>
+                        <option value="1" selected="selected">one two</option>
+        <option value="2" selected="selected">three</option>
+        <option value="3" selected="selected">four five</option>
+    </select>
+
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">static</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                    <select name="view[controls][records][0][columns][static]" class="chosen-select form-control" data-placeholder="Select" >
+                        <option value="NULL" ></option>
+                        <option value="one" >one</option>
+        <option value="two" selected="selected">two</option>
+        <option value="three" >three</option>
+    </select>
+
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">text</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                    <input type="text" name="view[controls][records][0][columns][text]" value="text" class="form-control" />
+
+                
+                
+                
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">boolean</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                
+                
+                    
+                    <label class="radio-inline">
+                        <input type="radio" name="view[controls][records][0][columns][boolean]" value="1" checked="checked" /> Yes
+                    </label>
+    <label class="radio-inline">
+                        <input type="radio" name="view[controls][records][0][columns][boolean]" value="0"  /> No
+                    </label>
+
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">upload</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                
+                
+                    <input type="text" name="view[controls][records][0][columns][upload]" value="file" class="form-control" />
+    
+                
+                
+                
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        <input type="file" name="view[controls][records][0][columns][upload]" value="file" />
+                    </div>
+
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">date</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                
+                    <input type="text" name="view[controls][records][0][columns][date]" value="2013-12-10" class="datepicker form-control" autocomplete="off" />
+
+                    
+                
+                
+                
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <a href="#" class="btn-today">Today</a>
+                    </div>
+
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">time</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                
+                    <input type="text" name="view[controls][records][0][columns][time]" value="20:36:00" class="timepicker form-control" autocomplete="off" />
+
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">datetime</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                
+                    <input type="text" name="view[controls][records][0][columns][datetime]" value="2014-12-10 07:50:00" class="datetime-picker form-control" autocomplete="off" />
+
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">year</label>
+                    
+                
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                
+                
+                
+                
+                    <input type="text" name="view[controls][records][0][columns][year]" value="2015" class="yearpicker form-control" autocomplete="off" />
+
+                    
+                
+                
+                
+                    </div>
+                
+        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    
+                <td>
+                    <div class="form-horizontal ">
+                        <div class="form-group">
+                    
+                        <label class="control-label col-sm-3 col-md-3 col-lg-2">textarea</label>
+                    
+                
+                    <div class="col-sm-9 col-md-9 col-lg-10">
+                
+                
+                    <textarea name="view[controls][records][0][columns][textarea]" rows="8" cols="1" class="form-control ck-compact">text</textarea>
+
                 
                 
                     
@@ -158,249 +505,7 @@
             </tbody>
         </table>
 </fieldset>
-    <fieldset id="one">
-    </fieldset>
-<fieldset id="many">
-        <table class="table table-bordered ex-table" data-table="repair">
-            <thead>
-                <tr class="label-default">
-                    <th>repair</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="head">
-                    <td class="jumbotron">
-                        <input type="hidden" name="manyToOne[repair][records][0][pk]" value="1" />
-                    <label>
-                            <input type="checkbox" name="manyToOne[repair][records][0][remove]"  /> <small>Remove</small>
-                    </label>
-                </td>
-                </tr>
-                <tr>
-                    
-                <td>
-                    <div class="form-horizontal ">
-                        <div class="form-group">
-                    
-                        <label class="control-label col-sm-3 col-md-3 col-lg-2">date</label>
-                    
-                
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                
-                
-                
-                
-                    <input type="text" name="manyToOne[repair][records][0][columns][date]" value="2013-01-13" class="datepicker form-control" autocomplete="off" />
-
-                    
-                
-                
-                
-                    </div>
-                    <div class="col-sm-1 col-md-1 col-lg-1">
-                        <a href="#" class="btn-today">Today</a>
-                    </div>
-
-        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="head">
-                    <td class="jumbotron">
-                        <input type="hidden" name="manyToOne[repair][records][1][pk]" value="2" />
-                    <label>
-                            <input type="checkbox" name="manyToOne[repair][records][1][remove]"  /> <small>Remove</small>
-                    </label>
-                </td>
-                </tr>
-                <tr>
-                    
-                <td>
-                    <div class="form-horizontal ">
-                        <div class="form-group">
-                    
-                        <label class="control-label col-sm-3 col-md-3 col-lg-2">date</label>
-                    
-                
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                
-                
-                
-                
-                    <input type="text" name="manyToOne[repair][records][1][columns][date]" value="2013-04-07" class="datepicker form-control" autocomplete="off" />
-
-                    
-                
-                
-                
-                    </div>
-                    <div class="col-sm-1 col-md-1 col-lg-1">
-                        <a href="#" class="btn-today">Today</a>
-                    </div>
-
-        </div>
-                    </div>
-                </td>
-            </tr>
-
-                <tr class="head blank hidden">
-                    <td class="jumbotron">
-                        <input type="hidden" name="manyToOne[repair][blank][index][insert]" value="true" />
-                    <a href="#" class="remove text-muted btn-xs pull-right" data-table="repair"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                    </td>
-                </tr>
-                <tr class="blank hidden">
-                    
-                <td>
-                    <div class="form-horizontal ">
-                        <div class="form-group">
-                    
-                        <label class="control-label col-sm-3 col-md-3 col-lg-2">date</label>
-                    
-                
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                
-                
-                
-                
-                    <input type="text" name="manyToOne[repair][blank][index][columns][date]" value="" class="datepicker form-control" autocomplete="off" />
-
-                    
-                
-                
-                
-                    </div>
-                    <div class="col-sm-1 col-md-1 col-lg-1">
-                        <a href="#" class="btn-today">Today</a>
-                    </div>
-
-        </div>
-                    </div>
-                </td>
-            </tr>	
-        </tbody>
-            <tfoot >
-                <tr>
-                    <td><a href="#" class="add-another" data-table="repair"><small>Add another repair</small></a></td>
-                </tr>
-            </tfoot>
-        </table>
-    <table class="table table-bordered ex-table" data-table="driver">
-            <thead>
-                <tr class="label-default">
-                    <th>driver</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="head">
-                    <td class="jumbotron">
-                        <input type="hidden" name="manyToOne[driver][records][0][pk]" value="1" />
-                    <label>
-                            <input type="checkbox" name="manyToOne[driver][records][0][remove]"  /> <small>Remove</small>
-                    </label>
-                </td>
-                </tr>
-                <tr>
-                    
-                <td>
-                    <div class="form-horizontal ">
-                        <div class="form-group">
-                    
-                        <label class="control-label col-sm-3 col-md-3 col-lg-2">name</label>
-                    
-                
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                
-                    <input type="text" name="manyToOne[driver][records][0][columns][name]" value="John" class="form-control" />
-
-                
-                
-                
-                    
-                
-                
-                
-                    </div>
-                
-        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="head">
-                    <td class="jumbotron">
-                        <input type="hidden" name="manyToOne[driver][records][1][pk]" value="2" />
-                    <label>
-                            <input type="checkbox" name="manyToOne[driver][records][1][remove]"  /> <small>Remove</small>
-                    </label>
-                </td>
-                </tr>
-                <tr>
-                    
-                <td>
-                    <div class="form-horizontal ">
-                        <div class="form-group">
-                    
-                        <label class="control-label col-sm-3 col-md-3 col-lg-2">name</label>
-                    
-                
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                
-                    <input type="text" name="manyToOne[driver][records][1][columns][name]" value="Ross" class="form-control" />
-
-                
-                
-                
-                    
-                
-                
-                
-                    </div>
-                
-        </div>
-                    </div>
-                </td>
-            </tr>
-
-                <tr class="head blank hidden">
-                    <td class="jumbotron">
-                        <input type="hidden" name="manyToOne[driver][blank][index][insert]" value="true" />
-                    <a href="#" class="remove text-muted btn-xs pull-right" data-table="driver"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                    </td>
-                </tr>
-                <tr class="blank hidden">
-                    
-                <td>
-                    <div class="form-horizontal ">
-                        <div class="form-group">
-                    
-                        <label class="control-label col-sm-3 col-md-3 col-lg-2">name</label>
-                    
-                
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                
-                    <input type="text" name="manyToOne[driver][blank][index][columns][name]" value="" class="form-control" />
-
-                
-                
-                
-                    
-                
-                
-                
-                    </div>
-                
-        </div>
-                    </div>
-                </td>
-            </tr>	
-        </tbody>
-            <tfoot >
-                <tr>
-                    <td><a href="#" class="add-another" data-table="driver"><small>Add another driver</small></a></td>
-                </tr>
-            </tfoot>
-        </table>
-</fieldset>
+    
     
             <fieldset id="controls">
                 <button type="submit" class="btn btn-danger form-control" name="action[remove]">Delete</button>
@@ -411,7 +516,7 @@
                 
                 <button type="submit" class="btn btn-primary form-control" name="action[save]">Save</button>
                 
-                <input type="hidden" name="_csrf" value="ucjpMkyxrzRVPMHjvGLe8XW9dDlxChVxF8T04=" />
+                <input type="hidden" name="_csrf" value="2Yq50qurLQx6TdF9hmtKjykXuLfl0TmZ0IjCo=" />
             </fieldset>
 </form>
     </section>

@@ -83,10 +83,14 @@ Each `table` object contains an array of colums. Each `column` object have:
 
     ```js
     {"text": true} // input type="text"
-    {"file": true} // input type="file"
     {"textarea": true} // textarea
     {"textarea": true, "editor": "some-class"} // html editor (see the docs)
     {"date": true} // datepicker
+    {"time": true} // timepicker
+    {"datetime": true} // datetimepicker
+    {"year": true} // yearpicker
+    {"file": true} // input type="file"
+    {"radio": true, "options": ["True","False"]} // input type="radio"
     {"select": true} // select (used for one-to-many relationships)
     {"select": true, "multiple": true} // select multiple (used for many-to-many relationships)
     ```

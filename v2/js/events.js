@@ -5,7 +5,7 @@ $(function () {
     (function addExamples () {
         var files = [
             'one-to-many', 'many-to-many', 'many-to-one', 'one-to-one',
-            'custom-views-apps', 'themes'
+            'custom-views-apps', 'themes', 'column'
         ];
         for (var i=0; i < files.length; i++) {
             var src = 'examples/'+files[i]+'.html';
