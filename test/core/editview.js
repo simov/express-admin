@@ -36,7 +36,7 @@ describe('core/editview', function () {
     // getRef - get the referenced table data (oneToMany || manyToMany)
     it('should return the referenced table\'s data', function (done) {
         var ref = {table: 'item', pk: 'id', columns: ['name']};
-        editview.test.getRef({db: db}, ref, function (err, rows) {
+        editview.test.otm.getRef({db: db}, ref, function (err, rows) {
             if (err) return done(err);
             should.deepEqual(rows, [
                 { __pk: '4', __text: 'cherries' },
@@ -62,7 +62,7 @@ describe('core/editview', function () {
                 ]
             }
         };
-        editview.test.getOneToMany(args, function (err) {
+        editview.test.otm.loopColumns(args, function (err) {
             if (err) return done(err);
             should.deepEqual(args.config.columns[0].value, [
                 { __pk: '4', __text: 'cherries' },
@@ -91,7 +91,7 @@ describe('core/editview', function () {
                 ]
             }
         };
-        editview.test.getOneToMany(args, function (err) {
+        editview.test.otm.loopColumns(args, function (err) {
             if (err) return done(err);
             should.deepEqual(args.config.columns[0].value, [
                 { __pk: '1', __text: 'type1' },
@@ -116,7 +116,7 @@ describe('core/editview', function () {
                 ]
             }
         };
-        editview.test.getOneToMany(args, function (err) {
+        editview.test.otm.loopColumns(args, function (err) {
             if (err) return done(err);
             should.strictEqual(args.config.columns[0].value, undefined);
             done();
@@ -135,7 +135,7 @@ describe('core/editview', function () {
                 ]
             }
         };
-        editview.test.getSql(args).should.match(/.*`recipe`.`id` AS __pk.*/);
+        editview.test.tbl.getSql(args).should.match(/.*`recipe`.`id` AS __pk.*/);
         done();
     });
 
@@ -151,7 +151,7 @@ describe('core/editview', function () {
                 ]
             }
         };
-        editview.test.getSql(args)
+        editview.test.tbl.getSql(args)
             .should.match(/^SELECT `recipe`.`id` AS __pk,`recipe`.`column1` FROM.*/);
         done();
     });
@@ -167,7 +167,7 @@ describe('core/editview', function () {
                 ]
             }
         };
-        editview.test.getSql(args).should.match(/.*WHERE `id`=5 ;$/);
+        editview.test.tbl.getSql(args).should.match(/.*WHERE `id`=5 ;$/);
         done();
     });
 
@@ -182,7 +182,7 @@ describe('core/editview', function () {
                 ]
             }
         };
-        editview.test.getSql(args).should.match(/.*WHERE `recipe_id`=5 ;$/);
+        editview.test.tbl.getSql(args).should.match(/.*WHERE `recipe_id`=5 ;$/);
         done();
     });
 
@@ -198,7 +198,7 @@ describe('core/editview', function () {
                 columns: [{name: 'name'}, {name: 'notes'}]
             }
         };
-        editview.test.getRecords(args, function (err, rows) {
+        editview.test.tbl.getRecords(args, function (err, rows) {
             if (err) return done(err);
             should.deepEqual(rows, [{columns: {__pk: '5', name: 'chocolate', notes: ''}}]);
             done();
@@ -219,7 +219,7 @@ describe('core/editview', function () {
                 table: {name: 'item', pk: 'id'}
             }
         };
-        editview.test.getRecords(args, function (err, rows) {
+        editview.test.tbl.getRecords(args, function (err, rows) {
             if (err) return done(err);
             should.deepEqual(rows, [{pk: 5, columns:{name: 'chocolate', notes: 'milka'}}]);
             done();

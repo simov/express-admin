@@ -53,7 +53,7 @@ describe('settings initialization', function () {
 
         should.deepEqual(args.slugs, {slug1:'table1',slug2:'table2',slug3:'table3'});
 
-        args.themes.theme.length.should.equal(12);
+        args.themes.theme.length.should.equal(13);
 
         done();
     });
