@@ -176,7 +176,7 @@ Date.prototype.toJSONLocal = function() {
             var bootstrap = $('#bootstrap');
             $('#theme a').on('click', function (e) {
                 var theme = this.hash.slice(1),
-                    url = xAdmin.root+'/bootswatch/'+theme+'/bootstrap.min.css';
+                    url = xAdmin.root+'bootswatch/'+theme+'/bootstrap.min.css';
                 bootstrap.attr('href', url);
                 $('#theme li').removeClass('active');
                 $(this).parent().addClass('active');

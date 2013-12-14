@@ -14,6 +14,7 @@
             var bootstrap = document.getElementById('bootstrap'),
                 theme = localStorage.getItem('theme') || 'default';
             bootstrap.href = xAdmin.root+'bootswatch/'+theme+'/bootstrap.min.css';
+            console.log(bootstrap.href);
         }());
     </script>
     
@@ -28,8 +29,6 @@
     <script src="jslib/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="jslib/chosen.jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="public/express-admin.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jslib/tinymce/js/tinymce/tinymce.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jslib/tinymce/js/tinymce/jquery.tinymce.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="public/editors.js" type="text/javascript" charset="utf-8"></script>
     <script src="public/examples.js" type="text/javascript" charset="utf-8"></script>
 </head>
