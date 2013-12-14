@@ -267,12 +267,17 @@ When using PostgreSQL, the <code>pg</code> key will accept any option from the <
 <p><strong>control</strong> - one of these</p>
 
 <div class="highlight highlight-js"><pre><span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="text"</span>
-<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file"</span>
 <span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// textarea</span>
 <span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"some-class"</span><span class="p">}</span> <span class="c1">// html editor (see the docs)</span>
 <span class="p">{</span><span class="s2">"date"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datepicker</span>
+<span class="p">{</span><span class="s2">"time"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// timepicker</span>
+<span class="p">{</span><span class="s2">"datetime"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datetimepicker</span>
+<span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// yearpicker</span>
+<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file"</span>
+<span class="p">{</span><span class="s2">"radio"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"True"</span><span class="p">,</span><span class="s2">"False"</span><span class="p">]}</span> <span class="c1">// input type="radio"</span>
 <span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select (used for one-to-many relationships)</span>
 <span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select multiple (used for many-to-many relationships)</span>
+<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"one"</span><span class="p">,</span><span class="s2">"two"</span><span class="p">]}</span> <span class="c1">// select with static options</span>
 </pre></div>
 </li>
 <li><p><strong>type</strong> - column's data type (typically you won't change this)</p></li>

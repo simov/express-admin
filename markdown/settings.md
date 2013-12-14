@@ -93,6 +93,7 @@ Each `table` object contains an array of colums. Each `column` object have:
     {"radio": true, "options": ["True","False"]} // input type="radio"
     {"select": true} // select (used for one-to-many relationships)
     {"select": true, "multiple": true} // select multiple (used for many-to-many relationships)
+    {"select": true, "options": ["one","two"]} // select with static options
     ```
 
 - **type** - column's data type (typically you won't change this)
