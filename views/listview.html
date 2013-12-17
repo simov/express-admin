@@ -18,7 +18,7 @@
 </div>
 {{/show.error}}
 
-<table class="table table-bordered table-striped table-hover ex-table">
+<table id= "list_view" class="table table-bordered table-striped table-hover ex-table">
     <thead>
         <tr class="label-default">
         {{#columns}}
@@ -30,12 +30,14 @@
     {{#records}}
         <tr>
         {{#pk}}
-            <td><a href="{{root}}/{{view.slug}}/{{id}}">{{text}}</a></td>
+            <td><a href="{{root}}/{{view.slug}}/{{id}}">{{{text}}}</a></td>
         {{/pk}}
         {{#values}}
             <td>
-                {{^mtm}}{{.}}{{/mtm}}
-                {{#mtm}}<span class="label label-default">{{.}}</span>{{/mtm}}
+                <ul class="mtm">
+                    {{^mtm}}{{.}}{{/mtm}}
+                    {{#mtm}}<li>{{.}}</li>{{/mtm}}
+                </ul>
             </td>
         {{/values}}
         </tr>
