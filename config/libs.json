@@ -3,13 +3,18 @@
     "css": [
         "/csslib/bootstrap-datetimepicker.min.css",
         "/csslib/chosen.min.css",
-        "/express-admin.css"
+        "/express-admin.css",
+        "/jquery.dataTables.css",
+        "/style.css"
     ],
     "js": [
         "/jslib/jquery-1.9.1.min.js",
         "/jslib/bootstrap.min.js",
         "/jslib/bootstrap-datetimepicker.min.js",
         "/jslib/chosen.jquery.min.js",
-        "/express-admin.js"
+        "/express-admin.js",
+        "/jquery.dataTables.min.js",
+        "/script.js"
     ]
 }
+
