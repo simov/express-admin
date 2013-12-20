@@ -111,6 +111,23 @@ function initSettings (args) {
         return {language: langs};
     }());
 
+    // listview filter
+    for (var key in args.settings) {
+        var table = args.settings[key],
+            filter = table.listview.filter;
+        if (!filter || !filter.length) continue;
+        var filters = [];
+        for (var i=0; i < filter.length; i++) {
+            for (var j=0; j < table.columns.length; j++) {
+                if (filter[i] == table.columns[j].name) {
+                    filters.push(table.columns[j]);
+                    break;
+                }
+            }
+        }
+        table.listview.filter = filters;
+    }
+
     args.libs.external = {css: [], js: []};
     for (var key in args.custom) {
         var assets = args.custom[key].public;
