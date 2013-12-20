@@ -13,6 +13,9 @@
     "logout"            : "Logout",
     "username"          : "Username",
     "password"          : "Password",
+    "access-denied"     : "Access denied!",
+    "find-user"         : "Cannot find user!",
+    "invalid-password"  : "Invalid password!",
 
     "home"              : "Home",
     "site-admin"        : "Site administration",

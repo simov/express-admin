@@ -18,7 +18,7 @@ exports.restrict = function (req, res, next) {
     if (res.locals._admin.debug) return next();
 
     if (req.session.user) return next();
-    req.session.error = 'Access denied!';
+    req.session.error = res.locals.string['access-denied'];
     res.redirect(res.locals.root+'/login');
 }
 
@@ -26,7 +26,7 @@ exports.login = function (req, res) {
     // query the db for the given username
     var user = res.locals._admin.users[req.body.username];
     if (!user) {
-        req.session.error = 'Cannot find user!';
+        req.session.error = res.locals.string['find-user'];
         req.session.username = req.body.username;
         res.redirect(res.locals.root+'/login');
         return;
@@ -37,7 +37,7 @@ exports.login = function (req, res) {
     // found the user
     pwd.hash(req.body.password, user.salt, function (err, hash) {
         if (hash !== user.hash) {
-            req.session.error = 'Invalid password!';
+            req.session.error = res.locals.string['invalid-password'];
             req.session.username = req.body.username;
             res.redirect(res.locals.root+'/login');
             return;
