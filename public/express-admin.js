@@ -55,7 +55,8 @@ Date.prototype.toJSONLocal = function() {
         var selectors = ['.date', '.time', '.datetime-', '.year'];
         for (var i=0; i < selectors.length; i++) {
             selectors[i] = (type == 'static')
-                ? 'tr:not(.blank) ' + selectors[i] + 'picker'
+                ? 'tr:not(.blank) ' + selectors[i] + 'picker,'
+                + '.x-filter ' + selectors[i] + 'picker'
                 : selectors[i] + 'picker';
         }
 
@@ -208,7 +209,7 @@ Date.prototype.toJSONLocal = function() {
         },
         chosen: function () {
             if ($('.chosen-select').length)
-                $('tr:not(.blank) .chosen-select').chosen(chosen);
+                $('tr:not(.blank) .chosen-select, .x-filter .chosen-select').chosen(chosen);
         },
         datepicker: function () {
             initDatetimePickers('static', document);

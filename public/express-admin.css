@@ -3,6 +3,8 @@
 @media (max-width: 768px) {
     /*all field labels*/
     .ex-table .control-label { padding-bottom: 5px; }
+    /*listview buttons*/
+    .x-filter .panel-footer button { float: none; width: 100% !important; }
     /*editview buttons*/
     #controls button { float: none; width: 100% !important; margin-bottom: 15px; }
 }
@@ -22,9 +24,13 @@
 
 /*mainview*/
 .ex-table tbody td .glyphicon-plus { font-size: 8px; position: relative; top: -1px; }
-/*listview*/
+
+/*listview mtm labels*/
 .ex-table tbody td .label { margin-right: 5px; }
 .ex-table tbody td .label:last-child { margin: 0; }
+/*listview search filter*/
+.x-filter .panel-footer { text-align: right; }
+.x-filter .panel-footer button { width: auto; margin-bottom: 0; }
 
 
 /*editview*/

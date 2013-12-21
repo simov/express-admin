@@ -34,12 +34,25 @@ exports.get = function (req, res, next) {
                 ]
             };
 
+            // search filter rows
+            res.locals.filter = (function () {
+                var filter = view.listview.filter,
+                    rows = [];
+                var size = 3,
+                    total = filter.length / size;
+                for (var i=0; i < total; i++) {
+                    rows.push({row: filter.slice(i*size, (i+1)*size)});
+                }
+                return rows;
+            }());
+
             res.locals.columns = data.columns;
             res.locals.records = data.records;
             res.locals.pagination = pager;
 
             res.locals.partials = {
                 content:    'listview',
+                column:     'listview/column',
                 pagination: 'pagination'
             };
             
