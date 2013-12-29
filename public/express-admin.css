@@ -4,7 +4,7 @@
     /*all field labels*/
     .ex-table .control-label { padding-bottom: 5px; }
     /*listview buttons*/
-    .x-filter .panel-footer button { float: none; width: 100% !important; }
+    .x-filter .panel-footer button { float: none; width: 100% !important; margin-top: 15px; }
     /*editview buttons*/
     #controls button { float: none; width: 100% !important; margin-bottom: 15px; }
 }
@@ -15,8 +15,6 @@
 #controls button { width: auto; }
 #controls .btn-danger { float: left; }
 
-/*add record*/
-#express-admin h2 .btn { font-weight: normal; float: right; }
 /*fixed header fix*/
 #content { padding-top: 70px; }
 /*login header*/
@@ -25,12 +23,19 @@
 /*mainview*/
 .ex-table tbody td .glyphicon-plus { font-size: 8px; position: relative; top: -1px; }
 
+/*listview add record*/
+#express-admin h2 .btn { font-weight: normal; float: right; }
+#express-admin h2 .glyphicon-filter { display: inline-block; font-size: 12px; }
+#express-admin h2 .glyphicon-filter:hover { text-decoration: none; }
 /*listview mtm labels*/
 .ex-table tbody td .label { margin-right: 5px; }
 .ex-table tbody td .label:last-child { margin: 0; }
 /*listview search filter*/
-.x-filter .panel-footer { text-align: right; }
-.x-filter .panel-footer button { width: auto; margin-bottom: 0; }
+.x-filter .panel-body .form-group:last-child { margin-bottom: 0; }
+.x-filter .panel-footer .form-group { margin-bottom: 0; }
+.x-filter .panel-footer .form-group div.col-lg-3:last-child { text-align: right; }
+.x-filter .panel-footer button { width: auto; }
+.x-filter.x-hidden .panel-footer { border-top: 0; }
 
 
 /*editview*/

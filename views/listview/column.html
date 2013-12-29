@@ -1,10 +1,10 @@
 
-    <label class="control-label col-md-2 col-lg-2">{{verbose}}</label>
+    <label class="control-label col-sm-3 col-md-3 col-lg-3">{{verbose}}</label>
     
     {{#control}}
     {{! data-type-name="type.name" data-allow-null="allowNull" data-default-value="defaultValue"}}
 
-    <div class="{{#text}}col-md-2 col-lg-2{{/text}}{{#date}}col-md-2 col-lg-2{{/date}}{{#time}}col-md-2 col-lg-2{{/time}}{{#datetime}}col-md-2 col-lg-2{{/datetime}}{{#year}}col-md-2 col-lg-2{{/year}}{{#select}}col-md-2 col-lg-2{{/select}}{{#file}}col-md-2 col-lg-2{{/file}}{{#radio}}col-md-2 col-lg-2{{/radio}}{{#textarea}}col-md-2 col-lg-2{{/textarea}}">
+    <div class="{{#text}}col-sm-3 col-md-3 col-lg-3{{/text}}{{#date}}col-sm-3 col-md-3 col-lg-3{{/date}}{{#time}}col-sm-3 col-md-3 col-lg-3{{/time}}{{#datetime}}col-sm-3 col-md-3 col-lg-3{{/datetime}}{{#year}}col-sm-3 col-md-3 col-lg-3{{/year}}{{#select}}col-sm-3 col-md-3 col-lg-3{{/select}}{{#file}}col-sm-3 col-md-3 col-lg-3{{/file}}{{#radio}}col-sm-3 col-md-3 col-lg-3{{/radio}}{{#textarea}}col-sm-3 col-md-3 col-lg-3{{/textarea}}">
 
     {{#text}}
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
@@ -26,14 +26,22 @@
 
     {{#date}}
     <input type="text" name="{{key}}" value="{{value}}" class="datepicker form-control" autocomplete="off" />
+    <label class="glyphicon glyphicon-resize-vertical"></label>
+    <input type="text" name="{{key}}" value="{{value}}" class="datepicker form-control" autocomplete="off" />
     {{/date}}
     {{#time}}
+    <input type="text" name="{{key}}" value="{{value}}" class="timepicker form-control" autocomplete="off" />
+    <label class="glyphicon glyphicon-resize-vertical"></label>
     <input type="text" name="{{key}}" value="{{value}}" class="timepicker form-control" autocomplete="off" />
     {{/time}}
     {{#datetime}}
     <input type="text" name="{{key}}" value="{{value}}" class="datetime-picker form-control" autocomplete="off" />
+    <label class="glyphicon glyphicon-resize-vertical"></label>
+    <input type="text" name="{{key}}" value="{{value}}" class="datetime-picker form-control" autocomplete="off" />
     {{/datetime}}
     {{#year}}
+    <input type="text" name="{{key}}" value="{{value}}" class="yearpicker form-control" autocomplete="off" />
+    <label class="glyphicon glyphicon-resize-vertical"></label>
     <input type="text" name="{{key}}" value="{{value}}" class="yearpicker form-control" autocomplete="off" />
     {{/year}}
 
