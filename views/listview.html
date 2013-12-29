@@ -25,15 +25,21 @@
         <h3 class="panel-title">{{string.filter}}</h3>
     </div>
     <div class="panel-body">
-        <div class="form-horizontal {{#error}}has-error{{/error}}">
-            {{#filter}}
-            <div class="form-group">
-                {{#row}}
-                    {{>column}}
-                {{/row}}
-            </div>
-            {{/filter}}
-        </div>
+        <table class="table table-striped form-horizontal">
+            <tbody>
+                {{#filter}}
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            {{#row}}
+                                {{>column}}
+                            {{/row}}
+                        </div>
+                    </td>
+                </tr>
+                {{/filter}}
+            </tbody>
+        </table>
     </div>
     {{/have}}
     <div class="panel-footer form-horizontal">

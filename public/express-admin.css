@@ -31,6 +31,9 @@
 .ex-table tbody td .label { margin-right: 5px; }
 .ex-table tbody td .label:last-child { margin: 0; }
 /*listview search filter*/
+.x-filter .panel-body { padding: 0; }
+.x-filter .panel-body table { margin-bottom: 0; }
+.x-filter .panel-body table tr:first-child td { border: 0; }
 .x-filter .panel-body .form-group:last-child { margin-bottom: 0; }
 .x-filter .panel-footer .form-group { margin-bottom: 0; }
 .x-filter .panel-footer .form-group div.col-lg-3:last-child { text-align: right; }
