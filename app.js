@@ -226,6 +226,7 @@ function initServer (args) {
 
     // listview
     app.get(routes.listview, r.auth.restrict, r.listview.get, r.render.admin);
+    app.post(routes.listview, r.auth.restrict, r.listview.post, r.render.admin);
 
     // mainview
     app.get(routes.mainview, r.auth.restrict, r.mainview.get, r.render.admin);
