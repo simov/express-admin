@@ -46,7 +46,7 @@
         <div class="form-group">
             <label class="control-label col-lg-3 col-md-3 col-sm-3">Order By</label>
             <div class="col-lg-3 col-md-3 col-sm-3">
-                <select name="{{key}}" class="chosen-select form-control" data-placeholder="Select">
+                <select name="order" class="chosen-select form-control" data-placeholder="Select">
                     <option value="NULL" {{#selected}}selected="selected"{{/selected}}></option>
                     {{#value}}
                     <option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}}>{{__text}}</option>
@@ -59,6 +59,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="_csrf" value="{{csrf}}" />
 </form>
 
 <table class="table table-bordered table-striped table-hover ex-table">
