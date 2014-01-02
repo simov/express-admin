@@ -26,12 +26,14 @@ In `custom.json` add a unique key for your custom stuff.
 ```js
 "unique-key-here": {
     "public": {
-        "path": "/absolute/path/to/custom/files/location",
-        "js": [
-            "/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js",
-            "/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js",
-            "/relative/to/above/path/my-custom.js"
-        ]
+        "local": {
+            "path": "/absolute/path/to/custom/files/location",
+            "js": [
+                "/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js",
+                "/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js",
+                "/relative/to/above/path/my-custom.js"
+            ]
+        }
     }
 }
 ```

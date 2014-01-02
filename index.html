@@ -606,11 +606,13 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
-        <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
-            <span class="s2">"/relative/to/above/path/ckeditor/ckeditor.js"</span><span class="p">,</span>
-            <span class="s2">"/relative/to/above/path/my-custom.js"</span>
-        <span class="p">]</span>
+        <span class="s2">"local"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
+            <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"/relative/to/above/path/ckeditor/ckeditor.js"</span><span class="p">,</span>
+                <span class="s2">"/relative/to/above/path/my-custom.js"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -695,12 +697,14 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
-        <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
-            <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js"</span><span class="p">,</span>
-            <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js"</span><span class="p">,</span>
-            <span class="s2">"/relative/to/above/path/my-custom.js"</span>
-        <span class="p">]</span>
+        <span class="s2">"local"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
+            <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js"</span><span class="p">,</span>
+                <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js"</span><span class="p">,</span>
+                <span class="s2">"/relative/to/above/path/my-custom.js"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -784,13 +788,19 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
-        <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
-            <span class="s2">"//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js"</span><span class="p">,</span>
-            <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js"</span><span class="p">,</span>
-            <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js"</span><span class="p">,</span>
-            <span class="s2">"/relative/to/above/path/my-custom.js"</span>
-        <span class="p">]</span>
+        <span class="s2">"external"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js"</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">"local"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
+            <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js"</span><span class="p">,</span>
+                <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js"</span><span class="p">,</span>
+                <span class="s2">"/relative/to/above/path/my-custom.js"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

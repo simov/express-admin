@@ -38,13 +38,19 @@ In `custom.json` add a unique key for your custom stuff.
 ```js
 "unique-key-here": {
     "public": {
-        "path": "/absolute/path/to/custom/files/location",
-        "js": [
-            "//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js",
-            "/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js",
-            "/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js",
-            "/relative/to/above/path/my-custom.js"
-        ]
+        "external": {
+            "js": [
+                "//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js"
+            ]
+        },
+        "local": {
+            "path": "/absolute/path/to/custom/files/location",
+            "js": [
+                "/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js",
+                "/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js",
+                "/relative/to/above/path/my-custom.js"
+            ]
+        }
     }
 }
 ```
