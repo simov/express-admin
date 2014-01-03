@@ -19,48 +19,7 @@
 </div>
 {{/show.error}}
 
-<form action="{{root}}/{{view.slug}}" method="post" accept-charset="utf-8" class="panel panel-default x-filter {{^have}}x-hidden{{/have}}">
-    {{#have}}
-    <div class="panel-heading">
-        <h3 class="panel-title">{{string.filter}}</h3>
-    </div>
-    <div class="panel-body">
-        <table class="table table-striped form-horizontal">
-            <tbody>
-                {{#filter}}
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            {{#row}}
-                                {{>column}}
-                            {{/row}}
-                        </div>
-                    </td>
-                </tr>
-                {{/filter}}
-            </tbody>
-        </table>
-    </div>
-    {{/have}}
-    <div class="panel-footer form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-lg-3 col-md-3 col-sm-3">Order By</label>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <select name="order" class="chosen-select form-control" data-placeholder="Select">
-                    <option value="NULL" {{#selected}}selected="selected"{{/selected}}></option>
-                    {{#value}}
-                    <option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}}>{{__text}}</option>
-                    {{/value}}
-                </select>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
-                <button type="reset" class="btn btn-default form-control" name="action[clear]">Clear</button>
-                <button type="submit" class="btn btn-default form-control" name="action[filter]">{{string.filter}}</button>
-            </div>
-        </div>
-    </div>
-    <input type="hidden" name="_csrf" value="{{csrf}}" />
-</form>
+{{>filter}}
 
 <table class="table table-bordered table-striped table-hover ex-table">
     <thead>
