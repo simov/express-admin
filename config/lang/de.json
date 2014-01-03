@@ -25,6 +25,10 @@
     "select"            : "Wähle",
     "to-change"         : "zum Ändern",
     "filter"            : "Filter",
+    "clear"             : "Clear",
+    "order"             : "Order By",
+    "asc"               : "Asc",
+    "desc"              : "Desc",
     "today"             : "Heute",
 
     "add-another"       : "Weiteren hinzufügen",

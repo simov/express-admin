@@ -24,9 +24,9 @@
     {{/have}}
     <div class="panel-footer form-horizontal">
         <div class="form-group">
-            <label class="control-label col-lg-3 col-md-3 col-sm-3">Order By</label>
+            <label class="control-label col-lg-3 col-md-3 col-sm-3">{{string.order}}</label>
             <div class="col-lg-3 col-md-3 col-sm-3">
-                <select name="order" class="chosen-select form-control" data-placeholder="Select">
+                <select name="order" class="chosen-select form-control" data-placeholder="{{string.select}}">
                     <option value="NULL" {{#selected}}selected="selected"{{/selected}}></option>
                     {{#order}}
                     <option value="{{name}}" {{#selected}}selected="selected"{{/selected}}>{{verbose}}</option>
@@ -41,7 +41,7 @@
                 {{/direction}}
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3">
-                <button type="submit" class="btn btn-default form-control" name="action[clear]">Clear</button>
+                <button type="submit" class="btn btn-default form-control" name="action[clear]">{{string.clear}}</button>
                 <button type="submit" class="btn btn-default form-control" name="action[filter]">{{string.filter}}</button>
             </div>
         </div>

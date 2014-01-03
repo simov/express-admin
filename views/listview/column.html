@@ -15,7 +15,7 @@
     {{/textarea}}
 
     {{#select}}
-    <select name="{{key}}" class="chosen-select form-control" data-placeholder="Select" {{#multiple}}multiple="multiple"{{/multiple}}>
+    <select name="{{key}}" class="chosen-select form-control" data-placeholder="{{string.select}}" {{#multiple}}multiple="multiple"{{/multiple}}>
         <option value="NULL" {{#selected}}selected="selected"{{/selected}}></option>
         {{!oneToMany}}
         {{#value}}
