@@ -39,6 +39,7 @@
 .x-filter .panel-footer .form-group div.col-lg-3:last-child { text-align: right; }
 .x-filter .panel-footer button { width: auto; }
 .x-filter.x-hidden .panel-footer { border-top: 0; }
+.x-filter.x-collapsed { display: none; }
 
 
 /*editview*/

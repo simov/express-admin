@@ -1,5 +1,5 @@
 
-<form action="{{root}}/{{view.slug}}" method="post" accept-charset="utf-8" class="panel panel-default x-filter {{^have}}x-hidden{{/have}}">
+<form action="{{root}}/{{view.slug}}" method="post" accept-charset="utf-8" class="panel panel-default x-filter {{^have}}x-hidden{{/have}} {{^show}}x-collapsed{{/show}}">
     {{#have}}
     <div class="panel-heading">
         <h3 class="panel-title">{{string.filter}}</h3>
