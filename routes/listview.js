@@ -26,22 +26,23 @@ function prepareSession (req, args) {
 
     if ((req.method == 'GET' && !filter.hasOwnProperty(args.name))
     || (req.method == 'POST' && req.body.action.hasOwnProperty('clear'))) {
-        return filter[args.name] = {
+        filter[args.name] = {
             columns: {},
             order: '',
             direction: '',
             show: false
         };
     }
-    
-    if (req.method == 'POST' && req.body.action.hasOwnProperty('filter')) {
-        return filter[args.name] = {
+    else if (req.method == 'POST' && req.body.action.hasOwnProperty('filter')) {
+        filter[args.name] = {
             columns: req.body.filter||{},
             order: req.body.order,
             direction: req.body.direction,
             show: true
         };
     }
+
+    filter[args.name].page = args.page;
 
     return filter[args.name];
 }
