@@ -18,6 +18,12 @@ function getArgs (req, res) {
     return args;
 }
 
+function page (req, args) {
+    if (!req.session.filter || !req.session.filter[args.name]) return '';
+    var page = req.session.filter[args.name].page;
+    return page ? '?p='+page : '';
+}
+
 exports.get = function (req, res, next) {
     var args = getArgs(req, res);
 
@@ -56,7 +62,7 @@ exports.post = function (req, res, next) {
         database.update(args, function (err) {
             if (err) {
                 req.session.error = err.message;
-                res.redirect(res.locals.root+'/'+args.slug);
+                res.redirect(res.locals.root+'/'+args.slug+page(req, args));
                 return;
             }
 
@@ -73,11 +79,11 @@ exports.post = function (req, res, next) {
                 case {}.hasOwnProperty.call(action, 'remove'):
                     // the message should be different for delete
                     req.session.success = true;
-                    res.redirect(res.locals.root+'/'+args.slug);
+                    res.redirect(res.locals.root+'/'+args.slug+page(req, args));
                     break;
                 case {}.hasOwnProperty.call(action, 'save'):
                     req.session.success = true;
-                    res.redirect(res.locals.root+'/'+args.slug);
+                    res.redirect(res.locals.root+'/'+args.slug+page(req, args));
                     break;
                 case {}.hasOwnProperty.call(action, 'another'):
                     req.session.success = true;
