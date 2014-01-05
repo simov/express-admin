@@ -175,7 +175,8 @@ When using PostgreSQL, the <code>pg</code> key will accept any option from the <
             <span class="s2">"column_name1"</span><span class="o">:</span> <span class="s2">"asc"</span><span class="p">,</span>
             <span class="s2">"column_name2"</span><span class="o">:</span> <span class="s2">"desc"</span>
         <span class="p">},</span>
-        <span class="s2">"page"</span><span class="o">:</span> <span class="mi">25</span>
+        <span class="s2">"page"</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="s2">"filter"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"column_name1"</span><span class="p">,</span> <span class="s2">"column_name2"</span> <span class="p">...]</span>
     <span class="p">},</span>
     <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"readonly"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -220,6 +221,8 @@ When using PostgreSQL, the <code>pg</code> key will accept any option from the <
 <strong>order</strong> - list of columns by which to sort and their respective order direction</li>
 <li>
 <strong>page</strong> - how many records to show per page</li>
+<li>
+<strong>filter</strong> - list of column names to enable for filtering</li>
 </ul>
 </li>
 <li>

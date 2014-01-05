@@ -24,7 +24,8 @@ All settings related to the default Express Admin views are in the `settings.jso
             "column_name1": "asc",
             "column_name2": "desc"
         },
-        "page": 25
+        "page": 25,
+        "filter": ["column_name1", "column_name2" ...]
     },
     "editview": {
         "readonly": false,
@@ -47,6 +48,7 @@ All settings related to the default Express Admin views are in the `settings.jso
 - **listview** - table's settings for the admin's listview
     - **order** - list of columns by which to sort and their respective order direction
     - **page** - how many records to show per page
+    - **filter** - list of column names to enable for filtering
 - **editview** - settings specifically related to the page where the record is edited
     - **readonly** - this will omit the save and delete buttons at the bottom of the page effectively making the table's records readonly
     - **manyToOne** - see `Many to One` documentation
