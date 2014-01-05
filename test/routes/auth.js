@@ -19,7 +19,8 @@ describe('user authentication', function () {
         });
         it('should redirect to login page on missing user\'s session', function (done) {
             var req = {session:{user:null}},
-                res = {locals:{_admin:{debug:false}, root:''}};
+                res = {locals:{_admin:{debug:false}, root:'',
+                    string:{'access-denied':'Access denied!'}}};
             res.redirect = function (path) {
                 path.should.equal('/login');
                 req.session.error.should.equal('Access denied!');
@@ -32,7 +33,8 @@ describe('user authentication', function () {
     describe('login', function () {
         it('should redirect to login page on non existent user name', function (done) {
             var req = {body:{username:'liolio'},session:{}},
-                res = {locals:{_admin:{users:{user1:{},user2:{}}}, root:''}};
+                res = {locals:{_admin:{users:{user1:{},user2:{}}}, root:'',
+                    string:{'find-user':'Cannot find user!'}}};
             res.redirect = function (path) {
                 path.should.equal('/login');
                 req.session.error.should.equal('Cannot find user!');
@@ -44,7 +46,8 @@ describe('user authentication', function () {
         it('should redirect to login page on invalid user\'s password', function (done) {
             var req = {body:{username:'liolio',password:'wrong'},session:{}},
                 res = {locals:{_admin:{users:
-                    {liolio:{name:'liolio',pass:'karamba',salt:'',hash:''}}}, root:''}};
+                    {liolio:{name:'liolio',pass:'karamba',salt:'',hash:''}}}, root:'',
+                        string:{'invalid-password':'Invalid password!'}}};
             res.redirect = function (path) {
                 path.should.equal('/login');
                 req.session.error.should.equal('Invalid password!');
