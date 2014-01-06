@@ -12,7 +12,7 @@ exports.get = function (req, res, next) {
     var views = [], have = false;
     for (var key in custom) {
         var view = custom[key].app;
-        if (!view.mainview || !view.mainview.show) continue;
+        if (!view || !view.mainview || !view.mainview.show) continue;
         views.push({slug: view.slug, name: view.verbose});
         have = true;
     }
