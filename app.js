@@ -124,6 +124,17 @@ function initSettings (args) {
             args.libs.external.css = args.libs.external.css.concat(assets.external.css||[]);
         }
     }
+
+    for (var key in args.custom) {
+        var fpath = args.custom[key].events;
+        if (fpath) break;
+    }
+    var events = fpath ? require(fpath) : {};
+    if (!events.hasOwnProperty('preSave'))
+        events.preSave = function (req, res, args, next) {next()};
+    if (!events.hasOwnProperty('postSave'))
+        events.postSave = function (req, res, args, next) {next()};
+    args.events = events;
 }
 
 function initServer (args) {

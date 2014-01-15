@@ -35,7 +35,8 @@ exports.get = function (req, res, next) {
 }
 
 exports.post = function (req, res, next) {
-    var args = getArgs(req, res);
+    var args = getArgs(req, res),
+        events = res.locals._admin.events;
     // var fs = require('fs');
     // fs.writeFileSync('dump.json', JSON.stringify(req.body, null, 4), 'utf8');
 
@@ -59,7 +60,10 @@ exports.post = function (req, res, next) {
             args.action = 'update';
         }
 
+
+        events.preSave(req, res, args, function () {
         database.update(args, function (err) {
+        events.postSave(req, res, args, function () {
             if (err) {
                 req.session.error = err.message;
                 res.redirect(res.locals.root+'/'+args.slug+page(req, args));
@@ -95,6 +99,8 @@ exports.post = function (req, res, next) {
                     res.redirect(res.locals.root+'/'+args.slug+'/'+args.id);
                     break;
             }
+        });
+        });
         });
     });
 }
