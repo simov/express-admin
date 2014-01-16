@@ -206,7 +206,7 @@ function initServer (args) {
                 have = true;
             }
         }
-        if (have) app.all(routes.custom, r.auth.restrict, r.render.admin);
+        if (have && routes.custom) app.all(routes.custom, r.auth.restrict, r.render.admin);
     }());
 
     // login/logout
