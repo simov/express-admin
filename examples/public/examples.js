@@ -1,6 +1,14 @@
 
 $(function () {
 
+    (function disableLinks () {
+        $('.navbar-brand, .breadcrumb a, #controls .btn, footer .text-muted').on('click', function (e) {
+            return false;
+        });
+    }());
+    
+    if (!(window.location != window.parent.location)) return;
+
     (function fixControlsLength () {
         $('.form-group').each(function (index) {
             $('.control-label', this)
@@ -16,12 +24,6 @@ $(function () {
         $('.control-label:contains(textarea)')
             .removeClass('col-xs-4')
             .next().removeClass('col-xs-5');
-    }());
-
-    (function disableLinks () {
-        $('.navbar-brand, .breadcrumb a, #controls .btn, footer .text-muted').on('click', function (e) {
-            return false;
-        });
     }());
 
     (function fixButtons () {
