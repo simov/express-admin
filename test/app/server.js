@@ -15,9 +15,9 @@ describe('server initialization', function () {
                 app: {layouts: true, themes: true, languages: true, debug: true, root: '/admin'}
             },
             settings: { // creates args.slugs
-                table1: {slug:'slug1'},
-                table2: {slug:'slug2'},
-                table3: {slug:'slug3'}
+                table1: {slug:'slug1', table:{pk:1}, mainview:{show:true}},
+                table2: {slug:'slug2', table:{pk:2}, mainview:{show:true}},
+                table3: {slug:'slug3', table:{pk:3}, mainview:{show:true}}
             },
             custom: { // add them to args.libs
                 view1: {
