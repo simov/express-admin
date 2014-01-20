@@ -32,7 +32,8 @@ All objects in this file are user created. The `public` key is related entirely 
                 "//absolute/url/external.js"
             ]
         }
-    }
+    },
+    "events": "/absolute/path/to/custom/events.js"
 }
 ```
 
@@ -50,5 +51,6 @@ All objects in this file are user created. The `public` key is related entirely 
     - **external** - external files
         - **css** - list of stylesheet urls to be included
         - **js** - list of javascript urls to be included
+- **events** - path to file containing event hooks
 
 See the custom view's documentation and the examples.

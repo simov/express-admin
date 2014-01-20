@@ -18,7 +18,7 @@ var dpath = path.resolve(__dirname, '../markdown/'),
         'config', 'settings', 'custom',
         'one-to-many', 'many-to-many', 'many-to-one', 'one-to-one',
         'ckeditor', 'tinymce', 'multiple',
-        'views', 'embedding',
+        'views', 'events', 'embedding',
         'themes',
         'shell', 'nginx', 'apache'
     ];

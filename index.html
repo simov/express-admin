@@ -342,7 +342,8 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
                 <span class="s2">"//absolute/url/external.js"</span>
             <span class="p">]</span>
         <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">"events"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/events.js"</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -395,6 +396,8 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </li>
 </ul>
 </li>
+<li>
+<strong>events</strong> - path to file containing event hooks</li>
 </ul><p>See the custom view's documentation and the examples.</p><p><br /></p><hr /></div><div class="file"><h2>
 <a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
@@ -900,7 +903,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <p>The only difference here is that we're dealing with <code>mustache</code> templates.</p>
 
 <h3>
-<a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
+<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
 
 <div class="highlight highlight-js"><pre><span class="s2">"view1"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
@@ -966,6 +969,39 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <span class="c1">// holds the absolute path to the admin's view directory</span>
 <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">views</span>
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
+<a name="events" class="anchor" href="#events"><span class="octicon octicon-link"></span></a>Events</h2>
+
+<p>Currently the supported event hooks are:</p>
+
+<ul>
+<li>preSave</li>
+<li>postSave</li>
+</ul><h3>
+<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
+
+<div class="highlight highlight-js"><pre><span class="s2">"some-key"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"events"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/events.js"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="eventsjs" class="anchor" href="#eventsjs"><span class="octicon octicon-link"></span></a>events.js</h3>
+
+<p>Run the admin with the <code>--debug-brk</code> flag and use <a href="https://github.com/node-inspector/node-inspector">node-inspector</a> to drill down into the event hook parameters</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">exports</span><span class="p">.</span><span class="nx">preSave</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">debugger</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">debug</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'preSave'</span><span class="p">);</span>
+    <span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">postSave</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">debugger</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">debug</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'postSave'</span><span class="p">);</span>
+    <span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Take a look at the <a href="https://github.com/simov/express-admin-examples/blob/master/examples/custom/events/events.js">events example</a> from the Examples Repository</p><p><br /></p><hr /></div><div class="file"><h2>
 <a name="embedding" class="anchor" href="#embedding"><span class="octicon octicon-link"></span></a>Embedding</h2>
 
 <p>You need to add one additional property inside your <code>config.json</code> file under the <code>app</code> key</p>
@@ -1181,6 +1217,7 @@ Listen 127.0.0.1:8008
                 <li><a href="#custom-views-apps">Custom</a>
                     <ul>
                         <li><a href="#custom-views-apps">Views (Apps)</a></li>
+                        <li><a href="#events">Events</a></li>
                         <li><a href="#embedding">Embedding</a></li>
                     </ul>
                 </li>

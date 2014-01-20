@@ -5,7 +5,7 @@ The admin's custom views follow the [Modular web applications with Node.js and E
 The only difference here is that we're dealing with `mustache` templates.
 
 
-###config.json
+###custom.json
 ```js
 "view1": {
     "app": {
