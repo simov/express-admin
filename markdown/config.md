@@ -3,12 +3,13 @@
 ###config.json
 
 The application's configuration is stored inside the `config.json` file.<br />
-The `mysql` key accepts any option from the [node-mysql's connection options][1].<br />
-When using PostgreSQL, the `pg` key will accept any option from the [node-postgres][2] connection options.
+- The `mysql` key accepts any option from the [node-mysql's connection options][1].<br />
+- When using PostgreSQL, the `pg` key will accept any option from the [node-postgres][2] connection options.
+- When using SQLite, the `sqlite` key will contain only a `database` key with the absolute path to the database set as a value.
 
 ```js
 {
-    "mysql": { // or "pg"
+    "mysql": { // or "pg" or "sqlite"
         "database": "express-admin-examples",
         "user": "liolio",
         "password": "karamba"
@@ -27,8 +28,8 @@ When using PostgreSQL, the `pg` key will accept any option from the [node-postgr
 }
 ```
 
-- **mysql || pg** - connection options
-    - **database** - name of the database to use for this connection
+- **mysql || pg || sqlite** - connection options
+    - **database** - name of the database to use for this connection (sqlite: absolute path to a database file)
     - **user** - the MySQL user to authenticate as
     - **password** - the password of that MySQL user
     - **schema** - used only with PostgreSQL (default: "public")
@@ -40,6 +41,7 @@ When using PostgreSQL, the `pg` key will accept any option from the [node-postgr
     - **languages** - toggle the languages button
     - **root** - root location for the admin (omitted by default `/`)
     - **upload** - absolute path to the upload folder (omitted by default `public/upload`)
+
 
   [1]: https://github.com/felixge/node-mysql#connection-options
   [2]: https://github.com/brianc/node-postgres

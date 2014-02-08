@@ -5,9 +5,9 @@
     <meta name="author" content="Simeon Velichkov" />
     <meta name="copyright" content="Simeon Velichkov" />
     <meta name="robots" content="follow,index" />
-    <meta name="title" content="Express Admin - MySql database admin for NodeJS built with Express and Bootstrap" />
-    <meta name="keywords" content="express admin, express, mysql, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
-    <meta name="description" content="Express Admin - MySql database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
 
     <title>Express Admin</title>
 
@@ -31,7 +31,7 @@
 <div class="file"><h1>
 <a name="express-admin" class="anchor" href="#express-admin"><span class="octicon octicon-link"></span></a>Express Admin</h1>
 
-<p>Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL, MariaDB and PostgreSQL databases.</p>
+<p>Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL, MariaDB, SQLite and PostgreSQL databases.</p>
 
 <p>It's built with: <a href="http://twitter.github.io/hogan.js/">Hogan.js</a> (<a href="https://github.com/janl/mustache.js/">mustache.js</a>), <a href="http://expressjs.com/">Express</a>, <a href="https://github.com/felixge/node-mysql">mysql</a> and <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>.</p>
 
@@ -43,7 +43,7 @@
 <ul>
 <li>All types of sql table relationships</li>
 <li>Internationalization</li>
-<li>Custom views</li>
+<li>Custom views and events</li>
 <li>All kinds of browser side libraries and controls</li>
 <li>All themes from <a href="http://bootswatch.com/">Bootswatch</a>
 </li>
@@ -63,6 +63,8 @@
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install <span class="o">[</span>-g<span class="o">]</span> express-admin
 <span class="c"># PostgreSQL only: run this inside the express-admin folder</span>
 <span class="nv">$ </span>npm install pg@2.8.2
+<span class="c"># SQLite only: run this inside the express-admin folder</span>
+<span class="nv">$ </span>npm install sqlite3@2.2.0
 </pre></div>
 
 <h3>
@@ -85,12 +87,15 @@
 <h3>
 <a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
 
-<p>The application's configuration is stored inside the <code>config.json</code> file.<br>
-The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.<br>
-When using PostgreSQL, the <code>pg</code> key will accept any option from the <a href="https://github.com/brianc/node-postgres">node-postgres</a> connection options.</p>
+<p>The application's configuration is stored inside the <code>config.json</code> file.<br></p>
 
-<div class="highlight highlight-js"><pre><span class="p">{</span>
-    <span class="s2">"mysql"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">// or "pg"</span>
+<ul>
+<li>The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.<br>
+</li>
+<li>When using PostgreSQL, the <code>pg</code> key will accept any option from the <a href="https://github.com/brianc/node-postgres">node-postgres</a> connection options.</li>
+<li>When using SQLite, the <code>sqlite</code> key will contain only a <code>database</code> key with the absolute path to the database set as a value.</li>
+</ul><div class="highlight highlight-js"><pre><span class="p">{</span>
+    <span class="s2">"mysql"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">// or "pg" or "sqlite"</span>
         <span class="s2">"database"</span><span class="o">:</span> <span class="s2">"express-admin-examples"</span><span class="p">,</span>
         <span class="s2">"user"</span><span class="o">:</span> <span class="s2">"liolio"</span><span class="p">,</span>
         <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"karamba"</span>
@@ -111,11 +116,11 @@ When using PostgreSQL, the <code>pg</code> key will accept any option from the <
 
 <ul>
 <li>
-<strong>mysql || pg</strong> - connection options
+<strong>mysql || pg || sqlite</strong> - connection options
 
 <ul>
 <li>
-<strong>database</strong> - name of the database to use for this connection</li>
+<strong>database</strong> - name of the database to use for this connection (sqlite: absolute path to a database file)</li>
 <li>
 <strong>user</strong> - the MySQL user to authenticate as</li>
 <li>

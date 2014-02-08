@@ -6,6 +6,8 @@
 $ [sudo] npm install [-g] express-admin
 # PostgreSQL only: run this inside the express-admin folder
 $ npm install pg@2.8.2
+# SQLite only: run this inside the express-admin folder
+$ npm install sqlite3@2.2.0
 ```
 
 ###Create a project
