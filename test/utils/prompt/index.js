@@ -14,7 +14,7 @@ describe('prompt for mysql', function () {
 
     // database
     it('should return error message on wrong database type', function (done) {
-        var expected = 'Valid database type is: mysql or pg!'.red
+        var expected = 'Valid database type is: mysql, sqlite or pg!'.red
                         + 'Database type:';
         prompt.next('mariadb', expected, done);
     });
