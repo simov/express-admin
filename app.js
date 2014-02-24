@@ -149,8 +149,8 @@ function initServer (args) {
         .use(express.logger('dev'))
         .use(express.bodyParser())
 
-        .use(express.cookieParser('very secret - required'))
-        .use(express.session())
+        .use(express.cookieParser())
+        .use(express.session({key: 'express-admin', secret: 'very secret - required'}))
         .use(r.auth.status)// session middleware
         .use(express.csrf())
         
