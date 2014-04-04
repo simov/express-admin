@@ -1,0 +1,49 @@
+{
+    "name"              : "Chinese/中文",
+
+    "logo"              : "Express Admin",
+    
+    "layout"            : "布局",
+    "centered"          : "居中",
+    "streched"          : "拉伸",
+    "theme"             : "换肤",
+    "language"          : "Language/语言",
+
+    "login"             : "登录",
+    "logout"            : "退出",
+    "username"          : "用户名",
+    "password"          : "密  码",
+    "access-denied"     : "登录失败!",
+    "find-user"         : "不存在的用户!",
+    "invalid-password"  : "密码错误!",
+
+    "home"              : "Home",
+    "site-admin"        : "站点管理",
+    "tables"            : "数据表",
+    "others"            : "其它",
+    
+    "select"            : "对",
+    "to-change"         : "进行修改",
+    "filter"            : "按条件过滤",
+    "clear"             : "清除",
+    "order"             : "排序",
+    "asc"               : "升序",
+    "desc"              : "降序",
+    "today"             : "今天",
+
+    "add-another"       : "载追加",
+    "remove"            : "移除",
+    "add"               : "增加",
+    "change"            : "修改",
+    "delete"            : "删除",
+    "save"              : "保存",
+    "save-continue"     : "保存然后继续修改",
+    "save-add"          : "保存然后增加",
+
+    "success"           : "成功",
+    "error"             : "错误",
+    "saved"             : "数据已保存",
+    "checkout"          : "请检查高亮数据项",
+
+    "notfound"          : "您请求的页面不存在."
+}
