@@ -155,7 +155,7 @@ function params (req, res, args, data, pager, order, next) {
         {text: res.locals.string.desc, value: 'desc',
             selected: args.filter.direction == 'desc' ? true : null}
     ];
-    res.locals.show = args.filter.show;
+    res.locals.collapsed = args.filter.show;
 
     res.locals.columns = data.columns;
     res.locals.records = data.records;
