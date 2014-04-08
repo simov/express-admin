@@ -42,8 +42,13 @@
     {{/year}}
 
     {{#file}}
+    {{^binary}}
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
+    {{/binary}}
     {{/file}}
+    {{#binary}}
+    <img src="{{value}}" alt="" />
+    {{/binary}}
     
     {{#radio}}
     {{#value}}
