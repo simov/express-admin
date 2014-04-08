@@ -216,7 +216,7 @@ function initServer (args) {
 
     // editview
     app.get(routes.editview, r.auth.restrict, r.editview.get, r.render.admin);
-    app.post(routes.editview, r.auth.restrict, r.upload.files, r.editview.post, r.render.admin);
+    app.post(routes.editview, r.auth.restrict, r.editview.post, r.render.admin);
 
     // listview
     app.get(routes.listview, r.auth.restrict, r.listview.get, r.render.admin);

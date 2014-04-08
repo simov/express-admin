@@ -11,7 +11,9 @@ function getArgs (req, res) {
         debug    : res.locals._admin.debug,
         slug     : req.params[0],
         id       : req.params[1] == 'add' ? null : req.params[1],
-        data     : req.body
+        data     : req.body,
+        upload   : req.files,
+        upath    : res.locals._admin.config.app.upload
     };
     args.name = res.locals._admin.slugs[args.slug];
     args.config = dcopy(args.settings[args.name]);
