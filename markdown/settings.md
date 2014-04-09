@@ -91,7 +91,8 @@ Each `table` object contains an array of colums. Each `column` object have:
     {"time": true} // timepicker
     {"datetime": true} // datetimepicker
     {"year": true} // yearpicker
-    {"file": true} // input type="file"
+    {"file": true} // input type="file" (uploads to file system)
+    {"file": true, "binary": true} // input type="file" (uploads to blob|bytea fields)
     {"radio": true, "options": ["True","False"]} // input type="radio"
     {"select": true} // select (used for one-to-many relationships)
     {"select": true, "multiple": true} // select multiple (used for many-to-many relationships)

@@ -29,7 +29,7 @@
             <section id="readme" class="clearfix announce instapaper_body md">
                 <article class="markdown-body entry-content" itemprop="mainContentOfPage">
 <div class="file"><h1>
-<a name="express-admin" class="anchor" href="#express-admin"><span class="octicon octicon-link"></span></a>Express Admin</h1>
+<a name="user-content-express-admin" class="anchor" href="#express-admin"><span class="octicon octicon-link"></span></a>Express Admin</h1>
 
 <p>Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL, MariaDB, SQLite and PostgreSQL databases.</p>
 
@@ -38,7 +38,7 @@
 <p>The configuration is done through hand editing <code>json</code> files, although in the future there might be some kind of a GUI tool for that.</p>
 
 <h3>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+<a name="user-content-features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
 
 <ul>
 <li>All types of sql table relationships</li>
@@ -48,17 +48,17 @@
 <li>All themes from <a href="http://bootswatch.com/">Bootswatch</a>
 </li>
 </ul><h3>
-<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h3>
+<a name="user-content-resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h3>
 
 <ul>
 <li><a href="http://www.youtube.com/watch?v=1CdoCB96QNk">Introductory Screencast</a></li>
 <li><a href="https://github.com/simov/express-admin">GitHub Repository</a></li>
 <li><a href="https://github.com/simov/express-admin-examples">Examples</a></li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
+<a name="user-content-install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
 
 <h3>
-<a name="get-the-module" class="anchor" href="#get-the-module"><span class="octicon octicon-link"></span></a>Get the module</h3>
+<a name="user-content-get-the-module" class="anchor" href="#get-the-module"><span class="octicon octicon-link"></span></a>Get the module</h3>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install <span class="o">[</span>-g<span class="o">]</span> express-admin
 <span class="c"># PostgreSQL only: run this inside the express-admin folder</span>
@@ -68,7 +68,7 @@
 </pre></div>
 
 <h3>
-<a name="create-a-project" class="anchor" href="#create-a-project"><span class="octicon octicon-link"></span></a>Create a project</h3>
+<a name="user-content-create-a-project" class="anchor" href="#create-a-project"><span class="octicon octicon-link"></span></a>Create a project</h3>
 
 <p>Depending on how you installed it creating a project is simple</p>
 
@@ -82,10 +82,10 @@
 <p>After that you can navigate to <code>localhost:[specified port]</code> and see your admin up and running.</p>
 
 <p>The next step is to configure it.</p><p><br /></p><hr /></div><div class="file"><h2>
-<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+<a name="user-content-configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
 <h3>
-<a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
+<a name="user-content-configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
 
 <p>The application's configuration is stored inside the <code>config.json</code> file.<br></p>
 
@@ -148,16 +148,16 @@
 <li>
 <strong>languages</strong> - toggle the languages button</li>
 <li>
-<strong>root</strong> - root location for the admin (omitted by default <code>/</code>)</li>
+<strong>root</strong> - root location for the admin (used <strong>only</strong> when embedding - see the docs)</li>
 <li>
 <strong>upload</strong> - absolute path to the upload folder (omitted by default <code>public/upload</code>)</li>
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
-<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+<a name="user-content-configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
 <h3>
-<a name="settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h3>
+<a name="user-content-settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h3>
 
 <p>All settings related to the default Express Admin views are in the <code>settings.json</code> file which is automatically generated with default values at first start up.</p>
 
@@ -243,7 +243,7 @@
 </ul>
 </li>
 </ul><h4>
-<a name="column" class="anchor" href="#column"><span class="octicon octicon-link"></span></a>Column</h4>
+<a name="user-content-column" class="anchor" href="#column"><span class="octicon octicon-link"></span></a>Column</h4>
 
 <p>Each <code>table</code> object contains an array of colums. Each <code>column</code> object have:</p>
 
@@ -281,7 +281,8 @@
 <span class="p">{</span><span class="s2">"time"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// timepicker</span>
 <span class="p">{</span><span class="s2">"datetime"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datetimepicker</span>
 <span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// yearpicker</span>
-<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file"</span>
+<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file" (uploads to file system)</span>
+<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"binary"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file" (uploads to blob|bytea fields)</span>
 <span class="p">{</span><span class="s2">"radio"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"True"</span><span class="p">,</span><span class="s2">"False"</span><span class="p">]}</span> <span class="c1">// input type="radio"</span>
 <span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select (used for one-to-many relationships)</span>
 <span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select multiple (used for many-to-many relationships)</span>
@@ -313,10 +314,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <li>
 <strong>oneToMany</strong> - see <code>One to Many</code> documentation</li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
-<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+<a name="user-content-configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
 <h3>
-<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
+<a name="user-content-customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
 
 <p>All objects in this file are user created. The <code>public</code> key is related entirely to inclusion of custom <em>static files</em>. It's possible to have an object only with public key inside as well as object with only <code>app</code> key in it.</p>
 
@@ -404,10 +405,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <li>
 <strong>events</strong> - path to file containing event hooks</li>
 </ul><p>See the custom view's documentation and the examples.</p><p><br /></p><hr /></div><div class="file"><h2>
-<a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
+<a name="user-content-relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
-<a name="one-to-many" class="anchor" href="#one-to-many"><span class="octicon octicon-link"></span></a>One to Many</h3>
+<a name="user-content-one-to-many" class="anchor" href="#one-to-many"><span class="octicon octicon-link"></span></a>One to Many</h3>
 
 <p><a href="images/one-to-many.png" target="_blank"><img src="images/one-to-many.png" alt="One to Many" style="max-width:100%;"></a></p>
 
@@ -440,10 +441,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
-<a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
+<a name="user-content-relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
-<a name="many-to-many" class="anchor" href="#many-to-many"><span class="octicon octicon-link"></span></a>Many to Many</h3>
+<a name="user-content-many-to-many" class="anchor" href="#many-to-many"><span class="octicon octicon-link"></span></a>Many to Many</h3>
 
 <p><a href="images/many-to-many.png" target="_blank"><img src="images/many-to-many.png" alt="Many to Many" style="max-width:100%;"></a></p>
 
@@ -539,10 +540,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
-<a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
+<a name="user-content-relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
-<a name="many-to-one" class="anchor" href="#many-to-one"><span class="octicon octicon-link"></span></a>Many to One</h3>
+<a name="user-content-many-to-one" class="anchor" href="#many-to-one"><span class="octicon octicon-link"></span></a>Many to One</h3>
 
 <p><a href="images/many-to-one.png" target="_blank"><img src="images/many-to-one.png" alt="Many to One" style="max-width:100%;"></a></p>
 
@@ -564,10 +565,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
-<a name="relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
+<a name="user-content-relationships" class="anchor" href="#relationships"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
-<a name="one-to-one" class="anchor" href="#one-to-one"><span class="octicon octicon-link"></span></a>One to One</h3>
+<a name="user-content-one-to-one" class="anchor" href="#one-to-one"><span class="octicon octicon-link"></span></a>One to One</h3>
 
 <p><a href="images/one-to-one.png" target="_blank"><img src="images/one-to-one.png" alt="One to One" style="max-width:100%;"></a></p>
 
@@ -589,18 +590,18 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
-<a name="editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
+<a name="user-content-editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
 
 <h3>
-<a name="ckeditor" class="anchor" href="#ckeditor"><span class="octicon octicon-link"></span></a>CKEditor</h3>
+<a name="user-content-ckeditor" class="anchor" href="#ckeditor"><span class="octicon octicon-link"></span></a>CKEditor</h3>
 
 <h4>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
+<a name="user-content-install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
 
 <p>You should either download CKEditor from <a href="http://ckeditor.com">ckeditor.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <code>//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js</code></p>
 
 <h4>
-<a name="settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
+<a name="user-content-settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
 
 <p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for this editor instance.</p>
 
@@ -611,7 +612,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </pre></div>
 
 <h4>
-<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
+<a name="user-content-customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
 
 <p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
 
@@ -642,7 +643,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </ul>
 </li>
 </ul><h4>
-<a name="my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
+<a name="user-content-my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
 
 <p>Your custom editor is initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
 
@@ -680,18 +681,18 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <p>The <code>CKEDITOR.replaceAll</code> loop throgh all textareas on the page and filter out only those that need to be initialized as ckeditors. The most important bit is that you should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
 
 <p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
-<a name="editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
+<a name="user-content-editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
 
 <h3>
-<a name="tinymce" class="anchor" href="#tinymce"><span class="octicon octicon-link"></span></a>TinyMCE</h3>
+<a name="user-content-tinymce" class="anchor" href="#tinymce"><span class="octicon octicon-link"></span></a>TinyMCE</h3>
 
 <h4>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
+<a name="user-content-install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
 
 <p>You should either download TinyMCE from <a href="http://www.tinymce.com">tinymce.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <code>//cdnjs.cloudflare.com/ajax/libs/tinymce/3.5.8/tiny_mce.js</code></p>
 
 <h4>
-<a name="settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
+<a name="user-content-settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
 
 <p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for this editor instance.</p>
 
@@ -702,7 +703,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </pre></div>
 
 <h4>
-<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
+<a name="user-content-customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
 
 <p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
 
@@ -734,7 +735,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </ul>
 </li>
 </ul><h4>
-<a name="my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
+<a name="user-content-my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
 
 <p>Your custom editor is initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
 
@@ -759,18 +760,18 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <p>The <code>tr:not(.blank) .tinymce</code> selector filter only to those textareas that have the <code>class-name</code> specified in <code>settings.json</code> but not contained inside hidden rows. You should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
 
 <p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we initialize only those textareas that have the class we specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
-<a name="editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
+<a name="user-content-editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>Editors</h2>
 
 <h3>
-<a name="multiple" class="anchor" href="#multiple"><span class="octicon octicon-link"></span></a>Multiple</h3>
+<a name="user-content-multiple" class="anchor" href="#multiple"><span class="octicon octicon-link"></span></a>Multiple</h3>
 
 <h4>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
+<a name="user-content-install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h4>
 
 <p>You should either download CKEditor and TinyMCE from their official sites <a href="http://ckeditor.com">ckedtor.com</a> and <a href="http://www.tinymce.com">tinymce.com</a> or use them directly from <a href="http://cdnjs.com">cdnjs.com</a>.</p>
 
 <h4>
-<a name="settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
+<a name="user-content-settingsjson" class="anchor" href="#settingsjson"><span class="octicon octicon-link"></span></a>settings.json</h4>
 
 <p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for each editor instance.</p>
 
@@ -793,7 +794,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </pre></div>
 
 <h4>
-<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
+<a name="user-content-customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h4>
 
 <p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
 
@@ -830,7 +831,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </ul>
 </li>
 </ul><h4>
-<a name="my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
+<a name="user-content-my-customjs" class="anchor" href="#my-customjs"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
 
 <p>Your custom editors are initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
 
@@ -901,14 +902,14 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <p>The <code>tr:not(.blank) .tinymce</code> selector filter only to those textareas that have the <code>class-name</code> specified in <code>settings.json</code> but not contained inside hidden rows. You should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
 
 <p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we initialize all textareas according to their specific <code>class-name</code> specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
-<a name="custom-views-apps" class="anchor" href="#custom-views-apps"><span class="octicon octicon-link"></span></a>Custom views (apps)</h2>
+<a name="user-content-custom-views-apps" class="anchor" href="#custom-views-apps"><span class="octicon octicon-link"></span></a>Custom views (apps)</h2>
 
 <p>The admin's custom views follow the <a href="http://vimeo.com/56166857">Modular web applications with Node.js and Express</a> approach presented by <a href="https://github.com/visionmedia">TJ Holowaychuk</a>.</p>
 
 <p>The only difference here is that we're dealing with <code>mustache</code> templates.</p>
 
 <h3>
-<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
+<a name="user-content-customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
 
 <div class="highlight highlight-js"><pre><span class="s2">"view1"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
@@ -923,7 +924,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </pre></div>
 
 <h3>
-<a name="appjs" class="anchor" href="#appjs"><span class="octicon octicon-link"></span></a>app.js</h3>
+<a name="user-content-appjs" class="anchor" href="#appjs"><span class="octicon octicon-link"></span></a>app.js</h3>
 
 <div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
@@ -954,7 +955,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <p>You should definitely run the examples from the <a href="https://github.com/simov/express-admin-examples">examples repository</a> as each of the custom views (apps) presented there is really well commented.</p>
 
 <h3>
-<a name="route-wide-variables" class="anchor" href="#route-wide-variables"><span class="octicon octicon-link"></span></a>Route wide variables</h3>
+<a name="user-content-route-wide-variables" class="anchor" href="#route-wide-variables"><span class="octicon octicon-link"></span></a>Route wide variables</h3>
 
 <p>Several variables are exposed to every route callback.</p>
 
@@ -974,7 +975,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <span class="c1">// holds the absolute path to the admin's view directory</span>
 <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">views</span>
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
-<a name="events" class="anchor" href="#events"><span class="octicon octicon-link"></span></a>Events</h2>
+<a name="user-content-events" class="anchor" href="#events"><span class="octicon octicon-link"></span></a>Events</h2>
 
 <p>Currently the supported event hooks are:</p>
 
@@ -982,7 +983,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <li>preSave</li>
 <li>postSave</li>
 </ul><h3>
-<a name="customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
+<a name="user-content-customjson" class="anchor" href="#customjson"><span class="octicon octicon-link"></span></a>custom.json</h3>
 
 <div class="highlight highlight-js"><pre><span class="s2">"some-key"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"events"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/events.js"</span>
@@ -990,7 +991,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </pre></div>
 
 <h3>
-<a name="eventsjs" class="anchor" href="#eventsjs"><span class="octicon octicon-link"></span></a>events.js</h3>
+<a name="user-content-eventsjs" class="anchor" href="#eventsjs"><span class="octicon octicon-link"></span></a>events.js</h3>
 
 <p>Run the admin with the <code>--debug-brk</code> flag and use <a href="https://github.com/node-inspector/node-inspector">node-inspector</a> to drill down into the event hook parameters</p>
 
@@ -1007,12 +1008,12 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </pre></div>
 
 <p>Take a look at the <a href="https://github.com/simov/express-admin-examples/blob/master/examples/custom/events/events.js">events example</a> from the Examples Repository</p><p><br /></p><hr /></div><div class="file"><h2>
-<a name="embedding" class="anchor" href="#embedding"><span class="octicon octicon-link"></span></a>Embedding</h2>
+<a name="user-content-embedding" class="anchor" href="#embedding"><span class="octicon octicon-link"></span></a>Embedding</h2>
 
 <p>You need to add one additional property inside your <code>config.json</code> file under the <code>app</code> key</p>
 
 <h3>
-<a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
+<a name="user-content-configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>config.json</h3>
 
 <div class="highlight highlight-js"><pre><span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
     <span class="p">...</span>
@@ -1021,7 +1022,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </pre></div>
 
 <h3>
-<a name="initialization" class="anchor" href="#initialization"><span class="octicon octicon-link"></span></a>Initialization</h3>
+<a name="user-content-initialization" class="anchor" href="#initialization"><span class="octicon octicon-link"></span></a>Initialization</h3>
 
 <p>In this example Express Admin will be located under the <code>/admin</code> path of your app</p>
 
@@ -1051,16 +1052,16 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
     <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
-<a name="themes" class="anchor" href="#themes"><span class="octicon octicon-link"></span></a>Themes</h2>
+<a name="user-content-themes" class="anchor" href="#themes"><span class="octicon octicon-link"></span></a>Themes</h2>
 
 <p>Use the <code>Themes</code> button to switch between the themes.</p><p><br /></p><hr /></div><div class="file"><h2>
-<a name="tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
+<a name="user-content-tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
 
 <h3>
-<a name="shell" class="anchor" href="#shell"><span class="octicon octicon-link"></span></a>Shell</h3>
+<a name="user-content-shell" class="anchor" href="#shell"><span class="octicon octicon-link"></span></a>Shell</h3>
 
 <h4>
-<a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h4>
+<a name="user-content-debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h4>
 
 <p>Set a <code>breakpoint</code> somewhere inside your custom view files and debug as usual.</p>
 
@@ -1070,7 +1071,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </pre></div>
 
 <h4>
-<a name="supervisor" class="anchor" href="#supervisor"><span class="octicon octicon-link"></span></a>Supervisor</h4>
+<a name="user-content-supervisor" class="anchor" href="#supervisor"><span class="octicon octicon-link"></span></a>Supervisor</h4>
 
 <p>Auto reload your project while configuring it using <a href="https://github.com/isaacs/node-supervisor">supervisior</a>.</p>
 
@@ -1087,16 +1088,16 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <p>The <code>-v</code> flag that you're passing to the Express Admin app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
 
 <h4>
-<a name="forever" class="anchor" href="#forever"><span class="octicon octicon-link"></span></a>Forever</h4>
+<a name="user-content-forever" class="anchor" href="#forever"><span class="octicon octicon-link"></span></a>Forever</h4>
 
 <p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a>.</p>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span>forever start path/to/express-admin/app path/to/project/config/
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
-<a name="tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
+<a name="user-content-tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
 
 <h3>
-<a name="nginx" class="anchor" href="#nginx"><span class="octicon octicon-link"></span></a>NginX</h3>
+<a name="user-content-nginx" class="anchor" href="#nginx"><span class="octicon octicon-link"></span></a>NginX</h3>
 
 <p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a>.</p>
 
@@ -1149,10 +1150,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
-<a name="tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
+<a name="user-content-tools" class="anchor" href="#tools"><span class="octicon octicon-link"></span></a>Tools</h2>
 
 <h3>
-<a name="apache" class="anchor" href="#apache"><span class="octicon octicon-link"></span></a>Apache</h3>
+<a name="user-content-apache" class="anchor" href="#apache"><span class="octicon octicon-link"></span></a>Apache</h3>
 
 <p>If some of your custom view's requests need to be handled by <a href="http://httpd.apache.org/">Apache</a>, add this to the nginx vhost file.</p>
 

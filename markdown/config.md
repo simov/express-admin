@@ -39,7 +39,7 @@ The application's configuration is stored inside the `config.json` file.<br />
     - **layouts** - toggle the layout button
     - **themes** - toggle the themes button
     - **languages** - toggle the languages button
-    - **root** - root location for the admin (omitted by default `/`)
+    - **root** - root location for the admin (used **only** when embedding - see the docs)
     - **upload** - absolute path to the upload folder (omitted by default `public/upload`)
 
 
