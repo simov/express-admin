@@ -34,6 +34,7 @@ describe('settings initialization', function () {
         args.langs.hasOwnProperty('cn').should.equal(true);
         args.langs.hasOwnProperty('de').should.equal(true);
         args.langs.hasOwnProperty('en').should.equal(true);
+        args.langs.hasOwnProperty('ru').should.equal(true);
 
         should.deepEqual(
             args.languages.language.sort(function (a, b) {
@@ -41,8 +42,9 @@ describe('settings initialization', function () {
                 if (a.key > b.key) return  1;
                 return 0;
             }), [
-            {key:'bg',name:'Български'},{key:'cn',name:'Chinese/中文'},
-            {key:'de',name:'Deutsch'},{key:'en',name:'English'}
+            {key:'bg',name:'Български'}, {key:'cn',name:'Chinese/中文'},
+            {key:'de',name:'Deutsch'}, {key:'en',name:'English'},
+            {key:'ru',name:'Русский'}
         ]);
 
         args.layouts.should.equal(true);
