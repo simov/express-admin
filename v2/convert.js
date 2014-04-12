@@ -42,6 +42,6 @@ var data = '';
         loop(++index, cb);
     });
 }(0, function () {
-    var content = template.render({}, {content: data});
+    var content = template.render({}, {content: data.replace(/user-content-/g,'')});
     fs.writeFileSync(path.resolve(__dirname, '../index.html'), content, 'utf8');
 }));
