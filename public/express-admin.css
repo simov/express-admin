@@ -2,7 +2,7 @@
 /*xs*/
 @media (max-width: 768px) {
     /*all field labels*/
-    .ex-table .control-label { padding-bottom: 5px; }
+    .x-table .control-label { padding-bottom: 5px; }
     /*listview buttons*/
     .x-filter .panel-footer button { float: none; width: 100% !important; margin-top: 15px; }
     /*editview buttons*/
@@ -21,15 +21,15 @@
 #login .label-default { color: #f8f8f2; }
 
 /*mainview*/
-.ex-table tbody td .glyphicon-plus { font-size: 8px; position: relative; top: -1px; }
+.x-table tbody td .glyphicon-plus { font-size: 8px; position: relative; top: -1px; }
 
 /*listview add record*/
 #express-admin h2 .btn { font-weight: normal; float: right; }
 #express-admin h2 .glyphicon-filter { display: inline-block; font-size: 12px; }
 #express-admin h2 .glyphicon-filter:hover { text-decoration: none; }
 /*listview mtm labels*/
-.ex-table tbody td .label { margin-right: 5px; }
-.ex-table tbody td .label:last-child { margin: 0; }
+.x-table tbody td .label { margin-right: 5px; }
+.x-table tbody td .label:last-child { margin: 0; }
 /*listview search filter*/
 .x-filter .panel-body { padding: 0; }
 .x-filter .panel-body table { margin-bottom: 0; }
@@ -48,21 +48,21 @@
 [type=file] { margin-top: 4px; }
 
 /*fix for all fields*/
-.ex-table .form-group { margin-bottom: 0; }
+.x-table .form-group { margin-bottom: 0; }
 /*inline table headers*/
-.ex-table .label-default { color: #f8f8f2; }
+.x-table .label-default { color: #f8f8f2; }
 /*checkbox remove inline*/
-.ex-table .head td { padding-top: 0; padding-bottom: 0; }
-.ex-table .head label { float: right; margin-bottom: 0; }
-.ex-table .head label input { margin-top: 0; }
-.ex-table .jumbotron { padding-left: 0; padding-right: 0; border-radius: 0; }
-.ex-table .jumbotron label { font-size: 14px; font-weight: normal; cursor: pointer; margin-right: 8px; }
-.ex-table .jumbotron label [type=checkbox] { position: relative; top: 3px; cursor: pointer; }
-.ex-table .remove { margin-right: 2px; }
+.x-table .head td { padding-top: 0; padding-bottom: 0; }
+.x-table .head label { float: right; margin-bottom: 0; }
+.x-table .head label input { margin-top: 0; }
+.x-table .jumbotron { padding-left: 0; padding-right: 0; border-radius: 0; }
+.x-table .jumbotron label { font-size: 14px; font-weight: normal; cursor: pointer; margin-right: 8px; }
+.x-table .jumbotron label [type=checkbox] { position: relative; top: 3px; cursor: pointer; }
+.x-table .remove { margin-right: 2px; }
 /*field error message*/
-.ex-table .form-group .help-block { margin-bottom: 0; }
+.x-table .form-group .help-block { margin-bottom: 0; }
 /*add another link*/
-.ex-table tfoot > tr > td { text-align: right; padding-top: 0; padding-bottom: 0; }
+.x-table tfoot > tr > td { text-align: right; padding-top: 0; padding-bottom: 0; }
 
 
 /*chosen*/
