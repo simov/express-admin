@@ -37,7 +37,8 @@
 .x-filter .panel-body .form-group:last-child { margin-bottom: 0; }
 .x-filter .panel-footer .form-group { margin-bottom: 0; }
 .x-filter .panel-footer .form-group div.col-lg-3:last-child { text-align: right; }
-.x-filter .panel-footer button { width: auto; }
+.x-filter .panel-footer button { width: auto; float: right; }
+.x-filter .panel-footer button:first-child { margin-left: 10px; }
 .x-filter.x-hidden .panel-footer { border-top: 0; }
 .x-filter.x-collapsed { display: none; }
 
