@@ -1,7 +1,7 @@
 
 var should = require('should');
 var auth = require('../../routes/auth'),
-    user = require('../../lib/utils/user');
+    user = require('../../lib/app/user');
 
 
 describe('user authentication', function () {

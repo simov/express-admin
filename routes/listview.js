@@ -1,9 +1,17 @@
 
-var dcopy = require('deep-copy'),
-    listview = require('../lib/core/listview'),
-    editview = require('../lib/core/editview'),
-    pagination = require('../lib/utils/pagination'),
-    template = require('../lib/utils/template');
+var dcopy = require('deep-copy');
+// listview
+var listview = {
+    query: require('../lib/listview/query'),
+    data: require('../lib/listview/data')},
+    pagination = require('../lib/listview/pagination'),
+    filter = require('../lib/listview/filter');
+// editview
+var editview = {
+    otm: require('../lib/editview/data').otm,
+    stc: require('../lib/editview/data').stc,
+    format: require('../lib/editview/format')
+};
 
 
 function getArgs (req, res) {
@@ -20,106 +28,44 @@ function getArgs (req, res) {
     return args;
 }
 
-function prepareSession (req, args) {
-    if (!req.session.filter) req.session.filter = {};
-    var filter = req.session.filter;
-
-    if ((req.method == 'GET' && !filter.hasOwnProperty(args.name))
-    || (req.method == 'POST' && req.body.action.hasOwnProperty('clear'))) {
-        filter[args.name] = {
-            columns: {},
-            order: '',
-            direction: '',
-            show: false
-        };
-    }
-    else if (req.method == 'POST' && req.body.action.hasOwnProperty('filter')) {
-        filter[args.name] = {
-            columns: req.body.filter||{},
-            order: req.body.order,
-            direction: req.body.direction,
-            show: true
-        };
-    }
-
-    filter[args.name].page = args.page;
-
-    return filter[args.name];
-}
-
 exports.get = function (req, res, next) {
-    var args = getArgs(req, res);
-    
-    args.filter = prepareSession(req, args);
-
-    data(req, res, args, next);
+    data(req, res, next);
 }
 
 exports.post = function (req, res, next) {
+    data(req, res, next);
+}
+
+function data (req, res, next) {
     var args = getArgs(req, res);
-    
-    args.filter = prepareSession(req, args);
-
-    data(req, res, args, next);
-}
-
-function getOrderColumns (req, args) {
-    var order = [];
-    for (var i=0; i < args.config.columns.length; i++) {
-        var column = args.config.columns[i];
-        if (!column.listview.show) continue;
-        if (column.name == args.filter.order) {
-            column = dcopy(column);
-            column.selected = true;
-        }
-        order.push(column);
-    }
-    return order;
-}
-
-function getFilterColumns (args) {
-    var filter = [];
-    for (var i=0; i < args.config.columns.length; i++) {
-        if (!args.config.listview.filter) continue;
-        for (var j=0; j < args.config.listview.filter.length; j++) {
-            if (args.config.columns[i].name == args.config.listview.filter[j]) {
-                var column = dcopy(args.config.columns[i]);
-                column.key = ['filter[',column.name,']'].join('');
-                filter.push(column);
-            }
-        }
-    }
-    return filter;
-}
-
-function data (req, res, args, next) {
+    args.filter = filter.prepareSession(req, args);
     args.query = listview.query(args);
 
     listview.data(args, function (err, data) {
         if (err) return next(err);
         pagination.get(args, function (err, pager) {
             if (err) return next(err);
-            // always should be in front of getFilterColumns
+            // always should be in front of filter.getColumns
             // as it may reduce args.config.columns
-            var order = getOrderColumns(req, args);
-            args.config.columns = getFilterColumns(args);
+            var order = filter.getOrderColumns(req, args);
+            args.config.columns = filter.getColumns(args);
 
-            editview.test.otm.loopColumns(args, function (err) {
+            editview.otm.get(args, function (err) {
                 if (err) return next(err);
-                editview.test.stc.loopColumns(args);
+                editview.stc.get(args);
 
-                params(req, res, args, data, pager, order, next);
+                render(req, res, args, data, pager, order, next);
             });
         });
     });
 }
 
-function params (req, res, args, data, pager, order, next) {
+function render (req, res, args, data, pager, order, next) {
     // set filter active items
     for (var i=0; i < args.config.columns.length; i++) {
         var column = args.config.columns[i],
             value = args.filter.columns[column.name];
-        column.value = template.value(column, value);
+        column.value = editview.format.value(column, value);
     }
 
     res.locals.view = {

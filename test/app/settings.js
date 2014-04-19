@@ -1,64 +1,112 @@
 
-var should = require('should');
-var app = require('../../app');
+var dcopy = require('deep-copy');
+var settings = require('../../lib/app/settings');
 
 
-describe('settings initialization', function () {
+describe('settings', function () {
+    var info = {
+        type: {
+            id: {
+                type: 'int(11)',
+                allowNull: false,
+                key: 'pri',
+                defaultValue: null,
+                extra: 'auto_increment'
+            },
+            item_id: {
+                type: 'int(11)',
+                allowNull: false,
+                key: 'mul',
+                defaultValue: null,
+                extra: ''
+            },
+            name: {
+                type: 'varchar(45)',
+                allowNull: false,
+                key: 'uni',
+                defaultValue: null,
+                extra: ''
+            }
+        },
+        user: {
+            id: {
+                type: 'int(11)',
+                allowNull: false,
+                key: 'pri',
+                defaultValue: null,
+                extra: 'auto_increment'
+            },
+            firstname: {
+                type: 'varchar(45)',
+                allowNull: true,
+                key: '',
+                defaultValue: null,
+                extra: ''
+            },
+            lastname: {
+                type: 'varchar(45)',
+                allowNull: true,
+                key: '',
+                defaultValue: null,
+                extra: ''
+            }
+        }
+    };
 
-    it('should init the settings', function (done) {
-        var args = {
-            dpath: null, // not used
-            config: { // only config.app is used
-                app: {layouts: true, themes: true, languages: true}
-            },
-            settings: { // creates args.slugs
-                table1: {slug:'slug1'},
-                table2: {slug:'slug2'},
-                table3: {slug:'slug3'}
-            },
-            custom: { // add them to args.libs
-                view1: {},
-                view2: {public: {local:{css:['file.css']}, external:{css:['url']}}},
-                view3: {public: {local:{css:['file.css'], js:['file.js']},
-                                external:{css:['url'], js:['url']}}},
-            },
-            users: {} // not used
+    it.skip('should not add table without primary key', function (done) {
+        var info2 = dcopy(info);
+        info2.nopk = {
+            id: {
+                type: 'int(11)',
+                allowNull: false,
+                key: '',
+                defaultValue: null,
+                extra: 'auto_increment'
+            }
+        }
+        settings.refresh({}, info2, function (config) {
+            Object.keys(config).join().should.equal('type,user');
+            done();
+        });
+    });
+
+    it('should update settings with new table', function (done) {
+        var info2 = dcopy(info);
+        info2.item = {
+            id: {
+                type: 'int(11)',
+                allowNull: false,
+                key: 'pri',
+                defaultValue: null,
+                extra: 'auto_increment'
+            }
         };
-        app.initSettings(args);
-        
+        settings.refresh({}, info, function (config) {
+            settings.refresh(config, info2, function (config) {
+                Object.keys(config).join().should.equal('type,user,item');
+                done();
+            });
+        });
+    });
 
-        args.hasOwnProperty('db').should.equal(true);
-        args.debug.should.equal(false);
-
-        args.langs.hasOwnProperty('bg').should.equal(true);
-        args.langs.hasOwnProperty('cn').should.equal(true);
-        args.langs.hasOwnProperty('de').should.equal(true);
-        args.langs.hasOwnProperty('en').should.equal(true);
-        args.langs.hasOwnProperty('ru').should.equal(true);
-
-        should.deepEqual(
-            args.languages.language.sort(function (a, b) {
-                if (a.key < b.key) return -1;
-                if (a.key > b.key) return  1;
-                return 0;
-            }), [
-            {key:'bg',name:'Български'}, {key:'cn',name:'Chinese/中文'},
-            {key:'de',name:'Deutsch'}, {key:'en',name:'English'},
-            {key:'ru',name:'Русский'}
-        ]);
-
-        args.layouts.should.equal(true);
-
-        args.libs.bootstrap.should.equal('/csslib/bootstrap.min.css');
-        args.libs.css.length.should.equal(5);
-        args.libs.js.length.should.equal(6);
-        args.libs.external.css.length.should.equal(2);
-        args.libs.external.js.length.should.equal(1);
-
-        should.deepEqual(args.slugs, {slug1:'table1',slug2:'table2',slug3:'table3'});
-
-        args.themes.theme.length.should.equal(13);
-
-        done();
+    it('should update settings with new column', function (done) {
+        var info2 = dcopy(info);
+        info2.user.address = {
+            type: 'varchar(45)',
+            allowNull: true,
+            key: '',
+            defaultValue: null,
+            extra: ''
+        };
+        settings.refresh({}, info, function (config) {
+            settings.refresh(config, info2, function (config) {
+                var names = [];
+                for (var i=0; i < config.user.columns.length; i++) {
+                    names.push(config.user.columns[i].name);
+                }
+                names.join().should.equal('id,firstname,lastname,address');
+                done();
+            });
+        });
     });
 });

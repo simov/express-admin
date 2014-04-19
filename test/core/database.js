@@ -3,8 +3,8 @@ var fs = require('fs'),
     path = require('path');
 var should = require('should'),
     dcopy = require('deep-copy');
-var db = require('../../lib/utils/database'),
-    editview = require('../../lib/core/editview'),
+var db = require('../../lib/db/database'),
+    editview = require('../../lib/editview/params'),
     database = require('../../lib/core/database');
 var c = require('../fixtures/stress/config');
 

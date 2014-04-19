@@ -1,18 +1,18 @@
 
 var fs = require('fs'),
     path = require('path');
-var program = require('./lib/utils/program'),
-    project = require('./lib/utils/project');
+var program = require('./lib/app/program'),
+    project = require('./lib/app/project');
 require('colors');
 
 var express = require('express'),
     consolidate = require('consolidate'),
     hogan = require('hogan.js');
 
-var db = require('./lib/utils/database'),
-    Schema = require('./lib/utils/schema'),
-    settings = require('./lib/utils/settings'),
-    routes = require('./lib/utils/routes');
+var db = require('./lib/db/database'),
+    Schema = require('./lib/db/schema'),
+    settings = require('./lib/app/settings'),
+    routes = require('./lib/app/routes');
 
 
 // creates project's config files

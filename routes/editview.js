@@ -1,6 +1,6 @@
 
 var dcopy = require('deep-copy');
-var editview = require('../lib/core/editview'),
+var editview = require('../lib/editview/params'),
     database = require('../lib/core/database');
 
 
