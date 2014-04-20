@@ -4,8 +4,8 @@ var fs = require('fs'),
 var should = require('should'),
     dcopy = require('deep-copy');
 var db = require('../../lib/db/database'),
-    editview = require('../../lib/editview/params'),
-    database = require('../../lib/core/database');
+    editview = require('../../lib/editview/index'),
+    database = require('../../lib/db/update');
 var c = require('../fixtures/stress/config');
 
 

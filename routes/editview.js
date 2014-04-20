@@ -1,7 +1,7 @@
 
 var dcopy = require('deep-copy');
-var editview = require('../lib/editview/params'),
-    database = require('../lib/core/database');
+var editview = require('../lib/editview/index'),
+    database = require('../lib/db/update');
 
 
 function getArgs (req, res) {

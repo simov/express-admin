@@ -9,9 +9,7 @@ var child = null,
 
 
 exports.start = function (params, expect, callback) {
-    output = '';
-    expected = expect;
-    response = callback;
+    this.next(null, expect, callback);
 
     child = spawn('node', params);
     child.stdin.setEncoding('utf8');
@@ -29,7 +27,13 @@ exports.start = function (params, expect, callback) {
     });
     
     child.stderr.on('data', function (data) {
-        console.log('! ' + data);
+        // console.log('! ' + data);
+        output += data.toString().trim().replace(/\r?\n|\r/g, '');
+        
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            response(new Error(output));
+        }, 1000);
     });
     
     child.on('exit', function (code, signal) {
@@ -41,5 +45,6 @@ exports.next = function (input, expect, callback) {
     output = '';
     expected = expect;
     response = callback;
-    child.stdin.write(input);
+    
+    if (input != null) child.stdin.write(input);
 }

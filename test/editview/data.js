@@ -1,7 +1,7 @@
 
 var should = require('should');
 var data = require('../../lib/editview/data'),
-    params = require('../../lib/editview/params'),
+    editview = require('../../lib/editview/index'),
     db = require('../../lib/db/database');
 
 
@@ -27,7 +27,7 @@ describe('data (editview)', function () {
             {name: 'fk', editview: {show: false}},
             {name: 'name', editview: {show: true}}
         ];
-        var result = params._removeHidden(columns);
+        var result = editview._removeHidden(columns);
         columns.length.should.equal(3);
         result.length.should.equal(1);
         result[0].name.should.equal('name');

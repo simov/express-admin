@@ -1,7 +1,7 @@
 
 var fs = require('fs'),
     path = require('path');
-var program = require('./lib/app/program'),
+var cli = require('./lib/app/cli'),
     project = require('./lib/app/project');
 require('colors');
 
@@ -22,7 +22,7 @@ function initCommandLine (args, cb) {
         process.exit();
     }
     if (!project.exists(args.dpath)) {
-        program.promptForData(function (err, data) {
+        cli.promptForData(function (err, data) {
             if (err) throw err;
             project.create(args.dpath, data, function () {
                 cb();
@@ -93,7 +93,7 @@ function initSettings (args) {
         return slugs;
     }());
 
-    args.debug = args.config.app.debug || (program.dev ? true : false);
+    args.debug = args.config.app.debug || (cli.dev ? true : false);
     if (!args.debug) console.warn = function(){};
 
     // template variables
@@ -235,7 +235,7 @@ function initServer (args) {
 // start only if this module is executed from the command line
 if (require.main === module) {
     var args = {
-        dpath: path.resolve(program.getConfigPath())
+        dpath: path.resolve(cli.getConfigPath())
     }
     initCommandLine(args, function () {
 

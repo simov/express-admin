@@ -4,11 +4,10 @@ var fs = require('fs'),
     should = require('should'),
     recursive = require('recursive-fs');
 require('colors');
-
 var prompt = require('./prompt');
 
 
-describe('command line', function () {
+describe('app (cli)', function () {
     before(function (done) {
         var dpath = path.resolve(__dirname, 'project');
         recursive.rmdirr(dpath, function (err) {
@@ -17,8 +16,9 @@ describe('command line', function () {
         });
     });
 
-    it('should return an error on non existent directory', function (done) {
-        var params = [path.resolve(__dirname, '../../app.js'), 'non-existing-dir'],
+    it('return an error on non existing directory', function (done) {
+        var params = [
+            path.resolve(__dirname, 'wrapper.js'), 'non-existing-dir', '-test-app'],
             expected = 'Config directory path doesn\'t exists!'.red;
         
         prompt.start(params, expected, function (err) {
@@ -26,8 +26,10 @@ describe('command line', function () {
         });
     });
 
-    it('should prompt for data on non existing config files', function (done) {	
-        var params = [path.resolve(__dirname, 'cmd-wrapper.js'), path.resolve(__dirname, 'project')];
+    it('prompt for data on non existing config files', function (done) {	
+        var params = [
+            path.resolve(__dirname, 'wrapper.js'),
+            path.resolve(__dirname, 'project'), '-test-app'];
         var data = [
             {in: 'mysql', out: 'Database name:'},
             {in: 'express-admin-simple', out: 'Database user:'},
@@ -61,8 +63,10 @@ describe('command line', function () {
         });
     });
 
-    it('should start the admin on existing config files', function (done) {
-        var params = [path.resolve(__dirname, 'cmd-wrapper.js'), path.resolve(__dirname, 'project')];
+    it('start the admin on existing config files', function (done) {
+        var params = [
+            path.resolve(__dirname, 'wrapper.js'),
+            path.resolve(__dirname, 'project'), '-test-app'];
         
         prompt.start(params, 'end', function () {
             done();
@@ -71,8 +75,6 @@ describe('command line', function () {
 
     after(function (done) {
         var dpath = path.resolve(__dirname, 'project');
-        recursive.rmdirr(dpath, function (err) {
-            done(err);
-        });
+        recursive.rmdirr(dpath, done);
     });
 });
