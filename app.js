@@ -21,16 +21,14 @@ function initCommandLine (args, cb) {
         console.log('Config directory path doesn\'t exists!'.red);
         process.exit();
     }
-    if (!project.exists(args.dpath)) {
-        cli.promptForData(function (err, data) {
-            if (err) throw err;
-            project.create(args.dpath, data, function () {
-                cb();
-            });
+    if (project.exists(args.dpath)) return cb();
+    // else
+    cli.promptForData(function (err, data) {
+        if (err) throw err;
+        project.create(args.dpath, data, function () {
+            cb();
         });
-    } else {
-        cb();
-    }
+    });
 }
 
 // modifies args.settings
