@@ -9,6 +9,11 @@ var project = require('../../lib/app/project');
 
 describe('project', function () {
     var dpath = path.join(__dirname, 'project');
+    var data = {
+        mysql: {database: 'express-admin-test', user: 'liolio', password: 'karamba'},
+        server: {port: '3000'},
+        user: {name: 'admin', pass: '11aaAA'}
+    };
 
     before(function (done) {
         fs.mkdir(dpath, done);
@@ -20,21 +25,6 @@ describe('project', function () {
     });
 
     it('the config files should exist', function (done) {
-        var data = {
-            mysql: {
-                database: 'express-admin-test',
-                user: 'liolio',
-                password: 'karamba'
-            },
-            server: {
-                port: '3000'
-            },
-            user: {
-                name: 'admin',
-                pass: '11aaAA'
-            }
-        };
-
         project.create(dpath, data, function (err) {
             if (err) return done(err);
             project.exists(dpath).should.equal(true);
@@ -43,39 +33,17 @@ describe('project', function () {
     });
 
     it('the config data should be correct', function (done) {
-        var c = {
-            config: require('./project/config'),
-            custom: require('./project/custom'),
-            settings: require('./project/settings'),
-            users: require('./project/users')
-        };
+        
+        should.deepEqual(require('./project/custom'), {});
+        should.deepEqual(require('./project/settings'), {});
+        should.deepEqual(require('./project/config'), data);
 
-        should.deepEqual(c.custom, {});
-        should.deepEqual(c.settings, {});
-
-        var config = {
-            mysql: {
-                database: 'express-admin-test',
-                user: 'liolio',
-                password: 'karamba'
-            },
-            server: {
-                port: '3000'
-            },
-            app: {
-                layouts: true,
-                themes: true,
-                languages: true
-            }
-        };
-        should.deepEqual(c.config, config);
-
-        // users
-        c.users.admin.name.should.equal('admin');
-        c.users.admin.admin.should.equal(true);
-        pwd.hash('11aaAA', c.users.admin.salt, function (err, hash) {
+        var users = require('./project/users');
+        users.admin.name.should.equal('admin');
+        users.admin.admin.should.equal(true);
+        pwd.hash('11aaAA', users.admin.salt, function (err, hash) {
             if (err) return done(err);
-            c.users.admin.hash.should.equal(hash);
+            users.admin.hash.should.equal(hash);
             done();
         });
     });
