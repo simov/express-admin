@@ -39,17 +39,16 @@ function initDatabase (args, cb) {
         schema.getAllColumns(function (err, info) {
             if (err) return cb(err);
 
-            settings.refresh(args.settings, info, function (settings) {
-                // write back the settings
-                var fpath = path.join(args.dpath, 'settings.json');
-                fs.writeFileSync(fpath, JSON.stringify(settings, null, 4), 'utf8');
+            // write back the settings
+            var fpath = path.join(args.dpath, 'settings.json');
+            settings = settings.refresh(args.settings, info);
+            fs.writeFileSync(fpath, JSON.stringify(settings, null, 4), 'utf8');
 
-                db.empty(db.client.config.schema, function (err, empty) {
-                    if (err) return cb(err);
-                    if (empty) return cb(new Error('Empty schema!'));
-                    args.settings = settings;
-                    cb();
-                });
+            db.empty(db.client.config.schema, function (err, empty) {
+                if (err) return cb(err);
+                if (empty) return cb(new Error('Empty schema!'));
+                args.settings = settings;
+                cb();
             });
         });
     });

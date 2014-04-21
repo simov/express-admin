@@ -1,112 +1,88 @@
 
-var dcopy = require('deep-copy');
+var should = require('should');
 var settings = require('../../lib/app/settings');
 
 
 describe('settings', function () {
-    var info = {
-        type: {
-            id: {
-                type: 'int(11)',
-                allowNull: false,
-                key: 'pri',
-                defaultValue: null,
-                extra: 'auto_increment'
-            },
-            item_id: {
-                type: 'int(11)',
-                allowNull: false,
-                key: 'mul',
-                defaultValue: null,
-                extra: ''
-            },
-            name: {
-                type: 'varchar(45)',
-                allowNull: false,
-                key: 'uni',
-                defaultValue: null,
-                extra: ''
-            }
-        },
-        user: {
-            id: {
-                type: 'int(11)',
-                allowNull: false,
-                key: 'pri',
-                defaultValue: null,
-                extra: 'auto_increment'
-            },
-            firstname: {
-                type: 'varchar(45)',
-                allowNull: true,
-                key: '',
-                defaultValue: null,
-                extra: ''
-            },
-            lastname: {
-                type: 'varchar(45)',
-                allowNull: true,
-                key: '',
-                defaultValue: null,
-                extra: ''
-            }
-        }
-    };
-
+    
     it.skip('should not add table without primary key', function (done) {
-        var info2 = dcopy(info);
-        info2.nopk = {
-            id: {
-                type: 'int(11)',
-                allowNull: false,
-                key: '',
-                defaultValue: null,
-                extra: 'auto_increment'
+        done();
+    });
+
+    it('set table primary key', function (done) {
+        var data = {
+            table1: {
+                id: {
+                    type: 'int(11)',
+                    allowNull: false,
+                    key: 'pri',
+                    defaultValue: null,
+                    extra: 'auto_increment'
+                },
+                name: {
+                    type: 'varchar(45)',
+                    allowNull: false,
+                    key: '',
+                    defaultValue: null,
+                    extra: ''
+                }
             }
         }
-        settings.refresh({}, info2, function (config) {
-            Object.keys(config).join().should.equal('type,user');
-            done();
-        });
+        var result = settings.refresh({}, data);
+        result.table1.table.pk.should.equal('id');
+        done();
     });
 
-    it('should update settings with new table', function (done) {
-        var info2 = dcopy(info);
-        info2.item = {
-            id: {
-                type: 'int(11)',
-                allowNull: false,
-                key: 'pri',
-                defaultValue: null,
-                extra: 'auto_increment'
+    it('add new column', function (done) {
+        var config = {
+            table1: {
+                columns:[{name:'id'}]
             }
         };
-        settings.refresh({}, info, function (config) {
-            settings.refresh(config, info2, function (config) {
-                Object.keys(config).join().should.equal('type,user,item');
-                done();
-            });
-        });
+        var data = {
+            table1: {
+                id: {
+                    type: 'int(11)',
+                    allowNull: false,
+                    key: 'pri',
+                    defaultValue: null,
+                    extra: 'auto_increment'
+                },
+                name: {
+                    type: 'varchar(45)',
+                    allowNull: false,
+                    key: '',
+                    defaultValue: null,
+                    extra: ''
+                }
+            }
+        }
+        var result = settings.refresh(config, data);
+        should.deepEqual(result.table1.columns[0], config.table1.columns[0]);
+        result.table1.columns[1].name.should.equal('name');
+        done();
     });
 
-    it('should update settings with new column', function (done) {
-        var info2 = dcopy(info);
-        info2.user.address = {
-            type: 'varchar(45)',
-            allowNull: true,
-            key: '',
-            defaultValue: null,
-            extra: ''
+    it('add new table', function (done) {
+        var config = {
+            table1: {
+                columns:[{name:'id'}]
+            }
         };
-        settings.refresh({}, info, function (config) {
-            settings.refresh(config, info2, function (config) {
-                var names = [];
-                for (var i=0; i < config.user.columns.length; i++) {
-                    names.push(config.user.columns[i].name);
+        var data = {
+            table2: {
+                id: {
+                    type: 'int(11)',
+                    allowNull: false,
+                    key: 'pri',
+                    defaultValue: null,
+                    extra: 'auto_increment'
                 }
-                names.join().should.equal('id,firstname,lastname,address');
-                done();
-            });
-        });
+            }
+        }
+        var result = settings.refresh(config, data);
+        should.deepEqual(result.table1, config.table1);
+        should.exist(result.table2);
+        done();
     });
 });
