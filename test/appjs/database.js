@@ -1,12 +1,13 @@
 
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    should = require('should');
 var app = require('../../app');
 
 
 describe('database initialization', function () {
 
-    it('should return an error on wrong database', function (done) {
+    it('return an error on wrong database', function (done) {
         var args = {config: {mysql:{
             database:'non-existent', user: 'liolio', password: 'karamba'
         }}};
@@ -17,7 +18,7 @@ describe('database initialization', function () {
         });
     });
 
-    it('should return an error on wrong user name', function (done) {
+    it('return an error on wrong user name', function (done) {
         var args = {config: {mysql:{
             database:'express-admin-simple', user: 'liolio1', password: 'karamba'
         }}};
@@ -27,7 +28,7 @@ describe('database initialization', function () {
         });
     });
 
-    it('should return an error on wrong user\'s password', function (done) {
+    it('return an error on wrong user\'s password', function (done) {
         var args = {config: {mysql:{
             database:'express-admin-simple', user: 'liolio', password: 'karamba1'
         }}};
@@ -37,7 +38,7 @@ describe('database initialization', function () {
         });
     });
 
-    it('should return an error on empty schema', function (done) {
+    it('return an error on empty schema', function (done) {
         var args = {
             config: {mysql:{
                 database:'express-admin-empty', user: 'liolio', password: 'karamba'
@@ -51,7 +52,7 @@ describe('database initialization', function () {
         });
     });
 
-    it('should refresh the settings', function (done) {
+    it('write the settings to the hard drive', function (done) {
         var args = {
             config: {mysql:{
                 database:'express-admin-simple', user: 'liolio', password: 'karamba'
@@ -60,7 +61,23 @@ describe('database initialization', function () {
             settings: {}
         };
         app.initDatabase(args, function (err) {
-            JSON.stringify(args.settings).should.not.equal('{}');
+            if (err) return done(err);
+            should.notDeepEqual(require(path.join(__dirname, 'settings.json')), {});
+            done();
+        });
+    });
+
+    it('refresh the settings', function (done) {
+        var args = {
+            config: {mysql:{
+                database:'express-admin-simple', user: 'liolio', password: 'karamba'
+            }},
+            dpath: __dirname,
+            settings: {}
+        };
+        app.initDatabase(args, function (err) {
+            if (err) return done(err);
+            should.notDeepEqual(args.settings, {});
             done();
         });
     });

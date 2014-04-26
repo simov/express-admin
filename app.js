@@ -24,10 +24,8 @@ function initCommandLine (args, cb) {
     if (project.exists(args.dpath)) return cb();
     // else
     cli.promptForData(function (err, data) {
-        if (err) throw err;
-        project.create(args.dpath, data, function () {
-            cb();
-        });
+        if (err) return cb(err);
+        project.create(args.dpath, data, cb);
     });
 }
 
@@ -35,19 +33,20 @@ function initCommandLine (args, cb) {
 function initDatabase (args, cb) {
     db.connect(args.config, function (err) {
         if (err) return cb(err);
-        var schema = new Schema(db);
-        schema.getAllColumns(function (err, info) {
+        db.empty(db.client.config.schema, function (err, empty) {
             if (err) return cb(err);
-
-            // write back the settings
-            var fpath = path.join(args.dpath, 'settings.json');
-            settings = settings.refresh(args.settings, info);
-            fs.writeFileSync(fpath, JSON.stringify(settings, null, 4), 'utf8');
-
-            db.empty(db.client.config.schema, function (err, empty) {
+            if (empty) return cb(new Error('Empty schema!'));
+            
+            var schema = new Schema(db);
+            schema.getAllColumns(function (err, info) {
                 if (err) return cb(err);
-                if (empty) return cb(new Error('Empty schema!'));
-                args.settings = settings;
+
+                // write back the settings
+                var fpath = path.join(args.dpath, 'settings.json'),
+                    updated = settings.refresh(args.settings, info);
+                fs.writeFileSync(fpath, JSON.stringify(updated, null, 4), 'utf8');
+
+                args.settings = updated;
                 cb();
             });
         });
@@ -59,17 +58,12 @@ function initSettings (args) {
     // route variables
     args.db = db;
     
-    if (args.config.app.root) {
-        var root = args.config.app.root;
-        if (/.*\/$/.test(root)) args.config.app.root = root.slice(0,-1);
-    } else {
-        args.config.app.root = '';
-    }
-
+    // upload
     var upload = args.config.app.upload || path.join(__dirname, 'public/upload');
     args.config.app.upload = upload;
     if (!fs.existsSync(upload)) fs.mkdirSync(upload);
     
+    // languages
     args.langs = (function () {
         var dpath = path.join(__dirname, 'config/lang'),
             files = fs.readdirSync(dpath),
@@ -81,8 +75,8 @@ function initSettings (args) {
         return langs;
     }());
 
+    // slug to table map
     args.slugs = (function () {
-        // slug to table map
         var slugs = {};
         for (var key in args.settings) {
             slugs[args.settings[key].slug] = key;
@@ -90,11 +84,34 @@ function initSettings (args) {
         return slugs;
     }());
 
+    // debug
     args.debug = args.config.app.debug || (cli.dev ? true : false);
     if (!args.debug) console.warn = function(){};
 
+    // events
+    for (var key in args.custom) {
+        var fpath = args.custom[key].events;
+        if (fpath) break;
+    }
+    var events = fpath ? require(fpath) : {};
+    if (!events.hasOwnProperty('preSave'))
+        events.preSave = function (req, res, args, next) {next()};
+    if (!events.hasOwnProperty('postSave'))
+        events.postSave = function (req, res, args, next) {next()};
+    args.events = events;
+
+
     // template variables
-    args.libs = require(path.join(__dirname, 'config/libs'));
+
+    // root
+    if (args.config.app.root) {
+        var root = args.config.app.root;
+        if (/.*\/$/.test(root)) args.config.app.root = root.slice(0,-1);
+    } else {
+        args.config.app.root = '';
+    }
+
+    // layouts/themes/languages
     args.layouts = args.config.app.layouts;
     args.themes = args.config.app.themes
         ? {theme: require(path.join(__dirname, 'config/themes'))} : null;
@@ -108,6 +125,8 @@ function initSettings (args) {
         return {language: langs};
     }());
 
+    // static
+    args.libs = require(path.join(__dirname, 'config/libs'));
     args.libs.external = {css: [], js: []};
     for (var key in args.custom) {
         var assets = args.custom[key].public;
@@ -121,17 +140,6 @@ function initSettings (args) {
             args.libs.external.css = args.libs.external.css.concat(assets.external.css||[]);
         }
     }
-
-    for (var key in args.custom) {
-        var fpath = args.custom[key].events;
-        if (fpath) break;
-    }
-    var events = fpath ? require(fpath) : {};
-    if (!events.hasOwnProperty('preSave'))
-        events.preSave = function (req, res, args, next) {next()};
-    if (!events.hasOwnProperty('postSave'))
-        events.postSave = function (req, res, args, next) {next()};
-    args.events = events;
 }
 
 function initServer (args) {
@@ -157,10 +165,11 @@ function initServer (args) {
 
     if (!args.debug) app.set('view cache', true);
 
-    // register custom public local paths
+    // register custom static local paths
     for (var key in args.custom) {
         var assets = args.custom[key].public;
-        if (!assets || !assets.local || !assets.local.path) continue;
+        if (!assets || !assets.local || !assets.local.path ||
+            !fs.existsSync(assets.local.path)) continue;
         app.use(express.static(assets.local.path));
     }
 
@@ -172,16 +181,16 @@ function initServer (args) {
         // i18n
         var lang = req.cookies.lang || 'en';
         res.cookie('lang', lang, {path: '/', maxAge: 900000000});
-        res.locals.string = args.langs[lang];
         
-        // shortcuts
+        // template vars
+        res.locals.string = args.langs[lang];
         res.locals.root = args.config.app.root;
         res.locals.libs = args.libs;
         res.locals.themes = args.themes;
         res.locals.layouts = args.layouts;
         res.locals.languages = args.languages;
 
-        // required for the custom views
+        // required for custom views
         res.locals._admin.views = app.get('views');
 
         next();
@@ -190,20 +199,20 @@ function initServer (args) {
     // routes
     
     // init regexes
-    routes = routes.init(args.settings, args.custom);
+    var _routes = routes.init(args.settings, args.custom);
 
     // register custom apps
     (function () {
         var have = false;
         for (var key in args.custom) {
             var _app = args.custom[key].app;
-            if (_app && _app.path) {
+            if (_app && _app.path && fs.existsSync(_app.path)) {
                 var view = require(_app.path);
                 app.use(view);
                 have = true;
             }
         }
-        if (have && routes.custom) app.all(routes.custom, r.auth.restrict, r.render.admin);
+        if (have && _routes.custom) app.all(_routes.custom, r.auth.restrict, r.render.admin);
     }());
 
     // login/logout
@@ -212,15 +221,15 @@ function initServer (args) {
     app.get('/logout', r.auth.logout);
 
     // editview
-    app.get(routes.editview, r.auth.restrict, r.editview.get, r.render.admin);
-    app.post(routes.editview, r.auth.restrict, r.editview.post, r.render.admin);
+    app.get(_routes.editview, r.auth.restrict, r.editview.get, r.render.admin);
+    app.post(_routes.editview, r.auth.restrict, r.editview.post, r.render.admin);
 
     // listview
-    app.get(routes.listview, r.auth.restrict, r.listview.get, r.render.admin);
-    app.post(routes.listview, r.auth.restrict, r.listview.post, r.render.admin);
+    app.get(_routes.listview, r.auth.restrict, r.listview.get, r.render.admin);
+    app.post(_routes.listview, r.auth.restrict, r.listview.post, r.render.admin);
 
     // mainview
-    app.get(routes.mainview, r.auth.restrict, r.mainview.get, r.render.admin);
+    app.get(_routes.mainview, r.auth.restrict, r.mainview.get, r.render.admin);
 
     // not found
     app.all('*', r.auth.restrict, r.notfound.get, r.render.admin);
@@ -234,7 +243,8 @@ if (require.main === module) {
     var args = {
         dpath: path.resolve(cli.getConfigPath())
     }
-    initCommandLine(args, function () {
+    initCommandLine(args, function (err) {
+        if (err) return console.log(err.message.red);
 
         args.config = require(path.join(args.dpath, 'config.json'));
         args.settings = require(path.join(args.dpath, 'settings.json'));
