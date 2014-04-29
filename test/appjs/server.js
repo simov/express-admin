@@ -8,10 +8,7 @@ var app = require('../../app');
 describe('server initialization', function () {
 
     // test auth status middleware
-    before(function () {
-        console.warn = function () {}
-    });
-
+    
     describe('static files', function () {
         it('serve a static file from public dir', function (done) {
             supertest(app.initServer({}))

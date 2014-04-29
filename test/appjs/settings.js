@@ -73,10 +73,6 @@ describe('settings initialization', function () {
             args.debug.should.equal(true);
             done();
         });
-        it('disable console warnings in production', function (done) {
-            // console.warn() is disabled with debug:false !
-            done();
-        });
     });
 
     describe('events', function () {

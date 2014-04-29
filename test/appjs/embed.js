@@ -8,7 +8,6 @@ describe('embedding', function () {
     var app = null;
 
     before(function (done) {
-        console.warn = function () {};
 
         app = express();
         app.get('/', function (req, res) {
