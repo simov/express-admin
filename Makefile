@@ -16,7 +16,6 @@ all:
 		test/app \
 		test/appjs \
 		test/cli \
-		test/core \
 		test/db \
 		test/editview \
 		test/routes \
