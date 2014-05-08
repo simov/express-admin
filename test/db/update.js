@@ -9,7 +9,7 @@ var db = require('../../lib/db/database'),
 var c = require('../fixtures/stress/config');
 
 
-describe('core/database', function () {
+describe('update (db)', function () {
     var args = {
         settings : require('../fixtures/stress/settings'),
         debug    : true,
@@ -17,7 +17,7 @@ describe('core/database', function () {
     };
     before(function (done) {
         db.connect(c, function (err) {
-            if (err) throw err;
+            if (err) return done(err);
             args.db = db;
             done();
         });
