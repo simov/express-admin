@@ -4,7 +4,11 @@
     {{#control}}
     {{! data-type-name="type.name" data-allow-null="allowNull" data-default-value="defaultValue"}}
 
-    <div class="{{#text}}col-sm-3 col-md-3 col-lg-3{{/text}}{{#date}}col-sm-3 col-md-3 col-lg-3{{/date}}{{#time}}col-sm-3 col-md-3 col-lg-3{{/time}}{{#datetime}}col-sm-3 col-md-3 col-lg-3{{/datetime}}{{#year}}col-sm-3 col-md-3 col-lg-3{{/year}}{{#select}}col-sm-3 col-md-3 col-lg-3{{/select}}{{#file}}col-sm-3 col-md-3 col-lg-3{{/file}}{{#radio}}col-sm-3 col-md-3 col-lg-3{{/radio}}{{#textarea}}col-sm-3 col-md-3 col-lg-3{{/textarea}}">
+    <div class="{{#text}}col-sm-3 col-md-3 col-lg-3{{/text}}{{#number}}col-sm-3 col-md-3 col-lg-3{{/number}}{{#date}}col-sm-3 col-md-3 col-lg-3{{/date}}{{#time}}col-sm-3 col-md-3 col-lg-3{{/time}}{{#datetime}}col-sm-3 col-md-3 col-lg-3{{/datetime}}{{#year}}col-sm-3 col-md-3 col-lg-3{{/year}}{{#select}}col-sm-3 col-md-3 col-lg-3{{/select}}{{#file}}col-sm-3 col-md-3 col-lg-3{{/file}}{{#radio}}col-sm-3 col-md-3 col-lg-3{{/radio}}{{#textarea}}col-sm-3 col-md-3 col-lg-3{{/textarea}}">
+
+    {{#number}}
+    <input type="number" name="{{key}}" value="{{value}}" class="form-control" />
+    {{/number}}
 
     {{#text}}
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />

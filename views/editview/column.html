@@ -8,7 +8,11 @@
     {{#control}}
     {{! data-type-name="type.name" data-allow-null="allowNull" data-default-value="defaultValue"}}
 
-    <div class="{{#text}}col-sm-5 col-md-4 col-lg-3{{/text}}{{#date}}col-sm-5 col-md-4 col-lg-3{{/date}}{{#time}}col-sm-5 col-md-4 col-lg-3{{/time}}{{#datetime}}col-sm-5 col-md-4 col-lg-3{{/datetime}}{{#year}}col-sm-5 col-md-4 col-lg-3{{/year}}{{#select}}col-sm-5 col-md-4 col-lg-3{{/select}}{{#file}}col-sm-5 col-md-4 col-lg-3{{/file}}{{#radio}}col-sm-5 col-md-4 col-lg-3{{/radio}}{{#textarea}}{{#editor}}col-sm-9 col-md-9 col-lg-10{{/editor}}{{/textarea}}{{#textarea}}{{^editor}}col-sm-7 col-md-6 col-lg-5{{/editor}}{{/textarea}}">
+    <div class="{{#text}}col-sm-5 col-md-4 col-lg-3{{/text}}{{#number}}col-sm-5 col-md-4 col-lg-3{{/number}}{{#date}}col-sm-5 col-md-4 col-lg-3{{/date}}{{#time}}col-sm-5 col-md-4 col-lg-3{{/time}}{{#datetime}}col-sm-5 col-md-4 col-lg-3{{/datetime}}{{#year}}col-sm-5 col-md-4 col-lg-3{{/year}}{{#select}}col-sm-5 col-md-4 col-lg-3{{/select}}{{#file}}col-sm-5 col-md-4 col-lg-3{{/file}}{{#radio}}col-sm-5 col-md-4 col-lg-3{{/radio}}{{#textarea}}{{#editor}}col-sm-9 col-md-9 col-lg-10{{/editor}}{{/textarea}}{{#textarea}}{{^editor}}col-sm-7 col-md-6 col-lg-5{{/editor}}{{/textarea}}">
+
+    {{#number}}
+    <input type="number" name="{{key}}" value="{{value}}" class="form-control" />
+    {{/number}}
 
     {{#text}}
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
