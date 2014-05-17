@@ -87,6 +87,7 @@ Each `table` object contains an array of colums. Each `column` object have:
     {"text": true} // input type="text"
     {"textarea": true} // textarea
     {"textarea": true, "editor": "some-class"} // html editor (see the docs)
+    {"number": true} // input type="number"
     {"date": true} // datepicker
     {"time": true} // timepicker
     {"datetime": true} // datetimepicker
