@@ -155,8 +155,8 @@ function initServer (args) {
         .use(express.csrf())
         
         .use(express.methodOverride())
-        .use(express.static(path.join(__dirname, 'public')))
-        .use(express.static(path.join(__dirname, 'node_modules/express-admin-static')));
+        .use(args.config.app.root, express.static(path.join(__dirname, 'public')))
+        .use(args.config.app.root, express.static(path.join(__dirname, 'node_modules/express-admin-static')));
 
     if (!args.debug) app.set('view cache', true);
 
@@ -193,7 +193,7 @@ function initServer (args) {
     // routes
     
     // init regexes
-    routes = routes.init(args.settings, args.custom);
+    routes = routes.init(args.config.app.root, args.settings, args.custom);
 
     // register custom apps
     (function () {
@@ -210,9 +210,9 @@ function initServer (args) {
     }());
 
     // login/logout
-    app.get('/login', r.login.get, r.render.admin);
-    app.post('/login', r.auth.login);
-    app.get('/logout', r.auth.logout);
+    app.get(args.config.app.root + '/login', r.login.get, r.render.admin);
+    app.post(args.config.app.root + '/login', r.auth.login);
+    app.get(args.config.app.root + '/logout', r.auth.logout);
 
     // editview
     app.get(routes.editview, r.auth.restrict, r.editview.get, r.render.admin);
