@@ -73,13 +73,6 @@ exports.post = function (req, res, next) {
                 return;
             }
 
-            // print out
-            if (args.debug) {
-                for (var i=0; i < args.queries.length; i++) {
-                    console.log('edit'.yellow, args.queries[i]);
-                }
-            }
-
             // based on clicked button
             switch (true) {
                 case {}.hasOwnProperty.call(action, 'remove'):
