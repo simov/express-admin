@@ -87,6 +87,8 @@ function initSettings (args) {
     // debug
     args.debug = args.config.app.debug || (cli.dev ? true : false);
     // if (!args.debug) console.warn = function(){};
+    // log
+    args.log = args.config.app.log || (cli.log ? true : false);
 
     // events
     for (var key in args.custom) {
