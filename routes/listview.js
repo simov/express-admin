@@ -19,6 +19,7 @@ function getArgs (req, res) {
         settings : res.locals._admin.settings,
         db       : res.locals._admin.db,
         debug    : res.locals._admin.debug,
+        log      : res.locals._admin.log,
         slug     : req.params[0],
         page     : req.query.p || 0,
         data     : req.body

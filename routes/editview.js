@@ -9,8 +9,9 @@ function getArgs (req, res) {
         settings : res.locals._admin.settings,
         db       : res.locals._admin.db,
         debug    : res.locals._admin.debug,
+        log      : res.locals._admin.log,
         slug     : req.params[0],
-        id       : req.params[1] == 'add' ? null : req.params[1],
+        id       : req.params[1] == 'add' ? null : req.params[1].split(','),
         data     : req.body,
         upload   : req.files,
         upath    : res.locals._admin.config.app.upload
@@ -75,8 +76,7 @@ exports.post = function (req, res, next) {
             // print out
             if (args.debug) {
                 for (var i=0; i < args.queries.length; i++) {
-                    console.log(args.queries[i]);
-                    console.log('-------------------------');
+                    console.log('edit'.yellow, args.queries[i]);
                 }
             }
 
@@ -98,7 +98,7 @@ exports.post = function (req, res, next) {
                 case {}.hasOwnProperty.call(action, 'continue'):
                     req.session.success = true;
                     if (args.debug) return render(req, res, next, data, args);
-                    res.redirect(res.locals.root+'/'+args.slug+'/'+args.id);
+                    res.redirect(res.locals.root+'/'+args.slug+'/'+args.id.join());
                     break;
             }
         });
