@@ -27,7 +27,7 @@
             <label class="control-label col-lg-3 col-md-3 col-sm-3">{{string.order}}</label>
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <select name="order" class="chosen-select form-control" data-placeholder="{{string.select}}">
-                    <option value="NULL" {{#selected}}selected="selected"{{/selected}}></option>
+                    <option value="" {{#selected}}selected="selected"{{/selected}}></option>
                     {{#order}}
                     <option value="{{name}}" {{#selected}}selected="selected"{{/selected}}>{{verbose}}</option>
                     {{/order}}

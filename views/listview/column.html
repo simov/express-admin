@@ -20,7 +20,7 @@
 
     {{#select}}
     <select name="{{key}}" class="chosen-select form-control" data-placeholder="{{string.select}}" {{#multiple}}multiple="multiple"{{/multiple}}>
-        <option value="NULL" {{#selected}}selected="selected"{{/selected}}></option>
+        <option value="" {{#selected}}selected="selected"{{/selected}}></option>
         {{!oneToMany}}
         {{#value}}
         <option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}}>{{__text}}</option>
