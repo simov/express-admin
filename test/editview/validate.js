@@ -7,12 +7,10 @@ describe('validate (editview)', function () {
     
     // validate
     it('return an error if a column isn\'t allowed to be null', function (done) {
-        var column = {name: 'price', allowNull: false},
+        var column = {name: 'price', allowNull: false, control: {}},
             message = 'Column '+column.name+' cannot be empty.';
         // text
         validate.value(column, '').message.should.equal(message);
-        // select
-        validate.value(column, 'NULL').message.should.equal(message);
         // select multiple
         validate.value(column, []).message.should.equal(message);
         // 

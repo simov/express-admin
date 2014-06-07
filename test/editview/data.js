@@ -168,7 +168,7 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args).should.match(/.*WHERE `id`=5 ;$/);
+        data.tbl._getSql(args).should.match(/.*WHERE `recipe`.`id` = 5 ;$/);
         done();
     });
 
@@ -183,7 +183,7 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args).should.match(/.*WHERE `recipe_id`=5 ;$/);
+        data.tbl._getSql(args).should.match(/.*WHERE `recipe`.`recipe_id` = 5 ;$/);
         done();
     });
 

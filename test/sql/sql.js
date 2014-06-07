@@ -21,39 +21,28 @@ describe('sql (sql)', function () {
     });
 
     it('cast', function (done) {
-        var columns = ['firstname', 'lastname'];
-        columns = sql.fullNames('table', columns);
-
-        sql.cast(columns).join()
+        sql.cast('table', ['firstname', 'lastname'])
             .should.equal('CAST(`table`.`firstname` AS CHAR),'+
                             'CAST(`table`.`lastname` AS CHAR)');
         done();
     });
 
     it('concat', function (done) {
-        var columns = ['firstname', 'lastname'];
-        columns = sql.fullNames('table', columns);
-        columns = sql.cast(columns);
-
-        sql.concat(columns, 'name')
+        sql.castConcat('table', ['firstname', 'lastname'], 'name')
             .should.equal("CONCAT_WS(' ',CAST(`table`.`firstname` AS CHAR),"+
                             "CAST(`table`.`lastname` AS CHAR)) AS `name`");
         done();
     });
     
     it('group', function (done) {
-        var columns = ['firstname', 'lastname'];
-        columns = sql.fullNames('table', columns);
-        columns = sql.cast(columns);
-
-        sql.group(columns, 'name')
+        sql.group('table', ['firstname', 'lastname'], 'name')
             .should.equal("GROUP_CONCAT(DISTINCT CONCAT_WS(' ',CAST(`table`.`firstname` AS CHAR),"+
                             "CAST(`table`.`lastname` AS CHAR))) AS `name`");
         done();
     });
 
     it('groupby', function (done) {
-        sql.groupby(sql.fullName('table', 'column'))
+        sql.groupby('table', 'column')
             .should.equal(' GROUP BY `table`.`column` ');
         done();
     });
@@ -67,12 +56,6 @@ describe('sql (sql)', function () {
     it('joins', function (done) {
         sql.joins('table', 'fk', 'refTable', 'pk')
             .should.equal(' LEFT JOIN `refTable` ON `table`.`fk` = `refTable`.`pk`');
-        done();
-    });
-
-    it('pk', function (done) {
-        sql.pk('table', 'pk')
-            .should.equal('`table`.`pk` AS __pk');
         done();
     });
 });

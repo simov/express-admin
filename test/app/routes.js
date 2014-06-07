@@ -11,7 +11,7 @@ describe('routes (app)', function () {
             table2: {table:{pk:'2'}, mainview:{show:false}, slug:'table2'}
         };
         var r = routes.init(settings, {});
-        should.deepEqual(r.editview, /^\/(table1)\/(\d+|add)\/?$/);
+        should.deepEqual(r.editview, /^\/(table1)\/(.+|add)\/?$/);
         done();
     });
 
@@ -21,7 +21,7 @@ describe('routes (app)', function () {
             table2: {table:{pk:''}, mainview:{show:true}, slug:'table2'}
         };
         var r = routes.init(settings, {});
-        should.deepEqual(r.editview, /^\/(table1)\/(\d+|add)\/?$/);
+        should.deepEqual(r.editview, /^\/(table1)\/(.+|add)\/?$/);
         done();
     });
 
@@ -31,7 +31,7 @@ describe('routes (app)', function () {
             table2: {table:{pk:''}, mainview:{show:true}, slug:'table2'}
         };
         var r = routes.init(settings, {});
-        should.deepEqual(r.editview, /.*\/(\d+|add)\/?$/);
+        should.deepEqual(r.editview, /.*\/(.+|add)\/?$/);
         done();
     });
 
