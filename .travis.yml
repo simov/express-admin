@@ -6,9 +6,7 @@ services:
   - mysql
 before_script:
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS \`express-admin-simple\` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
-  - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS \`express-admin-stress\` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS \`express-admin-empty\` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"
   - mysql -uroot -e "CREATE USER liolio@localhost IDENTIFIED BY 'karamba';"
   - mysql -uroot -e "GRANT ALL PRIVILEGES ON \`express-admin-simple\`.* TO liolio@localhost IDENTIFIED BY 'karamba';"
-  - mysql -uroot -e "GRANT ALL PRIVILEGES ON \`express-admin-stress\`.* TO liolio@localhost IDENTIFIED BY 'karamba';"
   - mysql -uroot -e "GRANT ALL PRIVILEGES ON \`express-admin-empty\`.* TO liolio@localhost IDENTIFIED BY 'karamba';"
