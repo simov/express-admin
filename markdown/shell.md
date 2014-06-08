@@ -31,6 +31,8 @@ $ supervisor -w project -e json -- path/to/express-admin/app -v project/
 
 The `-v` flag that you're passing to the Express Admin app means that you are running the admin in `development` mode. In this mode the authentication and the database record updates are disabled.
 
+You can also pass the `-l` flag which will log out all sql queries that Express Admin make for you.
+
 
 ####Forever
 
