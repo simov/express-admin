@@ -8,7 +8,7 @@ var Client = require('../../lib/db/client'),
     // '../../../express-admin-examples/fixtures/sqlite-examples/db.sqlite');
 
 
-describe('client (db)', function () {
+describe.skip('client (db)', function () {
 
     describe('factory', function () {
         it('return an error on not supported db type', function (done) {
