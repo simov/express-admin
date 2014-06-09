@@ -25,7 +25,7 @@
     "dependencies": {
         "express"          : "3.4.4",
         "consolidate"      : ">=0.6.0",
-        "hogan.js"         : "latest",
+        "hogan.js"         : "2.0.0",
         "mysql"            : "2.2.0",
         "mysql-validator"  : ">=0.1.6",
         "pwd"              : "0.0.3",
