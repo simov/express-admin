@@ -1,5 +1,5 @@
 
-#navigation { position: fixed; top: 70px; right: 8%; z-index: 1; cursor: default; background: #f8f8f2; background: #eee; border-radius: 3px; padding: 3px; }
+#navigation { position: fixed; top: 40px; right: 8%; z-index: 1; cursor: default; background: #f8f8f2; background: #eee; border-radius: 3px; padding: 3px; }
 #navigation ul { list-style: none; }
 #navigation > ul { background-color: #fff; border: 1px solid #CACACA; padding: 10px; }
 #navigation li { font-size: 15px; line-height: 1.7; font-weight: bold; padding: 10px 0 0 0; }
