@@ -6,6 +6,13 @@ var cli = require('./lib/app/cli'),
 require('colors');
 
 var express = require('express'),
+    logger = require('morgan'),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    csrf = require('csurf'),
+    methodOverride = require('method-override'),
+    serveStatic = require('serve-static'),
     consolidate = require('consolidate'),
     hogan = require('hogan.js');
 
@@ -153,17 +160,18 @@ function initServer (args) {
         .set('view engine', 'html')
         .engine('html', consolidate.hogan)
 
-        .use(express.logger('dev'))
-        .use(express.bodyParser())
+        .use(logger('dev'))
+        .use(bodyParser.json())
+        .use(bodyParser.urlencoded({ extended: true }))
 
-        .use(express.cookieParser())
-        .use(express.session({key: 'express-admin', secret: 'very secret - required'}))
+        .use(cookieParser())
+        .use(session({ key: 'express-admin', secret: 'very secret - required' }))
         .use(r.auth.status)// session middleware
-        .use(express.csrf())
+        .use(csrf())
         
-        .use(express.methodOverride())
-        .use(express.static(path.join(__dirname, 'public')))
-        .use(express.static(path.join(__dirname, 'node_modules/express-admin-static')));
+        .use(methodOverride())
+        .use(serveStatic(path.join(__dirname, 'public')))
+        .use(serveStatic(path.join(__dirname, 'node_modules/express-admin-static')));
 
     if (!args.debug) app.set('view cache', true);
 
@@ -172,7 +180,7 @@ function initServer (args) {
         var assets = args.custom[key].public;
         if (!assets || !assets.local || !assets.local.path ||
             !fs.existsSync(assets.local.path)) continue;
-        app.use(express.static(assets.local.path));
+        app.use(serveStatic(assets.local.path));
     }
 
     // pass server wide variables
