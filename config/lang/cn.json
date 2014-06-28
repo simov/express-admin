@@ -29,6 +29,7 @@
     "order"             : "排序",
     "asc"               : "升序",
     "desc"              : "降序",
+    "or"                : "或",
     "today"             : "今天",
 
     "add-another"       : "载追加",
