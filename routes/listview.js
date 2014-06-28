@@ -103,6 +103,7 @@ function render (req, res, args, data, pager, order, next) {
             selected: args.filter.direction == 'desc' ? true : null}
     ];
     res.locals.collapsed = args.filter.show;
+    res.locals.or = args.filter.or;
 
     res.locals.columns = data.columns;
     res.locals.records = data.records;

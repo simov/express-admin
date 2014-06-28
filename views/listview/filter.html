@@ -3,6 +3,9 @@
     {{#have}}
     <div class="panel-heading">
         <h3 class="panel-title">{{string.filter}}</h3>
+        <div class="checkbox">
+            <label><input type="checkbox" name="or" {{#or}}checked="checked"{{/or}} /> {{string.or}}</label>
+        </div>
     </div>
     <div class="panel-body">
         <table class="table table-striped form-horizontal">

@@ -31,6 +31,7 @@
 .x-table tbody td .label { margin-right: 5px; }
 .x-table tbody td .label:last-child { margin: 0; }
 /*listview search filter*/
+.x-filter .panel-heading .checkbox { float: right; margin-top: -18px; }
 .x-filter .panel-body { padding: 0; }
 .x-filter .panel-body table { margin-bottom: 0; }
 .x-filter .panel-body table tr:first-child td { border: 0; }
