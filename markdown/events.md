@@ -13,7 +13,7 @@ Currently the supported event hooks are:
 ```
 
 ###events.js
-Run the admin with the `--debug-brk` flag and use [node-inspector][2] to drill down into the event hook parameters
+Run the admin with the `--debug-brk` flag and use [node-inspector][3] to drill down into the event hook parameters
 ```js
 exports.preSave = function (req, res, args, next) {
     debugger;
@@ -26,7 +26,8 @@ exports.postSave = function (req, res, args, next) {
     next();
 }
 ```
-Take a look at the [events example][1] from the Examples Repository
+Take a look at the event examples [here][1] and [here][2]
 
-  [1]: https://github.com/simov/express-admin-examples/blob/master/examples/custom/events/events.js
-  [2]: https://github.com/node-inspector/node-inspector
+  [1]: https://github.com/simov/express-admin-examples/blob/master/config/custom/events/events.js
+  [2]: https://github.com/simov/express-admin-tests/blob/master/config/x-relationships-compound/custom/events.js
+  [3]: https://github.com/node-inspector/node-inspector
