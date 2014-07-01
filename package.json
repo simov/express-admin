@@ -35,7 +35,7 @@
         "sr-pagination"    : "1.0.1",
         "deep-copy"        : "1.0.0",
         "moment"           : "2.1.0",
-        "express-admin-static": "2.1.0"
+        "express-admin-static": "2.2.0"
     },
     "devDependencies": {
         "mocha" : "*",

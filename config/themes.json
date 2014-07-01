@@ -4,12 +4,15 @@
     {"key": "cerulean",    "name": "Cerulean"},
     {"key": "cosmo",       "name": "Cosmo"},
     {"key": "cyborg",      "name": "Cyborg"},
+    {"key": "darkly",      "name": "Darkly"},
     {"key": "flatly",      "name": "Flatly"},
     {"key": "journal",     "name": "Journal"},
+    {"key": "lumen",       "name": "Lumen"},
     {"key": "readable",    "name": "Readable"},
     {"key": "simplex",     "name": "Simplex"},
     {"key": "slate",       "name": "Slate"},
     {"key": "spacelab",    "name": "Spacelab"},
+    {"key": "superhero",   "name": "Superhero"},
     {"key": "united",      "name": "United"},
     {"key": "yeti",        "name": "Yeti"}
 ]
