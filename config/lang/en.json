@@ -29,6 +29,7 @@
     "order"             : "Order By",
     "asc"               : "Asc",
     "desc"              : "Desc",
+    "or"                : "or",
     "today"             : "Today",
 
     "add-another"       : "Add another",

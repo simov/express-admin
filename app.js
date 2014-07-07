@@ -107,6 +107,8 @@ function initSettings (args) {
         events.preSave = function (req, res, args, next) {next()};
     if (!events.hasOwnProperty('postSave'))
         events.postSave = function (req, res, args, next) {next()};
+    if (!events.hasOwnProperty('preList'))
+        events.preList = function (req, res, args, next) {next()};
     args.events = events;
 
 

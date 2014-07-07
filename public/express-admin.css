@@ -24,6 +24,7 @@
 .x-table tbody td .glyphicon-plus { font-size: 8px; position: relative; top: -1px; }
 
 /*listview add record*/
+#express-admin { position: relative; }
 #express-admin h2 .btn { font-weight: normal; float: right; }
 #express-admin h2 .glyphicon-filter { display: inline-block; font-size: 12px; }
 #express-admin h2 .glyphicon-filter:hover { text-decoration: none; }
@@ -31,6 +32,7 @@
 .x-table tbody td .label { margin-right: 5px; }
 .x-table tbody td .label:last-child { margin: 0; }
 /*listview search filter*/
+.x-filter .panel-heading .checkbox { float: right; margin-top: -18px; }
 .x-filter .panel-body { padding: 0; }
 .x-filter .panel-body table { margin-bottom: 0; }
 .x-filter .panel-body table tr:first-child td { border: 0; }
@@ -45,7 +47,7 @@
 
 /*editview*/
 .btn-today { line-height: 240%; }
-[type=file] { margin-top: 4px; }
+.x-table [type=file] { margin-top: 4px; }
 
 /*fix for all fields*/
 .x-table .form-group { margin-bottom: 0; }
@@ -65,8 +67,12 @@
 .x-table tfoot > tr > td { text-align: right; padding-top: 0; padding-bottom: 0; }
 
 
+/*dark themes fix*/
+.datetimepicker * { background: #fff; color: #555; }
+
 /*chosen*/
 .chosen-container { font-size: inherit; line-height: inherit; }
+.chosen-container .chosen-drop { color: #555; }
 .chosen-container .chosen-single { line-height: inherit; height: auto; background-color: #fff; padding: 0; }
 .chosen-container .chosen-single span { padding: 6px 12px; }
 

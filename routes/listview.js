@@ -41,7 +41,9 @@ function data (req, res, next) {
     var args = getArgs(req, res);
     args.filter = filter.prepareSession(req, args);
     args.query = listview.query(args);
+    var events = res.locals._admin.events;
 
+    events.preList(req, res, args, function () {
     listview.data(args, function (err, data) {
         if (err) return next(err);
         pagination.get(args, function (err, pager) {
@@ -58,6 +60,7 @@ function data (req, res, next) {
                 render(req, res, args, data, pager, order, next);
             });
         });
+    });
     });
 }
 
@@ -103,6 +106,7 @@ function render (req, res, args, data, pager, order, next) {
             selected: args.filter.direction == 'desc' ? true : null}
     ];
     res.locals.collapsed = args.filter.show;
+    res.locals.or = args.filter.or;
 
     res.locals.columns = data.columns;
     res.locals.records = data.records;
