@@ -87,11 +87,10 @@
 <h3>
 <a name="configjson" class="anchor" href="#configjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>config.json</h3>
 
-<p>The application's configuration is stored inside the <code>config.json</code> file.<br></p>
+<p>The application's configuration is stored inside the <code>config.json</code> file.</p>
 
 <ul>
-<li>The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.<br>
-</li>
+<li>The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.</li>
 <li>When using PostgreSQL, the <code>pg</code> key will accept any option from the <a href="https://github.com/brianc/node-postgres">node-postgres</a> connection options.</li>
 <li>When using SQLite, the <code>sqlite</code> key will contain only a <code>database</code> key with the absolute path to the database set as a value.</li>
 </ul><div class="highlight highlight-js"><pre><span class="p">{</span>
@@ -116,15 +115,15 @@
 
 <ul>
 <li>
-<strong>mysql || pg || sqlite</strong> - connection options
+<strong>mysql | pg | sqlite</strong> - connection options
 
 <ul>
 <li>
 <strong>database</strong> - name of the database to use for this connection (sqlite: absolute path to a database file)</li>
 <li>
-<strong>user</strong> - the MySQL user to authenticate as</li>
+<strong>user</strong> - database user to authenticate with</li>
 <li>
-<strong>password</strong> - the password of that MySQL user</li>
+<strong>password</strong> - password for that database user</li>
 <li>
 <strong>schema</strong> - used only with PostgreSQL (default: "public")</li>
 </ul>
@@ -150,7 +149,7 @@
 <li>
 <strong>root</strong> - root location for the admin (used <strong>only</strong> when embedding - see the docs)</li>
 <li>
-<strong>upload</strong> - absolute path to the upload folder (omitted by default <code>public/upload</code>)</li>
+<strong>upload</strong> - absolute path to the upload folder (default: "public/upload")</li>
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
