@@ -33,7 +33,7 @@
         "method-override"  : "2.0.2",
         "serve-static"     : "1.2.3",
         "consolidate"      : "0.9.1",
-        "hogan.js"         : "2.0.0",
+        "hogan.js"         : "3.0.2",
         "mysql"            : "2.2.0",
         "mysql-validator"  : "0.1.6",
         "pwd"              : "0.0.3",
