@@ -8,6 +8,7 @@ require('colors');
 var express = require('express'),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
+    multipart = require('connect-multiparty'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     csrf = require('csurf'),
@@ -164,10 +165,12 @@ function initServer (args) {
 
         .use(logger('dev'))
         .use(bodyParser.json())
-        .use(bodyParser.urlencoded({ extended: true }))
+        .use(bodyParser.urlencoded({extended: true}))
+        .use(multipart())
 
         .use(cookieParser())
-        .use(session({ key: 'express-admin', secret: 'very secret - required' }))
+        .use(session({name: 'express-admin', secret: 'very secret - required',
+                        saveUninitialized: true, resave: true}))
         .use(r.auth.status)// session middleware
         .use(csrf())
         
