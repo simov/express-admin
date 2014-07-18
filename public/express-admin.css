@@ -7,6 +7,8 @@
     .x-filter .panel-footer button { float: none; width: 100% !important; margin-top: 15px; }
     /*editview buttons*/
     #controls button { float: none; width: 100% !important; margin-bottom: 15px; }
+    /*login button*/
+    #login .btn-default { width: 100%; }
 }
 .container-fluid { width: auto; max-width: none; }
 
