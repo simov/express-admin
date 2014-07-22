@@ -55,7 +55,7 @@ describe('sql (sql)', function () {
 
     it('joins', function (done) {
         sql.joins('table', 'fk', 'refTable', 'pk')
-            .should.equal(' LEFT JOIN `refTable` ON `table`.`fk` = `refTable`.`pk`');
+            .should.equal(' LEFT JOIN `refTable`  ON `table`.`fk` = `refTable`.`pk`');
         done();
     });
 });
