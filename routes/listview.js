@@ -38,10 +38,11 @@ exports.post = function (req, res, next) {
 }
 
 function data (req, res, next) {
-    var args = getArgs(req, res);
+    var args = getArgs(req, res),
+        events = res.locals._admin.events;
+
     args.filter = filter.prepareSession(req, args);
-    args.query = listview.query(args);
-    var events = res.locals._admin.events;
+    listview.query(args);
 
     events.preList(req, res, args, function () {
     listview.data(args, function (err, data) {
