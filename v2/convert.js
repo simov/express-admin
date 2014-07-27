@@ -36,13 +36,15 @@ var data = '';
         text: text,
         mode: 'markdown'
     }, function (err, res) {
+        if (err) return cb(err);
         data += '<div class="file">'+res.data;
         if (index < files.length-1) data += '<p><br /></p><hr />';
         data += '</div>';
 
         loop(++index, cb);
     });
-}(0, function () {
+}(0, function (err) {
+    if (err) return console.log(err);
     var content = template.render({}, {content: data.replace(/user-content-/g,'')});
     fs.writeFileSync(path.resolve(__dirname, '../index.html'), content, 'utf8');
 }));
