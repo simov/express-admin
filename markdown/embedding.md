@@ -6,8 +6,8 @@ You need to add one additional property inside your `config.json` file under the
 
 ```js
 "app": {
-	...
-	"root": "/some-path"
+    ...
+    "root": "/some-path"
 }
 ```
 
@@ -16,15 +16,10 @@ You need to add one additional property inside your `config.json` file under the
 In this example Express Admin will be located under the `/admin` path of your app
 
 ```js
-var express = require('express');
-var expressAdmin = require('express-admin');
-var app = express();
+var express = require('express'),
+    xAdmin = require('express-admin');
 
-app.get('/', function(req, res){
-    res.send('Hello World');
-});
-
-var expressAdminArgs = {
+var config = {
     dpath: './express-admin-config/',
     config: require('./express-admin-config/config.json'),
     settings: require('./express-admin-config/settings.json'),
@@ -32,13 +27,21 @@ var expressAdminArgs = {
     users: require('./express-admin-config/users.json')
 };
 
-expressAdmin.initDatabase(expressAdminArgs, function (err) {
-    if(err) return console.log(err);
-        
-    expressAdmin.initSettings(expressAdminArgs);
-
-    var admin = expressAdmin.initServer(expressAdminArgs);
+xAdmin.init(config, function (err, admin) {
+    if (err) return console.log(err);
+    // web site
+    var app = express();
+    // mount express-admin before any other middlewares
     app.use('/admin', admin);
-    app.listen(3000);
+    // site specific middlewares
+    app.use(express.bodyParser());
+    // site routes
+    app.get('/', function (req, res) {
+        res.send('Hello World');
+    });
+    // site server
+    app.listen(3000, function () {
+        console.log('My awesome site listening on port 3000');
+    });
 });
 ```
