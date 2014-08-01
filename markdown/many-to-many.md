@@ -5,6 +5,7 @@
 ![Many to Many][1]
 
 In `settings.json` find the table you are searching for and insert this object inside its columns array.
+> `link` and `ref` can contain additional `schema` key, specifying pg schema name for the relation table
 
 ```js
 {

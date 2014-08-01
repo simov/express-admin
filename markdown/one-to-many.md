@@ -5,6 +5,7 @@
 ![One to Many][1]
 
 In `settings.json` find the table you are searching for and under its columns find the foreign key columnt by its name key. Inside the column's object insert `oneToMany` key. Also don't forget to change the column's control type to `select`.
+> `oneToMany`can contain additional `schema` key, specifying pg schema name for the relation table
 
 ```js
 "control": {
