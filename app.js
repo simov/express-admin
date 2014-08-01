@@ -287,5 +287,12 @@ exports = module.exports = {
     initCommandLine: initCommandLine,
     initDatabase: initDatabase,
     initSettings: initSettings,
-    initServer: initServer
+    initServer: initServer,
+    init: function (config, done) {
+        this.initDatabase(config, function (err) {
+            if (err) return done(err);
+            this.initSettings(config);
+            return done(null, this.initServer(config));
+        }.bind(this));
+    }
 }
