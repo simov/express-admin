@@ -11,6 +11,7 @@ All settings related to the default Express Admin views are in the `settings.jso
         "name": "table_name",
         "pk": "pk_name",
         "verbose": "Verbose Name"
+        // "schema": "name" // pg: set specific schema for this table only
     },
     "columns": [
         {...}, // see column definition below
