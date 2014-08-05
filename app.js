@@ -24,16 +24,16 @@ var db = require('./lib/db/database'),
 
 
 // creates project's config files
-function initCommandLine (args, cb) {
-    if (!fs.existsSync(args.dpath)) {
+function initCommandLine (configBasePath, cb) {
+    if (!fs.existsSync(path.join(configBasePath))) {
         console.log('Config directory path doesn\'t exists!'.red);
         process.exit();
     }
-    if (project.exists(args.dpath)) return cb();
+    if (project.exists(configBasePath)) return cb();
     // else
     cli.promptForData(function (err, data) {
         if (err) return cb(err);
-        project.create(args.dpath, data, cb);
+        project.create(configBasePath, data, cb);
     });
 }
 
@@ -44,7 +44,7 @@ function initDatabase (args, cb) {
         db.empty(db.client.config.schema, function (err, empty) {
             if (err) return cb(err);
             if (empty) return cb(new Error('Empty schema!'));
-            
+
             var schema = new Schema(db);
             schema.getAllColumns(function (err, info) {
                 if (err) return cb(err);
@@ -65,12 +65,12 @@ function initDatabase (args, cb) {
 function initSettings (args) {
     // route variables
     args.db = db;
-    
+
     // upload
     var upload = args.config.app.upload || path.join(__dirname, 'public/upload');
     args.config.app.upload = upload;
     if (!fs.existsSync(upload)) fs.mkdirSync(upload);
-    
+
     // languages
     args.langs = (function () {
         var dpath = path.join(__dirname, 'config/lang'),
@@ -127,7 +127,7 @@ function initSettings (args) {
     args.layouts = args.config.app.layouts;
     args.themes = args.config.app.themes
         ? {theme: require(path.join(__dirname, 'config/themes'))} : null;
-    
+
     args.languages = (function () {
         if (!args.config.app.languages) return null;
         var langs = [];
@@ -173,7 +173,7 @@ function initServer (args) {
                         saveUninitialized: true, resave: true}))
         .use(r.auth.status)// session middleware
         .use(csrf())
-        
+
         .use(methodOverride())
         .use(serveStatic(path.join(__dirname, 'public')))
         .use(serveStatic(path.join(__dirname, 'node_modules/express-admin-static')));
@@ -196,7 +196,7 @@ function initServer (args) {
         // i18n
         var lang = req.cookies.lang || 'en';
         res.cookie('lang', lang, {path: '/', maxAge: 900000000});
-        
+
         // template vars
         res.locals.string = args.langs[lang];
         res.locals.root = args.config.app.root;
@@ -212,7 +212,7 @@ function initServer (args) {
     });
 
     // routes
-    
+
     // init regexes
     var _routes = routes.init(args.settings, args.custom);
 
@@ -252,31 +252,50 @@ function initServer (args) {
     return app;
 }
 
+function setupServer(basePath, cb) {
+    try {
+        var options = {
+            config: require(path.join(basePath, 'config.json')),
+            settings: require(path.join(basePath, 'settings.json')),
+            custom: require(path.join(basePath, 'custom.json')),
+            users: require(path.join(basePath, 'users.json')),
+            dpath: basePath
+        };
+
+        initDatabase(options, function (err) {
+            if (err) return cb(err);
+
+            // extended settings
+            initSettings(options);
+
+            var app = initServer(options);
+
+            cb(null, {
+                app: app,
+                port: options.config.server.port,
+                options: options
+            });
+        });
+    } catch(err) {
+        return cb(err);
+    }
+}
 
 // start only if this module is executed from the command line
 if (require.main === module) {
-    var args = {
-        dpath: path.resolve(cli.getConfigPath())
-    }
-    initCommandLine(args, function (err) {
+    var baseConfigPath = path.resolve(cli.getConfigPath());
+
+    initCommandLine(baseConfigPath, function (err) {
         if (err) return console.log(err.message.red);
 
-        args.config = require(path.join(args.dpath, 'config.json'));
-        args.settings = require(path.join(args.dpath, 'settings.json'));
-        args.custom = require(path.join(args.dpath, 'custom.json'));
-        args.users = require(path.join(args.dpath, 'users.json'));
-
-        initDatabase(args, function (err) {
+        setupServer(baseConfigPath, function (err, setup) {
             if (err) return console.log(err.message.red);
 
-            // extended settings
-            initSettings(args);
-            
-            var app = initServer(args);
+            var app = setup.app;
 
-            app.listen(args.config.server.port, function () {
-                console.log('Express Admin listening on port'.grey, 
-                            args.config.server.port.toString().green);
+            app.listen(setup.port, function () {
+                console.log('Express Admin listening on port'.grey,
+                            setup.port.toString().green);
             });
         });
     });
@@ -287,5 +306,6 @@ exports = module.exports = {
     initCommandLine: initCommandLine,
     initDatabase: initDatabase,
     initSettings: initSettings,
-    initServer: initServer
+    initServer: initServer,
+    setupServer: setupServer
 }
