@@ -166,6 +166,7 @@
         <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"table_name"</span><span class="p">,</span>
         <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"pk_name"</span><span class="p">,</span>
         <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span>
+        <span class="c1">// "schema": "name" // pg: set specific schema for this table only</span>
     <span class="p">},</span>
     <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{...},</span> <span class="c1">// see column definition below</span>
@@ -286,7 +287,7 @@
 <span class="p">{</span><span class="s2">"radio"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"True"</span><span class="p">,</span><span class="s2">"False"</span><span class="p">]}</span> <span class="c1">// input type="radio"</span>
 <span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select (used for one-to-many relationships)</span>
 <span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select multiple (used for many-to-many relationships)</span>
-<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"one"</span><span class="p">,</span><span class="s2">"two"</span><span class="p">]}</span> <span class="c1">// select with static options</span>
+<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"value&amp;text"</span><span class="p">,{</span><span class="s2">"value"</span><span class="o">:</span><span class="s2">"text"</span><span class="p">}]}</span> <span class="c1">// select with static options</span>
 </pre></div>
 </li>
 <li><p><strong>type</strong> - column's data type (typically you won't change this)</p></li>
@@ -414,6 +415,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p>In <code>settings.json</code> find the table you are searching for and under its columns find the foreign key columnt by its name key. Inside the column's object insert <code>oneToMany</code> key. Also don't forget to change the column's control type to <code>select</code>.</p>
 
+<blockquote>
+<p><code>oneToMany</code>can contain additional <code>schema</code> key, specifying pg schema name for the relation table</p>
+</blockquote>
+
 <div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span>
 <span class="p">},</span>
@@ -449,6 +454,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <p><a href="images/many-to-many.png" target="_blank"><img src="images/many-to-many.png" alt="Many to Many" style="max-width:100%;"></a></p>
 
 <p>In <code>settings.json</code> find the table you are searching for and insert this object inside its columns array.</p>
+
+<blockquote>
+<p><code>link</code> and <code>ref</code> can contain additional <code>schema</code> key, specifying pg schema name for the relation table</p>
+</blockquote>
 
 <div class="highlight highlight-js"><pre><span class="p">{</span>
     <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Recipe Types"</span><span class="p">,</span>
@@ -1294,13 +1303,13 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <li>
 <strong>slug</strong> - this table's slug</li>
 <li>
-<strong>data</strong> - data submitted via POST request or select'ed from the database
+<p><strong>data</strong> - data submitted via POST request or select'ed from the database</p>
 
 <ul>
 <li>
 <strong>view</strong> - this table's data (the one currently shown inside the <em>editview</em>)</li>
 <li>
-<strong>oneToOne | manyToOne</strong> - inline tables data
+<p><strong>oneToOne | manyToOne</strong> - inline tables data</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"table's name"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"records"</span><span class="o">:</span> <span class="p">[</span>
@@ -1452,15 +1461,10 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 
 <p>In this example Express Admin will be located under the <code>/admin</code> path of your app</p>
 
-<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">expressAdmin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express-admin'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">),</span>
+    <span class="nx">xAdmin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express-admin'</span><span class="p">);</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Hello World'</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="kd">var</span> <span class="nx">expressAdminArgs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">dpath</span><span class="o">:</span> <span class="s1">'./express-admin-config/'</span><span class="p">,</span>
     <span class="nx">config</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./express-admin-config/config.json'</span><span class="p">),</span>
     <span class="nx">settings</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./express-admin-config/settings.json'</span><span class="p">),</span>
@@ -1468,14 +1472,22 @@ The <code>fk</code> key specifies the foreign keys in this table that references
     <span class="nx">users</span><span class="o">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./express-admin-config/users.json'</span><span class="p">)</span>
 <span class="p">};</span>
 
-<span class="nx">expressAdmin</span><span class="p">.</span><span class="nx">initDatabase</span><span class="p">(</span><span class="nx">expressAdminArgs</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-
-    <span class="nx">expressAdmin</span><span class="p">.</span><span class="nx">initSettings</span><span class="p">(</span><span class="nx">expressAdminArgs</span><span class="p">);</span>
-
-    <span class="kd">var</span> <span class="nx">admin</span> <span class="o">=</span> <span class="nx">expressAdmin</span><span class="p">.</span><span class="nx">initServer</span><span class="p">(</span><span class="nx">expressAdminArgs</span><span class="p">);</span>
+<span class="nx">xAdmin</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">admin</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="c1">// web site</span>
+    <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+    <span class="c1">// mount express-admin before any other middlewares</span>
     <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/admin'</span><span class="p">,</span> <span class="nx">admin</span><span class="p">);</span>
-    <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+    <span class="c1">// site specific middlewares</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">());</span>
+    <span class="c1">// site routes</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Hello World'</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="c1">// site server</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'My awesome site listening on port 3000'</span><span class="p">);</span>
+    <span class="p">});</span>
 <span class="p">});</span>
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
 <a name="themes" class="anchor" href="#themes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Themes</h2>
