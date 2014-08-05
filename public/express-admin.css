@@ -12,6 +12,9 @@
 }
 .container-fluid { width: auto; max-width: none; }
 
+/*hide chosen select by default*/
+.chosen-select { display: none; }
+
 /*editview buttons*/
 #controls { text-align: right; }
 #controls button { width: auto; }
