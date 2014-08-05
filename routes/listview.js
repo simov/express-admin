@@ -70,6 +70,7 @@ function render (req, res, args, data, pager, order, next) {
     for (var i=0; i < args.config.columns.length; i++) {
         var column = args.config.columns[i],
             value = args.filter.columns[column.name];
+        column.defaultValue = null;
         column.value = editview.format.value(column, value);
     }
 
