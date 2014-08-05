@@ -36,7 +36,7 @@ var data = '';
         text: text,
         mode: 'markdown'
     }, function (err, res) {
-        if (err) return cb(err);
+        if (err) console.log(err);
         data += '<div class="file">'+res.data;
         if (index < files.length-1) data += '<p><br /></p><hr />';
         data += '</div>';
