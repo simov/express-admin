@@ -1,6 +1,6 @@
 
 var dcopy = require('deep-copy');
-var qb = require('../lib/query');
+var qb = require('../lib/qb');
 // listview
 var listview = {
     data: require('../lib/listview/data')},
@@ -42,7 +42,7 @@ function data (req, res, next) {
         events = res.locals._admin.events;
 
     args.filter = filter.prepareSession(req, args);
-    qb.select.lst(args);
+    qb.lst.select(args);
 
     events.preList(req, res, args, function () {
     listview.data(args, function (err, data) {
