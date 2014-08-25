@@ -1,9 +1,10 @@
 
+require('colors');
+
 var fs = require('fs'),
     path = require('path');
 var cli = require('./lib/app/cli'),
     project = require('./lib/app/project');
-require('colors');
 
 var express = require('express'),
     logger = require('morgan'),
@@ -21,6 +22,9 @@ var db = require('./lib/db/database'),
     Schema = require('./lib/db/schema'),
     settings = require('./lib/app/settings'),
     routes = require('./lib/app/routes');
+
+var Xsql = require('xsql'),
+    instance = require('./lib');
 
 
 // creates project's config files
@@ -41,10 +45,14 @@ function initCommandLine (args, cb) {
 function initDatabase (args, cb) {
     db.connect(args.config, function (err) {
         if (err) return cb(err);
+
+        instance.db = db;
+        instance.x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
+
         db.empty(db.client.config.schema, function (err, empty) {
             if (err) return cb(err);
             if (empty) return cb(new Error('Empty schema!'));
-            
+
             var schema = new Schema(db);
             schema.getAllColumns(function (err, info) {
                 if (err) return cb(err);
