@@ -4,7 +4,7 @@ var fs = require('fs'),
 var hogan = require('hogan.js'),
     Purest = require('purest');
 
-var html = fs.readFileSync('base.html', 'utf8');
+var html = fs.readFileSync(path.join(__dirname,'base.html'), 'utf8');
     template = hogan.compile(html);
 var github = new Purest({provider:'github'}),
     cred = require('./credentials');
