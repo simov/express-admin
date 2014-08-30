@@ -1,7 +1,7 @@
 ##Compound Primary Key
 ![Compound Primary Key][1]
 
-In `settings.json` each table can be configured to have multiple primary keys through its `pk` field (this is set automatically on project's first run)
+Inside the `settings.json` file each table can be configured to have multiple primary keys through its `pk` field _(set automatically on project's first run)_
 
 ```js
 "table": {
@@ -17,9 +17,11 @@ In `settings.json` each table can be configured to have multiple primary keys th
 ###Compound One to Many
 ![Compound One to Many][2]
 
-In case One to Many table relationship is referenced by multiple foreign keys, the regular [One to Many][5] setting can't be used, as it expects to be put inside an existing column in `settings.json`
-Therefore the following _fake_ column entry must be added to the `columns` array (similar to how [Many to Many][6] relationship is configured)
-The `fk` key specifies the foreign keys in this table that references the other one
+In case One to Many table relationship is referenced by multiple foreign keys, the regular [One to Many][5] setting can't be used, as it expects to be put inside an existing column inside the `settings.json` file.
+
+Therefore the following _fake_ column entry must be added to the `columns` array _(similar to how [Many to Many][6] relationship is configured)_
+
+The `fk` key specifies the foreign keys in this table that are referencing the other one.
 
 ```js
 {
@@ -56,7 +58,7 @@ The `fk` key specifies the foreign keys in this table that references the other 
 ###Compound Many to Many
 ![Compound Many to Many][3]
 
-In case tables with multiple primary keys are part of a Many to Many table relationship, the regular [Many to Many][6] setting is used, but additionally the `parentPk`, `childPk` and the `pk` field inside `ref` can be set to array of keys to accommodate that design
+In case tables with multiple primary keys are part of a Many to Many table relationship, the regular [Many to Many][6] setting is used, but additionally the `parentPk` and `childPk` keys inside the `link` table, and the `pk` key inside the `ref` table, can be set to array of foreign and primary keys respectively to accommodate that design.
 
 ```js
 {
@@ -103,7 +105,7 @@ In case tables with multiple primary keys are part of a Many to Many table relat
 ###Compound Many to One
 ![Compound Many to One][4]
 
-Same as the regular [Many to One][7] setting, plus it can contain multiple foreign keys that references this table
+Same as the regular [Many to One][7] setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.
 
 ```js
 "manyToOne": {
@@ -116,7 +118,7 @@ Same as the regular [Many to One][7] setting, plus it can contain multiple forei
 
 ###Compound One to One
 
-Same as the regular [One to One][8] setting, plus it can contain multiple foreign keys that references this table
+Same as the regular [one to One][8] setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.
 
 ```js
 "oneToOne": {
@@ -126,6 +128,7 @@ Same as the regular [One to One][8] setting, plus it can contain multiple foreig
     ]
 }
 ```
+
 
   [1]: images/compound-primary-key.png
   [2]: images/compound-one-to-many.png

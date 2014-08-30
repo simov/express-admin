@@ -2,7 +2,7 @@
 
 ###settings.json
 
-All settings related to the default Express Admin views are in the `settings.json` file which is automatically generated with default values at first start up.
+All settings related to the default Express Admin views are set inside the `settings.json` file, which is automatically generated with default values at first start up.
 
 ```js
 "table_name": {
@@ -36,24 +36,24 @@ All settings related to the default Express Admin views are in the `settings.jso
 }
 ```
 
-`settings.json` contains a list of objects representing the database's tables. Each `table` object contains:
+The `settings.json` file contains a list of objects representing the database's tables. Each `table` object have:
 
 - **slug** - unique slug among all other tables
 - **table** - contains table's settings
-    - **name** - table's database name (typically you won't change this)
-    - **pk** - table's primary key (it will be set automatically)
+    - **name** - table's database name _(typically you won't change this)_
+    - **pk** - table's primary key _(it will be set automatically)_
     - **verbose** - table's name used inside the admin's user interface
-- **columns** - array of all table's columns. To reorder the columns appearance cut the entire column object and paste it on the desired position in this array
-- **mainview** - table's settings for admin's root page
-    - **show** - toggle table visibility inside the mainview table's list. Typically you want to hide tables that will be edited as <a href="#many-to-one">inlines</a> of other tables, or tables that are used as links for <a href="#many-to-many">many-to-many</a> relationships
-- **listview** - table's settings for the admin's listview
+- **columns** - array of all table's columns _(see below)_. To reorder the columns appearance cut the entire column object and paste it on the desired position in this array
+- **mainview** - table's settings for the admin's editview _(admin's root page)_
+    - **show** - toggle table visibility inside the mainview's table list. Typically you want to hide tables that will be edited as [inlines][1] of other tables, or tables that are used as links for [many to many][2] relationships
+- **listview** - table's settings for the admin's listview _(where all the table's records are listed)_
     - **order** - list of columns by which to sort and their respective order direction
     - **page** - how many records to show per page
     - **filter** - list of column names to enable for filtering
-- **editview** - settings specifically related to the page where the record is edited
-    - **readonly** - this will omit the save and delete buttons at the bottom of the page effectively making the table's records readonly
-    - **manyToOne** - see `Many to One` documentation
-    - **oneToOne** - see `One to One` documentation
+- **editview** - table's settings for the admin's editview _(where the record is being edited)_
+    - **readonly** - this will omit the save and delete buttons at the bottom of the editview effectively making the table's records non editable
+    - **manyToOne** - see [many to one][1] documentation
+    - **oneToOne** - see [one to one][3] documentation
 
 
 ####Column
@@ -80,8 +80,8 @@ Each `table` object contains an array of colums. Each `column` object have:
 }
 ```
 
-- **verbose** - column's name inside the admin's UI
-- **name** - column's database name (typically you won't change this)
+- **verbose** - column's name inside the admin's user interface
+- **name** - column's database name _(typically you won't change this)_
 - **control** - one of these
 
     ```js
@@ -101,14 +101,20 @@ Each `table` object contains an array of colums. Each `column` object have:
     {"select": true, "options": ["value&text",{"value":"text"}]} // select with static options
     ```
 
-- **type** - column's data type (typically you won't change this)
+- **type** - column's data type _(typically you won't change this)_
 - **allowNull** - allowed to be null inside the database
 - **defaultValue** - currently not used
-- **listview** - settings about how this column should behave in admin's listview
-    - **show** - column's visibility inside the listview which is the page where all records from the table are listed. Typically you want to see only colums that have short and meaningful data describing the record clearly. Primary key columns and columns that contain large amount of text should be hidden in this view
-- **editview** - settings about how this column should behave in admin's editview
-    - **show** - column's visibility inside the listview which is the page where a record can be edited.<br />
-    **All auto increment columns should be hidden!**<br />
-    **Foreign keys for inline tables should be hidden!**<br />
-    Columns that can't be `null` inside the database, can't be hidden here as this will result in a mysql error when insert/update the record
-- **oneToMany** - see `One to Many` documentation
+- **listview** - columns's settings for the admin's listview _(where all the table's records are listed)_
+    - **show** - column's visibility inside the listview. Typically you want to see only colums that contain short and meaningful data describing the whole record clearly. Primary key columns and columns that contain large amount of text typically should be hidden in this view
+- **editview** - columns's settings for the admin's editview _(where the record is being edited)_
+    - **show** - column's visibility inside the editview<br />
+    **`All auto increment columns should be hidden!`**<br />
+    **`Foreign keys for inline tables should be hidden!`**<br />
+    Columns that are not allowed to be `null` inside the database, can't be hidden here as this will result in a database error when trying to insert or update the record
+- **oneToMany** - see [one to many][4] documentation
+
+
+  [1]: #many-to-one
+  [2]: #many-to-many
+  [3]: #one-to-one
+  [4]: #one-to-many

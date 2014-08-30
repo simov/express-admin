@@ -4,8 +4,8 @@
 
 ![Many to Many][1]
 
-In `settings.json` find the table you are searching for and insert this object inside its columns array.
-> `link` and `ref` can contain additional `schema` key, specifying pg schema name for the relation table
+1. Inside the `settings.json` file, find the table you are looking for
+2. Add the object from below inside that table's columns array
 
 ```js
 {
@@ -39,24 +39,31 @@ In `settings.json` find the table you are searching for and insert this object i
     }
 }
 ```
+> The `link` and the `ref` keys additionally can contain a `schema` key, specifying PostgreSQL schema name for the relation table
 
-- **verbose** - exactly as a regular column this is the name that's shown inside the admin UI for this column
-- **name** - should be unique among all other columns in this table
-- **control** - the control type (you won't change this)
-- **type** - you won't change this
+- **verbose** - exactly as a regular column, this is the column's name inside the admin's user interface
+- **name** - should be unique name among all other columns in this table
+- **control** - column's control type _(you won't change this)_
+- **type** - column's data type _(you won't change this)_
 - **allowNull** - indicates whether you'll be able to save a record without selecting any item from the referenced table or not
-- **listview** - 
-    - **show** - include or exclude this column from the listview
-- **editview** - 
-    - **show** - include or exclude this column from the editview
+- **listview** - columns's settings for the admin's listview _(where all the table's records are listed)_
+    - **show** - column's visibility inside the listview
+- **editview** - columns's settings for the admin's editview _(where the record is being edited)_
+    - **show** - column's visibility inside the editview
 - **manyToMany** - indicates that this is not a regular table column
-    - **link** - linking table information
+    - **link** - linking table configuration
         - **table** - name of the link table
-        - **parentPk** - name of the primary key for the parent table
-        - **childPk** - name of the primary key for the child table
-    - **ref** - information about the referenced table
-        - **table** - name of the table that you are referencing
-        - **pk** - name of the referenced table's primary key columns
-        - **columns** - array of columns that you want to see for each record of the referenced table
+        - **parentPk** - name of the primary key for the parent table _(can be array as well)_
+        - **childPk** - name of the primary key for the child table _(can be array as well)_
+    - **ref** - configuration about the referenced table
+        - **table** - name of the table that is being referenced
+        - **pk** - name of the referenced table primary key column _(can be array as well)_
+        - **columns** - array of columns to select from the referenced table
+
+> The `link` table's `parentPk` and `childPk` key can be array as well.<br />
+> The `ref` table's `pk` key can be array as well.<br />
+> See [compound primary key][2] documentation.
+
 
   [1]: images/many-to-many.png
+  [2]: #compound-many-to-many
