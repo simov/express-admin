@@ -1,15 +1,13 @@
 
 var fs = require('fs'),
-    path = require('path'),
-    hogan = require('hogan.js'),
-    Client = require('github');
+    path = require('path');
+var hogan = require('hogan.js'),
+    Purest = require('purest');
 
 var html = fs.readFileSync('base.html', 'utf8');
     template = hogan.compile(html);
-
-var client = new Client({
-    version: '3.0.0'
-});
+var github = new Purest({provider:'github'}),
+    cred = require('./credentials');
 
 
 var dpath = path.resolve(__dirname, '../markdown/'),
@@ -32,17 +30,24 @@ var data = '';
 
     var text = fs.readFileSync(path.join(dpath ,files[index]+'.md'), 'utf8');
 
-    client.markdown.render({
-        text: text,
-        mode: 'markdown'
-    }, function (err, res) {
+    github.post('markdown', {
+        qs:{
+            access_token: cred.github.token
+        },
+        body:{
+            text: text,
+            mode: 'markdown'
+        }
+    }, function (err, res, body) {
         if (err) console.log(err);
-        data += '<div class="file">'+res.data;
+        
+        data += '<div class="file">'+body;
         if (index < files.length-1) data += '<p><br /></p><hr />';
         data += '</div>';
 
         loop(++index, cb);
     });
+
 }(0, function (err) {
     if (err) return console.log(err);
     var content = template.render({}, {content: data.replace(/user-content-/g,'')});
