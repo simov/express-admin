@@ -11,28 +11,17 @@
 
     <title>Express Admin</title>
 
-    <link href="v2/css/github1.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="v2/css/github2.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="v2/css/github.css" media="all" rel="stylesheet" type="text/css" />
     <link href="v2/css/style.css" media="all" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="v2/css/images/favicon.ico" />
+    <link rel="shortcut icon" href="v2/css/favicon.ico" />
 
     <script src="examples/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="v2/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
     <script src="v2/js/events.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-<div class="container">
-
-    <div class="repository-with-sidebar repo-container with-full-navigation">
-        <div class="repository-content context-loader-container">
-
-            <section id="readme" class="clearfix announce instapaper_body md">
-                <article class="markdown-body entry-content" itemprop="mainContentOfPage">
-{{>content}}
-                </article>
-            </section>
-            
-        </div>
+    <div class="markdown-body">
+        {{>content}}
 
         <nav id="navigation" class="repository-sidebar">
             <ul>
@@ -82,6 +71,5 @@
 
     <a href="https://github.com/simov/express-admin" id="forkme-badge"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
-</div>
 </body>
 </html>
