@@ -11,23 +11,16 @@
 
     <title>Express Admin</title>
 
-    <link href="v2/css/github1.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="v2/css/github2.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="v2/css/github.css" media="all" rel="stylesheet" type="text/css" />
     <link href="v2/css/style.css" media="all" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="v2/css/images/favicon.ico" />
+    <link rel="shortcut icon" href="v2/css/favicon.ico" />
 
     <script src="examples/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="v2/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
     <script src="v2/js/events.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-<div class="container">
-
-    <div class="repository-with-sidebar repo-container with-full-navigation">
-        <div class="repository-content context-loader-container">
-
-            <section id="readme" class="clearfix announce instapaper_body md">
-                <article class="markdown-body entry-content" itemprop="mainContentOfPage">
+    <div class="markdown-body">
 <div class="file"><h1>
 <a name="express-admin" class="anchor" href="#express-admin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Express Admin</h1>
 
@@ -70,16 +63,16 @@
 <h3>
 <a name="create-a-project" class="anchor" href="#create-a-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a project</h3>
 
-<p>Depending on how you installed it creating a project is simple</p>
+<p>Depending on how you installed it, creating a new project is as simple as</p>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span>admin path/to/config/dir
 <span class="c"># or</span>
 <span class="nv">$ </span>node path/to/express-admin/app.js path/to/config/dir
 </pre></div>
 
-<p>Either way the config path should exist. If it doesn't contains any config files in it already you'll be prompted to add required information for your database, server port and admin account credentials.</p>
+<p>Either way the path to the configuration directory should exist. If it doesn't contains any configuration files yet, you'll be prompted to add required information for your database, server port and admin account credentials.</p>
 
-<p>After that you can navigate to <code>localhost:[specified port]</code> and see your admin up and running.</p>
+<p>After that you can navigate to <code>http://localhost:[specified port]</code> and see your admin up and running.</p>
 
 <p>The next step is to configure it.</p><p><br /></p><hr /></div><div class="file"><h2>
 <a name="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
@@ -158,7 +151,7 @@
 <h3>
 <a name="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h3>
 
-<p>All settings related to the default Express Admin views are in the <code>settings.json</code> file which is automatically generated with default values at first start up.</p>
+<p>All settings related to the default Express Admin views are set inside the <code>settings.json</code> file, which is automatically generated with default values at first start up.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"table_name"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"unique-slug"</span><span class="p">,</span>
@@ -191,7 +184,7 @@
 <span class="p">}</span>
 </pre></div>
 
-<p><code>settings.json</code> contains a list of objects representing the database's tables. Each <code>table</code> object contains:</p>
+<p>The <code>settings.json</code> file contains a list of objects representing the database's tables. Each <code>table</code> object have:</p>
 
 <ul>
 <li>
@@ -201,25 +194,27 @@
 
 <ul>
 <li>
-<strong>name</strong> - table's database name (typically you won't change this)</li>
+<strong>name</strong> - table's database name <em>(typically you won't change this)</em>
+</li>
 <li>
-<strong>pk</strong> - table's primary key (it will be set automatically)</li>
+<strong>pk</strong> - table's primary key <em>(it will be set automatically)</em>
+</li>
 <li>
 <strong>verbose</strong> - table's name used inside the admin's user interface</li>
 </ul>
 </li>
 <li>
-<strong>columns</strong> - array of all table's columns. To reorder the columns appearance cut the entire column object and paste it on the desired position in this array</li>
+<strong>columns</strong> - array of all table's columns <em>(see below)</em>. To reorder the columns appearance cut the entire column object and paste it on the desired position in this array</li>
 <li>
-<strong>mainview</strong> - table's settings for admin's root page
+<strong>mainview</strong> - table's settings for the admin's editview <em>(admin's root page)</em>
 
 <ul>
 <li>
-<strong>show</strong> - toggle table visibility inside the mainview table's list. Typically you want to hide tables that will be edited as <a href="#many-to-one">inlines</a> of other tables, or tables that are used as links for <a href="#many-to-many">many-to-many</a> relationships</li>
+<strong>show</strong> - toggle table visibility inside the mainview's table list. Typically you want to hide tables that will be edited as <a href="#many-to-one">inlines</a> of other tables, or tables that are used as links for <a href="#many-to-many">many to many</a> relationships</li>
 </ul>
 </li>
 <li>
-<strong>listview</strong> - table's settings for the admin's listview
+<strong>listview</strong> - table's settings for the admin's listview <em>(where all the table's records are listed)</em>
 
 <ul>
 <li>
@@ -231,15 +226,15 @@
 </ul>
 </li>
 <li>
-<strong>editview</strong> - settings specifically related to the page where the record is edited
+<strong>editview</strong> - table's settings for the admin's editview <em>(where the record is being edited)</em>
 
 <ul>
 <li>
-<strong>readonly</strong> - this will omit the save and delete buttons at the bottom of the page effectively making the table's records readonly</li>
+<strong>readonly</strong> - this will omit the save and delete buttons at the bottom of the editview effectively making the table's records non editable</li>
 <li>
-<strong>manyToOne</strong> - see <code>Many to One</code> documentation</li>
+<strong>manyToOne</strong> - see <a href="#many-to-one">many to one</a> documentation</li>
 <li>
-<strong>oneToOne</strong> - see <code>One to One</code> documentation</li>
+<strong>oneToOne</strong> - see <a href="#one-to-one">one to one</a> documentation</li>
 </ul>
 </li>
 </ul><h4>
@@ -268,9 +263,10 @@
 
 <ul>
 <li>
-<strong>verbose</strong> - column's name inside the admin's UI</li>
+<strong>verbose</strong> - column's name inside the admin's user interface</li>
 <li>
-<strong>name</strong> - column's database name (typically you won't change this)</li>
+<strong>name</strong> - column's database name <em>(typically you won't change this)</em>
+</li>
 <li>
 <p><strong>control</strong> - one of these</p>
 
@@ -290,37 +286,37 @@
 <span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"value&amp;text"</span><span class="p">,{</span><span class="s2">"value"</span><span class="o">:</span><span class="s2">"text"</span><span class="p">}]}</span> <span class="c1">// select with static options</span>
 </pre></div>
 </li>
-<li><p><strong>type</strong> - column's data type (typically you won't change this)</p></li>
+<li><p><strong>type</strong> - column's data type <em>(typically you won't change this)</em></p></li>
 <li>
 <strong>allowNull</strong> - allowed to be null inside the database</li>
 <li>
 <strong>defaultValue</strong> - currently not used</li>
 <li>
-<strong>listview</strong> - settings about how this column should behave in admin's listview
+<strong>listview</strong> - columns's settings for the admin's listview <em>(where all the table's records are listed)</em>
 
 <ul>
 <li>
-<strong>show</strong> - column's visibility inside the listview which is the page where all records from the table are listed. Typically you want to see only colums that have short and meaningful data describing the record clearly. Primary key columns and columns that contain large amount of text should be hidden in this view</li>
+<strong>show</strong> - column's visibility inside the listview. Typically you want to see only colums that contain short and meaningful data describing the whole record clearly. Primary key columns and columns that contain large amount of text typically should be hidden in this view</li>
 </ul>
 </li>
 <li>
-<strong>editview</strong> - settings about how this column should behave in admin's editview
+<strong>editview</strong> - columns's settings for the admin's editview <em>(where the record is being edited)</em>
 
 <ul>
 <li>
-<strong>show</strong> - column's visibility inside the listview which is the page where a record can be edited.<br><strong>All auto increment columns should be hidden!</strong><br><strong>Foreign keys for inline tables should be hidden!</strong><br>
-Columns that can't be <code>null</code> inside the database, can't be hidden here as this will result in a mysql error when insert/update the record</li>
+<strong>show</strong> - column's visibility inside the editview<br><strong><code>All auto increment columns should be hidden!</code></strong><br><strong><code>Foreign keys for inline tables should be hidden!</code></strong><br>
+Columns that are not allowed to be <code>null</code> inside the database, can't be hidden here as this will result in a database error when trying to insert or update the record</li>
 </ul>
 </li>
 <li>
-<strong>oneToMany</strong> - see <code>One to Many</code> documentation</li>
+<strong>oneToMany</strong> - see <a href="#one-to-many">one to many</a> documentation</li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
 <a name="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
 <h3>
 <a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
 
-<p>All objects in this file are user created. The <code>public</code> key is related entirely to inclusion of custom <em>static files</em>. It's possible to have an object only with public key inside as well as object with only <code>app</code> key in it.</p>
+<p>All objects in this file are user created. The <code>public</code> key is related entirely to inclusion of custom <em>static files</em>. It's possible to have an object containing only public key in it, as well as object containing an <code>app</code> key only, or both.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
@@ -364,9 +360,9 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <li>
 <strong>slug</strong> - entry point for all routes in this custom app</li>
 <li>
-<strong>verbose</strong> - view's name inside the admin's UI</li>
+<strong>verbose</strong> - view's name inside the admin's user interface</li>
 <li>
-<strong>mainview</strong> - settings related to the mainview
+<strong>mainview</strong> - settings related to the admin's mainview
 
 <ul>
 <li>
@@ -405,7 +401,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 </li>
 <li>
 <strong>events</strong> - path to file containing event hooks</li>
-</ul><p>See the custom view's documentation and the examples.</p><p><br /></p><hr /></div><div class="file"><h2>
+</ul><p>See the <a href="#custom-views-apps">custom views</a> documentation and the <a href="https://github.com/simov/express-admin-examples">examples</a></p><p><br /></p><hr /></div><div class="file"><h2>
 <a name="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
@@ -413,13 +409,13 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p><a href="images/one-to-many.png" target="_blank"><img src="images/one-to-many.png" alt="One to Many" style="max-width:100%;"></a></p>
 
-<p>In <code>settings.json</code> find the table you are searching for and under its columns find the foreign key columnt by its name key. Inside the column's object insert <code>oneToMany</code> key. Also don't forget to change the column's control type to <code>select</code>.</p>
-
-<blockquote>
-<p><code>oneToMany</code>can contain additional <code>schema</code> key, specifying pg schema name for the relation table</p>
-</blockquote>
-
-<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+<ol>
+<li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
+<li>Inside that table's columns array find the foreign key column you want to use for the relation</li>
+<li>Inside that column's object insert <code>oneToMany</code> key</li>
+<li>Change the column's control type to <code>select</code>
+</li>
+</ol><div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span>
 <span class="p">},</span>
 <span class="s2">"oneToMany"</span><span class="o">:</span> <span class="p">{</span>
@@ -432,17 +428,22 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <span class="p">}</span>
 </pre></div>
 
+<blockquote>
+<p>The <code>oneToMany</code> key additionally can contain a <code>schema</code> key, specifying PostgreSQL schema name for the relation table</p>
+</blockquote>
+
 <ul>
 <li>
 <strong>oneToMany</strong> - contains information about the table that this foreign key references
 
 <ul>
 <li>
-<strong>table</strong> - name of the table that you are referencing</li>
+<strong>table</strong> - name of the table that's being referenced</li>
 <li>
-<strong>pk</strong> - name of the referenced table's primary key column</li>
+<strong>pk</strong> - name of the referenced table primary key column <em>(can be array as well, see <a href="#compound-one-to-many">compound primary key</a> documentation)</em>
+</li>
 <li>
-<strong>columns</strong> - array of columns that you want to see for each record of the referenced table</li>
+<strong>columns</strong> - array of columns to select from the referenced table</li>
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
@@ -453,13 +454,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p><a href="images/many-to-many.png" target="_blank"><img src="images/many-to-many.png" alt="Many to Many" style="max-width:100%;"></a></p>
 
-<p>In <code>settings.json</code> find the table you are searching for and insert this object inside its columns array.</p>
-
-<blockquote>
-<p><code>link</code> and <code>ref</code> can contain additional <code>schema</code> key, specifying pg schema name for the relation table</p>
-</blockquote>
-
-<div class="highlight highlight-js"><pre><span class="p">{</span>
+<ol>
+<li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
+<li>Add the object from below inside that table's columns array</li>
+</ol><div class="highlight highlight-js"><pre><span class="p">{</span>
     <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Recipe Types"</span><span class="p">,</span>
     <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"recipe_type"</span><span class="p">,</span>
     <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
@@ -491,31 +489,37 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 <span class="p">}</span>
 </pre></div>
 
+<blockquote>
+<p>The <code>link</code> and the <code>ref</code> keys additionally can contain a <code>schema</code> key, specifying PostgreSQL schema name for the relation table</p>
+</blockquote>
+
 <ul>
 <li>
-<strong>verbose</strong> - exactly as a regular column this is the name that's shown inside the admin UI for this column</li>
+<strong>verbose</strong> - exactly as a regular column, this is the column's name inside the admin's user interface</li>
 <li>
-<strong>name</strong> - should be unique among all other columns in this table</li>
+<strong>name</strong> - should be unique name among all other columns in this table</li>
 <li>
-<strong>control</strong> - the control type (you won't change this)</li>
+<strong>control</strong> - column's control type <em>(you won't change this)</em>
+</li>
 <li>
-<strong>type</strong> - you won't change this</li>
+<strong>type</strong> - column's data type <em>(you won't change this)</em>
+</li>
 <li>
 <strong>allowNull</strong> - indicates whether you'll be able to save a record without selecting any item from the referenced table or not</li>
 <li>
-<strong>listview</strong> - 
+<strong>listview</strong> - columns's settings for the admin's listview <em>(where all the table's records are listed)</em>
 
 <ul>
 <li>
-<strong>show</strong> - include or exclude this column from the listview</li>
+<strong>show</strong> - column's visibility inside the listview</li>
 </ul>
 </li>
 <li>
-<strong>editview</strong> - 
+<strong>editview</strong> - columns's settings for the admin's editview <em>(where the record is being edited)</em>
 
 <ul>
 <li>
-<strong>show</strong> - include or exclude this column from the editview</li>
+<strong>show</strong> - column's visibility inside the editview</li>
 </ul>
 </li>
 <li>
@@ -523,32 +527,39 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <ul>
 <li>
-<strong>link</strong> - linking table information
+<strong>link</strong> - linking table configuration
 
 <ul>
 <li>
 <strong>table</strong> - name of the link table</li>
 <li>
-<strong>parentPk</strong> - name of the primary key for the parent table</li>
+<strong>parentPk</strong> - name of the primary key for the parent table <em>(can be array as well)</em>
+</li>
 <li>
-<strong>childPk</strong> - name of the primary key for the child table</li>
+<strong>childPk</strong> - name of the primary key for the child table <em>(can be array as well)</em>
+</li>
 </ul>
 </li>
 <li>
-<strong>ref</strong> - information about the referenced table
+<strong>ref</strong> - configuration about the referenced table
 
 <ul>
 <li>
-<strong>table</strong> - name of the table that you are referencing</li>
+<strong>table</strong> - name of the table that is being referenced</li>
 <li>
-<strong>pk</strong> - name of the referenced table's primary key columns</li>
+<strong>pk</strong> - name of the referenced table primary key column <em>(can be array as well)</em>
+</li>
 <li>
-<strong>columns</strong> - array of columns that you want to see for each record of the referenced table</li>
+<strong>columns</strong> - array of columns to select from the referenced table</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul><p><br /></p><hr /></div><div class="file"><h2>
+</ul><blockquote>
+<p>The <code>link</code> table's <code>parentPk</code> and <code>childPk</code> key can be array as well.<br>
+The <code>ref</code> table's <code>pk</code> key can be array as well.<br>
+See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
+</blockquote><p><br /></p><hr /></div><div class="file"><h2>
 <a name="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
@@ -556,9 +567,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p><a href="images/many-to-one.png" target="_blank"><img src="images/many-to-one.png" alt="Many to One" style="max-width:100%;"></a></p>
 
-<p>In <code>settings.json</code> find the table you are searching for and under its <code>editview</code> key add a <code>manyToOne</code> key.</p>
-
-<div class="highlight highlight-js"><pre><span class="s2">"manyToOne"</span><span class="o">:</span> <span class="p">{</span>
+<ol>
+<li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
+<li>Inside that table's <code>editview</code> key add a <code>manyToOne</code> key</li>
+</ol><div class="highlight highlight-js"><pre><span class="s2">"manyToOne"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"repair"</span><span class="o">:</span> <span class="s2">"car_id"</span><span class="p">,</span>
     <span class="s2">"driver"</span><span class="o">:</span> <span class="s2">"car_id"</span>
 <span class="p">}</span>
@@ -570,7 +582,8 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <ul>
 <li>
-<strong>table:fk</strong> - Inside there is a list of key-value pairs where the <code>key</code> is the name of the table that is referencing this one and the <code>value</code> is its foreign key</li>
+<strong>table:fk</strong> - list of key-value pairs where the <code>key</code> is the name of the table that is referencing this one, and the <code>value</code> is its foreign key<br>
+(<code>value</code> can be array as well, see <a href="#compound-one-to-one">compound primary key</a> documentation)</li>
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
@@ -581,9 +594,10 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p><a href="images/one-to-one.png" target="_blank"><img src="images/one-to-one.png" alt="One to One" style="max-width:100%;"></a></p>
 
-<p>In <code>settings.json</code> find the table you are searching for and under its <code>editview</code> key add a <code>oneToOne</code> key.</p>
-
-<div class="highlight highlight-js"><pre><span class="s2">"oneToOne"</span><span class="o">:</span> <span class="p">{</span>
+<ol>
+<li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
+<li>Inside that table's <code>editview</code> key add a <code>oneToOne</code> key</li>
+</ol><div class="highlight highlight-js"><pre><span class="s2">"oneToOne"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"address"</span><span class="o">:</span> <span class="s2">"user_id"</span><span class="p">,</span>
     <span class="s2">"phone"</span><span class="o">:</span> <span class="s2">"user_id"</span>
 <span class="p">}</span>
@@ -595,7 +609,8 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <ul>
 <li>
-<strong>table:fk</strong> - Inside there is a list of key-value pairs where the <code>key</code> is the name of the table that is referencing this one and the <code>value</code> is its foreign key</li>
+<strong>table:fk</strong> - list of key-value pairs where the <code>key</code> is the name of the table that is referencing this one, and the <code>value</code> is its foreign key<br>
+(<code>value</code> can be array as well, see <a href="#compound-one-to-one">compound primary key</a> documentation)</li>
 </ul>
 </li>
 </ul><p><br /></p><hr /></div><div class="file"><h2>
@@ -603,7 +618,7 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p><a href="images/compound-primary-key.png" target="_blank"><img src="images/compound-primary-key.png" alt="Compound Primary Key" style="max-width:100%;"></a></p>
 
-<p>In <code>settings.json</code> each table can be configured to have multiple primary keys through its <code>pk</code> field (this is set automatically on project's first run)</p>
+<p>Inside the <code>settings.json</code> file each table can be configured to have multiple primary keys through its <code>pk</code> field <em>(set automatically on project's first run)</em></p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"table"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"tbl"</span><span class="p">,</span>
@@ -620,9 +635,11 @@ Columns that can't be <code>null</code> inside the database, can't be hidden her
 
 <p><a href="images/compound-one-to-many.png" target="_blank"><img src="images/compound-one-to-many.png" alt="Compound One to Many" style="max-width:100%;"></a></p>
 
-<p>In case One to Many table relationship is referenced by multiple foreign keys, the regular <a href="#one-to-many">One to Many</a> setting can't be used, as it expects to be put inside an existing column in <code>settings.json</code>
-Therefore the following <em>fake</em> column entry must be added to the <code>columns</code> array (similar to how <a href="#many-to-many">Many to Many</a> relationship is configured)
-The <code>fk</code> key specifies the foreign keys in this table that references the other one</p>
+<p>In case One to Many table relationship is referenced by multiple foreign keys, the regular <a href="#one-to-many">One to Many</a> setting can't be used, as it expects to be put inside an existing column inside the <code>settings.json</code> file.</p>
+
+<p>Therefore the following <em>fake</em> column entry must be added to the <code>columns</code> array <em>(similar to how <a href="#many-to-many">Many to Many</a> relationship is configured)</em></p>
+
+<p>The <code>fk</code> key specifies the foreign keys in this table that are referencing the other one.</p>
 
 <div class="highlight highlight-js"><pre><span class="p">{</span>
     <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"otm"</span><span class="p">,</span>
@@ -660,7 +677,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 
 <p><a href="images/compound-many-to-many.png" target="_blank"><img src="images/compound-many-to-many.png" alt="Compound Many to Many" style="max-width:100%;"></a></p>
 
-<p>In case tables with multiple primary keys are part of a Many to Many table relationship, the regular <a href="#many-to-many">Many to Many</a> setting is used, but additionally the <code>parentPk</code>, <code>childPk</code> and the <code>pk</code> field inside <code>ref</code> can be set to array of keys to accommodate that design</p>
+<p>In case tables with multiple primary keys are part of a Many to Many table relationship, the regular <a href="#many-to-many">Many to Many</a> setting is used, but additionally the <code>parentPk</code> and <code>childPk</code> keys inside the <code>link</code> table, and the <code>pk</code> key inside the <code>ref</code> table, can be set to array of foreign and primary keys respectively to accommodate that design.</p>
 
 <div class="highlight highlight-js"><pre><span class="p">{</span>
     <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"mtm"</span><span class="p">,</span>
@@ -708,7 +725,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 
 <p><a href="images/compound-many-to-one.png" target="_blank"><img src="images/compound-many-to-one.png" alt="Compound Many to One" style="max-width:100%;"></a></p>
 
-<p>Same as the regular <a href="#many-to-one">Many to One</a> setting, plus it can contain multiple foreign keys that references this table</p>
+<p>Same as the regular <a href="#many-to-one">Many to One</a> setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"manyToOne"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"mto"</span><span class="o">:</span> <span class="p">[</span>
@@ -721,7 +738,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h3>
 <a name="compound-one-to-one" class="anchor" href="#compound-one-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound One to One</h3>
 
-<p>Same as the regular <a href="#one-to-one">One to One</a> setting, plus it can contain multiple foreign keys that references this table</p>
+<p>Same as the regular <a href="#one-to-one">one to One</a> setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"oneToOne"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"oto"</span><span class="o">:</span> <span class="p">[</span>
@@ -738,12 +755,12 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h4>
 <a name="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h4>
 
-<p>You should either download CKEditor from <a href="http://ckeditor.com">ckeditor.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <code>//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js</code></p>
+<p>You should either download CKEditor from <a href="http://ckeditor.com">ckeditor.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <em>//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.4.1/ckeditor.js</em></p>
 
 <h4>
 <a name="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h4>
 
-<p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for this editor instance.</p>
+<p>Inside the <code>settings.json</code> file, find the column you are looking for, and add an additional <code>editor</code> property to its <code>control</code> type key, specifying the class name to use for this instance.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -754,7 +771,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h4>
 <a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h4>
 
-<p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
+<p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
@@ -785,7 +802,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 </ul><h4>
 <a name="my-customjs" class="anchor" href="#my-customjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
 
-<p>Your custom editor is initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
+<p>Your custom editor is initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
@@ -816,11 +833,11 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <span class="p">}</span>
 </pre></div>
 
-<p>Here <code>class-name</code> is the same class name you specified in <code>settings.json</code> for this column.</p>
+<p>Here <code>class-name</code> is the same class name you specified inside the <code>settings.json</code> file for this column.</p>
 
-<p>The <code>CKEDITOR.replaceAll</code> loop throgh all textareas on the page and filter out only those that need to be initialized as ckeditors. The most important bit is that you should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
+<p>The <code>CKEDITOR.replaceAll</code> method loops throgh all textareas on the page and filter out only to those that needs to be initialized as ckeditors. The most important bit is that you should always exclude the textareas that are contained inside the hidden row for an inline record. That's easy because all of them have a <code>blank</code> class on their containing row.</p>
 
-<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
+<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code></p><p><br /></p><hr /></div><div class="file"><h2>
 <a name="editors" class="anchor" href="#editors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editors</h2>
 
 <h3>
@@ -829,12 +846,12 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h4>
 <a name="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h4>
 
-<p>You should either download TinyMCE from <a href="http://www.tinymce.com">tinymce.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <code>//cdnjs.cloudflare.com/ajax/libs/tinymce/3.5.8/tiny_mce.js</code></p>
+<p>You should either download TinyMCE from <a href="http://www.tinymce.com">tinymce.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <em>//cdnjs.cloudflare.com/ajax/libs/tinymce/4.1.4/tinymce.min.js</em></p>
 
 <h4>
 <a name="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h4>
 
-<p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for this editor instance.</p>
+<p>Inside the <code>settings.json</code> file, find the column you are looking for, and add an additional <code>editor</code> property to its <code>control</code> type key, specifying the class name to use for this instance.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -845,7 +862,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h4>
 <a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h4>
 
-<p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
+<p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
@@ -877,7 +894,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 </ul><h4>
 <a name="my-customjs" class="anchor" href="#my-customjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
 
-<p>Your custom editor is initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
+<p>Your custom editor is initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tinyMCE</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
@@ -895,11 +912,11 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <span class="p">}</span>
 </pre></div>
 
-<p>Here <code>class-name</code> is the same class name you specified in <code>settings.json</code> for this column.</p>
+<p>Here <code>class-name</code> is the same class name you specified inside the <code>settings.json</code> file for this column.</p>
 
-<p>The <code>tr:not(.blank) .tinymce</code> selector filter only to those textareas that have the <code>class-name</code> specified in <code>settings.json</code> but not contained inside hidden rows. You should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
+<p>The <code>tr:not(.blank) .tinymce</code> selector filters out only to those textareas that have the <code>class-name</code> we specified in <code>settings.json</code>, but not contained inside a hidden row. The most important bit is that you should always exclude the textareas that are contained inside the hidden row for an inline record. That's easy because all of them have a <code>blank</code> class on their containing row.</p>
 
-<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we initialize only those textareas that have the class we specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
+<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code></p><p><br /></p><hr /></div><div class="file"><h2>
 <a name="editors" class="anchor" href="#editors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editors</h2>
 
 <h3>
@@ -908,12 +925,12 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h4>
 <a name="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h4>
 
-<p>You should either download CKEditor and TinyMCE from their official sites <a href="http://ckeditor.com">ckedtor.com</a> and <a href="http://www.tinymce.com">tinymce.com</a> or use them directly from <a href="http://cdnjs.com">cdnjs.com</a>.</p>
+<p>You should either download CKEditor and TinyMCE from their official site <a href="http://ckeditor.com">ckedtor.com</a> and <a href="http://www.tinymce.com">tinymce.com</a> or use them directly from <a href="http://cdnjs.com">cdnjs.com</a></p>
 
 <h4>
 <a name="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h4>
 
-<p>In <code>settings.json</code> add additional <code>editor</code> property to the column's <code>control</code> type key specifiyng the class name for each editor instance.</p>
+<p>Inside the <code>settings.json</code> file, find the columns you are looking for, and add an additional <code>editor</code> property to each column's <code>control</code> type key, specifying the class name to use for this instance.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -936,13 +953,13 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h4>
 <a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h4>
 
-<p>In <code>custom.json</code> add a unique key for your custom stuff.</p>
+<p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
 
 <div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">"external"</span><span class="o">:</span> <span class="p">{</span>
             <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">"//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js"</span>
+                <span class="s2">"//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.4.1/ckeditor.js"</span>
             <span class="p">]</span>
         <span class="p">},</span>
         <span class="s2">"local"</span><span class="o">:</span> <span class="p">{</span>
@@ -973,7 +990,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 </ul><h4>
 <a name="my-customjs" class="anchor" href="#my-customjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
 
-<p>Your custom editors are initialized here. It's just plain javascript/jquery and you can write whatever you want to. However there are a few requirements.</p>
+<p>Your custom editors are initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
@@ -1035,13 +1052,13 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <span class="p">}</span>
 </pre></div>
 
-<p>Here based on the specific <code>class-name</code> specified in <code>settings.json</code> each textarea is initialized accordingly.</p>
+<p>Here based on a specific <code>class-name</code> specified for each column inside the <code>settings.json</code> file, the corresponding textarea is initialized accordingly.</p>
 
-<p>The <code>CKEDITOR.replaceAll</code> loop throgh all textareas on the page and filter out only those that need to be initialized as ckeditors. The most important bit is that you should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
+<p>The <code>CKEDITOR.replaceAll</code> method loops throgh all textareas on the page and filter out only to those that needs to be initialized as ckeditors. The most important bit is that you should always exclude the textareas that are contained inside the hidden row for an inline record. That's easy because all of them have a <code>blank</code> class on their containing row.</p>
 
-<p>The <code>tr:not(.blank) .tinymce</code> selector filter only to those textareas that have the <code>class-name</code> specified in <code>settings.json</code> but not contained inside hidden rows. You should always exclude the textareas that are inside the hidden row for an inline record. That's easy because all of them have class <code>blank</code> on their containing row.</p>
+<p>The <code>tr:not(.blank) .tinymce</code> selector filters out only to those textareas that have the <code>class-name</code> we specified in <code>settings.json</code>, but not contained inside a hidden row. The most important bit is that you should always exclude the textareas that are contained inside the hidden row for an inline record. That's easy because all of them have a <code>blank</code> class on their containing row.</p>
 
-<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we initialize all textareas according to their specific <code>class-name</code> specified in <code>settings.json</code>.</p><p><br /></p><hr /></div><div class="file"><h2>
+<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code></p><p><br /></p><hr /></div><div class="file"><h2>
 <a name="custom-views-apps" class="anchor" href="#custom-views-apps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom views (apps)</h2>
 
 <p>The admin's custom views follow the <a href="http://vimeo.com/56166857">Modular web applications with Node.js and Express</a> approach presented by <a href="https://github.com/visionmedia">TJ Holowaychuk</a>.</p>
@@ -1445,7 +1462,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
 <a name="embedding" class="anchor" href="#embedding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embedding</h2>
 
-<p>You need to add one additional property inside your <code>config.json</code> file under the <code>app</code> key</p>
+<p>Inside the <code>config.json</code> file, under the <code>app</code> key, include an additional <code>root</code> key, specifying the root mount point for your embedded <em>Express Admin</em> application.</p>
 
 <h3>
 <a name="configjson" class="anchor" href="#configjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>config.json</h3>
@@ -1457,9 +1474,9 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 </pre></div>
 
 <h3>
-<a name="initialization" class="anchor" href="#initialization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization</h3>
+<a name="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h3>
 
-<p>In this example Express Admin will be located under the <code>/admin</code> path of your app</p>
+<p>In this example <em>Express Admin</em> will be located under the <code>/admin</code> path of your app.</p>
 
 <div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">),</span>
     <span class="nx">xAdmin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express-admin'</span><span class="p">);</span>
@@ -1511,26 +1528,26 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h4>
 <a name="supervisor" class="anchor" href="#supervisor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supervisor</h4>
 
-<p>Auto reload your project while configuring it using <a href="https://github.com/isaacs/node-supervisor">supervisior</a>.</p>
+<p>Auto reload your project while configuring it using <a href="https://github.com/isaacs/node-supervisor">supervisior</a></p>
 
 <p>Create a folder for your project's configuration files.</p>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span>mkdir project
 </pre></div>
 
-<p>Then while you're still there you can use <code>supervisor</code> to watch your <code>project</code> folder, specifying that the extensions are <code>json</code>.</p>
+<p>Then while you're still there you can use <code>supervisor</code> to watch your <code>project</code> folder, specifying that the extensions are <code>json</code></p>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span>supervisor -w project -e json -- path/to/express-admin/app -v project/
 </pre></div>
 
-<p>The <code>-v</code> flag that you're passing to the Express Admin app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
+<p>The <code>-v</code> flag that you're passing to the <em>Express Admin</em> app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
 
-<p>You can also pass the <code>-l</code> flag which will log out all sql queries that Express Admin make for you.</p>
+<p>Additionally you can pass the <code>-l</code> flag as well, which will <code>log</code> out all sql queries that <em>Express Admin</em> generates.</p>
 
 <h4>
 <a name="forever" class="anchor" href="#forever" aria-hidden="true"><span class="octicon octicon-link"></span></a>Forever</h4>
 
-<p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a>.</p>
+<p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a></p>
 
 <div class="highlight highlight-bash"><pre><span class="nv">$ </span>forever start path/to/express-admin/app path/to/project/config/
 </pre></div><p><br /></p><hr /></div><div class="file"><h2>
@@ -1539,7 +1556,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h3>
 <a name="nginx" class="anchor" href="#nginx" aria-hidden="true"><span class="octicon octicon-link"></span></a>NginX</h3>
 
-<p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a>.</p>
+<p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a></p>
 
 <div class="highlight highlight-bash"><pre>server <span class="o">{</span>
     listen 80<span class="p">;</span>
@@ -1595,7 +1612,7 @@ The <code>fk</code> key specifies the foreign keys in this table that references
 <h3>
 <a name="apache" class="anchor" href="#apache" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache</h3>
 
-<p>If some of your custom view's requests need to be handled by <a href="http://httpd.apache.org/">Apache</a>, add this to the nginx vhost file.</p>
+<p>In case some of your custom view's requests needs to be handled by <a href="http://httpd.apache.org/">Apache</a>, then add this to the nginx vhost file.</p>
 
 <div class="highlight highlight-bash"><pre><span class="c"># apache</span>
 location /some-slug/ <span class="o">{</span>
@@ -1629,11 +1646,7 @@ Listen 127.0.0.1:8008
     ErrorLog /var/log/apache2/admin-error.log
     CustomLog /var/log/apache2/admin-access.log combined
 &lt;/VirtualHost&gt;
-</pre></div></div>				</article>
-            </section>
-            
-        </div>
-
+</pre></div></div>
         <nav id="navigation" class="repository-sidebar">
             <ul>
                 <li><a href="#express-admin">Express Admin</a></li>
@@ -1682,6 +1695,5 @@ Listen 127.0.0.1:8008
 
     <a href="https://github.com/simov/express-admin" id="forkme-badge"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
-</div>
 </body>
 </html>
