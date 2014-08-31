@@ -1,6 +1,7 @@
-##Configuration
 
-###custom.json
+## Configuration
+
+### custom.json
 
 All objects in this file are user created. The `public` key is related entirely to inclusion of custom _static files_. It's possible to have an object containing only public key in it, as well as object containing an `app` key only, or both.
 

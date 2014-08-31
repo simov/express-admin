@@ -1,6 +1,7 @@
-##Configuration
 
-###settings.json
+## Configuration
+
+### settings.json
 
 All settings related to the default Express Admin views are set inside the `settings.json` file, which is automatically generated with default values at first start up.
 
@@ -56,7 +57,7 @@ The `settings.json` file contains a list of objects representing the database's 
     - **oneToOne** - see [one to one][3] documentation
 
 
-####Column
+#### Column
 
 Each `table` object contains an array of colums. Each `column` object have:
 

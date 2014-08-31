@@ -1,6 +1,7 @@
-##Install
 
-###Get the module
+## Install
+
+### Get the module
 
 ```bash
 $ [sudo] npm install [-g] express-admin
@@ -10,7 +11,7 @@ $ npm install pg@2.8.2
 $ npm install sqlite3@2.2.0
 ```
 
-###Create a project
+### Create a project
 Depending on how you installed it, creating a new project is as simple as
 ```bash
 $ admin path/to/config/dir

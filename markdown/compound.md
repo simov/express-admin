@@ -1,4 +1,5 @@
-##Compound Primary Key
+
+## Compound Primary Key
 ![Compound Primary Key][1]
 
 Inside the `settings.json` file each table can be configured to have multiple primary keys through its `pk` field _(set automatically on project's first run)_
@@ -14,7 +15,7 @@ Inside the `settings.json` file each table can be configured to have multiple pr
 }
 ```
 
-###Compound One to Many
+### Compound One to Many
 ![Compound One to Many][2]
 
 In case One to Many table relationship is referenced by multiple foreign keys, the regular [One to Many][5] setting can't be used, as it expects to be put inside an existing column inside the `settings.json` file.
@@ -55,7 +56,7 @@ The `fk` key specifies the foreign keys in this table that are referencing the o
 }
 ```
 
-###Compound Many to Many
+### Compound Many to Many
 ![Compound Many to Many][3]
 
 In case tables with multiple primary keys are part of a Many to Many table relationship, the regular [Many to Many][6] setting is used, but additionally the `parentPk` and `childPk` keys inside the `link` table, and the `pk` key inside the `ref` table, can be set to array of foreign and primary keys respectively to accommodate that design.
@@ -102,7 +103,7 @@ In case tables with multiple primary keys are part of a Many to Many table relat
 }
 ```
 
-###Compound Many to One
+### Compound Many to One
 ![Compound Many to One][4]
 
 Same as the regular [Many to One][7] setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.
@@ -116,7 +117,7 @@ Same as the regular [Many to One][7] setting, but additionally the value for eac
 }
 ```
 
-###Compound One to One
+### Compound One to One
 
 Same as the regular [one to One][8] setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.
 

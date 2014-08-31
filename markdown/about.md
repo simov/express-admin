@@ -1,4 +1,5 @@
-#Express Admin
+
+# Express Admin
 
 Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL, MariaDB, SQLite and PostgreSQL databases.
 
@@ -7,7 +8,7 @@ It's built with: [Hogan.js][1] ([mustache.js][2]), [Express][3], [mysql][4] and 
 The configuration is done through hand editing `json` files, although in the future there might be some kind of a GUI tool for that.
 
 
-###Features
+### Features
 
 - All types of sql table relationships
 - Internationalization
@@ -16,7 +17,7 @@ The configuration is done through hand editing `json` files, although in the fut
 - All themes from [Bootswatch][6]
 
 
-###Resources
+### Resources
 
 - [Introductory Screencast][7]
 - [GitHub Repository][8]

@@ -1,6 +1,7 @@
-##Relationships
 
-###One to Many
+## Relationships
+
+### One to Many
 
 ![One to Many][1]
 

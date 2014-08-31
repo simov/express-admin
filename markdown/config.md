@@ -1,6 +1,7 @@
-##Configuration
 
-###config.json
+## Configuration
+
+### config.json
 
 The application's configuration is stored inside the `config.json` file.
 
