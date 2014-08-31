@@ -1,8 +1,9 @@
-##Tools
 
-###Apache
+## Tools
 
-If some of your custom view's requests need to be handled by [Apache][1], add this to the nginx vhost file.
+### Apache
+
+In case some of your custom view's requests needs to be handled by [Apache][1], then add this to the nginx vhost file.
 
 ```bash
 # apache
@@ -40,5 +41,6 @@ Create apache's virtual host file.
 	CustomLog /var/log/apache2/admin-access.log combined
 </VirtualHost>
 ```
+
 
   [1]: http://httpd.apache.org/

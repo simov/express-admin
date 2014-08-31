@@ -1,11 +1,12 @@
-##Custom views (apps)
+
+## Custom views (apps)
 
 The admin's custom views follow the [Modular web applications with Node.js and Express][1] approach presented by [TJ Holowaychuk][2].
 
 The only difference here is that we're dealing with `mustache` templates.
 
 
-###custom.json
+### custom.json
 ```js
 "view1": {
     "app": {
@@ -19,7 +20,7 @@ The only difference here is that we're dealing with `mustache` templates.
 }
 ```
 
-###app.js
+### app.js
 ```js
 var express = require('express');
 var app = module.exports = express();
@@ -50,7 +51,7 @@ app.get('/view1', function (req, res, next) {
 You should definitely run the examples from the [examples repository][3] as each of the custom views (apps) presented there is really well commented.
 
 
-###Route wide variables
+### Route wide variables
 Several variables are exposed to every route callback.
 
 ```js
@@ -70,6 +71,7 @@ res.locals.languages  // list of all languages
 // holds the absolute path to the admin's view directory
 res.locals._admin.views
 ```
+
 
   [1]: http://vimeo.com/56166857
   [2]: https://github.com/visionmedia

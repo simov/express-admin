@@ -1,8 +1,9 @@
-##Tools
 
-###NginX
+## Tools
 
-You can serve all your static files with [NginX][1].
+### NginX
+
+You can serve all your static files with [NginX][1]
 
 ```bash
 server {
@@ -54,5 +55,6 @@ server {
 	}
 }
 ```
+
 
   [1]: http://nginx.org/en/

@@ -1,8 +1,9 @@
-##Embedding
 
-You need to add one additional property inside your `config.json` file under the `app` key
+## Embedding
 
-###config.json
+Inside the `config.json` file, under the `app` key, include an additional `root` key, specifying the root mount point for your embedded _Express Admin_ application.
+
+### config.json
 
 ```js
 "app": {
@@ -11,9 +12,9 @@ You need to add one additional property inside your `config.json` file under the
 }
 ```
 
-###Initialization
+### Example
 
-In this example Express Admin will be located under the `/admin` path of your app
+In this example _Express Admin_ will be located under the `/admin` path of your app.
 
 ```js
 var express = require('express'),
