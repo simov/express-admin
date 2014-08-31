@@ -1,8 +1,9 @@
 
 var should = require('should');
-var data = require('../../lib/editview/data'),
-    editview = require('../../lib/editview/index'),
-    db = require('../../lib/db/database');
+var db = require('../../lib/db/database');
+var Xsql = require('xsql'),
+    instance = require('../../lib');
+var data, editview, qb;
 
 
 describe('data (editview)', function () {
@@ -16,6 +17,12 @@ describe('data (editview)', function () {
         };
         db.connect(options, function (err) {
             if (err) return done(err);
+            instance.db = db;
+            instance.x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
+
+            data = require('../../lib/editview/data');
+            editview = require('../../lib/editview/index');
+            qb = require('../../lib/qb');
             done();
         });
     });
@@ -124,7 +131,7 @@ describe('data (editview)', function () {
         });
     });
 
-    // _getSql - creates a sql select query for getting a record from table
+    // creates a sql select query for getting a record from table
     it('prepend table\'s __pk to the list of columns to be selected', function (done) {
         var args = {
             id: 5,
@@ -136,7 +143,7 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args).should.match(/.*`recipe`.`id` AS __pk.*/);
+        qb.tbl.select(args).should.match(/.*`recipe`.`id` as `__pk`.*/);
         done();
     });
 
@@ -152,8 +159,8 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args)
-            .should.match(/^SELECT `recipe`.`id` AS __pk,`recipe`.`column1` FROM.*/);
+        qb.tbl.select(args)
+            .should.match(/^select `recipe`.`id` as `__pk`,`recipe`.`column1` from.*/);
         done();
     });
 
@@ -168,7 +175,7 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args).should.match(/.*WHERE `recipe`.`id` = 5 ;$/);
+        qb.tbl.select(args).should.match(/.*where `recipe`.`id`=5 ;$/);
         done();
     });
 
@@ -183,7 +190,7 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args).should.match(/.*WHERE `recipe`.`recipe_id` = 5 ;$/);
+        qb.tbl.select(args).should.match(/.*where `recipe`.`recipe_id`=5 ;$/);
         done();
     });
 

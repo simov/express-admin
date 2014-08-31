@@ -2,10 +2,7 @@
 var path = require('path'),
     should = require('should');
 var Client = require('../../lib/db/client'),
-    sql = require('../../lib/sql/sql'),
     query = require('../../lib/sql/query');
-// var sqlitedb = path.join(__dirname,
-    // '../../../express-admin-examples/fixtures/sqlite-examples/db.sqlite');
 
 
 describe.skip('client (db)', function () {
@@ -28,15 +25,6 @@ describe.skip('client (db)', function () {
     describe('connect', function () {
         it('set global var for sql modules', function (done) {
             var client = new Client({mysql:{}});
-
-            sql.client.mysql.should.equal(true);
-            query.client.mysql.should.equal(true);
-
-            sql.client.pg.should.equal(false);
-            query.client.pg.should.equal(false);
-
-            sql.client.sqlite.should.equal(false);
-            query.client.sqlite.should.equal(false);
             done();
         });
         it.skip('mysql - connects to database', function (done) {
