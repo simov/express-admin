@@ -11,6 +11,8 @@ $(function () {
             var src = 'examples/'+files[i]+'.html';
             var example = '<h3><a name="example-'+files[i]+'" class="anchor" href="#example-'+files[i]+'"><span class="octicon octicon-link"></span></a>Example</h3>'+
                     '<a href="#" class="btn-example">click to expand</a>'+
+                    ' / '+
+                    '<a href="'+src+'" target="_blank">open in new tab</a>'+
                     '<iframe class="example '+files[i]+'" data-src="'+src+'" src="about:blank"></iframe>';
             var file = $('[name='+files[i]+']').parents('.file');
             var line = $('hr', file);
@@ -24,7 +26,7 @@ $(function () {
 
     $('.btn-example').on('click', function (e) {
         
-        var iframe = $(this).next();
+        var iframe = $(this).next().next();
         if (iframe.attr('src') === 'about:blank') {
             iframe.attr('src', iframe.data('src'));
         }
