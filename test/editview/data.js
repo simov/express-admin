@@ -20,10 +20,12 @@ describe('data (editview)', function () {
             instance.db = db;
             instance.x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
 
-            data = require('../../lib/editview/data');
-            editview = require('../../lib/editview/index');
-            qb = require('../../lib/qb');
-            done();
+            setTimeout(function () {
+                data = require('../../lib/editview/data');
+                editview = require('../../lib/editview/index');
+                qb = require('../../lib/qb');
+                done();
+            },0);
         });
     });
 
