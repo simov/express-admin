@@ -43,10 +43,10 @@ describe('data (editview)', function () {
         done();
     });
 
-    // _getRef - get the referenced table data (oneToMany || manyToMany)
+    // _getData - get the referenced table data (oneToMany || manyToMany)
     it('return the referenced table\'s data', function (done) {
         var ref = {table: 'item', pk: 'id', columns: ['name']};
-        data.otm._getRef({db: db}, ref, function (err, rows) {
+        data.otm._getData({db: db}, ref, function (err, rows) {
             if (err) return done(err);
             should.deepEqual(rows, [
                 { __pk: '4', __text: 'cherries' },
