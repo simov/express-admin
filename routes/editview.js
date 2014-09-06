@@ -17,7 +17,6 @@ function getArgs (req, res) {
         upath    : res.locals._admin.config.app.upload
     };
     args.name = res.locals._admin.slugs[args.slug];
-    args.config = dcopy(args.settings[args.name]);
     return args;
 }
 
