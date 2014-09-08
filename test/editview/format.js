@@ -16,7 +16,7 @@ describe('format (editview)', function () {
                 { __pk: '2', __text: 'tea' }
             ]
         };
-        format._setActiveSingle(column, 1);
+        format.setActiveSingle(column, 1);
         column.value[2].selected.should.equal(true);
         done();
     });
@@ -32,7 +32,7 @@ describe('format (editview)', function () {
                 { __pk: '2', __text: 'tea' }
             ]
         };
-        format._setActiveMultiple(column, [5,2]);
+        format.setActiveMultiple(column, [5,2]);
         column.value[1].selected.should.equal(true);
         column.value[4].selected.should.equal(true);
         done();
