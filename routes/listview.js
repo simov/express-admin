@@ -1,17 +1,9 @@
 
 var dcopy = require('deep-copy');
-var qb = require('../lib/qb');
-// listview
-var listview = {
-    data: require('../lib/listview/data')},
-    pagination = require('../lib/listview/pagination'),
-    filter = require('../lib/listview/filter');
-// editview
-var editview = {
-    otm: require('../lib/editview/data').otm,
-    stc: require('../lib/editview/data').stc,
-    format: require('../lib/editview/format')
-};
+var qb = require('../lib/qb'),
+    data = require('../lib/data'),
+    format = require('../lib/format');
+var filter = require('../lib/listview/filter');
 
 
 function getArgs (req, res) {
@@ -30,14 +22,14 @@ function getArgs (req, res) {
 }
 
 exports.get = function (req, res, next) {
-    data(req, res, next);
+    _data(req, res, next);
 }
 
 exports.post = function (req, res, next) {
-    data(req, res, next);
+    _data(req, res, next);
 }
 
-function data (req, res, next) {
+function _data (req, res, next) {
     var args = getArgs(req, res),
         events = res.locals._admin.events;
 
@@ -45,33 +37,33 @@ function data (req, res, next) {
     qb.lst.select(args);
 
     events.preList(req, res, args, function () {
-    listview.data(args, function (err, data) {
+    data.list.get(args, function (err, ddata) {
         if (err) return next(err);
-        pagination.get(args, function (err, pager) {
+        data.pagination.get(args, function (err, pager) {
             if (err) return next(err);
             // always should be in front of filter.getColumns
             // as it may reduce args.config.columns
             var order = filter.getOrderColumns(req, args);
             args.config.columns = filter.getColumns(args);
 
-            editview.otm.get(args, function (err) {
+            data.otm.get(args, function (err) {
                 if (err) return next(err);
-                editview.stc.get(args);
+                data.stc.get(args);
 
-                render(req, res, args, data, pager, order, next);
+                render(req, res, args, ddata, pager, order, next);
             });
         });
     });
     });
 }
 
-function render (req, res, args, data, pager, order, next) {
+function render (req, res, args, ddata, pager, order, next) {
     // set filter active items
     for (var i=0; i < args.config.columns.length; i++) {
         var column = args.config.columns[i],
             value = args.filter.columns[column.name];
         column.defaultValue = null;
-        column.value = editview.format.value(column, value);
+        column.value = format.form.value(column, value);
     }
 
     res.locals.view = {
@@ -110,8 +102,8 @@ function render (req, res, args, data, pager, order, next) {
     res.locals.collapsed = args.filter.show;
     res.locals.or = args.filter.or;
 
-    res.locals.columns = data.columns;
-    res.locals.records = data.records;
+    res.locals.columns = ddata.columns;
+    res.locals.records = ddata.records;
     res.locals.pagination = pager;
 
     res.locals.partials = {
