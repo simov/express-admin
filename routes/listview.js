@@ -1,6 +1,6 @@
 
 var dcopy = require('deep-copy');
-var qb = require('../lib/qb'),
+var qb = require('../lib/qb')(),
     data = require('../lib/data'),
     format = require('../lib/format');
 var filter = require('../lib/listview/filter');

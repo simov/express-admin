@@ -24,7 +24,7 @@ var db = require('./lib/db/database'),
     routes = require('./lib/app/routes');
 
 var Xsql = require('xsql'),
-    instance = require('./lib');
+    qb = require('./lib/qb');
 
 
 // creates project's config files
@@ -46,8 +46,8 @@ function initDatabase (args, cb) {
     db.connect(args.config, function (err) {
         if (err) return cb(err);
 
-        instance.db = db;
-        instance.x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
+        var x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
+        qb(x);
 
         db.empty(db.client.config.schema, function (err, empty) {
             if (err) return cb(err);

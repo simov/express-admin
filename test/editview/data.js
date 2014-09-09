@@ -1,9 +1,11 @@
 
-var should = require('should');
-var db = require('../../lib/db/database');
-var Xsql = require('xsql'),
-    instance = require('../../lib');
-var data, editview, qb;
+var should = require('should'),
+    Xsql = require('xsql');
+var db = require('../../lib/db/database'),
+    data = require('../../lib/data'),
+    editview = require('../../lib/editview/index'),
+    qb = require('../../lib/qb');
+
 
 
 describe('data (editview)', function () {
@@ -17,15 +19,9 @@ describe('data (editview)', function () {
         };
         db.connect(options, function (err) {
             if (err) return done(err);
-            instance.db = db;
-            instance.x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
-
-            setTimeout(function () {
-                data = require('../../lib/data');
-                editview = require('../../lib/editview/index');
-                qb = require('../../lib/qb');
-                done();
-            }, 100);
+            var x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
+            qb = qb(x);
+            done();
         });
     });
 
