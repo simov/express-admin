@@ -21,7 +21,7 @@ describe('data (editview)', function () {
             instance.x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
 
             setTimeout(function () {
-                data = require('../../lib/editview/data');
+                data = require('../../lib/data');
                 editview = require('../../lib/editview/index');
                 qb = require('../../lib/qb');
                 done();
