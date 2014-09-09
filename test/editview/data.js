@@ -25,7 +25,7 @@ describe('data (editview)', function () {
                 editview = require('../../lib/editview/index');
                 qb = require('../../lib/qb');
                 done();
-            },0);
+            }, 100);
         });
     });
 
