@@ -67,6 +67,25 @@ function initDatetimePickers (type, ctx) {
 }
 
 $(function () {
+    var $tableRows = $('.table-row');
+
+    $('#table-filter').on('keyup', function (e) {
+      var $this = $(e.currentTarget);
+      var value = $this.val();
+
+      $tableRows.each(function (index, item) {
+        var $item = $(item);
+        var tableName = $item.attr('data-table-name');
+
+        if (tableName.indexOf(value) === -1) {
+          $item.hide();
+        }
+        else {
+          $item.show();
+        }
+      });
+    });
+
     // inlines
     $('.add-another').on('click', function (e) {
         // table and current index

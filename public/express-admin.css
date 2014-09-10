@@ -33,6 +33,7 @@
 
 /*mainview*/
 .x-table tbody td .glyphicon-plus { font-size: 8px; position: relative; top: -1px; }
+#table-filter { width: 200px; }
 
 /*listview add record*/
 #express-admin { position: relative; }
