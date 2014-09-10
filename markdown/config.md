@@ -41,9 +41,10 @@ The application's configuration is stored inside the `config.json` file.
     - **layouts** - toggle the layout button
     - **themes** - toggle the themes button
     - **languages** - toggle the languages button
-    - **root** - root location for the admin (used **only** when embedding - see the docs)
+    - **root** - root location for the admin (used **only** when [embedding][3])
     - **upload** - absolute path to the upload folder (default: "public/upload")
 
 
   [1]: https://github.com/felixge/node-mysql#connection-options
   [2]: https://github.com/brianc/node-postgres
+  [3]: #embedding
