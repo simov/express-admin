@@ -1,5 +1,6 @@
 
-var dcopy = require('deep-copy');
+var async = require('async'),
+    dcopy = require('deep-copy');
 var qb = require('../lib/qb')(),
     data = require('../lib/data'),
     format = require('../lib/format');
@@ -36,24 +37,41 @@ function _data (req, res, next) {
     args.filter = filter.prepareSession(req, args);
     qb.lst.select(args);
 
-    events.preList(req, res, args, function () {
-    data.list.get(args, function (err, ddata) {
-        if (err) return next(err);
-        data.pagination.get(args, function (err, pager) {
-            if (err) return next(err);
-            // always should be in front of filter.getColumns
-            // as it may reduce args.config.columns
-            var order = filter.getOrderColumns(req, args);
-            args.config.columns = filter.getColumns(args);
-
-            data.otm.get(args, function (err) {
-                if (err) return next(err);
-                data.stc.get(args);
-
-                render(req, res, args, ddata, pager, order, next);
+    var results = {};
+    async.series([
+        events.preList.bind(events, req, res, args),
+        function (done) {
+            data.list.get(args, function (err, result) {
+                if (err) return done(err);
+                results.data = result;
+                done();
             });
-        });
-    });
+        },
+        function (done) {
+            data.pagination.get(args, function (err, pager) {
+                if (err) return done(err);
+                // always should be in front of filter.getColumns
+                // as it may reduce args.config.columns
+                results.order = filter.getOrderColumns(req, args);
+                args.config.columns = filter.getColumns(args);
+                results.pager = pager;
+                done();
+            });
+        },
+        function (done) {
+            data.otm.get(args, function (err) {
+                if (err) return done(err);
+                data.stc.get(args);
+                done();
+            });
+        }
+    ], function (err) {
+        if (err) return next(err);
+        render(
+            req, res, args,
+            results.data, results.pager, results.order,
+            next
+        );
     });
 }
 
