@@ -32,10 +32,10 @@ function initDatetimePickers (type, ctx) {
         keyboardNavigation: 0, forceParse: 0, viewSelect: 'decade'
     };
     var controls = [
-        {format: 'yyyy-mm-dd',      formatViewType: 'date', startView: 2, minView: 2, maxView: 4},
-        {format: 'hh:ii',           formatViewType: 'time', startView: 1, minView: 0, maxView: 1},
-        {format: 'yyyy-mm-dd hh:ii',formatViewType: 'date', startView: 2, minView: 0, maxView: 4},
-        {format: 'yyyy',            formatViewType: 'date', startView: 4, minView: 4, maxView: 4}
+        {format: 'yyyy-mm-dd',         formatViewType: 'date', startView: 2, minView: 2, maxView: 4},
+        {format: 'hh:ii:ss',           formatViewType: 'time', startView: 1, minView: 0, maxView: 1},
+        {format: 'yyyy-mm-dd hh:ii:ss',formatViewType: 'date', startView: 2, minView: 0, maxView: 4},
+        {format: 'yyyy',               formatViewType: 'date', startView: 4, minView: 4, maxView: 4}
     ];
     var mobile = ['date', 'time', 'datetime', 'date'];
 
