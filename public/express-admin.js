@@ -27,9 +27,11 @@ function getControls (self) {
         ].join(), self);
 }
 function initDatetimePickers (type, ctx) {
+    var lang = document.cookie.replace(/lang=(\w{2}).*/, '$1');
     var options = {
         weekStart: 1, autoclose: 1, todayHighlight: 1,
-        keyboardNavigation: 0, forceParse: 0, viewSelect: 'decade'
+        keyboardNavigation: 0, forceParse: 0, viewSelect: 'decade',
+        language: lang == 'cn' ? 'zh-CN' : lang
     };
     var controls = [
         {format: 'yyyy-mm-dd',         formatViewType: 'date', startView: 2, minView: 2, maxView: 4},
@@ -182,18 +184,19 @@ $(function () {
     });
 
     // init
-    var layout   = localStorage.getItem('layout')   || 'fixed',
-        theme    = localStorage.getItem('theme')    || 'default',
-        language = document.cookie.replace('lang=', '');
-
+    var layout   = localStorage.getItem('layout') || 'fixed';
     $('#layout li').removeClass('active');
     $('#layout [href$="'+layout+'"]').parent().addClass('active');
 
+    var theme = localStorage.getItem('theme') || 'default';
     $('#theme li').removeClass('active');
     $('#theme [href$="'+theme+'"]').parent().addClass('active');
 
+    var lang = document.cookie.replace(/lang=(\w{2}).*/, '$1');
     $('#language li').removeClass('active');
-    $('#language [href$="'+language+'"]').parent().addClass('active');
+    $('#language [href$="'+lang+'"]').parent().addClass('active');
+    $('head').append('<script src="/jslib/locales/bootstrap-datetimepicker.'+lang+'.js"'+
+        ' type="text/javascript" charset="utf-8"></script>');
 
     // chosen
     if ($('.chosen-select').length)
