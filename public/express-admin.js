@@ -194,8 +194,11 @@ $(function () {
     var lang = cookie.getItem('lang');
     $('#language li').removeClass('active');
     $('#language [href$="'+lang+'"]').parent().addClass('active');
-    $('head').append('<script src="/jslib/locales/bootstrap-datetimepicker.'+lang+'.js"'+
-        ' type="text/javascript" charset="utf-8"></script>');
+    if (lang != 'en')
+        $('head').append(
+            '<script src="'+xAdmin.root+'/jslib/locales/bootstrap-datetimepicker.'+lang+'.js"'+
+            ' type="text/javascript" charset="utf-8"></script>'
+        );
 
     // chosen
     if ($('.chosen-select').length)
