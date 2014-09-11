@@ -45,7 +45,7 @@
         "deep-copy"        : "1.0.0",
         "xsql"             : "1.0.1",
         "moment"           : "2.8.3",
-        "express-admin-static": "2.2.0"
+        "express-admin-static": "2.2.1"
     },
     "devDependencies": {
         "mocha" : "*",
