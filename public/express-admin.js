@@ -27,7 +27,7 @@ function getControls (self) {
         ].join(), self);
 }
 function initDatetimePickers (type, ctx) {
-    var lang = document.cookie.replace(/lang=(\w{2}).*/, '$1');
+    var lang = cookie.getItem('lang');
     var options = {
         weekStart: 1, autoclose: 1, todayHighlight: 1,
         keyboardNavigation: 0, forceParse: 0, viewSelect: 'decade',
@@ -177,8 +177,7 @@ $(function () {
 
     // lang
     $('#language a').on('click', function (e) {
-        var lang = this.hash.slice(1);
-        document.cookie = 'lang='+lang;
+        cookie.setItem('lang', this.hash.slice(1));
         window.location.reload(true);
         return false;
     });
@@ -192,7 +191,7 @@ $(function () {
     $('#theme li').removeClass('active');
     $('#theme [href$="'+theme+'"]').parent().addClass('active');
 
-    var lang = document.cookie.replace(/lang=(\w{2}).*/, '$1');
+    var lang = cookie.getItem('lang');
     $('#language li').removeClass('active');
     $('#language [href$="'+lang+'"]').parent().addClass('active');
     $('head').append('<script src="/jslib/locales/bootstrap-datetimepicker.'+lang+'.js"'+
