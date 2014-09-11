@@ -26,6 +26,8 @@ var db = require('./lib/db/database'),
 var Xsql = require('xsql'),
     qb = require('./lib/qb');
 
+var moment = require('moment');
+
 
 // creates project's config files
 function initCommandLine (args, cb) {
@@ -204,6 +206,7 @@ function initServer (args) {
         // i18n
         var lang = req.cookies.lang || 'en';
         res.cookie('lang', lang, {path: '/', maxAge: 900000000});
+        moment.locale(lang == 'cn' ? 'zh-cn' : lang);
         
         // template vars
         res.locals.string = args.langs[lang];
