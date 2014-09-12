@@ -1,21 +1,26 @@
 
-![express admin][1]
+![img-screenshot]
 
-<hr />
+---
 
-[![Build Status](https://travis-ci.org/simov/express-admin.png)](https://travis-ci.org/simov/express-admin)
+[![img-npm-install]][url-npm]
 
-[![NPM](https://nodei.co/npm/express-admin.png?downloads=true)](https://nodei.co/npm/express-admin/)
+[![img-npm-version]][url-npm]
+[![img-npm-downloads]][url-npm]
+[![img-travis]][url-travis]
 
-# [Introductory Screencast][2]
 
-# [Documentation][3]
+# [Introductory Screencast][url-screencast]
 
-# [Examples][4]
+# [Documentation][url-docs]
 
-# [Tests][5]
+# [Examples][url-examples]
+
+# [Tests][url-tests]
+
 
 # License
+
 (The MIT License)
 
 Copyright (c) 2012-2014 simov &lt;simeonvelichkov@gmail.com&gt;
@@ -27,8 +32,15 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-  [1]: http://i.imgur.com/6wFggqg.png
-  [2]: http://www.youtube.com/watch?v=1CdoCB96QNk
-  [3]: http://simov.github.io/express-admin-site/
-  [4]: http://github.com/simov/express-admin-examples/
-  [5]: https://github.com/simov/express-admin-tests
+  [url-screencast]: http://www.youtube.com/watch?v=1CdoCB96QNk
+  [url-docs]: http://simov.github.io/express-admin-site/
+  [url-examples]: http://github.com/simov/express-admin-examples/
+  [url-tests]: https://github.com/simov/express-admin-tests
+  [url-npm]: https://www.npmjs.org/package/express-admin
+  [url-travis]: https://travis-ci.org/simov/express-admin
+
+  [img-screenshot]: http://i.imgur.com/6wFggqg.png (Express Admin)
+  [img-npm-install]: https://nodei.co/npm/express-admin.png?mini=true (NPM Install)
+  [img-npm-version]: http://img.shields.io/npm/v/express-admin.svg?style=flat (NPM Version)
+  [img-npm-downloads]: http://img.shields.io/npm/dm/express-admin.svg?style=flat (NPM Downloads)
+  [img-travis]: http://img.shields.io/travis/simov/express-admin.svg?style=flat (Build Status)
