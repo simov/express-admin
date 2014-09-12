@@ -4,12 +4,15 @@
 <table class="table table-bordered table-striped table-hover x-table">
     <thead>
         <tr class="label-default">
-            <th>{{string.tables}}</th>
+            <th>
+                {{string.tables}}
+                <input id="table-filter" type="text" placeholder="Filter tables" class="pull-right form-control">
+            </th>
         </tr>
     </thead>
     <tbody>
     {{#tables}}
-        <tr>
+        <tr class="table-row" data-table-name="{{name}}">
             <td>
                 <a href="{{root}}/{{slug}}">{{name}}</a>
                 <a href="{{root}}/{{slug}}/add" class="glyphicon glyphicon-plus" title="{{string.add}} {{name}}"></a>
