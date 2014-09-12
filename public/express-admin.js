@@ -1,11 +1,4 @@
 
-Date.prototype.toJSONLocal = function() {
-    var local = new Date(this);
-    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0, 10); // toJSON is not supported in <IE8
-};
-
-
 ;(function($) {
 'use strict';
 
@@ -14,6 +7,11 @@ var chosen = {
     no_results_text: 'No results matched!<br /> <a href="#">Click to add</a> ',
     width: '100%'
 };
+function toJSONLocal (date) {
+    var local = new Date(date);
+    local.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    return local.toJSON().slice(0, 10); // toJSON is not supported in <IE8
+}
 function isMobile () {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/gi
         .test(navigator.userAgent);
@@ -151,13 +149,13 @@ $(function () {
     });
 
     // layout
-    $('#layout a').on('click', function (e) {
+    $('#x-layout a').on('click', function (e) {
         $('body, #navbar').removeClass();
         var layout = this.hash.slice(1);
         layout == 'fixed'
             ? $('body, #navbar').addClass('container')
             : $('body, #navbar').addClass('container container-fluid');
-        $('#layout li').removeClass('active');
+        $('#x-layout li').removeClass('active');
         $(this).parent().addClass('active');
         localStorage.setItem('layout', layout);
         return false;
@@ -165,35 +163,46 @@ $(function () {
 
     // theme
     var bootstrap = $('#bootstrap');
-    $('#theme a').on('click', function (e) {
+    $('#x-theme a').on('click', function (e) {
         var theme = this.hash.slice(1),
             url = xAdmin.root+'/bootswatch/'+theme+'/bootstrap.min.css';
         bootstrap.attr('href', url);
-        $('#theme li').removeClass('active');
+        $('#x-theme li').removeClass('active');
         $(this).parent().addClass('active');
         localStorage.setItem('theme', theme);
         return false;
     });
 
     // lang
-    $('#language a').on('click', function (e) {
+    $('#x-lang a').on('click', function (e) {
         cookie.setItem('lang', this.hash.slice(1));
         window.location.reload(true);
         return false;
     });
 
+    $('body').on('click', 'td .form-group .btn-today', function (e) {
+        $(this).parents('td').find('input').val(toJSONLocal(new Date()));
+        return false;
+    });
+
+    // filter
+    $('.glyphicon-filter').on('click', function (e) {
+        $('.x-filter').toggle();
+        return false;
+    });
+
     // init
     var layout   = localStorage.getItem('layout') || 'fixed';
-    $('#layout li').removeClass('active');
-    $('#layout [href$="'+layout+'"]').parent().addClass('active');
+    $('#x-layout li').removeClass('active');
+    $('#x-layout [href$="'+layout+'"]').parent().addClass('active');
 
     var theme = localStorage.getItem('theme') || 'default';
-    $('#theme li').removeClass('active');
-    $('#theme [href$="'+theme+'"]').parent().addClass('active');
+    $('#x-theme li').removeClass('active');
+    $('#x-theme [href$="'+theme+'"]').parent().addClass('active');
 
     var lang = cookie.getItem('lang');
-    $('#language li').removeClass('active');
-    $('#language [href$="'+lang+'"]').parent().addClass('active');
+    $('#x-lang li').removeClass('active');
+    $('#x-lang [href$="'+lang+'"]').parent().addClass('active');
     if (lang != 'en')
         $('head').append(
             '<script src="'+xAdmin.root+'/jslib/locales/bootstrap-datetimepicker.'+lang+'.js"'+
@@ -206,16 +215,5 @@ $(function () {
 
     // datepicker
     initDatetimePickers('static', document);
-
-    $('body').on('click', 'td .form-group .btn-today', function (e) {
-        $(this).parents('td').find('input').val(new Date().toJSONLocal());
-        return false;
-    });
-
-    // filter
-    $('.glyphicon-filter').on('click', function (e) {
-        $('.x-filter').toggle();
-        return false;
-    });
 });
 })(jQuery);
