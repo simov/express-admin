@@ -1,21 +1,20 @@
+express-admin [![Travis Build Status][travis-badge]][travis-badge-url]
+=============
+
+[![NPM][node-badge]][node-badge-url]
+
+
+* [Introductory Screencast][2]
+* [Documentation][3]
+* [Examples][4]
+* [Tests][5]
+
+------
 
 ![express admin][1]
 
-<hr />
 
-[![Build Status](https://travis-ci.org/simov/express-admin.png)](https://travis-ci.org/simov/express-admin)
-
-[![NPM](https://nodei.co/npm/express-admin.png?downloads=true)](https://nodei.co/npm/express-admin/)
-
-# [Introductory Screencast][2]
-
-# [Documentation][3]
-
-# [Examples][4]
-
-# [Tests][5]
-
-# License
+## License
 (The MIT License)
 
 Copyright (c) 2012-2014 simov &lt;simeonvelichkov@gmail.com&gt;
@@ -32,3 +31,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   [3]: http://simov.github.io/express-admin-site/
   [4]: http://github.com/simov/express-admin-examples/
   [5]: https://github.com/simov/express-admin-tests
+  [travis-badge]: https://travis-ci.org/simov/express-admin.svg
+  [travis-badge-url]: https://travis-ci.org/simov/express-admin
+  [node-badge]: https://nodei.co/npm/express-admin.png?downloads=true
+  [node-badge-url]: https://nodei.co/npm/express-admin/
