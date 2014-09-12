@@ -67,6 +67,31 @@ function initDatetimePickers (type, ctx) {
 }
 
 $(function () {
+    // mainview table filter
+    (function () {
+        var $input = $('.x-mv.x-filter [name=table]');
+        $input.on('change input', function (e) {
+            var value = $(this).val();
+            $('.x-table:eq(0) tbody tr').each(function (index) {
+                var name = $('a:eq(0)', this).text();
+                (name.indexOf(value) == -1) ? $(this).hide() : $(this).show();
+                localStorage.setItem('mv-filter', value);
+            });
+        });
+        $('.x-mv.x-filter [name=clear]').on('click', function (e) {
+            localStorage.setItem('mv-filter', '');
+            $input.val('');
+            $input.trigger('change');
+            $('.x-filter').hide();
+        });
+        var mvfilter = localStorage.getItem('mv-filter');
+        if (mvfilter) {
+            $input.val(mvfilter);
+            $input.trigger('change');
+            $('.x-mv.x-filter').show();
+        }
+    }());
+
     // inlines
     $('.add-another').on('click', function (e) {
         // table and current index
