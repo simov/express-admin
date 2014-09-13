@@ -1,9 +1,10 @@
 
+require('colors');
+
 var fs = require('fs'),
     path = require('path');
 var cli = require('./lib/app/cli'),
     project = require('./lib/app/project');
-require('colors');
 
 var express = require('express'),
     logger = require('morgan'),
@@ -21,6 +22,11 @@ var db = require('./lib/db/database'),
     Schema = require('./lib/db/schema'),
     settings = require('./lib/app/settings'),
     routes = require('./lib/app/routes');
+
+var Xsql = require('xsql'),
+    qb = require('./lib/qb');
+
+var moment = require('moment');
 
 
 // creates project's config files
@@ -41,10 +47,14 @@ function initCommandLine (args, cb) {
 function initDatabase (args, cb) {
     db.connect(args.config, function (err) {
         if (err) return cb(err);
+
+        var x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
+        qb(x);
+
         db.empty(db.client.config.schema, function (err, empty) {
             if (err) return cb(err);
             if (empty) return cb(new Error('Empty schema!'));
-            
+
             var schema = new Schema(db);
             schema.getAllColumns(function (err, info) {
                 if (err) return cb(err);
@@ -196,6 +206,7 @@ function initServer (args) {
         // i18n
         var lang = req.cookies.lang || 'en';
         res.cookie('lang', lang, {path: '/', maxAge: 900000000});
+        moment.locale(lang == 'cn' ? 'zh-cn' : lang);
         
         // template vars
         res.locals.string = args.langs[lang];
@@ -287,5 +298,12 @@ exports = module.exports = {
     initCommandLine: initCommandLine,
     initDatabase: initDatabase,
     initSettings: initSettings,
-    initServer: initServer
+    initServer: initServer,
+    init: function (config, done) {
+        this.initDatabase(config, function (err) {
+            if (err) return done(err);
+            this.initSettings(config);
+            return done(null, this.initServer(config));
+        }.bind(this));
+    }
 }

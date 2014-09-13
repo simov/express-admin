@@ -12,6 +12,15 @@
 }
 .container-fluid { width: auto; max-width: none; }
 
+/*hide chosen select by default*/
+.chosen-select { display: none; }
+
+/*fix table size and content*/
+.x-table { table-layout: fixed; }
+.x-table thead th,
+.x-table tbody td { word-wrap: break-word; }
+.x-table tbody td span.label-default { display: inline-block; max-width: 100%; white-space: normal; margin-bottom: 2px; }
+
 /*editview buttons*/
 #controls { text-align: right; }
 #controls button { width: auto; }

@@ -1,8 +1,11 @@
 
-var should = require('should');
-var data = require('../../lib/editview/data'),
+var should = require('should'),
+    Xsql = require('xsql');
+var db = require('../../lib/db/database'),
+    data = require('../../lib/data'),
     editview = require('../../lib/editview/index'),
-    db = require('../../lib/db/database');
+    qb = require('../../lib/qb');
+
 
 
 describe('data (editview)', function () {
@@ -16,6 +19,8 @@ describe('data (editview)', function () {
         };
         db.connect(options, function (err) {
             if (err) return done(err);
+            var x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
+            qb = qb(x);
             done();
         });
     });
@@ -34,10 +39,10 @@ describe('data (editview)', function () {
         done();
     });
 
-    // _getRef - get the referenced table data (oneToMany || manyToMany)
+    // _getData - get the referenced table data (oneToMany || manyToMany)
     it('return the referenced table\'s data', function (done) {
         var ref = {table: 'item', pk: 'id', columns: ['name']};
-        data.otm._getRef({db: db}, ref, function (err, rows) {
+        data.otm._getData({db: db}, ref, function (err, rows) {
             if (err) return done(err);
             should.deepEqual(rows, [
                 { __pk: '4', __text: 'cherries' },
@@ -124,7 +129,7 @@ describe('data (editview)', function () {
         });
     });
 
-    // _getSql - creates a sql select query for getting a record from table
+    // creates a sql select query for getting a record from table
     it('prepend table\'s __pk to the list of columns to be selected', function (done) {
         var args = {
             id: 5,
@@ -136,7 +141,7 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args).should.match(/.*`recipe`.`id` AS __pk.*/);
+        qb.tbl.select(args).should.match(/.*`recipe`.`id` as `__pk`.*/);
         done();
     });
 
@@ -152,8 +157,8 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args)
-            .should.match(/^SELECT `recipe`.`id` AS __pk,`recipe`.`column1` FROM.*/);
+        qb.tbl.select(args)
+            .should.match(/^select `recipe`.`id` as `__pk`,`recipe`.`column1` from.*/);
         done();
     });
 
@@ -168,7 +173,7 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args).should.match(/.*WHERE `recipe`.`id` = 5 ;$/);
+        qb.tbl.select(args).should.match(/.*where `recipe`.`id`=5 ;$/);
         done();
     });
 
@@ -183,7 +188,7 @@ describe('data (editview)', function () {
                 ]
             }
         };
-        data.tbl._getSql(args).should.match(/.*WHERE `recipe`.`recipe_id` = 5 ;$/);
+        qb.tbl.select(args).should.match(/.*where `recipe`.`recipe_id`=5 ;$/);
         done();
     });
 

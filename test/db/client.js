@@ -1,11 +1,9 @@
 
 var path = require('path'),
-    should = require('should');
+    should = require('should'),
+    Xsql = require('xsql');
 var Client = require('../../lib/db/client'),
-    sql = require('../../lib/sql/sql'),
-    query = require('../../lib/sql/query');
-// var sqlitedb = path.join(__dirname,
-    // '../../../express-admin-examples/fixtures/sqlite-examples/db.sqlite');
+    qb = require('../../lib/qb');
 
 
 describe.skip('client (db)', function () {
@@ -28,15 +26,6 @@ describe.skip('client (db)', function () {
     describe('connect', function () {
         it('set global var for sql modules', function (done) {
             var client = new Client({mysql:{}});
-
-            sql.client.mysql.should.equal(true);
-            query.client.mysql.should.equal(true);
-
-            sql.client.pg.should.equal(false);
-            query.client.pg.should.equal(false);
-
-            sql.client.sqlite.should.equal(false);
-            query.client.sqlite.should.equal(false);
             done();
         });
         it.skip('mysql - connects to database', function (done) {
@@ -148,7 +137,9 @@ describe.skip('client (db)', function () {
             var client = new Client(config);
             client.connect(config.mysql, function (err) {
                 if (err) return done(err);
-                var sql = query.replace('show-columns', 'controls', 'express-admin-examples');
+                var x = new Xsql({dialect:client.name, schema:client.config.schema});
+                qb(x);
+                var sql = qb.partials.columns('controls', 'express-admin-examples');
                 client.query(sql, function (err, rows) {
                     if (err) return done(err);
 
@@ -183,7 +174,9 @@ describe.skip('client (db)', function () {
             var client = new Client(config);
             client.connect(config.pg, function (err) {
                 if (err) return done(err);
-                var sql = query.replace('show-columns', 'controls', 'public');
+                var x = new Xsql({dialect:client.name, schema:client.config.schema});
+                qb(x);
+                var sql = qb.partials.columns('controls', 'public');
                 client.query(sql, function (err, rows) {
                     if (err) return done(err);
                     
@@ -217,7 +210,9 @@ describe.skip('client (db)', function () {
             var client = new Client(config);
             client.connect(config.sqlite, function (err) {
                 if (err) return done(err);
-                var sql = query.replace('show-columns', 'controls', '');
+                var x = new Xsql({dialect:client.name, schema:client.config.schema});
+                qb(x);
+                var sql = qb.partials.columns('controls', '');
                 client.query(sql, function (err, rows) {
                     if (err) return done(err);
                     
@@ -251,7 +246,9 @@ describe.skip('client (db)', function () {
             var client = new Client(config);
             client.connect(config.pg, function (err) {
                 if (err) return done(err);
-                var sql = query.replace('show-columns', 'controls', 'public');
+                var x = new Xsql({dialect:client.name, schema:client.config.schema});
+                qb(x);
+                var sql = qb.partials.columns('controls', 'public');
                 client.query(sql, function (err, rows) {
                     if (err) return done(err);
                     

@@ -18,7 +18,6 @@ all:
 		test/cli \
 		test/db \
 		test/editview \
-		test/routes \
-		test/sql
+		test/routes
 
 .PHONY: test

@@ -10,6 +10,7 @@
         "/jslib/bootstrap.min.js",
         "/jslib/bootstrap-datetimepicker.min.js",
         "/jslib/chosen.jquery.min.js",
+        "/jslib/cookie.js",
         "/express-admin.js"
     ]
 }

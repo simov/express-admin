@@ -1,5 +1,6 @@
 
-var dcopy = require('deep-copy');
+var async = require('async'),
+    dcopy = require('deep-copy');
 var editview = require('../lib/editview/index'),
     database = require('../lib/db/update');
 
@@ -17,7 +18,6 @@ function getArgs (req, res) {
         upath    : res.locals._admin.config.app.upload
     };
     args.name = res.locals._admin.slugs[args.slug];
-    args.config = dcopy(args.settings[args.name]);
     return args;
 }
 
@@ -27,12 +27,15 @@ function page (req, args) {
     return page ? '?p='+page : '';
 }
 
+function action (req, name) {
+    return {}.hasOwnProperty.call(req.body.action, name);
+}
+
 exports.get = function (req, res, next) {
     var args = getArgs(req, res);
 
     editview.getTypes(args, function (err, data) {
         if (err) return next(err);
-        
         render(req, res, next, data, args);
     });
 }
@@ -40,62 +43,59 @@ exports.get = function (req, res, next) {
 exports.post = function (req, res, next) {
     var args = getArgs(req, res),
         events = res.locals._admin.events;
-    // var fs = require('fs');
-    // fs.writeFileSync('dump.json', JSON.stringify(req.body, null, 4), 'utf8');
 
     editview.getTypes(args, function (err, data) {
         if (err) return next(err);
 
         var view = req.body.view,
-            action = req.body.action,
             table = Object.keys(view)[0];
 
-        if ({}.hasOwnProperty.call(action, 'remove')) {
+        if (action(req, 'remove')) {
             // should be based on constraints
             args.action = 'remove';
 
         } else if ({}.hasOwnProperty.call(view[table].records[0], 'insert')) {
-            if (args.error && !args.debug) return render(req, res, next, data, args);
+            if (args.error && !args.debug)
+                return render(req, res, next, data, args);
             args.action = 'insert';
 
         } else {
-            if (args.error && !args.debug) return render(req, res, next, data, args);
+            if (args.error && !args.debug)
+                return render(req, res, next, data, args);
             args.action = 'update';
         }
 
+        async.series([
+            events.preSave.bind(events, req, res, args),
 
-        events.preSave(req, res, args, function () {
-        database.update(args, function (err) {
-        events.postSave(req, res, args, function () {
+            database.update.bind(database, args),
+
+            events.postSave.bind(events, req, res, args)
+
+        ], function (err) {
             if (err) {
                 req.session.error = err.message;
                 res.redirect(res.locals.root+'/'+args.slug+page(req, args));
                 return;
             }
 
+            req.session.success = true;
+
             // based on clicked button
-            switch (true) {
-                case {}.hasOwnProperty.call(action, 'remove'):
-                    // the message should be different for delete
-                    req.session.success = true;
-                    res.redirect(res.locals.root+'/'+args.slug+page(req, args));
-                    break;
-                case {}.hasOwnProperty.call(action, 'save'):
-                    req.session.success = true;
-                    res.redirect(res.locals.root+'/'+args.slug+page(req, args));
-                    break;
-                case {}.hasOwnProperty.call(action, 'another'):
-                    req.session.success = true;
-                    res.redirect(res.locals.root+'/'+args.slug+'/add');
-                    break;
-                case {}.hasOwnProperty.call(action, 'continue'):
-                    req.session.success = true;
-                    if (args.debug) return render(req, res, next, data, args);
-                    res.redirect(res.locals.root+'/'+args.slug+'/'+args.id.join());
-                    break;
+            if (action(req, 'remove')) {
+                // the message should be different for delete
+                res.redirect(res.locals.root+'/'+args.slug+page(req, args));
             }
-        });
-        });
+            else if (action(req, 'save')) {
+                res.redirect(res.locals.root+'/'+args.slug+page(req, args));
+            }
+            else if (action(req, 'another')) {
+                res.redirect(res.locals.root+'/'+args.slug+'/add');
+            }
+            else if (action(req, 'continue')) {
+                if (args.debug) return render(req, res, next, data, args);
+                res.redirect(res.locals.root+'/'+args.slug+'/'+args.id.join());
+            }
         });
     });
 }

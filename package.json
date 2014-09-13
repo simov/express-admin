@@ -1,6 +1,6 @@
 {
     "name": "express-admin",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "MySql, MariaDB, SQLite and PostgreSQL database admin built with Express and Bootstrap.",
     "keywords": [
         "mysql",
@@ -36,14 +36,16 @@
         "hogan.js"         : "3.0.2",
         "mysql"            : "2.2.0",
         "mysql-validator"  : "0.1.6",
+        "async"            : "0.9.0",
         "pwd"              : "0.0.3",
         "commander"        : "1.3.2",
         "colors"           : "0.6.1",
         "slugify"          : "0.1.0",
         "sr-pagination"    : "1.0.1",
         "deep-copy"        : "1.0.0",
-        "moment"           : "2.1.0",
-        "express-admin-static": "2.2.0"
+        "xsql"             : "1.0.1",
+        "moment"           : "2.8.3",
+        "express-admin-static": "2.2.1"
     },
     "devDependencies": {
         "mocha" : "*",
