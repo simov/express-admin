@@ -5,25 +5,32 @@ exports.get = function (req, res, next) {
 
     var tables = [];
     for (var key in settings) {
-        var view = settings[key];
-        if (!view.mainview.show || !view.table.pk) continue;
-        tables.push({slug: view.slug, name: view.table.verbose});
-    }
-    var views = [], have = false;
-    for (var key in custom) {
-        var view = custom[key].app;
-        if (!view || !view.mainview || !view.mainview.show) continue;
-        views.push({slug: view.slug, name: view.verbose});
-        have = true;
+        var item = settings[key];
+        if (!item.mainview.show || !item.table.pk || item.table.view) continue;
+        tables.push({slug: item.slug, name: item.table.verbose});
     }
 
-    res.locals.tables = tables;
-    res.locals.views = views;
-    res.locals.have = have;
+    var views = [];
+    for (var key in settings) {
+        var item = settings[key];
+        if (!item.mainview.show || !item.table.view) continue;
+        views.push({slug: item.slug, name: item.table.verbose});
+    }
+
+    var customs = [];
+    for (var key in custom) {
+        var item = custom[key].app;
+        if (!item || !item.mainview || !item.mainview.show) continue;
+        customs.push({slug: item.slug, name: item.verbose});
+    }
+
+    res.locals.tables = !tables.length ? null : {items: tables};
+    res.locals.views = !views.length ? null : {items: views};
+    res.locals.custom = !customs.length ? null : {items: customs};
     
     res.locals.partials = {
         content:  'mainview'
     };
-    
+
     next();
 }

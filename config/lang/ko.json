@@ -20,6 +20,7 @@
     "home"              : "",
     "site-admin"        : "사이트 관리",
     "tables"            : "테이블들",
+    "views"             : "Views",
     "others"            : "기타",
     
     "select"            : "선택하세요",

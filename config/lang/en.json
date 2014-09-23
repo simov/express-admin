@@ -20,6 +20,7 @@
     "home"              : "Home",
     "site-admin"        : "Site administration",
     "tables"            : "Tables",
+    "views"             : "Views",
     "others"            : "Others",
     
     "select"            : "Select",

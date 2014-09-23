@@ -24,6 +24,7 @@
     </div>
 </form>
 
+{{#tables}}
 <table class="table table-bordered table-striped table-hover x-table">
     <thead>
         <tr class="label-default">
@@ -31,18 +32,38 @@
         </tr>
     </thead>
     <tbody>
-    {{#tables}}
+    {{#items}}
         <tr>
             <td>
                 <a href="{{root}}/{{slug}}">{{name}}</a>
                 <a href="{{root}}/{{slug}}/add" class="glyphicon glyphicon-plus" title="{{string.add}} {{name}}"></a>
             </td>
         </tr>
-    {{/tables}}
+    {{/items}}
     </tbody>
 </table>
+{{/tables}}
 
-{{#have}}
+{{#views}}
+<table class="table table-bordered table-striped table-hover x-table">
+    <thead>
+        <tr class="label-default">
+            <th>{{string.views}}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#items}}
+        <tr>
+            <td>
+                <a href="{{root}}/{{slug}}">{{name}}</a>
+            </td>
+        </tr>
+    {{/items}}
+    </tbody>
+</table>
+{{/views}}
+
+{{#custom}}
 <table class="table table-bordered table-striped table-hover x-table">
     <thead>
         <tr class="label-default">
@@ -50,13 +71,13 @@
         </tr>
     </thead>
     <tbody>
-    {{#views}}
+    {{#items}}
         <tr>
             <td>
                 <a href="{{root}}/{{slug}}">{{name}}</a>
             </td>
         </tr>
-    {{/views}}
+    {{/items}}
     </tbody>
 </table>
-{{/have}}
+{{/custom}}
