@@ -18,15 +18,16 @@ var express = require('express'),
     consolidate = require('consolidate'),
     hogan = require('hogan.js');
 
-var db = require('./lib/db/database'),
-    Schema = require('./lib/db/schema'),
+var moment = require('moment'),
+    async = require('async');
+
+var Client = require('./lib/db/client'),
+    schema = require('./lib/db/schema'),
     settings = require('./lib/app/settings'),
     routes = require('./lib/app/routes');
 
 var Xsql = require('xsql'),
     qb = require('./lib/qb');
-
-var moment = require('moment');
 
 
 // creates project's config files
@@ -43,38 +44,57 @@ function initCommandLine (args, cb) {
     });
 }
 
-// modifies args.settings
-function initDatabase (args, cb) {
-    db.connect(args.config, function (err) {
-        if (err) return cb(err);
+// sets args.db.client
+// updates args.settings
+function initDatabase (args, done) {
+    try {
+        var client = new Client(args.config);
+    } catch (err) {
+        return done(err);
+    }
 
-        var x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
-        qb(x);
-
-        db.empty(db.client.config.schema, function (err, empty) {
-            if (err) return cb(err);
-            if (empty) return cb(new Error('Empty schema!'));
-
-            var schema = new Schema(db);
-            schema.getAllColumns(function (err, info) {
-                if (err) return cb(err);
-
+    async.series([
+        function (done) {
+            var options = args.config.mysql||args.config.pg||args.config.sqlite;
+            client.connect(options, function (err) {
+                if (err) return done(err);
+                var x = new Xsql({
+                    dialect: client.name,
+                    schema: client.config.schema});
+                qb = qb(x);
+                done();
+            });
+        },
+        function (done) {
+            var sql = qb.partials.tables(client.config.schema);
+            client.query(sql, function (err, rows) {
+                if (err) return done(err);
+                if (!rows.length) return done(new Error('Empty schema!'));
+                done();
+            });
+        },
+        function (done) {
+            schema.getData(client, function (err, data) {
+                if (err) return done(err);
                 // write back the settings
                 var fpath = path.join(args.dpath, 'settings.json'),
-                    updated = settings.refresh(args.settings, info);
+                    updated = settings.refresh(args.settings, data);
                 fs.writeFileSync(fpath, JSON.stringify(updated, null, 4), 'utf8');
 
                 args.settings = updated;
-                cb();
+                done();
             });
-        });
+        }
+    ], function (err) {
+        if (err) return done(err);
+        args.db = {client:client};
+        done();
     });
 }
 
 // modifies args
 function initSettings (args) {
     // route variables
-    args.db = db;
     
     // upload
     var upload = args.config.app.upload || path.join(__dirname, 'public/upload');
