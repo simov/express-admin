@@ -1,7 +1,7 @@
 
 var should = require('should'),
     Xsql = require('xsql');
-var db = require('../../lib/db/database'),
+var Client = require('../../lib/db/client'),
     data = require('../../lib/data'),
     editview = require('../../lib/editview/index'),
     qb = require('../../lib/qb');
@@ -9,15 +9,15 @@ var db = require('../../lib/db/database'),
 
 
 describe('data (editview)', function () {
+    var db = {};
     before(function (done) {
         var options = {
-            mysql: {
-                database: 'express-admin-simple',
-                user: 'liolio',
-                password: 'karamba'
-            }
+            database: 'express-admin-simple',
+            user: 'liolio',
+            password: 'karamba'
         };
-        db.connect(options, function (err) {
+        db.client = new Client({mysql:true});
+        db.client.connect(options, function (err) {
             if (err) return done(err);
             var x = new Xsql({dialect:db.client.name, schema:db.client.config.schema});
             qb = qb(x);

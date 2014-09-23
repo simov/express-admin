@@ -61,7 +61,7 @@ function initDatabase (args, done) {
                 var x = new Xsql({
                     dialect: client.name,
                     schema: client.config.schema});
-                qb = qb(x);
+                if ('function'===typeof qb) qb = qb(x);
                 done();
             });
         },

@@ -2,23 +2,20 @@
 var fs = require('fs'),
     path = require('path'),
     should = require('should');
-var db = require('../../lib/db/database'),
-    Schema = require('../../lib/db/schema');
+var Client = require('../../lib/db/client'),
+    schema = require('../../lib/db/schema');
 
 
 describe('schema (db)', function () {
-    var schema = null;
+    var client = null;
     before(function (done) {
-        db.connect({mysql:{database: 'express-admin-simple',
-                    user:'liolio', password:'karamba'}}, function (err) {
-            if (err) return done(err);
-            schema = new Schema(db);
-            done();
-        });
+        var options = {database: 'express-admin-simple', user:'liolio', password:'karamba'};
+        client = new Client({mysql:true});
+        client.connect(options, done);
     });
 
     it('get table names', function (done) {
-        schema.getTables(function (err, tables) {
+        schema.getTables(client, 'tables', function (err, tables) {
             if (err) return done(err);
             tables.join().should.equal(
                 'item,property,purchase,recipe,recipe_ref,recipe_type,subtype,type,user');
@@ -26,9 +23,9 @@ describe('schema (db)', function () {
         });
     });
     it('get table columns info', function (done) {
-        schema.getTables(function (err, tables) {
+        schema.getTables(client, 'tables', function (err, tables) {
             if (err) return done(err);
-            schema.getColumns(tables[0], function (err, info) {
+            schema.getColumns(client, tables[0], function (err, info) {
                 if (err) return done(err);
                 var columns = Object.keys(info);
                 columns.join().should.equal('id,name,notes');
@@ -38,7 +35,7 @@ describe('schema (db)', function () {
         });
     });
     it('get schema columns info', function (done) {
-        schema.getAllColumns(function (err, columns) {
+        schema.getData(client, function (err, columns) {
             if (err) return done(err);
             var tables = Object.keys(columns);
             tables.join().should.equal(
