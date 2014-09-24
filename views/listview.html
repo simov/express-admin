@@ -1,9 +1,14 @@
 
+{{#view}}
 <h2>
-    {{string.select}} {{view.name}} {{string.to-change}}.
+    {{#table}}{{string.select}} {{name}} {{string.to-change}}.{{/table}}
+    {{^table}}{{name}}{{/table}}
     <a href="#" class="glyphicon glyphicon-filter" title="{{string.filter}}"></a>
-    <a href="{{root}}/{{view.slug}}/add" class="btn btn-default">{{string.add}} {{view.name}}</a>
+    {{#table}}
+    <a href="{{root}}/{{slug}}/add" class="btn btn-default">{{string.add}} {{name}}</a>
+    {{/table}}
 </h2>
+{{/view}}
 
 {{#show.success}}
 <div class="alert alert-success alert-dismissable">
