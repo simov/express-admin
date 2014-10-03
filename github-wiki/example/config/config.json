@@ -1,0 +1,30 @@
+{
+    "page": {
+        "title": "Project",
+        "meta": {
+            "author": "John Doe (thecoder)",
+            "copyright": "John Doe (thecoder)",
+            "title": "Project - Awesome project is awesome",
+            "keywords": "my, awesome, project, on, github",
+            "description": "Project - Awesome project is awesome"
+        },
+        "favicon": "css/favicon.ico"
+    },
+    "path": {
+        "markdown": "/home/mighty/node/modules/github-wiki/example/markdown",
+        "html": "/home/mighty/node/modules/github-wiki/example/html",
+        "static": "../",
+        "credentials": "/home/mighty/node/modules/github-wiki/example/config/credentials.json",
+        "navigation": "/home/mighty/node/modules/github-wiki/example/template/navigation.html",
+        "css": [
+            "css/style.css"
+        ],
+        "js": [
+            "js/events.js"
+        ]
+    },
+    "project": {
+        "repo": "https://github.com/thecoder/project",
+        "files": ["home", "page"]
+    }
+}

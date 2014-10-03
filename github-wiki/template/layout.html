@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+{{#page}}
+    {{#meta}}
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="{{author}}" />
+    <meta name="copyright" content="{{copyright}}" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="{{title}}" />
+    <meta name="keywords" content="{{keywords}}" lang="en-us" />
+    <meta name="description" content="{{description}}" />
+    {{/meta}}
+
+    <title>{{title}}</title>
+{{/page}}
+    
+{{#path}}
+    <link href="{{prefix}}{{static}}css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="{{prefix}}{{static}}css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    {{#css}}
+    <link href="{{prefix}}{{.}}" media="all" rel="stylesheet" type="text/css" />
+    {{/css}}
+    <script src="{{prefix}}{{static}}js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{prefix}}{{static}}js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{prefix}}{{static}}js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    {{#js}}
+    <script src="{{prefix}}{{.}}" type="text/javascript" charset="utf-8"></script>
+    {{/js}}
+{{/path}}
+
+{{#page}}
+    {{#favicon}}
+    <link rel="shortcut icon" href="{{path.prefix}}{{favicon}}" />
+    {{/favicon}}
+{{/page}}
+</head>
+<body>
+    <div class="markdown-body">
+{{>content}}
+    {{>navigation}}
+    <a href="{{project.repo}}" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

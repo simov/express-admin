@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
+
+<h3>
+<a name="many-to-many" class="anchor" href="#many-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>Many to Many</h3>
+
+<p><a href="images/many-to-many.png" target="_blank"><img src="images/many-to-many.png" alt="Many to Many" style="max-width:100%;"></a></p>
+
+<ol>
+<li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
+<li>Add the object from below inside that table's columns array</li>
+</ol><div class="highlight highlight-js"><pre><span class="p">{</span>
+    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Recipe Types"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"recipe_type"</span><span class="p">,</span>
+    <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"int(11)"</span><span class="p">,</span>
+    <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"manyToMany"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"link"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"recipe_has_recipe_types"</span><span class="p">,</span>
+            <span class="s2">"parentPk"</span><span class="o">:</span> <span class="s2">"recipe_id"</span><span class="p">,</span>
+            <span class="s2">"childPk"</span><span class="o">:</span> <span class="s2">"recipe_type_id"</span>
+        <span class="p">},</span>
+        <span class="s2">"ref"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"recipe_type"</span><span class="p">,</span>
+            <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"id"</span><span class="p">,</span>
+            <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"title"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<blockquote>
+<p>The <code>link</code> and the <code>ref</code> keys additionally can contain a <code>schema</code> key, specifying PostgreSQL schema name for the relation table</p>
+</blockquote>
+
+<ul>
+<li>
+<strong>verbose</strong> - exactly as a regular column, this is the column's name inside the admin's user interface</li>
+<li>
+<strong>name</strong> - should be unique name among all other columns in this table</li>
+<li>
+<strong>control</strong> - column's control type <em>(you won't change this)</em>
+</li>
+<li>
+<strong>type</strong> - column's data type <em>(you won't change this)</em>
+</li>
+<li>
+<strong>allowNull</strong> - indicates whether you'll be able to save a record without selecting any item from the referenced table or not</li>
+<li>
+<strong>listview</strong> - columns's settings for the admin's listview <em>(where all the table's records are listed)</em>
+
+<ul>
+<li>
+<strong>show</strong> - column's visibility inside the listview</li>
+</ul>
+</li>
+<li>
+<strong>editview</strong> - columns's settings for the admin's editview <em>(where the record is being edited)</em>
+
+<ul>
+<li>
+<strong>show</strong> - column's visibility inside the editview</li>
+</ul>
+</li>
+<li>
+<strong>manyToMany</strong> - indicates that this is not a regular table column
+
+<ul>
+<li>
+<strong>link</strong> - linking table configuration
+
+<ul>
+<li>
+<strong>table</strong> - name of the link table</li>
+<li>
+<strong>parentPk</strong> - name of the primary key for the parent table <em>(can be array as well)</em>
+</li>
+<li>
+<strong>childPk</strong> - name of the primary key for the child table <em>(can be array as well)</em>
+</li>
+</ul>
+</li>
+<li>
+<strong>ref</strong> - configuration about the referenced table
+
+<ul>
+<li>
+<strong>table</strong> - name of the table that is being referenced</li>
+<li>
+<strong>pk</strong> - name of the referenced table primary key column <em>(can be array as well)</em>
+</li>
+<li>
+<strong>columns</strong> - array of columns to select from the referenced table</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><blockquote>
+<p>The <code>link</code> table's <code>parentPk</code> and <code>childPk</code> key can be array as well.<br>
+The <code>ref</code> table's <code>pk</code> key can be array as well.<br>
+See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
+</blockquote>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

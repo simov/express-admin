@@ -1,0 +1,49 @@
+{
+    "page": {
+        "title": "Express Admin",
+        "meta": {
+            "author": "Simeon Velichkov (simov)",
+            "copyright": "Simeon Velichkov (simov)",
+            "title": "Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap",
+            "keywords": "express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap",
+            "description": "Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap"
+        },
+        "favicon": "css/favicon.ico"
+    },
+    "path": {
+        "markdown"    : "/home/mighty/docs/express-admin/markdown",
+        "html"        : "/home/mighty/docs/express-admin/html",
+        "static"      : "github-wiki/",
+        "credentials" : "/home/mighty/docs/express-admin/config/credentials.json",
+        "navigation"  : "/home/mighty/docs/express-admin/template/navigation.html",
+        "css": [
+            "css/style.css"
+        ],
+        "js": [
+            "js/events.js"
+        ]
+    },
+    "project": {
+        "repo": "https://github.com/simov/express-admin",
+        "files": [
+            "about", "install",
+            "config", "settings", "custom",
+            "one-to-many", "many-to-many", "many-to-one", "one-to-one",
+            "compound",
+            "ckeditor", "tinymce", "multiple",
+            "views", "events", "embedding",
+            "themes",
+            "shell", "nginx", "apache"
+        ],
+        "dummy-all-files": [
+            "about", "install",
+            "config", "settings", "custom",
+            "one-to-many", "many-to-many", "many-to-one", "one-to-one",
+            "compound",
+            "ckeditor", "tinymce", "multiple",
+            "views", "events", "embedding",
+            "themes",
+            "shell", "nginx", "apache"
+        ]
+    }
+}

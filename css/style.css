@@ -1,0 +1,12 @@
+
+.file h1 { margin-top: 0; }
+.file img { border: 1px solid #ddd; border-radius: 3px; }
+
+.example { width: 100%; border: 1px solid #ddd; border-radius: 3px; box-sizing: border-box; display: none; }
+.example.one-to-many { height: 500px; }
+.example.many-to-many { height: 460px; }
+.example.many-to-one { height: 650px; }
+.example.one-to-one { height: 650px; }
+.example.custom-views-apps { height: 700px; }
+.example.themes { height: 650px; }
+.example.column { height: 650px; }

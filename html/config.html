@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<h3>
+<a name="configjson" class="anchor" href="#configjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>config.json</h3>
+
+<p>The application's configuration is stored inside the <code>config.json</code> file.</p>
+
+<ul>
+<li>The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.</li>
+<li>When using PostgreSQL, the <code>pg</code> key will accept any option from the <a href="https://github.com/brianc/node-postgres">node-postgres</a> connection options.</li>
+<li>When using SQLite, the <code>sqlite</code> key will contain only a <code>database</code> key with the absolute path to the database set as a value.</li>
+</ul><div class="highlight highlight-js"><pre><span class="p">{</span>
+    <span class="s2">"mysql"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">// or "pg" or "sqlite"</span>
+        <span class="s2">"database"</span><span class="o">:</span> <span class="s2">"express-admin-examples"</span><span class="p">,</span>
+        <span class="s2">"user"</span><span class="o">:</span> <span class="s2">"liolio"</span><span class="p">,</span>
+        <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"karamba"</span>
+        <span class="c1">// "schema": "schema-name"</span>
+    <span class="p">},</span>
+    <span class="s2">"server"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"port"</span><span class="o">:</span> <span class="mi">3000</span>
+    <span class="p">},</span>
+    <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"layouts"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"themes"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"languages"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"root"</span><span class="o">:</span> <span class="s2">"/admin"</span><span class="p">,</span>
+        <span class="s2">"upload"</span><span class="o">:</span> <span class="s2">"/upload/folder"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>mysql | pg | sqlite</strong> - connection options
+
+<ul>
+<li>
+<strong>database</strong> - name of the database to use for this connection (sqlite: absolute path to a database file)</li>
+<li>
+<strong>user</strong> - database user to authenticate with</li>
+<li>
+<strong>password</strong> - password for that database user</li>
+<li>
+<strong>schema</strong> - used only with PostgreSQL (default: "public")</li>
+</ul>
+</li>
+<li>
+<strong>server</strong> - server configuration
+
+<ul>
+<li>
+<strong>port</strong> - the server's port number (default: 3000)</li>
+</ul>
+</li>
+<li>
+<strong>app</strong> - admin application configuration
+
+<ul>
+<li>
+<strong>layouts</strong> - toggle the layout button</li>
+<li>
+<strong>themes</strong> - toggle the themes button</li>
+<li>
+<strong>languages</strong> - toggle the languages button</li>
+<li>
+<strong>root</strong> - root location for the admin (used <strong>only</strong> when <a href="#embedding">embedding</a>)</li>
+<li>
+<strong>upload</strong> - absolute path to the upload folder (default: "public/upload")</li>
+</ul>
+</li>
+</ul>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

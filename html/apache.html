@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="tools" class="anchor" href="#tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools</h2>
+
+<h3>
+<a name="apache" class="anchor" href="#apache" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache</h3>
+
+<p>In case some of your custom view's requests needs to be handled by <a href="http://httpd.apache.org/">Apache</a>, then add this to the nginx vhost file.</p>
+
+<div class="highlight highlight-bash"><pre><span class="c"># apache</span>
+location /some-slug/ <span class="o">{</span>
+    proxy_pass http://127.0.0.1:8008/some-slug/<span class="p">;</span>
+    proxy_set_header Host <span class="nv">$http_host</span><span class="p">;</span>
+    proxy_set_header X-Real-IP <span class="nv">$remote_addr</span><span class="p">;</span>
+    proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>Edit <code>/etc/apache2/ports.conf</code>.</p>
+
+<div class="highlight highlight-bash"><pre><span class="c"># When nginx is set as proxy</span>
+NameVirtualHost 127.0.0.1:8008
+Listen 127.0.0.1:8008
+</pre></div>
+
+<p>Create apache's virtual host file.</p>
+
+<div class="highlight highlight-bash"><pre>&lt;VirtualHost 127.0.0.1:8008&gt;
+    ServerAdmin admin@localhost
+    <span class="c"># apache's vhost name MUST MATCH the nginx's vhost name</span>
+    ServerName admin.example.com
+    ServerAlias admin.example.com
+    <span class="c"># some aliases etc.</span>
+    Alias /some-slug /path/to/some/dir
+    &lt;Location /some-slug&gt;
+        <span class="c"># some options ...</span>
+    &lt;/Location&gt;
+    <span class="c"># log</span>
+    ErrorLog /var/log/apache2/admin-error.log
+    CustomLog /var/log/apache2/admin-access.log combined
+&lt;/VirtualHost&gt;
+</pre></div>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

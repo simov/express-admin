@@ -1,6 +1,4 @@
 
-var scrollpsy;
-
 $(function () {
     (function addExamples () {
         var files = [
@@ -40,11 +38,5 @@ $(function () {
             : $(this).text('click to expand');
 
         return false;
-    });
-});
-
-$(window).on('load', function (e) {
-    scrollpsy = $('#navigation a').scrollpsy({
-        offset: 5
     });
 });

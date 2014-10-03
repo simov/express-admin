@@ -2,22 +2,24 @@
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="Simeon Velichkov" />
-    <meta name="copyright" content="Simeon Velichkov" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
     <meta name="robots" content="follow,index" />
     <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
     <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
     <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
 
     <title>Express Admin</title>
+    
+    <link href="github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/events.js" type="text/javascript" charset="utf-8"></script>
 
-    <link href="v2/css/github.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="v2/css/style.css" media="all" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="v2/css/favicon.ico" />
-
-    <script src="examples/jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="v2/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
-    <script src="v2/js/events.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="css/favicon.ico" />
 </head>
 <body>
     <div class="markdown-body">
@@ -140,7 +142,7 @@
 <li>
 <strong>languages</strong> - toggle the languages button</li>
 <li>
-<strong>root</strong> - root location for the admin (used <strong>only</strong> when embedding - see the docs)</li>
+<strong>root</strong> - root location for the admin (used <strong>only</strong> when <a href="#embedding">embedding</a>)</li>
 <li>
 <strong>upload</strong> - absolute path to the upload folder (default: "public/upload")</li>
 </ul>
@@ -1646,54 +1648,53 @@ Listen 127.0.0.1:8008
     ErrorLog /var/log/apache2/admin-error.log
     CustomLog /var/log/apache2/admin-access.log combined
 &lt;/VirtualHost&gt;
-</pre></div></div>
-        <nav id="navigation" class="repository-sidebar">
-            <ul>
-                <li><a href="#express-admin">Express Admin</a></li>
-                <li><a href="#install">Install</a></li>
-                <li><a href="#configuration">Configuration</a>
-                    <ul>
-                        <li><a href="#configjson">config.json</a></li>
-                        <li><a href="#settingsjson">settings.json</a></li>
-                        <li><a href="#customjson">custom.json</a></li>
-                    </ul>
-                </li>
-                <li><a href="#relationships">Relationships</a>
-                    <ul>
-                        <li><a href="#one-to-many">one to many</a></li>
-                        <li><a href="#many-to-many">many to many</a></li>
-                        <li><a href="#many-to-one">many to one</a></li>
-                        <li><a href="#one-to-one">one to one</a></li>
-                    </ul>
-                </li>
-                <li><a href="#compound-primary-key">Compound PK</a></li>
-                <li><a href="#editors">Editors</a>
-                    <ul>
-                        <li><a href="#ckeditor">ckeditor</a></li>
-                        <li><a href="#tinymce">tinymce</a></li>
-                        <li><a href="#multiple">multiple</a></li>
-                    </ul>
-                </li>
-                <li><a href="#custom-views-apps">Custom</a>
-                    <ul>
-                        <li><a href="#custom-views-apps">Views (Apps)</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#embedding">Embedding</a></li>
-                    </ul>
-                </li>
-                <li><a href="#themes">Themes</a></li>
-                <li><a href="#tools">Tools</a>
-                    <ul>
-                        <li><a href="#shell">shell</a></li>
-                        <li><a href="#nginx">nginx</a></li>
-                        <li><a href="#apache">apache</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+</pre></div></div>	
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="#express-admin">Express Admin</a></li>
+            <li><a href="#install">Install</a></li>
+            <li><a href="#configuration">Configuration</a>
+                <ul>
+                    <li><a href="#configjson">config.json</a></li>
+                    <li><a href="#settingsjson">settings.json</a></li>
+                    <li><a href="#customjson">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="#relationships">Relationships</a>
+                <ul>
+                    <li><a href="#one-to-many">one to many</a></li>
+                    <li><a href="#many-to-many">many to many</a></li>
+                    <li><a href="#many-to-one">many to one</a></li>
+                    <li><a href="#one-to-one">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="#compound-primary-key">Compound PK</a></li>
+            <li><a href="#editors">Editors</a>
+                <ul>
+                    <li><a href="#ckeditor">ckeditor</a></li>
+                    <li><a href="#tinymce">tinymce</a></li>
+                    <li><a href="#multiple">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="#custom-views-apps">Custom</a>
+                <ul>
+                    <li><a href="#custom-views-apps">Views (Apps)</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#embedding">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="#themes">Themes</a></li>
+            <li><a href="#tools">Tools</a>
+                <ul>
+                    <li><a href="#shell">shell</a></li>
+                    <li><a href="#nginx">nginx</a></li>
+                    <li><a href="#apache">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+        <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
     </div>
-
-    <a href="https://github.com/simov/express-admin" id="forkme-badge"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-
 </body>
 </html>

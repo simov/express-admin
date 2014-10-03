@@ -1,0 +1,24 @@
+{
+    "name": "purest-docs",
+    "version": "0.0.0",
+    "description": "Documentation site for Purest",
+    "private": true,
+    "keywords": [
+        "rest", "restful", "api", "http", "https", "client"
+    ],
+    "license"   : "MIT",
+    "author": {
+        "name"  : "simo",
+        "email" : "simeonvelichkov@gmail.com"
+    },
+    "repository": {
+        "type"  : "git",
+        "url"   : "git://github.com/simov/purest.git"
+    },
+    "dependencies": {
+        "hogan.js" : "3.0.2",
+        "purest"   : "*",
+        "async"    : "0.9.0"
+    },
+    "main": "./compile/convert"
+}

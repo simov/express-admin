@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="editors" class="anchor" href="#editors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editors</h2>
+
+<h3>
+<a name="ckeditor" class="anchor" href="#ckeditor" aria-hidden="true"><span class="octicon octicon-link"></span></a>CKEditor</h3>
+
+<h4>
+<a name="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h4>
+
+<p>You should either download CKEditor from <a href="http://ckeditor.com">ckeditor.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <em>//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.4.1/ckeditor.js</em></p>
+
+<h4>
+<a name="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h4>
+
+<p>Inside the <code>settings.json</code> file, find the column you are looking for, and add an additional <code>editor</code> property to its <code>control</code> type key, specifying the class name to use for this instance.</p>
+
+<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"class-name"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h4>
+
+<p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
+
+<div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"local"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
+            <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"/relative/to/above/path/ckeditor/ckeditor.js"</span><span class="p">,</span>
+                <span class="s2">"/relative/to/above/path/my-custom.js"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>public</strong> - static files configuration
+
+<ul>
+<li>
+<strong>path</strong> - absolute path to the static files location</li>
+<li>
+<strong>css</strong> - list of stylesheet files to be included</li>
+<li>
+<strong>js</strong> - list of javascript files to be included</li>
+</ul>
+</li>
+</ul><h4>
+<a name="my-customjs" class="anchor" href="#my-customjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
+
+<p>Your custom editor is initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// exclude textareas that are inside hidden inline rows</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">textarea</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">'tr'</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">'blank'</span><span class="p">))</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="c1">// textareas with this class name will get the default configuration</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">.</span><span class="nx">className</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'class-name'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="c1">// all other textareas won't be initialized as ckeditors</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// executed each time an inline is added</span>
+<span class="kd">function</span> <span class="nx">onAddInline</span> <span class="p">(</span><span class="nx">rows</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">CKEDITOR</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// for each of the new rows containing textareas</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'textarea'</span><span class="p">,</span> <span class="nx">rows</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// get the DOM instance</span>
+            <span class="kd">var</span> <span class="nx">textarea</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="c1">// textareas with this class name will get the default configuration</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">textarea</span><span class="p">.</span><span class="nx">className</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'class-name'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nx">CKEDITOR</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">textarea</span><span class="p">);</span>
+            <span class="c1">// all other textareas won't be initialized as ckeditors</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Here <code>class-name</code> is the same class name you specified inside the <code>settings.json</code> file for this column.</p>
+
+<p>The <code>CKEDITOR.replaceAll</code> method loops throgh all textareas on the page and filter out only to those that needs to be initialized as ckeditors. The most important bit is that you should always exclude the textareas that are contained inside the hidden row for an inline record. That's easy because all of them have a <code>blank</code> class on their containing row.</p>
+
+<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code></p>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

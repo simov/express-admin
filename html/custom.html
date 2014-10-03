@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<h3>
+<a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
+
+<p>All objects in this file are user created. The <code>public</code> key is related entirely to inclusion of custom <em>static files</em>. It's possible to have an object containing only public key in it, as well as object containing an <code>app</code> key only, or both.</p>
+
+<div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/app.js"</span><span class="p">,</span>
+        <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"unique-slug"</span><span class="p">,</span>
+        <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span><span class="p">,</span>
+        <span class="s2">"mainview"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"local"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/public/dir"</span><span class="p">,</span>
+            <span class="s2">"css"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"/relative/to/above/global.css"</span>
+            <span class="p">],</span>
+            <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"/relative/to/above/global.js"</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">"external"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"css"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"//absolute/url/external.css"</span>
+            <span class="p">],</span>
+            <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"//absolute/url/external.js"</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">"events"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/events.js"</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>app</strong> - expressjs application
+
+<ul>
+<li>
+<strong>path</strong> - absolute path to the custom view's <code>app.js</code> file</li>
+<li>
+<strong>slug</strong> - entry point for all routes in this custom app</li>
+<li>
+<strong>verbose</strong> - view's name inside the admin's user interface</li>
+<li>
+<strong>mainview</strong> - settings related to the admin's mainview
+
+<ul>
+<li>
+<strong>show</strong> - include/exclude from admin's list of custom views</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>public</strong> - custom static files
+
+<ul>
+<li>
+<strong>local</strong> - local files
+
+<ul>
+<li>
+<strong>path</strong> - absolute path to the static files location</li>
+<li>
+<strong>css</strong> - list of stylesheet files to be included</li>
+<li>
+<strong>js</strong> - list of javascript files to be included</li>
+</ul>
+</li>
+<li>
+<strong>external</strong> - external files
+
+<ul>
+<li>
+<strong>css</strong> - list of stylesheet urls to be included</li>
+<li>
+<strong>js</strong> - list of javascript urls to be included</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>events</strong> - path to file containing event hooks</li>
+</ul><p>See the <a href="#custom-views-apps">custom views</a> documentation and the <a href="https://github.com/simov/express-admin-examples">examples</a></p>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

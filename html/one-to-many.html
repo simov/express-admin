@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
+
+<h3>
+<a name="one-to-many" class="anchor" href="#one-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>One to Many</h3>
+
+<p><a href="images/one-to-many.png" target="_blank"><img src="images/one-to-many.png" alt="One to Many" style="max-width:100%;"></a></p>
+
+<ol>
+<li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
+<li>Inside that table's columns array find the foreign key column you want to use for the relation</li>
+<li>Inside that column's object insert <code>oneToMany</code> key</li>
+<li>Change the column's control type to <code>select</code>
+</li>
+</ol><div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">},</span>
+<span class="s2">"oneToMany"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"user"</span><span class="p">,</span>
+    <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"id"</span><span class="p">,</span>
+    <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">"firstname"</span><span class="p">,</span>
+        <span class="s2">"lastname"</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<blockquote>
+<p>The <code>oneToMany</code> key additionally can contain a <code>schema</code> key, specifying PostgreSQL schema name for the relation table</p>
+</blockquote>
+
+<ul>
+<li>
+<strong>oneToMany</strong> - contains information about the table that this foreign key references
+
+<ul>
+<li>
+<strong>table</strong> - name of the table that's being referenced</li>
+<li>
+<strong>pk</strong> - name of the referenced table primary key column <em>(can be array as well, see <a href="#compound-one-to-many">compound primary key</a> documentation)</em>
+</li>
+<li>
+<strong>columns</strong> - array of columns to select from the referenced table</li>
+</ul>
+</li>
+</ul>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

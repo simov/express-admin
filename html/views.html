@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="custom-views-apps" class="anchor" href="#custom-views-apps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom views (apps)</h2>
+
+<p>The admin's custom views follow the <a href="http://vimeo.com/56166857">Modular web applications with Node.js and Express</a> approach presented by <a href="https://github.com/visionmedia">TJ Holowaychuk</a>.</p>
+
+<p>The only difference here is that we're dealing with <code>mustache</code> templates.</p>
+
+<h3>
+<a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
+
+<div class="highlight highlight-js"><pre><span class="s2">"view1"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/app.js"</span><span class="p">,</span>
+        <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"view1"</span><span class="p">,</span>
+        <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"My Custom View"</span><span class="p">,</span>
+        <span class="s2">"mainview"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="appjs" class="anchor" href="#appjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>app.js</h3>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="c1">// set your custom views path</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'views'</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'views'</span><span class="p">));</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/view1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// create a realtive from the admin's view folder to your custom folder</span>
+    <span class="kd">var</span> <span class="nx">relative</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">relative</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">views</span><span class="p">,</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'views'</span><span class="p">));</span>
+
+    <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">partials</span> <span class="o">=</span> <span class="p">{</span>
+
+        <span class="c1">// set the path to your templates like this</span>
+        <span class="c1">// the content partial is declared inside the admin's base.html</span>
+        <span class="c1">// this is the entry point for all your custom stuff</span>
+        <span class="nx">content</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">relative</span><span class="p">,</span> <span class="s1">'template'</span><span class="p">)</span>
+    <span class="p">};</span>
+
+    <span class="c1">// typically you want your stuff to be rendered inside the admin's UI</span>
+    <span class="c1">// so no need to render here</span>
+    <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>You should definitely run the examples from the <a href="https://github.com/simov/express-admin-examples">examples repository</a> as each of the custom views (apps) presented there is really well commented.</p>
+
+<h3>
+<a name="route-wide-variables" class="anchor" href="#route-wide-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Route wide variables</h3>
+
+<p>Several variables are exposed to every route callback.</p>
+
+<div class="highlight highlight-js"><pre><span class="c1">// _admin's variable content is for internal purposes only and is not being rendered</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">connection</span><span class="c1">// the admin's database connection can be reused from here</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">config</span>       <span class="c1">// the contents of the config.json file</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">settings</span>     <span class="c1">// the contents of the settings.json file</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">custom</span>       <span class="c1">// the contents of the custom.json file</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">users</span>        <span class="c1">// the contents of the users.json file</span>
+
+<span class="c1">// shortcut variables that are being rendered</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">libs</span>       <span class="c1">// list of all client side libraries</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">themes</span>     <span class="c1">// list of all themes</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">layouts</span>    <span class="c1">// flag indicating layouts button visibility</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">languages</span>  <span class="c1">// list of all languages</span>
+
+<span class="c1">// holds the absolute path to the admin's view directory</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">views</span>
+</pre></div>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

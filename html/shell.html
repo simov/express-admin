@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="tools" class="anchor" href="#tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools</h2>
+
+<h3>
+<a name="shell" class="anchor" href="#shell" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shell</h3>
+
+<h4>
+<a name="debugging" class="anchor" href="#debugging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Debugging</h4>
+
+<p>Set a <code>breakpoint</code> somewhere inside your custom view files and debug as usual.</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>admin --debug-brk path/to/project/config/
+<span class="c"># or</span>
+<span class="nv">$ </span>node --debug-brk path/to/express-admin/app path/to/project/config/
+</pre></div>
+
+<h4>
+<a name="supervisor" class="anchor" href="#supervisor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supervisor</h4>
+
+<p>Auto reload your project while configuring it using <a href="https://github.com/isaacs/node-supervisor">supervisior</a></p>
+
+<p>Create a folder for your project's configuration files.</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>mkdir project
+</pre></div>
+
+<p>Then while you're still there you can use <code>supervisor</code> to watch your <code>project</code> folder, specifying that the extensions are <code>json</code></p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>supervisor -w project -e json -- path/to/express-admin/app -v project/
+</pre></div>
+
+<p>The <code>-v</code> flag that you're passing to the <em>Express Admin</em> app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
+
+<p>Additionally you can pass the <code>-l</code> flag as well, which will <code>log</code> out all sql queries that <em>Express Admin</em> generates.</p>
+
+<h4>
+<a name="forever" class="anchor" href="#forever" aria-hidden="true"><span class="octicon octicon-link"></span></a>Forever</h4>
+
+<p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a></p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>forever start path/to/express-admin/app path/to/project/config/
+</pre></div>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

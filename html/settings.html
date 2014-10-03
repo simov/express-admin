@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Simeon Velichkov (simov)" />
+    <meta name="copyright" content="Simeon Velichkov (simov)" />
+    <meta name="robots" content="follow,index" />
+    <meta name="title" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+    <meta name="keywords" content="express admin, express, mysql, mariadb, sqlite, postgresql, pg, admin, node, nodejs, expressjs, bootstrap" lang="en-us" />
+    <meta name="description" content="Express Admin - MySql, MariaDB, SQLite and PostgreSQL database admin for NodeJS built with Express and Bootstrap" />
+
+    <title>Express Admin</title>
+    
+    <link href="../github-wiki/css/github.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../github-wiki/css/github-wiki.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="../github-wiki/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/scrollpsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../github-wiki/js/github-wiki.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/events.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+</head>
+<body>
+    <div class="markdown-body">
+<h2>
+<a name="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<h3>
+<a name="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h3>
+
+<p>All settings related to the default Express Admin views are set inside the <code>settings.json</code> file, which is automatically generated with default values at first start up.</p>
+
+<div class="highlight highlight-js"><pre><span class="s2">"table_name"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"unique-slug"</span><span class="p">,</span>
+    <span class="s2">"table"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"table_name"</span><span class="p">,</span>
+        <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"pk_name"</span><span class="p">,</span>
+        <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span>
+        <span class="c1">// "schema": "name" // pg: set specific schema for this table only</span>
+    <span class="p">},</span>
+    <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{...},</span> <span class="c1">// see column definition below</span>
+        <span class="c1">// { "manyToMany" ... } // see 'Many to Many' documentation</span>
+    <span class="p">],</span>
+    <span class="s2">"mainview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"order"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"column_name1"</span><span class="o">:</span> <span class="s2">"asc"</span><span class="p">,</span>
+            <span class="s2">"column_name2"</span><span class="o">:</span> <span class="s2">"desc"</span>
+        <span class="p">},</span>
+        <span class="s2">"page"</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="s2">"filter"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"column_name1"</span><span class="p">,</span> <span class="s2">"column_name2"</span> <span class="p">...]</span>
+    <span class="p">},</span>
+    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"readonly"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="c1">// "manyToOne": { ... }, // see 'Many to One' documentation</span>
+        <span class="c1">// "oneToOne": { ... } // see 'One to One' documentation</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>The <code>settings.json</code> file contains a list of objects representing the database's tables. Each <code>table</code> object have:</p>
+
+<ul>
+<li>
+<strong>slug</strong> - unique slug among all other tables</li>
+<li>
+<strong>table</strong> - contains table's settings
+
+<ul>
+<li>
+<strong>name</strong> - table's database name <em>(typically you won't change this)</em>
+</li>
+<li>
+<strong>pk</strong> - table's primary key <em>(it will be set automatically)</em>
+</li>
+<li>
+<strong>verbose</strong> - table's name used inside the admin's user interface</li>
+</ul>
+</li>
+<li>
+<strong>columns</strong> - array of all table's columns <em>(see below)</em>. To reorder the columns appearance cut the entire column object and paste it on the desired position in this array</li>
+<li>
+<strong>mainview</strong> - table's settings for the admin's editview <em>(admin's root page)</em>
+
+<ul>
+<li>
+<strong>show</strong> - toggle table visibility inside the mainview's table list. Typically you want to hide tables that will be edited as <a href="#many-to-one">inlines</a> of other tables, or tables that are used as links for <a href="#many-to-many">many to many</a> relationships</li>
+</ul>
+</li>
+<li>
+<strong>listview</strong> - table's settings for the admin's listview <em>(where all the table's records are listed)</em>
+
+<ul>
+<li>
+<strong>order</strong> - list of columns by which to sort and their respective order direction</li>
+<li>
+<strong>page</strong> - how many records to show per page</li>
+<li>
+<strong>filter</strong> - list of column names to enable for filtering</li>
+</ul>
+</li>
+<li>
+<strong>editview</strong> - table's settings for the admin's editview <em>(where the record is being edited)</em>
+
+<ul>
+<li>
+<strong>readonly</strong> - this will omit the save and delete buttons at the bottom of the editview effectively making the table's records non editable</li>
+<li>
+<strong>manyToOne</strong> - see <a href="#many-to-one">many to one</a> documentation</li>
+<li>
+<strong>oneToOne</strong> - see <a href="#one-to-one">one to one</a> documentation</li>
+</ul>
+</li>
+</ul><h4>
+<a name="column" class="anchor" href="#column" aria-hidden="true"><span class="octicon octicon-link"></span></a>Column</h4>
+
+<p>Each <code>table</code> object contains an array of colums. Each <code>column</code> object have:</p>
+
+<div class="highlight highlight-js"><pre><span class="p">{</span>
+    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"column_name"</span><span class="p">,</span>
+    <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"varchar(45)"</span><span class="p">,</span>
+    <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="c1">// "oneToMany": { ... }, // see 'One to Many' documentation</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>verbose</strong> - column's name inside the admin's user interface</li>
+<li>
+<strong>name</strong> - column's database name <em>(typically you won't change this)</em>
+</li>
+<li>
+<p><strong>control</strong> - one of these</p>
+
+<div class="highlight highlight-js"><pre><span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="text"</span>
+<span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// textarea</span>
+<span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"some-class"</span><span class="p">}</span> <span class="c1">// html editor (see the docs)</span>
+<span class="p">{</span><span class="s2">"number"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="number"</span>
+<span class="p">{</span><span class="s2">"date"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datepicker</span>
+<span class="p">{</span><span class="s2">"time"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// timepicker</span>
+<span class="p">{</span><span class="s2">"datetime"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datetimepicker</span>
+<span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// yearpicker</span>
+<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file" (uploads to file system)</span>
+<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"binary"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file" (uploads to blob|bytea fields)</span>
+<span class="p">{</span><span class="s2">"radio"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"True"</span><span class="p">,</span><span class="s2">"False"</span><span class="p">]}</span> <span class="c1">// input type="radio"</span>
+<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select (used for one-to-many relationships)</span>
+<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select multiple (used for many-to-many relationships)</span>
+<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"value&amp;text"</span><span class="p">,{</span><span class="s2">"value"</span><span class="o">:</span><span class="s2">"text"</span><span class="p">}]}</span> <span class="c1">// select with static options</span>
+</pre></div>
+</li>
+<li><p><strong>type</strong> - column's data type <em>(typically you won't change this)</em></p></li>
+<li>
+<strong>allowNull</strong> - allowed to be null inside the database</li>
+<li>
+<strong>defaultValue</strong> - currently not used</li>
+<li>
+<strong>listview</strong> - columns's settings for the admin's listview <em>(where all the table's records are listed)</em>
+
+<ul>
+<li>
+<strong>show</strong> - column's visibility inside the listview. Typically you want to see only colums that contain short and meaningful data describing the whole record clearly. Primary key columns and columns that contain large amount of text typically should be hidden in this view</li>
+</ul>
+</li>
+<li>
+<strong>editview</strong> - columns's settings for the admin's editview <em>(where the record is being edited)</em>
+
+<ul>
+<li>
+<strong>show</strong> - column's visibility inside the editview<br><strong><code>All auto increment columns should be hidden!</code></strong><br><strong><code>Foreign keys for inline tables should be hidden!</code></strong><br>
+Columns that are not allowed to be <code>null</code> inside the database, can't be hidden here as this will result in a database error when trying to insert or update the record</li>
+</ul>
+</li>
+<li>
+<strong>oneToMany</strong> - see <a href="#one-to-many">one to many</a> documentation</li>
+</ul>	
+    
+    <nav id="navigation" class="repository-sidebar">
+        <ul>
+            <li><a href="about.html">Express Admin</a></li>
+            <li><a href="install.html">Install</a></li>
+            <li><a href="config.html">Configuration</a>
+                <ul>
+                    <li><a href="config.html">config.json</a></li>
+                    <li><a href="settings.html">settings.json</a></li>
+                    <li><a href="custom.html">custom.json</a></li>
+                </ul>
+            </li>
+            <li><a href="one-to-many.html">Relationships</a>
+                <ul>
+                    <li><a href="one-to-many.html">one to many</a></li>
+                    <li><a href="many-to-many.html">many to many</a></li>
+                    <li><a href="many-to-one.html">many to one</a></li>
+                    <li><a href="one-to-one.html">one to one</a></li>
+                </ul>
+            </li>
+            <li><a href="compound.html">Compound PK</a></li>
+            <li><a href="ckeditor.html">Editors</a>
+                <ul>
+                    <li><a href="ckeditor.html">ckeditor</a></li>
+                    <li><a href="tinymce.html">tinymce</a></li>
+                    <li><a href="multiple.html">multiple</a></li>
+                </ul>
+            </li>
+            <li><a href="views.html">Custom</a>
+                <ul>
+                    <li><a href="views.html">Views (Apps)</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="embedding.html">Embedding</a></li>
+                </ul>
+            </li>
+            <li><a href="themes.html">Themes</a></li>
+            <li><a href="shell.html">Tools</a>
+                <ul>
+                    <li><a href="shell.html">shell</a></li>
+                    <li><a href="nginx.html">nginx</a></li>
+                    <li><a href="apache.html">apache</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+    </div>
+</body>
+</html>

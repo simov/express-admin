@@ -12,5 +12,6 @@ logs
 results
 
 npm-debug.log
+node_modules
 
-credentials.json
+config/credentials.json
