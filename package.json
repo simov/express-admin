@@ -1,6 +1,6 @@
 {
     "name": "express-admin",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "description": "MySql, MariaDB, SQLite and PostgreSQL database admin built with Express and Bootstrap.",
     "keywords": [
         "mysql",
