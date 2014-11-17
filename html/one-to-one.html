@@ -24,21 +24,22 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
+<a id="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
-<a name="one-to-one" class="anchor" href="#one-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>One to One</h3>
+<a id="one-to-one" class="anchor" href="#one-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>One to One</h3>
 
 <p><a href="images/one-to-one.png" target="_blank"><img src="images/one-to-one.png" alt="One to One" style="max-width:100%;"></a></p>
 
 <ol>
 <li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
 <li>Inside that table's <code>editview</code> key add a <code>oneToOne</code> key</li>
-</ol><div class="highlight highlight-js"><pre><span class="s2">"oneToOne"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"address"</span><span class="o">:</span> <span class="s2">"user_id"</span><span class="p">,</span>
-    <span class="s2">"phone"</span><span class="o">:</span> <span class="s2">"user_id"</span>
-<span class="p">}</span>
-</pre></div>
+</ol>
+
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>oneToOne<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>address<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>user_id<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>user_id<span class="pl-pds">"</span></span>
+}</pre></div>
 
 <ul>
 <li>
@@ -50,7 +51,8 @@
 (<code>value</code> can be array as well, see <a href="#compound-one-to-one">compound primary key</a> documentation)</li>
 </ul>
 </li>
-</ul>	
+</ul>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

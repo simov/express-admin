@@ -24,43 +24,42 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
 <h3>
-<a name="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h3>
+<a id="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h3>
 
 <p>All settings related to the default Express Admin views are set inside the <code>settings.json</code> file, which is automatically generated with default values at first start up.</p>
 
-<div class="highlight highlight-js"><pre><span class="s2">"table_name"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"unique-slug"</span><span class="p">,</span>
-    <span class="s2">"table"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"table_name"</span><span class="p">,</span>
-        <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"pk_name"</span><span class="p">,</span>
-        <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span>
-        <span class="c1">// "schema": "name" // pg: set specific schema for this table only</span>
-    <span class="p">},</span>
-    <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{...},</span> <span class="c1">// see column definition below</span>
-        <span class="c1">// { "manyToMany" ... } // see 'Many to Many' documentation</span>
-    <span class="p">],</span>
-    <span class="s2">"mainview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"order"</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">"column_name1"</span><span class="o">:</span> <span class="s2">"asc"</span><span class="p">,</span>
-            <span class="s2">"column_name2"</span><span class="o">:</span> <span class="s2">"desc"</span>
-        <span class="p">},</span>
-        <span class="s2">"page"</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
-        <span class="s2">"filter"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"column_name1"</span><span class="p">,</span> <span class="s2">"column_name2"</span> <span class="p">...]</span>
-    <span class="p">},</span>
-    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"readonly"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="c1">// "manyToOne": { ... }, // see 'Many to One' documentation</span>
-        <span class="c1">// "oneToOne": { ... } // see 'One to One' documentation</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>pk_name<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>
+        <span class="pl-c"><span class="pl-pdc">//</span> "schema": "name" // pg: set specific schema for this table only</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        {...}, <span class="pl-c"><span class="pl-pdc">//</span> see column definition below</span>
+        <span class="pl-c"><span class="pl-pdc">//</span> { "manyToMany" ... } // see 'Many to Many' documentation</span>
+    ],
+    <span class="pl-s1"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>order<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>asc<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>desc<span class="pl-pds">"</span></span>
+        },
+        <span class="pl-s1"><span class="pl-pds">"</span>page<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-cn">25</span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>filter<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span> ...]
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>readonly<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">false</span>,
+        <span class="pl-c"><span class="pl-pdc">//</span> "manyToOne": { ... }, // see 'Many to One' documentation</span>
+        <span class="pl-c"><span class="pl-pdc">//</span> "oneToOne": { ... } // see 'One to One' documentation</span>
+    }
+}</pre></div>
 
 <p>The <code>settings.json</code> file contains a list of objects representing the database's tables. Each <code>table</code> object have:</p>
 
@@ -115,29 +114,30 @@
 <strong>oneToOne</strong> - see <a href="#one-to-one">one to one</a> documentation</li>
 </ul>
 </li>
-</ul><h4>
-<a name="column" class="anchor" href="#column" aria-hidden="true"><span class="octicon octicon-link"></span></a>Column</h4>
+</ul>
+
+<h4>
+<a id="column" class="anchor" href="#column" aria-hidden="true"><span class="octicon octicon-link"></span></a>Column</h4>
 
 <p>Each <code>table</code> object contains an array of colums. Each <code>column</code> object have:</p>
 
-<div class="highlight highlight-js"><pre><span class="p">{</span>
-    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Verbose Name"</span><span class="p">,</span>
-    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"column_name"</span><span class="p">,</span>
-    <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"varchar(45)"</span><span class="p">,</span>
-    <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="c1">// "oneToMany": { ... }, // see 'One to Many' documentation</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>column_name<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>defaultValue<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">null</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-c"><span class="pl-pdc">//</span> "oneToMany": { ... }, // see 'One to Many' documentation</span>
+}</pre></div>
 
 <ul>
 <li>
@@ -148,21 +148,20 @@
 <li>
 <p><strong>control</strong> - one of these</p>
 
-<div class="highlight highlight-js"><pre><span class="p">{</span><span class="s2">"text"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="text"</span>
-<span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// textarea</span>
-<span class="p">{</span><span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"some-class"</span><span class="p">}</span> <span class="c1">// html editor (see the docs)</span>
-<span class="p">{</span><span class="s2">"number"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="number"</span>
-<span class="p">{</span><span class="s2">"date"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datepicker</span>
-<span class="p">{</span><span class="s2">"time"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// timepicker</span>
-<span class="p">{</span><span class="s2">"datetime"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// datetimepicker</span>
-<span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// yearpicker</span>
-<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file" (uploads to file system)</span>
-<span class="p">{</span><span class="s2">"file"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"binary"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// input type="file" (uploads to blob|bytea fields)</span>
-<span class="p">{</span><span class="s2">"radio"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"True"</span><span class="p">,</span><span class="s2">"False"</span><span class="p">]}</span> <span class="c1">// input type="radio"</span>
-<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select (used for one-to-many relationships)</span>
-<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span> <span class="c1">// select multiple (used for many-to-many relationships)</span>
-<span class="p">{</span><span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">"options"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"value&amp;text"</span><span class="p">,{</span><span class="s2">"value"</span><span class="o">:</span><span class="s2">"text"</span><span class="p">}]}</span> <span class="c1">// select with static options</span>
-</pre></div>
+<div class="highlight highlight-js"><pre>{<span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> input type="text"</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> textarea</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>some-class<span class="pl-pds">"</span></span>} <span class="pl-c"><span class="pl-pdc">//</span> html editor (see the docs)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> input type="number"</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>date<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> datepicker</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>time<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> timepicker</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>datetime<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> datetimepicker</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>year<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> yearpicker</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> input type="file" (uploads to file system)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>binary<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> input type="file" (uploads to blob|bytea fields)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>radio<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>True<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>False<span class="pl-pds">"</span></span>]} <span class="pl-c"><span class="pl-pdc">//</span> input type="radio"</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> select (used for one-to-many relationships)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> select multiple (used for many-to-many relationships)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>value&amp;text<span class="pl-pds">"</span></span>,{<span class="pl-s1"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-ko">:</span><span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>}]} <span class="pl-c"><span class="pl-pdc">//</span> select with static options</span></pre></div>
 </li>
 <li><p><strong>type</strong> - column's data type <em>(typically you won't change this)</em></p></li>
 <li>
@@ -170,7 +169,7 @@
 <li>
 <strong>defaultValue</strong> - currently not used</li>
 <li>
-<strong>listview</strong> - columns's settings for the admin's listview <em>(where all the table's records are listed)</em>
+<strong>listview</strong> - column's settings for the admin's listview <em>(where all the table's records are listed)</em>
 
 <ul>
 <li>
@@ -178,17 +177,20 @@
 </ul>
 </li>
 <li>
-<strong>editview</strong> - columns's settings for the admin's editview <em>(where the record is being edited)</em>
+<strong>editview</strong> - column's settings for the admin's editview <em>(where the record is being edited)</em>
 
 <ul>
 <li>
-<strong>show</strong> - column's visibility inside the editview<br><strong><code>All auto increment columns should be hidden!</code></strong><br><strong><code>Foreign keys for inline tables should be hidden!</code></strong><br>
+<strong>show</strong> - column's visibility inside the editview<br>
+<strong><code>All auto increment columns should be hidden!</code></strong><br>
+<strong><code>Foreign keys for inline tables should be hidden!</code></strong><br>
 Columns that are not allowed to be <code>null</code> inside the database, can't be hidden here as this will result in a database error when trying to insert or update the record</li>
 </ul>
 </li>
 <li>
 <strong>oneToMany</strong> - see <a href="#one-to-many">one to many</a> documentation</li>
-</ul>	
+</ul>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

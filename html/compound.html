@@ -24,24 +24,23 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="compound-primary-key" class="anchor" href="#compound-primary-key" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound Primary Key</h2>
+<a id="compound-primary-key" class="anchor" href="#compound-primary-key" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound Primary Key</h2>
 
 <p><a href="images/compound-primary-key.png" target="_blank"><img src="images/compound-primary-key.png" alt="Compound Primary Key" style="max-width:100%;"></a></p>
 
 <p>Inside the <code>settings.json</code> file each table can be configured to have multiple primary keys through its <code>pk</code> field <em>(set automatically on project's first run)</em></p>
 
-<div class="highlight highlight-js"><pre><span class="s2">"table"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"tbl"</span><span class="p">,</span>
-    <span class="s2">"pk"</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">"id1"</span><span class="p">,</span>
-        <span class="s2">"id2"</span>
-    <span class="p">],</span>
-    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"tbl"</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tbl<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        <span class="pl-s1"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
+    ],
+    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tbl<span class="pl-pds">"</span></span>
+}</pre></div>
 
 <h3>
-<a name="compound-one-to-many" class="anchor" href="#compound-one-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound One to Many</h3>
+<a id="compound-one-to-many" class="anchor" href="#compound-one-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound One to Many</h3>
 
 <p><a href="images/compound-one-to-many.png" target="_blank"><img src="images/compound-one-to-many.png" alt="Compound One to Many" style="max-width:100%;"></a></p>
 
@@ -51,112 +50,109 @@
 
 <p>The <code>fk</code> key specifies the foreign keys in this table that are referencing the other one.</p>
 
-<div class="highlight highlight-js"><pre><span class="p">{</span>
-    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"otm"</span><span class="p">,</span>
-    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"otm"</span><span class="p">,</span>
-    <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"varchar(45)"</span><span class="p">,</span>
-    <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"fk"</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">"otm_id1"</span><span class="p">,</span>
-        <span class="s2">"otm_id2"</span>
-    <span class="p">],</span>
-    <span class="s2">"oneToMany"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"otm"</span><span class="p">,</span>
-        <span class="s2">"pk"</span><span class="o">:</span> <span class="p">[</span>
-            <span class="s2">"id1"</span><span class="p">,</span>
-            <span class="s2">"id2"</span>
-        <span class="p">],</span>
-        <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
-            <span class="s2">"name"</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>fk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        <span class="pl-s1"><span class="pl-pds">"</span>otm_id1<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>otm_id2<span class="pl-pds">"</span></span>
+    ],
+    <span class="pl-s1"><span class="pl-pds">"</span>oneToMany<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+            <span class="pl-s1"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
+        ],
+        <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+            <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>
+        ]
+    }
+}</pre></div>
 
 <h3>
-<a name="compound-many-to-many" class="anchor" href="#compound-many-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound Many to Many</h3>
+<a id="compound-many-to-many" class="anchor" href="#compound-many-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound Many to Many</h3>
 
 <p><a href="images/compound-many-to-many.png" target="_blank"><img src="images/compound-many-to-many.png" alt="Compound Many to Many" style="max-width:100%;"></a></p>
 
 <p>In case tables with multiple primary keys are part of a Many to Many table relationship, the regular <a href="#many-to-many">Many to Many</a> setting is used, but additionally the <code>parentPk</code> and <code>childPk</code> keys inside the <code>link</code> table, and the <code>pk</code> key inside the <code>ref</code> table, can be set to array of foreign and primary keys respectively to accommodate that design.</p>
 
-<div class="highlight highlight-js"><pre><span class="p">{</span>
-    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"mtm"</span><span class="p">,</span>
-    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"mtm"</span><span class="p">,</span>
-    <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"varchar(45)"</span><span class="p">,</span>
-    <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"manyToMany"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"link"</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"tbl_has_mtm"</span><span class="p">,</span>
-            <span class="s2">"parentPk"</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">"tbl_id1"</span><span class="p">,</span>
-                <span class="s2">"tbl_id2"</span>
-            <span class="p">],</span>
-            <span class="s2">"childPk"</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">"mtm_id1"</span><span class="p">,</span>
-                <span class="s2">"mtm_id2"</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="s2">"ref"</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"mtm"</span><span class="p">,</span>
-            <span class="s2">"pk"</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">"id1"</span><span class="p">,</span>
-                <span class="s2">"id2"</span>
-            <span class="p">],</span>
-            <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">"name"</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>manyToMany<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>link<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tbl_has_mtm<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>parentPk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+                <span class="pl-s1"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
+                <span class="pl-s1"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
+            ],
+            <span class="pl-s1"><span class="pl-pds">"</span>childPk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+                <span class="pl-s1"><span class="pl-pds">"</span>mtm_id1<span class="pl-pds">"</span></span>,
+                <span class="pl-s1"><span class="pl-pds">"</span>mtm_id2<span class="pl-pds">"</span></span>
+            ]
+        },
+        <span class="pl-s1"><span class="pl-pds">"</span>ref<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+                <span class="pl-s1"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
+                <span class="pl-s1"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
+            ],
+            <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+                <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>
+            ]
+        }
+    }
+}</pre></div>
 
 <h3>
-<a name="compound-many-to-one" class="anchor" href="#compound-many-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound Many to One</h3>
+<a id="compound-many-to-one" class="anchor" href="#compound-many-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound Many to One</h3>
 
 <p><a href="images/compound-many-to-one.png" target="_blank"><img src="images/compound-many-to-one.png" alt="Compound Many to One" style="max-width:100%;"></a></p>
 
 <p>Same as the regular <a href="#many-to-one">Many to One</a> setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.</p>
 
-<div class="highlight highlight-js"><pre><span class="s2">"manyToOne"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"mto"</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">"tbl_id1"</span><span class="p">,</span>
-        <span class="s2">"tbl_id2"</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>manyToOne<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>mto<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        <span class="pl-s1"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
+    ]
+}</pre></div>
 
 <h3>
-<a name="compound-one-to-one" class="anchor" href="#compound-one-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound One to One</h3>
+<a id="compound-one-to-one" class="anchor" href="#compound-one-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound One to One</h3>
 
 <p>Same as the regular <a href="#one-to-one">one to One</a> setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.</p>
 
-<div class="highlight highlight-js"><pre><span class="s2">"oneToOne"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"oto"</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">"tbl_id1"</span><span class="p">,</span>
-        <span class="s2">"tbl_id2"</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>	
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>oneToOne<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>oto<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        <span class="pl-s1"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
+    ]
+}</pre></div>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

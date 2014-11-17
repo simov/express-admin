@@ -24,79 +24,77 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="custom-views-apps" class="anchor" href="#custom-views-apps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom views (apps)</h2>
+<a id="custom-views-apps" class="anchor" href="#custom-views-apps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom views (apps)</h2>
 
 <p>The admin's custom views follow the <a href="http://vimeo.com/56166857">Modular web applications with Node.js and Express</a> approach presented by <a href="https://github.com/visionmedia">TJ Holowaychuk</a>.</p>
 
 <p>The only difference here is that we're dealing with <code>mustache</code> templates.</p>
 
 <h3>
-<a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
+<a id="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
 
-<div class="highlight highlight-js"><pre><span class="s2">"view1"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/app.js"</span><span class="p">,</span>
-        <span class="s2">"slug"</span><span class="o">:</span> <span class="s2">"view1"</span><span class="p">,</span>
-        <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"My Custom View"</span><span class="p">,</span>
-        <span class="s2">"mainview"</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>view1<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/app.js<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>view1<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>My Custom View<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+        }
+    }
+}</pre></div>
 
 <h3>
-<a name="appjs" class="anchor" href="#appjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>app.js</h3>
+<a id="appjs" class="anchor" href="#appjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>app.js</h3>
 
-<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> express <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>);
+<span class="pl-s">var</span> app <span class="pl-ko">=</span> module.exports <span class="pl-ko">=</span> express();
+<span class="pl-s">var</span> path <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>path<span class="pl-pds">'</span></span>);
 
-<span class="c1">// set your custom views path</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'views'</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'views'</span><span class="p">));</span>
+<span class="pl-c"><span class="pl-pdc">//</span> set your custom views path</span>
+app.set(<span class="pl-s1"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>, path.<span class="pl-sf">join</span>(__dirname, <span class="pl-s1"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>));
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/view1'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+app.get(<span class="pl-s1"><span class="pl-pds">'</span>/view1<span class="pl-pds">'</span></span>, <span class="pl-s">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">next</span>) {
 
-    <span class="c1">// create a realtive from the admin's view folder to your custom folder</span>
-    <span class="kd">var</span> <span class="nx">relative</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">relative</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">views</span><span class="p">,</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'views'</span><span class="p">));</span>
+    <span class="pl-c"><span class="pl-pdc">//</span> create a realtive from the admin's view folder to your custom folder</span>
+    <span class="pl-s">var</span> relative <span class="pl-ko">=</span> path.relative(res.locals._admin.views, app.get(<span class="pl-s1"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>));
 
-    <span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">partials</span> <span class="o">=</span> <span class="p">{</span>
+    res.locals.partials <span class="pl-ko">=</span> {
 
-        <span class="c1">// set the path to your templates like this</span>
-        <span class="c1">// the content partial is declared inside the admin's base.html</span>
-        <span class="c1">// this is the entry point for all your custom stuff</span>
-        <span class="nx">content</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">relative</span><span class="p">,</span> <span class="s1">'template'</span><span class="p">)</span>
-    <span class="p">};</span>
+        <span class="pl-c"><span class="pl-pdc">//</span> set the path to your templates like this</span>
+        <span class="pl-c"><span class="pl-pdc">//</span> the content partial is declared inside the admin's base.html</span>
+        <span class="pl-c"><span class="pl-pdc">//</span> this is the entry point for all your custom stuff</span>
+        content<span class="pl-ko">:</span> path.<span class="pl-sf">join</span>(relative, <span class="pl-s1"><span class="pl-pds">'</span>template<span class="pl-pds">'</span></span>)
+    };
 
-    <span class="c1">// typically you want your stuff to be rendered inside the admin's UI</span>
-    <span class="c1">// so no need to render here</span>
-    <span class="nx">next</span><span class="p">();</span>
-<span class="p">});</span>
-</pre></div>
+    <span class="pl-c"><span class="pl-pdc">//</span> typically you want your stuff to be rendered inside the admin's UI</span>
+    <span class="pl-c"><span class="pl-pdc">//</span> so no need to render here</span>
+    next();
+});</pre></div>
 
 <p>You should definitely run the examples from the <a href="https://github.com/simov/express-admin-examples">examples repository</a> as each of the custom views (apps) presented there is really well commented.</p>
 
 <h3>
-<a name="route-wide-variables" class="anchor" href="#route-wide-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Route wide variables</h3>
+<a id="route-wide-variables" class="anchor" href="#route-wide-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Route wide variables</h3>
 
 <p>Several variables are exposed to every route callback.</p>
 
-<div class="highlight highlight-js"><pre><span class="c1">// _admin's variable content is for internal purposes only and is not being rendered</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">connection</span><span class="c1">// the admin's database connection can be reused from here</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">config</span>       <span class="c1">// the contents of the config.json file</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">settings</span>     <span class="c1">// the contents of the settings.json file</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">custom</span>       <span class="c1">// the contents of the custom.json file</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">users</span>        <span class="c1">// the contents of the users.json file</span>
+<div class="highlight highlight-js"><pre><span class="pl-c"><span class="pl-pdc">//</span> _admin's variable content is for internal purposes only and is not being rendered</span>
+res.locals._admin.db.connection<span class="pl-c"><span class="pl-pdc">//</span> the admin's database connection can be reused from here</span>
+res.locals._admin.config       <span class="pl-c"><span class="pl-pdc">//</span> the contents of the config.json file</span>
+res.locals._admin.settings     <span class="pl-c"><span class="pl-pdc">//</span> the contents of the settings.json file</span>
+res.locals._admin.custom       <span class="pl-c"><span class="pl-pdc">//</span> the contents of the custom.json file</span>
+res.locals._admin.users        <span class="pl-c"><span class="pl-pdc">//</span> the contents of the users.json file</span>
 
-<span class="c1">// shortcut variables that are being rendered</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">libs</span>       <span class="c1">// list of all client side libraries</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">themes</span>     <span class="c1">// list of all themes</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">layouts</span>    <span class="c1">// flag indicating layouts button visibility</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">languages</span>  <span class="c1">// list of all languages</span>
+<span class="pl-c"><span class="pl-pdc">//</span> shortcut variables that are being rendered</span>
+res.locals.libs       <span class="pl-c"><span class="pl-pdc">//</span> list of all client side libraries</span>
+res.locals.themes     <span class="pl-c"><span class="pl-pdc">//</span> list of all themes</span>
+res.locals.layouts    <span class="pl-c"><span class="pl-pdc">//</span> flag indicating layouts button visibility</span>
+res.locals.languages  <span class="pl-c"><span class="pl-pdc">//</span> list of all languages</span>
 
-<span class="c1">// holds the absolute path to the admin's view directory</span>
-<span class="nx">res</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">_admin</span><span class="p">.</span><span class="nx">views</span>
-</pre></div>	
+<span class="pl-c"><span class="pl-pdc">//</span> holds the absolute path to the admin's view directory</span>
+res.locals._admin.views</pre></div>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

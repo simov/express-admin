@@ -24,21 +24,22 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
+<a id="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
-<a name="many-to-one" class="anchor" href="#many-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>Many to One</h3>
+<a id="many-to-one" class="anchor" href="#many-to-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>Many to One</h3>
 
 <p><a href="images/many-to-one.png" target="_blank"><img src="images/many-to-one.png" alt="Many to One" style="max-width:100%;"></a></p>
 
 <ol>
 <li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
 <li>Inside that table's <code>editview</code> key add a <code>manyToOne</code> key</li>
-</ol><div class="highlight highlight-js"><pre><span class="s2">"manyToOne"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"repair"</span><span class="o">:</span> <span class="s2">"car_id"</span><span class="p">,</span>
-    <span class="s2">"driver"</span><span class="o">:</span> <span class="s2">"car_id"</span>
-<span class="p">}</span>
-</pre></div>
+</ol>
+
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>manyToOne<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>repair<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>car_id<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>driver<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>car_id<span class="pl-pds">"</span></span>
+}</pre></div>
 
 <ul>
 <li>
@@ -50,7 +51,8 @@
 (<code>value</code> can be array as well, see <a href="#compound-one-to-one">compound primary key</a> documentation)</li>
 </ul>
 </li>
-</ul>	
+</ul>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

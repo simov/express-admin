@@ -24,10 +24,10 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
+<a id="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
-<a name="one-to-many" class="anchor" href="#one-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>One to Many</h3>
+<a id="one-to-many" class="anchor" href="#one-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>One to Many</h3>
 
 <p><a href="images/one-to-many.png" target="_blank"><img src="images/one-to-many.png" alt="One to Many" style="max-width:100%;"></a></p>
 
@@ -37,18 +37,19 @@
 <li>Inside that column's object insert <code>oneToMany</code> key</li>
 <li>Change the column's control type to <code>select</code>
 </li>
-</ol><div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span>
-<span class="p">},</span>
-<span class="s2">"oneToMany"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"user"</span><span class="p">,</span>
-    <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"id"</span><span class="p">,</span>
-    <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">"firstname"</span><span class="p">,</span>
-        <span class="s2">"lastname"</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
+</ol>
+
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+},
+<span class="pl-s1"><span class="pl-pds">"</span>oneToMany<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        <span class="pl-s1"><span class="pl-pds">"</span>firstname<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>lastname<span class="pl-pds">"</span></span>
+    ]
+}</pre></div>
 
 <blockquote>
 <p>The <code>oneToMany</code> key additionally can contain a <code>schema</code> key, specifying PostgreSQL schema name for the relation table</p>
@@ -68,7 +69,8 @@
 <strong>columns</strong> - array of columns to select from the referenced table</li>
 </ul>
 </li>
-</ul>	
+</ul>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

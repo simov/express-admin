@@ -24,45 +24,43 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="editors" class="anchor" href="#editors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editors</h2>
+<a id="editors" class="anchor" href="#editors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Editors</h2>
 
 <h3>
-<a name="tinymce" class="anchor" href="#tinymce" aria-hidden="true"><span class="octicon octicon-link"></span></a>TinyMCE</h3>
+<a id="tinymce" class="anchor" href="#tinymce" aria-hidden="true"><span class="octicon octicon-link"></span></a>TinyMCE</h3>
 
 <h4>
-<a name="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h4>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h4>
 
 <p>You should either download TinyMCE from <a href="http://www.tinymce.com">tinymce.com</a> or use it directly from <a href="http://cdnjs.com">cdnjs.com</a> <em>//cdnjs.cloudflare.com/ajax/libs/tinymce/4.1.4/tinymce.min.js</em></p>
 
 <h4>
-<a name="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h4>
+<a id="settingsjson" class="anchor" href="#settingsjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>settings.json</h4>
 
 <p>Inside the <code>settings.json</code> file, find the column you are looking for, and add an additional <code>editor</code> property to its <code>control</code> type key, specifying the class name to use for this instance.</p>
 
-<div class="highlight highlight-js"><pre><span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"textarea"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">"editor"</span><span class="o">:</span> <span class="s2">"class-name"</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>class-name<span class="pl-pds">"</span></span>
+}</pre></div>
 
 <h4>
-<a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h4>
+<a id="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h4>
 
 <p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
 
-<div class="highlight highlight-js"><pre><span class="s2">"unique-key-here"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"public"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"local"</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">"path"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/files/location"</span><span class="p">,</span>
-            <span class="s2">"js"</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js"</span><span class="p">,</span>
-                <span class="s2">"/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js"</span><span class="p">,</span>
-                <span class="s2">"/relative/to/above/path/my-custom.js"</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js<span class="pl-pds">"</span></span>,
+                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js<span class="pl-pds">"</span></span>,
+                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/my-custom.js<span class="pl-pds">"</span></span>
+            ]
+        }
+    }
+}</pre></div>
 
 <ul>
 <li>
@@ -77,32 +75,34 @@
 <strong>js</strong> - list of javascript files to be included</li>
 </ul>
 </li>
-</ul><h4>
-<a name="my-customjs" class="anchor" href="#my-customjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
+</ul>
+
+<h4>
+<a id="my-customjs" class="anchor" href="#my-customjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>my-custom.js</h4>
 
 <p>Your custom editor is initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
 
-<div class="highlight highlight-js"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tinyMCE</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// it's important to initialize only the visible textareas</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'tr:not(.blank) .class-name'</span><span class="p">).</span><span class="nx">tinymce</span><span class="p">({});</span>
-    <span class="p">}</span>
-<span class="p">});</span>
+<div class="highlight highlight-js"><pre>$(<span class="pl-s">function</span> () {
+    <span class="pl-k">if</span> (<span class="pl-ko">typeof</span> tinyMCE <span class="pl-ko">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+        <span class="pl-c"><span class="pl-pdc">//</span> it's important to initialize only the visible textareas</span>
+        $(<span class="pl-s1"><span class="pl-pds">'</span>tr:not(.blank) .class-name<span class="pl-pds">'</span></span>).tinymce({});
+    }
+});
 
-<span class="c1">// executed each time an inline is added</span>
-<span class="kd">function</span> <span class="nx">onAddInline</span> <span class="p">(</span><span class="nx">rows</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tinyMCE</span> <span class="o">!==</span> <span class="s1">'undefined'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// init tinymce editors</span>
-        <span class="nx">$</span><span class="p">(</span><span class="s1">'.class-name'</span><span class="p">,</span> <span class="nx">rows</span><span class="p">).</span><span class="nx">tinymce</span><span class="p">({});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<span class="pl-c"><span class="pl-pdc">//</span> executed each time an inline is added</span>
+<span class="pl-s">function</span> <span class="pl-enf">onAddInline</span> (<span class="pl-vpf">rows</span>) {
+    <span class="pl-k">if</span> (<span class="pl-ko">typeof</span> tinyMCE <span class="pl-ko">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+        <span class="pl-c"><span class="pl-pdc">//</span> init tinymce editors</span>
+        $(<span class="pl-s1"><span class="pl-pds">'</span>.class-name<span class="pl-pds">'</span></span>, rows).tinymce({});
+    }
+}</pre></div>
 
 <p>Here <code>class-name</code> is the same class name you specified inside the <code>settings.json</code> file for this column.</p>
 
 <p>The <code>tr:not(.blank) .tinymce</code> selector filters out only to those textareas that have the <code>class-name</code> we specified in <code>settings.json</code>, but not contained inside a hidden row. The most important bit is that you should always exclude the textareas that are contained inside the hidden row for an inline record. That's easy because all of them have a <code>blank</code> class on their containing row.</p>
 
-<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code></p>	
+<p>The hidden textareas are initialized when they are appended to the document body. The <code>onAddInline</code> is an event like global function that is called each time an inline record is appended to the list of records. The <code>rows</code> parameters contain all table rows that's been added. Again we loop through all of them and initialize only those textareas that have the class we specified in <code>settings.json</code></p>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

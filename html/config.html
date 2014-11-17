@@ -24,10 +24,10 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
 <h3>
-<a name="configjson" class="anchor" href="#configjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>config.json</h3>
+<a id="configjson" class="anchor" href="#configjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>config.json</h3>
 
 <p>The application's configuration is stored inside the <code>config.json</code> file.</p>
 
@@ -35,25 +35,26 @@
 <li>The <code>mysql</code> key accepts any option from the <a href="https://github.com/felixge/node-mysql#connection-options">node-mysql's connection options</a>.</li>
 <li>When using PostgreSQL, the <code>pg</code> key will accept any option from the <a href="https://github.com/brianc/node-postgres">node-postgres</a> connection options.</li>
 <li>When using SQLite, the <code>sqlite</code> key will contain only a <code>database</code> key with the absolute path to the database set as a value.</li>
-</ul><div class="highlight highlight-js"><pre><span class="p">{</span>
-    <span class="s2">"mysql"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">// or "pg" or "sqlite"</span>
-        <span class="s2">"database"</span><span class="o">:</span> <span class="s2">"express-admin-examples"</span><span class="p">,</span>
-        <span class="s2">"user"</span><span class="o">:</span> <span class="s2">"liolio"</span><span class="p">,</span>
-        <span class="s2">"password"</span><span class="o">:</span> <span class="s2">"karamba"</span>
-        <span class="c1">// "schema": "schema-name"</span>
-    <span class="p">},</span>
-    <span class="s2">"server"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"port"</span><span class="o">:</span> <span class="mi">3000</span>
-    <span class="p">},</span>
-    <span class="s2">"app"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"layouts"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">"themes"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">"languages"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">"root"</span><span class="o">:</span> <span class="s2">"/admin"</span><span class="p">,</span>
-        <span class="s2">"upload"</span><span class="o">:</span> <span class="s2">"/upload/folder"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+</ul>
+
+<div class="highlight highlight-js"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>mysql<span class="pl-pds">"</span></span><span class="pl-ko">:</span> { <span class="pl-c"><span class="pl-pdc">//</span> or "pg" or "sqlite"</span>
+        <span class="pl-s1"><span class="pl-pds">"</span>database<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>express-admin-examples<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>liolio<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>karamba<span class="pl-pds">"</span></span>
+        <span class="pl-c"><span class="pl-pdc">//</span> "schema": "schema-name"</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>server<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>port<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-cn">3000</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>layouts<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>themes<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>languages<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>root<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/admin<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>upload<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/upload/folder<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
 
 <ul>
 <li>
@@ -94,7 +95,8 @@
 <strong>upload</strong> - absolute path to the upload folder (default: "public/upload")</li>
 </ul>
 </li>
-</ul>	
+</ul>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

@@ -24,33 +24,32 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
 
 <h3>
-<a name="get-the-module" class="anchor" href="#get-the-module" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get the module</h3>
+<a id="get-the-module" class="anchor" href="#get-the-module" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get the module</h3>
 
-<div class="highlight highlight-bash"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install <span class="o">[</span>-g<span class="o">]</span> express-admin
-<span class="c"># PostgreSQL only: run this inside the express-admin folder</span>
-<span class="nv">$ </span>npm install pg@2.8.2
-<span class="c"># SQLite only: run this inside the express-admin folder</span>
-<span class="nv">$ </span>npm install sqlite3@2.2.0
-</pre></div>
+<div class="highlight highlight-bash"><pre>$ [sudo] npm install [-g] express-admin
+<span class="pl-c"><span class="pl-pdc">#</span> PostgreSQL only: run this inside the express-admin folder</span>
+$ npm install pg@2.8.2
+<span class="pl-c"><span class="pl-pdc">#</span> SQLite only: run this inside the express-admin folder</span>
+$ npm install sqlite3@2.2.0</pre></div>
 
 <h3>
-<a name="create-a-project" class="anchor" href="#create-a-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a project</h3>
+<a id="create-a-project" class="anchor" href="#create-a-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create a project</h3>
 
 <p>Depending on how you installed it, creating a new project is as simple as</p>
 
-<div class="highlight highlight-bash"><pre><span class="nv">$ </span>admin path/to/config/dir
-<span class="c"># or</span>
-<span class="nv">$ </span>node path/to/express-admin/app.js path/to/config/dir
-</pre></div>
+<div class="highlight highlight-bash"><pre>$ admin path/to/config/dir
+<span class="pl-c"><span class="pl-pdc">#</span> or</span>
+$ node path/to/express-admin/app.js path/to/config/dir</pre></div>
 
 <p>Either way the path to the configuration directory should exist. If it doesn't contains any configuration files yet, you'll be prompted to add required information for your database, server port and admin account credentials.</p>
 
 <p>After that you can navigate to <code>http://localhost:[specified port]</code> and see your admin up and running.</p>
 
-<p>The next step is to configure it.</p>	
+<p>The next step is to configure it.</p>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

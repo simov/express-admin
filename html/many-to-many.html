@@ -24,47 +24,48 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
+<a id="relationships" class="anchor" href="#relationships" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relationships</h2>
 
 <h3>
-<a name="many-to-many" class="anchor" href="#many-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>Many to Many</h3>
+<a id="many-to-many" class="anchor" href="#many-to-many" aria-hidden="true"><span class="octicon octicon-link"></span></a>Many to Many</h3>
 
 <p><a href="images/many-to-many.png" target="_blank"><img src="images/many-to-many.png" alt="Many to Many" style="max-width:100%;"></a></p>
 
 <ol>
 <li>Inside the <code>settings.json</code> file, find the table you are looking for</li>
 <li>Add the object from below inside that table's columns array</li>
-</ol><div class="highlight highlight-js"><pre><span class="p">{</span>
-    <span class="s2">"verbose"</span><span class="o">:</span> <span class="s2">"Recipe Types"</span><span class="p">,</span>
-    <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"recipe_type"</span><span class="p">,</span>
-    <span class="s2">"control"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"select"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">"multiple"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"int(11)"</span><span class="p">,</span>
-    <span class="s2">"allowNull"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="s2">"listview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">false</span>
-    <span class="p">},</span>
-    <span class="s2">"editview"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"show"</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="s2">"manyToMany"</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">"link"</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"recipe_has_recipe_types"</span><span class="p">,</span>
-            <span class="s2">"parentPk"</span><span class="o">:</span> <span class="s2">"recipe_id"</span><span class="p">,</span>
-            <span class="s2">"childPk"</span><span class="o">:</span> <span class="s2">"recipe_type_id"</span>
-        <span class="p">},</span>
-        <span class="s2">"ref"</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">"table"</span><span class="o">:</span> <span class="s2">"recipe_type"</span><span class="p">,</span>
-            <span class="s2">"pk"</span><span class="o">:</span> <span class="s2">"id"</span><span class="p">,</span>
-            <span class="s2">"columns"</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">"title"</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+</ol>
+
+<div class="highlight highlight-js"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Recipe Types<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_type<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>int(11)<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">false</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    },
+    <span class="pl-s1"><span class="pl-pds">"</span>manyToMany<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>link<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_has_recipe_types<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>parentPk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_id<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>childPk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_type_id<span class="pl-pds">"</span></span>
+        },
+        <span class="pl-s1"><span class="pl-pds">"</span>ref<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_type<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+                <span class="pl-s1"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>
+            ]
+        }
+    }
+}</pre></div>
 
 <blockquote>
 <p>The <code>link</code> and the <code>ref</code> keys additionally can contain a <code>schema</code> key, specifying PostgreSQL schema name for the relation table</p>
@@ -132,11 +133,14 @@
 </li>
 </ul>
 </li>
-</ul><blockquote>
+</ul>
+
+<blockquote>
 <p>The <code>link</code> table's <code>parentPk</code> and <code>childPk</code> key can be array as well.<br>
 The <code>ref</code> table's <code>pk</code> key can be array as well.<br>
 See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
-</blockquote>	
+</blockquote>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>

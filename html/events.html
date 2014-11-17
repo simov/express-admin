@@ -24,7 +24,7 @@
 <body>
     <div class="markdown-body">
 <h2>
-<a name="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
 
 <p>Currently the supported event hooks are:</p>
 
@@ -35,35 +35,35 @@
 <strong>postSave</strong> - after a record is saved</li>
 <li>
 <strong>preList</strong> - before listview is shown</li>
-</ul><h3>
-<a name="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
-
-<div class="highlight highlight-js"><pre><span class="s2">"some-key"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"events"</span><span class="o">:</span> <span class="s2">"/absolute/path/to/custom/events.js"</span>
-<span class="p">}</span>
-</pre></div>
+</ul>
 
 <h3>
-<a name="eventsjs" class="anchor" href="#eventsjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>events.js</h3>
+<a id="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
+
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>some-key<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>events<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/events.js<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<h3>
+<a id="eventsjs" class="anchor" href="#eventsjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>events.js</h3>
 
 <p>Run the admin with the <code>--debug-brk</code> flag and use <a href="https://github.com/node-inspector/node-inspector">node-inspector</a> to drill down into the event hook parameters</p>
 
-<div class="highlight highlight-js"><pre><span class="nx">exports</span><span class="p">.</span><span class="nx">preSave</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">debug</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'preSave'</span><span class="p">);</span>
-    <span class="kr">debugger</span><span class="p">;</span>
-    <span class="nx">next</span><span class="p">();</span>
-<span class="p">}</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">postSave</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">debug</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'postSave'</span><span class="p">);</span>
-    <span class="kr">debugger</span><span class="p">;</span>
-    <span class="nx">next</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-sc">exports</span>.<span class="pl-enf">preSave</span> <span class="pl-ko">=</span> <span class="pl-s">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
+    <span class="pl-k">if</span> (args.debug) console<span class="pl-sf">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>preSave<span class="pl-pds">'</span></span>);
+    <span class="pl-k">debugger</span>;
+    next();
+}
+<span class="pl-sc">exports</span>.<span class="pl-enf">postSave</span> <span class="pl-ko">=</span> <span class="pl-s">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
+    <span class="pl-k">if</span> (args.debug) console<span class="pl-sf">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>postSave<span class="pl-pds">'</span></span>);
+    <span class="pl-k">debugger</span>;
+    next();
+}</pre></div>
 
 <p>Take a look at the event examples <a href="https://github.com/simov/express-admin-examples/blob/master/config/custom/events/events.js">here</a> and <a href="https://github.com/simov/express-admin-tests/blob/master/config/x-relationships-compound/custom/events.js">here</a></p>
 
 <h3>
-<a name="presave-args" class="anchor" href="#presave-args" aria-hidden="true"><span class="octicon octicon-link"></span></a>preSave args</h3>
+<a id="presave-args" class="anchor" href="#presave-args" aria-hidden="true"><span class="octicon octicon-link"></span></a>preSave args</h3>
 
 <ul>
 <li>
@@ -82,13 +82,12 @@
 <li>
 <p><strong>oneToOne | manyToOne</strong> - inline tables data</p>
 
-<div class="highlight highlight-js"><pre><span class="s2">"table's name"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"records"</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">"columns"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"column's name"</span><span class="o">:</span> <span class="s2">"column's value"</span><span class="p">,</span> <span class="p">...},</span>
-        <span class="s2">"insert|update|remove"</span><span class="o">:</span> <span class="s2">"true"</span> <span class="c1">// only for inline records</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table's name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>records<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {<span class="pl-s1"><span class="pl-pds">"</span>column's name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>column's value<span class="pl-pds">"</span></span>, ...},
+        <span class="pl-s1"><span class="pl-pds">"</span>insert|update|remove<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-pdc">//</span> only for inline records</span>
+    ]
+}</pre></div>
 </li>
 </ul>
 </li>
@@ -98,11 +97,13 @@
 <strong>upload</strong> - list of files submitted via POST request</li>
 <li>
 <strong>db</strong> - database connection instance</li>
-</ul><h4>
-<a name="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>examples</h4>
+</ul>
+
+<h4>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>examples</h4>
 
 <h5>
-<a name="created_at--updated_at" class="anchor" href="#created_at--updated_at" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>created_at / updated_at</em>
+<a id="created_at--updated_at" class="anchor" href="#created_at--updated_at" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>created_at / updated_at</em>
 </h5>
 
 <ul>
@@ -111,56 +112,58 @@
 <li>the <code>created_at</code> and <code>update_at</code> columns in <code>user</code> table should be set to <code>show: false</code> for <code>editview</code> in <code>settings.json</code>
 </li>
 <li>use the code below to set the <code>created_at</code> and <code>updated_at</code> columns, before the record is saved</li>
-</ul><div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">moment</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'moment'</span><span class="p">);</span>
+</ul>
 
-<span class="nx">exports</span><span class="p">.</span><span class="nx">preSave</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s1">'user'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nx">moment</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()).</span><span class="nx">format</span><span class="p">(</span><span class="s1">'YYYY-MM-DD hh:mm:ss'</span><span class="p">),</span>
-            <span class="nx">record</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">columns</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">action</span> <span class="o">==</span> <span class="s1">'insert'</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">record</span><span class="p">.</span><span class="nx">created_at</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
-            <span class="nx">record</span><span class="p">.</span><span class="nx">updated_at</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">action</span> <span class="o">==</span> <span class="s1">'update'</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">record</span><span class="p">.</span><span class="nx">updated_at</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">next</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> moment <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>moment<span class="pl-pds">'</span></span>);
+
+<span class="pl-sc">exports</span>.<span class="pl-enf">preSave</span> <span class="pl-ko">=</span> <span class="pl-s">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
+    <span class="pl-k">if</span> (args.name <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>user<span class="pl-pds">'</span></span>) {
+        <span class="pl-s">var</span> now <span class="pl-ko">=</span> moment(<span class="pl-ko">new</span> <span class="pl-enti">Date</span>()).format(<span class="pl-s1"><span class="pl-pds">'</span>YYYY-MM-DD hh:mm:ss<span class="pl-pds">'</span></span>),
+            record <span class="pl-ko">=</span> args.data.view.user.records[<span class="pl-cn">0</span>].columns;
+        <span class="pl-k">if</span> (args.action <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>insert<span class="pl-pds">'</span></span>) {
+            record.created_at <span class="pl-ko">=</span> now;
+            record.updated_at <span class="pl-ko">=</span> now;
+        }
+        <span class="pl-k">else</span> <span class="pl-k">if</span> (args.action <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>update<span class="pl-pds">'</span></span>) {
+            record.updated_at <span class="pl-ko">=</span> now;
+        }
+    }
+    next();
+}</pre></div>
 
 <h5>
-<a name="generate-hash-id" class="anchor" href="#generate-hash-id" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>generate hash id</em>
+<a id="generate-hash-id" class="anchor" href="#generate-hash-id" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>generate hash id</em>
 </h5>
 
 <ul>
 <li>in this example our table will be called <code>car</code> and will contain <code>manyToOne</code> inline tables</li>
 <li>the car's table primary key that needs to be generated (in this case it's called <code>id</code>) should be set to <code>show: false</code> for <code>editview</code> in <code>settings.json</code> (the same applies for any inline table that needs its primary key to be generated)</li>
 <li>use the code below to set the columns that needs to be generated, before the record is saved</li>
-</ul><div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">shortid</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'shortid'</span><span class="p">);</span>
+</ul>
 
-<span class="nx">exports</span><span class="p">.</span><span class="nx">preSave</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s1">'car'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">action</span> <span class="o">==</span> <span class="s1">'insert'</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
-                <span class="nx">record</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">view</span><span class="p">[</span><span class="nx">table</span><span class="p">].</span><span class="nx">records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">columns</span><span class="p">;</span>
-            <span class="nx">record</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">shortid</span><span class="p">.</span><span class="nx">generate</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">table</span> <span class="k">in</span> <span class="nx">args</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">manyToOne</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">inline</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">manyToOne</span><span class="p">[</span><span class="nx">table</span><span class="p">];</span>
-            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">insert</span> <span class="o">!=</span> <span class="s1">'true'</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
-                <span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">columns</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">shortid</span><span class="p">.</span><span class="nx">generate</span><span class="p">();</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">next</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> shortid <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>shortid<span class="pl-pds">'</span></span>);
+
+<span class="pl-sc">exports</span>.<span class="pl-enf">preSave</span> <span class="pl-ko">=</span> <span class="pl-s">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
+    <span class="pl-k">if</span> (args.name <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>car<span class="pl-pds">'</span></span>) {
+        <span class="pl-k">if</span> (args.action <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>insert<span class="pl-pds">'</span></span>) {
+            <span class="pl-s">var</span> table <span class="pl-ko">=</span> args.name,
+                record <span class="pl-ko">=</span> args.data.view[table].records[<span class="pl-cn">0</span>].columns;
+            record.id <span class="pl-ko">=</span> shortid.generate();
+        }
+        <span class="pl-k">for</span> (<span class="pl-s">var</span> table <span class="pl-ko">in</span> args.data.manyToOne) {
+            <span class="pl-s">var</span> inline <span class="pl-ko">=</span> args.data.manyToOne[table];
+            <span class="pl-k">if</span> (<span class="pl-ko">!</span>inline.records) <span class="pl-k">continue</span>;
+            <span class="pl-k">for</span> (<span class="pl-s">var</span> i<span class="pl-ko">=</span><span class="pl-cn">0</span>; i <span class="pl-ko">&lt;</span> inline.records.length; i<span class="pl-ko">++</span>) {
+                <span class="pl-k">if</span> (inline.records[i].insert <span class="pl-ko">!=</span> <span class="pl-s1"><span class="pl-pds">'</span>true<span class="pl-pds">'</span></span>) <span class="pl-k">continue</span>;
+                inline.records[i].columns.id <span class="pl-ko">=</span> shortid.generate();
+            }
+        }
+    }
+    next();
+}</pre></div>
 
 <h5>
-<a name="soft-delete-records" class="anchor" href="#soft-delete-records" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>soft delete records</em>
+<a id="soft-delete-records" class="anchor" href="#soft-delete-records" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>soft delete records</em>
 </h5>
 
 <ul>
@@ -168,40 +171,41 @@
 <li>the purchase's table <code>deleted</code> and <code>deleted_at</code> columns should be set to <code>show: false</code> for <code>editview</code> in <code>settings.json</code>
 </li>
 <li>use the code below to set the <code>deleted</code> and <code>deleted_at</code> columns, before the record is saved</li>
-</ul><div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">moment</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'moment'</span><span class="p">);</span>
+</ul>
 
-<span class="nx">exports</span><span class="p">.</span><span class="nx">preSave</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s1">'purchase'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nx">moment</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()).</span><span class="nx">format</span><span class="p">(</span><span class="s1">'YYYY-MM-DD hh:mm:ss'</span><span class="p">);</span>
-        <span class="c1">// all inline oneToOne and manyToOne records should be marked as deleted</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">table</span> <span class="k">in</span> <span class="nx">args</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">manyToOne</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">inline</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">manyToOne</span><span class="p">[</span><span class="nx">table</span><span class="p">];</span>
-            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">action</span> <span class="o">!=</span> <span class="s1">'remove'</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">remove</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
-                <span class="c1">// instead of deleting the record</span>
-                <span class="k">delete</span> <span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">remove</span><span class="p">;</span>
-                <span class="c1">// update it</span>
-                <span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">columns</span><span class="p">.</span><span class="nx">deleted</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-                <span class="nx">inline</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">columns</span><span class="p">.</span><span class="nx">deleted_at</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">// parent record</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">action</span> <span class="o">==</span> <span class="s1">'remove'</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// instead of deleting the record</span>
-            <span class="nx">args</span><span class="p">.</span><span class="nx">action</span> <span class="o">=</span> <span class="s1">'update'</span><span class="p">;</span>
-            <span class="c1">// update it</span>
-            <span class="kd">var</span> <span class="nx">record</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">purchase</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">columns</span><span class="p">;</span>
-            <span class="nx">record</span><span class="p">.</span><span class="nx">deleted</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-            <span class="nx">record</span><span class="p">.</span><span class="nx">deleted_at</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">next</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> moment <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>moment<span class="pl-pds">'</span></span>);
+
+<span class="pl-sc">exports</span>.<span class="pl-enf">preSave</span> <span class="pl-ko">=</span> <span class="pl-s">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
+    <span class="pl-k">if</span> (args.name <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>) {
+        <span class="pl-s">var</span> now <span class="pl-ko">=</span> moment(<span class="pl-ko">new</span> <span class="pl-enti">Date</span>()).format(<span class="pl-s1"><span class="pl-pds">'</span>YYYY-MM-DD hh:mm:ss<span class="pl-pds">'</span></span>);
+        <span class="pl-c"><span class="pl-pdc">//</span> all inline oneToOne and manyToOne records should be marked as deleted</span>
+        <span class="pl-k">for</span> (<span class="pl-s">var</span> table <span class="pl-ko">in</span> args.data.manyToOne) {
+            <span class="pl-s">var</span> inline <span class="pl-ko">=</span> args.data.manyToOne[table];
+            <span class="pl-k">if</span> (<span class="pl-ko">!</span>inline.records) <span class="pl-k">continue</span>;
+            <span class="pl-k">for</span> (<span class="pl-s">var</span> i<span class="pl-ko">=</span><span class="pl-cn">0</span>; i <span class="pl-ko">&lt;</span> inline.records.length; i<span class="pl-ko">++</span>) {
+                <span class="pl-k">if</span> (args.action <span class="pl-ko">!=</span> <span class="pl-s1"><span class="pl-pds">'</span>remove<span class="pl-pds">'</span></span> <span class="pl-ko">&amp;&amp;</span> <span class="pl-ko">!</span>inline.records[i].remove) <span class="pl-k">continue</span>;
+                <span class="pl-c"><span class="pl-pdc">//</span> instead of deleting the record</span>
+                <span class="pl-ko">delete</span> inline.records[i].remove;
+                <span class="pl-c"><span class="pl-pdc">//</span> update it</span>
+                inline.records[i].columns.deleted <span class="pl-ko">=</span> <span class="pl-c1">true</span>;
+                inline.records[i].columns.deleted_at <span class="pl-ko">=</span> now;
+            }
+        }
+        <span class="pl-c"><span class="pl-pdc">//</span> parent record</span>
+        <span class="pl-k">if</span> (args.action <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>remove<span class="pl-pds">'</span></span>) {
+            <span class="pl-c"><span class="pl-pdc">//</span> instead of deleting the record</span>
+            args.action <span class="pl-ko">=</span> <span class="pl-s1"><span class="pl-pds">'</span>update<span class="pl-pds">'</span></span>;
+            <span class="pl-c"><span class="pl-pdc">//</span> update it</span>
+            <span class="pl-s">var</span> record <span class="pl-ko">=</span> args.data.view.purchase.records[<span class="pl-cn">0</span>].columns;
+            record.deleted <span class="pl-ko">=</span> <span class="pl-c1">true</span>;
+            record.deleted_at <span class="pl-ko">=</span> now;
+        }
+    }
+    next();
+}</pre></div>
 
 <h3>
-<a name="postsave-args" class="anchor" href="#postsave-args" aria-hidden="true"><span class="octicon octicon-link"></span></a>postSave args</h3>
+<a id="postsave-args" class="anchor" href="#postsave-args" aria-hidden="true"><span class="octicon octicon-link"></span></a>postSave args</h3>
 
 <ul>
 <li>
@@ -220,13 +224,12 @@
 <li>
 <p><strong>oneToOne | manyToOne</strong> - inline tables data</p>
 
-<div class="highlight highlight-js"><pre><span class="s2">"table's name"</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">"records"</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">"columns"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"column's name"</span><span class="o">:</span> <span class="s2">"column's value"</span><span class="p">,</span> <span class="p">...},</span>
-        <span class="s2">"insert|update|remove"</span><span class="o">:</span> <span class="s2">"true"</span> <span class="c1">// only for inline records</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table's name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>records<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {<span class="pl-s1"><span class="pl-pds">"</span>column's name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>column's value<span class="pl-pds">"</span></span>, ...},
+        <span class="pl-s1"><span class="pl-pds">"</span>insert|update|remove<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-pdc">//</span> only for inline records</span>
+    ]
+}</pre></div>
 </li>
 </ul>
 </li>
@@ -236,11 +239,13 @@
 <strong>upload</strong> - list of files submitted via POST request</li>
 <li>
 <strong>db</strong> - database connection instance</li>
-</ul><h4>
-<a name="examples-1" class="anchor" href="#examples-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>examples</h4>
+</ul>
+
+<h4>
+<a id="examples-1" class="anchor" href="#examples-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>examples</h4>
 
 <h5>
-<a name="upload-files-to-a-third-party-server" class="anchor" href="#upload-files-to-a-third-party-server" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>upload files to a third party server</em>
+<a id="upload-files-to-a-third-party-server" class="anchor" href="#upload-files-to-a-third-party-server" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>upload files to a third party server</em>
 </h5>
 
 <ul>
@@ -249,37 +254,38 @@
 <li>the item's table <code>image</code>'s column control type should be set to <code>file:true</code> in <code>settings.json</code>
 </li>
 <li>use the code below to upload the image, after the record is saved</li>
-</ul><div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">cloudinary</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'cloudinary'</span><span class="p">),</span>
-    <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">),</span>
-    <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
-<span class="nx">cloudinary</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
-    <span class="nx">cloud_name</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
-    <span class="nx">api_key</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
-    <span class="nx">api_secret</span><span class="o">:</span> <span class="s1">''</span>
-<span class="p">});</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">postSave</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s1">'item'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// file upload control data</span>
-        <span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">item</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">columns</span><span class="p">.</span><span class="nx">image</span><span class="p">;</span>
-        <span class="c1">// in case file is chosen through the file input control</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// file name of the image already uploaded to the upload folder</span>
-            <span class="kd">var</span> <span class="nx">fname</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">item</span><span class="p">.</span><span class="nx">records</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">columns</span><span class="p">.</span><span class="nx">image</span><span class="p">;</span>
-            <span class="c1">// upload</span>
-            <span class="kd">var</span> <span class="nx">fpath</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">upath</span><span class="p">,</span> <span class="nx">fname</span><span class="p">);</span>
-            <span class="nx">cloudinary</span><span class="p">.</span><span class="nx">uploader</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span><span class="nx">fpath</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-                <span class="nx">next</span><span class="p">();</span>
-            <span class="p">});</span>
-        <span class="p">}</span>
-        <span class="k">else</span> <span class="nx">next</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="nx">next</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
+</ul>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> cloudinary <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>cloudinary<span class="pl-pds">'</span></span>),
+    fs <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>fs<span class="pl-pds">'</span></span>),
+    path <span class="pl-ko">=</span> <span class="pl-sf">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>path<span class="pl-pds">'</span></span>);
+cloudinary.config({
+    cloud_name<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+    api_key<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+    api_secret<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+});
+<span class="pl-sc">exports</span>.<span class="pl-enf">postSave</span> <span class="pl-ko">=</span> <span class="pl-s">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
+    <span class="pl-k">if</span> (args.name <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>item<span class="pl-pds">'</span></span>) {
+        <span class="pl-c"><span class="pl-pdc">//</span> file upload control data</span>
+        <span class="pl-s">var</span> image <span class="pl-ko">=</span> args.upload.view.item.records[<span class="pl-cn">0</span>].columns.image;
+        <span class="pl-c"><span class="pl-pdc">//</span> in case file is chosen through the file input control</span>
+        <span class="pl-k">if</span> (image.name) {
+            <span class="pl-c"><span class="pl-pdc">//</span> file name of the image already uploaded to the upload folder</span>
+            <span class="pl-s">var</span> fname <span class="pl-ko">=</span> args.data.view.item.records[<span class="pl-cn">0</span>].columns.image;
+            <span class="pl-c"><span class="pl-pdc">//</span> upload</span>
+            <span class="pl-s">var</span> fpath <span class="pl-ko">=</span> path.<span class="pl-sf">join</span>(args.upath, fname);
+            cloudinary.uploader.upload(fpath, <span class="pl-s">function</span> (<span class="pl-vpf">result</span>) {
+                console<span class="pl-sf">.log</span>(result);
+                next();
+            });
+        }
+        <span class="pl-k">else</span> next();
+    }
+    <span class="pl-k">else</span> next();
+}</pre></div>
 
 <h3>
-<a name="prelist-args" class="anchor" href="#prelist-args" aria-hidden="true"><span class="octicon octicon-link"></span></a>preList args</h3>
+<a id="prelist-args" class="anchor" href="#prelist-args" aria-hidden="true"><span class="octicon octicon-link"></span></a>preList args</h3>
 
 <ul>
 <li>
@@ -324,34 +330,38 @@
 </li>
 <li>
 <strong>db</strong> - database connection instance</li>
-</ul><h4>
-<a name="examples-2" class="anchor" href="#examples-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>examples</h4>
+</ul>
+
+<h4>
+<a id="examples-2" class="anchor" href="#examples-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>examples</h4>
 
 <h5>
-<a name="soft-deleted-records" class="anchor" href="#soft-deleted-records" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>soft deleted records</em>
+<a id="soft-deleted-records" class="anchor" href="#soft-deleted-records" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>soft deleted records</em>
 </h5>
 
 <ul>
 <li>check out the <em>preSave</em> example about <em>soft deleted records</em> above</li>
-</ul><div class="highlight highlight-js"><pre><span class="nx">exports</span><span class="p">.</span><span class="nx">preList</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s1">'purchase'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// check if we're using listview's filter</span>
-        <span class="c1">// and actually want to see soft deleted records</span>
-        <span class="kd">var</span> <span class="nx">filter</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">filter</span><span class="p">.</span><span class="nx">columns</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">filter</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">filter</span><span class="p">.</span><span class="nx">deleted</span><span class="o">==</span><span class="s1">'1'</span> <span class="o">||</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">deleted_at</span> <span class="o">&amp;&amp;</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">deleted_at</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">next</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="c1">// otherwise hide the soft deleted records by default</span>
-        <span class="kd">var</span> <span class="nx">filter</span> <span class="o">=</span> 
-            <span class="s1">' `purchase`.`deleted` IS NULL OR `purchase`.`deleted` = 0'</span> <span class="o">+</span>
-            <span class="s1">' OR `purchase`.`deleted_at` IS NULL '</span><span class="p">;</span>
-        <span class="nx">args</span><span class="p">.</span><span class="nx">statements</span><span class="p">.</span><span class="nx">where</span>
-            <span class="o">?</span> <span class="nx">args</span><span class="p">.</span><span class="nx">statements</span><span class="p">.</span><span class="nx">where</span> <span class="o">+=</span> <span class="s1">' AND '</span> <span class="o">+</span> <span class="nx">filter</span>
-            <span class="o">:</span> <span class="nx">args</span><span class="p">.</span><span class="nx">statements</span><span class="p">.</span><span class="nx">where</span> <span class="o">=</span> <span class="s1">' WHERE '</span> <span class="o">+</span> <span class="nx">filter</span>
-    <span class="p">}</span>
-    <span class="nx">next</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>	
+</ul>
+
+<div class="highlight highlight-js"><pre><span class="pl-sc">exports</span>.<span class="pl-enf">preList</span> <span class="pl-ko">=</span> <span class="pl-s">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
+    <span class="pl-k">if</span> (args.name <span class="pl-ko">==</span> <span class="pl-s1"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>) {
+        <span class="pl-c"><span class="pl-pdc">//</span> check if we're using listview's filter</span>
+        <span class="pl-c"><span class="pl-pdc">//</span> and actually want to see soft deleted records</span>
+        <span class="pl-s">var</span> filter <span class="pl-ko">=</span> args.filter.columns;
+        <span class="pl-k">if</span> (filter <span class="pl-ko">&amp;&amp;</span> (filter.deleted<span class="pl-ko">==</span><span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span> <span class="pl-ko">||</span> filter.deleted_at <span class="pl-ko">&amp;&amp;</span> filter.deleted_at[<span class="pl-cn">0</span>])) {
+            <span class="pl-k">return</span> next();
+        }
+        <span class="pl-c"><span class="pl-pdc">//</span> otherwise hide the soft deleted records by default</span>
+        <span class="pl-s">var</span> filter <span class="pl-ko">=</span> 
+            <span class="pl-s1"><span class="pl-pds">'</span> `purchase`.`deleted` IS NULL OR `purchase`.`deleted` = 0<span class="pl-pds">'</span></span> <span class="pl-ko">+</span>
+            <span class="pl-s1"><span class="pl-pds">'</span> OR `purchase`.`deleted_at` IS NULL <span class="pl-pds">'</span></span>;
+        args.statements.where
+            <span class="pl-ko">?</span> args.statements.where <span class="pl-ko">+=</span> <span class="pl-s1"><span class="pl-pds">'</span> AND <span class="pl-pds">'</span></span> <span class="pl-ko">+</span> filter
+            <span class="pl-ko">:</span> args.statements.where <span class="pl-ko">=</span> <span class="pl-s1"><span class="pl-pds">'</span> WHERE <span class="pl-pds">'</span></span> <span class="pl-ko">+</span> filter
+    }
+    next();
+}</pre></div>
+    
     
     <nav id="navigation" class="repository-sidebar">
         <ul>
