@@ -105,9 +105,9 @@ Each `table` object contains an array of colums. Each `column` object have:
 - **type** - column's data type _(typically you won't change this)_
 - **allowNull** - allowed to be null inside the database
 - **defaultValue** - currently not used
-- **listview** - columns's settings for the admin's listview _(where all the table's records are listed)_
+- **listview** - column's settings for the admin's listview _(where all the table's records are listed)_
     - **show** - column's visibility inside the listview. Typically you want to see only colums that contain short and meaningful data describing the whole record clearly. Primary key columns and columns that contain large amount of text typically should be hidden in this view
-- **editview** - columns's settings for the admin's editview _(where the record is being edited)_
+- **editview** - column's settings for the admin's editview _(where the record is being edited)_
     - **show** - column's visibility inside the editview<br />
     **`All auto increment columns should be hidden!`**<br />
     **`Foreign keys for inline tables should be hidden!`**<br />
