@@ -1,10 +1,10 @@
 {
-    "name": "purest-docs",
+    "name": "github-wiki",
     "version": "0.0.0",
-    "description": "Documentation site for Purest",
+    "description": "GitHub Wiki Generator",
     "private": true,
     "keywords": [
-        "rest", "restful", "api", "http", "https", "client"
+        "github", "wiki"
     ],
     "license"   : "MIT",
     "author": {
@@ -13,12 +13,12 @@
     },
     "repository": {
         "type"  : "git",
-        "url"   : "git://github.com/simov/purest.git"
+        "url"   : "git://github.com/simov/github-wiki.git"
     },
     "dependencies": {
         "hogan.js" : "3.0.2",
-        "purest"   : "*",
+        "purest"   : "1.1.2",
         "async"    : "0.9.0"
     },
-    "main": "./compile/convert"
+    "main": "./lib/compile"
 }
