@@ -1,6 +1,5 @@
 [
     {"key": "default",     "name": "Default"},
-    {"key": "amelia",      "name": "Amelia"},
     {"key": "cerulean",    "name": "Cerulean"},
     {"key": "cosmo",       "name": "Cosmo"},
     {"key": "cyborg",      "name": "Cyborg"},
@@ -8,7 +7,9 @@
     {"key": "flatly",      "name": "Flatly"},
     {"key": "journal",     "name": "Journal"},
     {"key": "lumen",       "name": "Lumen"},
+    {"key": "paper",       "name": "Paper"},
     {"key": "readable",    "name": "Readable"},
+    {"key": "sandstone",   "name": "Sandstone"},
     {"key": "simplex",     "name": "Simplex"},
     {"key": "slate",       "name": "Slate"},
     {"key": "spacelab",    "name": "Spacelab"},
