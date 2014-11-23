@@ -124,8 +124,10 @@ $(function () {
         $rows.appendTo(tbody);
 
         // init controls
-        if ($('.chosen-select').length)
+        if ($('.chosen-select').length) {
+            if (isMobile()) $('.chosen-select').show();
             $('.chosen-select', $rows).chosen(chosen);
+        }
         initDatetimePickers('dynamic', $rows);
         if (typeof onAddInline === 'function')
             onAddInline($rows);
@@ -235,8 +237,10 @@ $(function () {
         );
 
     // chosen
-    if ($('.chosen-select').length)
+    if ($('.chosen-select').length) {
+        if (isMobile()) $('.chosen-select').show();
         $('tr:not(.blank) .chosen-select, .x-filter .chosen-select').chosen(chosen);
+    }
 
     // datepicker
     initDatetimePickers('static', document);
