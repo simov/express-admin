@@ -21,8 +21,9 @@
         refresh: function () {
             self.offsets = [];
             self.each(function (index) {
-                var anchor = $(this).attr('href').replace('#',''),
-                    target = $('['+self.target+'='+anchor+']');
+                var anchor = $(this).attr('href');
+                if (self.target != 'href') anchor = anchor.replace('#','');
+                var target = $('['+self.target+'='+anchor+']');
                 if (target.length) {
                     self.offsets.push(target.offset().top);
                 }

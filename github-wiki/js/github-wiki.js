@@ -12,6 +12,7 @@ $(window).on('load', function (e) {
     }
     else {
         scrollpsy = $('#navigation ul a').scrollpsy({
+            target:'id',
             offset: 5
         });
         window.setTimeout(function () {

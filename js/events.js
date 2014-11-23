@@ -12,7 +12,7 @@ $(function () {
                     ' / '+
                     '<a href="'+src+'" target="_blank">open in new tab</a>'+
                     '<iframe class="example '+files[i]+'" data-src="'+src+'" src="about:blank"></iframe>';
-            var file = $('[name='+files[i]+']').parents('.file');
+            var file = $('[id="'+files[i]+'"]').parents('.file');
             var line = $('hr', file);
             if (line.length) {
                 $(example).insertBefore(line.prev());
