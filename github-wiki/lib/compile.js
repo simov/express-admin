@@ -14,7 +14,7 @@ var template = {
     navigation:
         fs.readFileSync(config.path.navigation, 'utf8')
 };
-var github = new Purest({provider:'github'}),
+var github = new Purest({provider:'github', defaults:{headers:{'user-agent':'Purest'}}}),
     cred = require(config.path.credentials);
 
 
@@ -44,6 +44,8 @@ async.eachSeries(files, function (file, done) {
 
         var fpath = path.join(config.path.html, file+'.html');
         fs.writeFileSync(fpath, content, 'utf8');
+        if (index == 0)
+            fs.writeFileSync(path.join(config.path.html, 'index.html'), content, 'utf8');
 
         // single file
         data += '<div class="file">'+body;
