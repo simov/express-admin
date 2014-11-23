@@ -33,8 +33,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
   [url-screencast]: http://www.youtube.com/watch?v=1CdoCB96QNk
-  [url-docs]: http://simov.github.io/express-admin-site/
-  [url-examples]: http://github.com/simov/express-admin-examples/
+  [url-docs]: http://simov.github.io/express-admin
+  [url-examples]: http://github.com/simov/express-admin-examples
   [url-tests]: https://github.com/simov/express-admin-tests
   [url-npm]: https://www.npmjs.org/package/express-admin
   [url-travis]: https://travis-ci.org/simov/express-admin
