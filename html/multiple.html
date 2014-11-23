@@ -39,19 +39,19 @@
 
 <p>Inside the <code>settings.json</code> file, find the columns you are looking for, and add an additional <code>editor</code> property to each column's <code>control</code> type key, specifying the class name to use for this instance.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>ck-full<span class="pl-pds">"</span></span>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>ck-full<span class="pl-pds">"</span></span>
 }</pre></div>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>ck-compact<span class="pl-pds">"</span></span>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>ck-compact<span class="pl-pds">"</span></span>
 }</pre></div>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tinymce<span class="pl-pds">"</span></span>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tinymce<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h4>
@@ -59,16 +59,16 @@
 
 <p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>external<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>external<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
                 <span class="pl-s1"><span class="pl-pds">"</span>//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.4.1/ckeditor.js<span class="pl-pds">"</span></span>
             ]
         },
-        <span class="pl-s1"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
+        <span class="pl-s1"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
                 <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js<span class="pl-pds">"</span></span>,
                 <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js<span class="pl-pds">"</span></span>,
                 <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/my-custom.js<span class="pl-pds">"</span></span>
@@ -97,61 +97,61 @@
 
 <p>Your custom editors are initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-s">function</span> () {
-    <span class="pl-k">if</span> (<span class="pl-ko">typeof</span> CKEDITOR <span class="pl-ko">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
-        CKEDITOR.replaceAll(<span class="pl-s">function</span> (<span class="pl-vpf">textarea</span>, <span class="pl-vpf">config</span>) {
-            <span class="pl-c"><span class="pl-pdc">//</span> exclude textareas that are inside hidden inline rows</span>
+<div class="highlight highlight-js"><pre>$(<span class="pl-st">function</span> () {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> CKEDITOR <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+        CKEDITOR.replaceAll(<span class="pl-st">function</span> (<span class="pl-vpf">textarea</span>, <span class="pl-vpf">config</span>) {
+            <span class="pl-c">// exclude textareas that are inside hidden inline rows</span>
             <span class="pl-k">if</span> ($(textarea).parents(<span class="pl-s1"><span class="pl-pds">'</span>tr<span class="pl-pds">'</span></span>).hasClass(<span class="pl-s1"><span class="pl-pds">'</span>blank<span class="pl-pds">'</span></span>)) <span class="pl-k">return</span> <span class="pl-c1">false</span>;
-            <span class="pl-c"><span class="pl-pdc">//</span> textareas with this class name will get the default configuration</span>
-            <span class="pl-k">if</span> (textarea.className.<span class="pl-sf">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-full<span class="pl-pds">'</span></span>) <span class="pl-ko">!=</span> <span class="pl-ko">-</span><span class="pl-cn">1</span>) <span class="pl-k">return</span> <span class="pl-c1">true</span>;
-            <span class="pl-c"><span class="pl-pdc">//</span> textareas with this class name will have custom configuration</span>
-            <span class="pl-k">if</span> (textarea.className.<span class="pl-sf">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-compact<span class="pl-pds">'</span></span>) <span class="pl-ko">!=</span> <span class="pl-ko">-</span><span class="pl-cn">1</span>)
+            <span class="pl-c">// textareas with this class name will get the default configuration</span>
+            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-full<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> <span class="pl-c1">true</span>;
+            <span class="pl-c">// textareas with this class name will have custom configuration</span>
+            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-compact<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>)
                 <span class="pl-k">return</span> setCustomConfig(config);
-            <span class="pl-c"><span class="pl-pdc">//</span> all other textareas won't be initialized as ckeditors</span>
+            <span class="pl-c">// all other textareas won't be initialized as ckeditors</span>
             <span class="pl-k">return</span> <span class="pl-c1">false</span>;
         });
     }
 
-    <span class="pl-k">if</span> (<span class="pl-ko">typeof</span> tinyMCE <span class="pl-ko">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
-        <span class="pl-c"><span class="pl-pdc">//</span> it's important to initialize only the visible textareas</span>
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+        <span class="pl-c">// it's important to initialize only the visible textareas</span>
         $(<span class="pl-s1"><span class="pl-pds">'</span>tr:not(.blank) .tinymce<span class="pl-pds">'</span></span>).tinymce({});
     }
 });
 
-<span class="pl-c"><span class="pl-pdc">//</span> ckeditor only</span>
-<span class="pl-s">function</span> <span class="pl-enf">setCustomConfig</span> (<span class="pl-vpf">config</span>) {
-    config <span class="pl-ko">=</span> config <span class="pl-ko">||</span> {};
-    <span class="pl-c"><span class="pl-pdc">//</span> toolbar</span>
-    config.toolbarGroups <span class="pl-ko">=</span> [
-        { name<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>basicstyles<span class="pl-pds">'</span></span>, groups<span class="pl-ko">:</span> [ <span class="pl-s1"><span class="pl-pds">'</span>basicstyles<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>cleanup<span class="pl-pds">'</span></span> ] },
-        { name<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>paragraph<span class="pl-pds">'</span></span>,   groups<span class="pl-ko">:</span> [ <span class="pl-s1"><span class="pl-pds">'</span>list<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>indent<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>blocks<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>align<span class="pl-pds">'</span></span> ] },
+<span class="pl-c">// ckeditor only</span>
+<span class="pl-st">function</span> <span class="pl-en">setCustomConfig</span> (<span class="pl-vpf">config</span>) {
+    config <span class="pl-k">=</span> config <span class="pl-k">||</span> {};
+    <span class="pl-c">// toolbar</span>
+    config.toolbarGroups <span class="pl-k">=</span> [
+        { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>basicstyles<span class="pl-pds">'</span></span>, groups<span class="pl-k">:</span> [ <span class="pl-s1"><span class="pl-pds">'</span>basicstyles<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>cleanup<span class="pl-pds">'</span></span> ] },
+        { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>paragraph<span class="pl-pds">'</span></span>,   groups<span class="pl-k">:</span> [ <span class="pl-s1"><span class="pl-pds">'</span>list<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>indent<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>blocks<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>align<span class="pl-pds">'</span></span> ] },
         <span class="pl-s1"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>,
-        { name<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>styles<span class="pl-pds">'</span></span> },
-        { name<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>colors<span class="pl-pds">'</span></span> }
+        { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>styles<span class="pl-pds">'</span></span> },
+        { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>colors<span class="pl-pds">'</span></span> }
     ];
-    config.removeButtons <span class="pl-ko">=</span> <span class="pl-s1"><span class="pl-pds">'</span>Smiley,SpecialChar,PageBreak,Iframe,CreateDiv<span class="pl-pds">'</span></span>;
+    config.removeButtons <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>Smiley,SpecialChar,PageBreak,Iframe,CreateDiv<span class="pl-pds">'</span></span>;
     <span class="pl-k">return</span> config;
 }
 
-<span class="pl-c"><span class="pl-pdc">//</span> executed each time an inline is added</span>
-<span class="pl-s">function</span> <span class="pl-enf">onAddInline</span> (<span class="pl-vpf">rows</span>) {
-    <span class="pl-k">if</span> (<span class="pl-ko">typeof</span> CKEDITOR <span class="pl-ko">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
-        <span class="pl-c"><span class="pl-pdc">//</span> for each of the new rows containing textareas</span>
-        $(<span class="pl-s1"><span class="pl-pds">'</span>textarea<span class="pl-pds">'</span></span>, rows).each(<span class="pl-s">function</span> (<span class="pl-vpf">index</span>) {
-            <span class="pl-c"><span class="pl-pdc">//</span> get the DOM instance</span>
-            <span class="pl-s">var</span> textarea <span class="pl-ko">=</span> $(<span class="pl-v">this</span>)[<span class="pl-cn">0</span>];
-            <span class="pl-c"><span class="pl-pdc">//</span> textareas with this class name will get the default configuration</span>
-            <span class="pl-k">if</span> (textarea.className.<span class="pl-sf">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-full<span class="pl-pds">'</span></span>) <span class="pl-ko">!=</span> <span class="pl-ko">-</span><span class="pl-cn">1</span>) <span class="pl-k">return</span> CKEDITOR.<span class="pl-sf">replace</span>(textarea);
-            <span class="pl-c"><span class="pl-pdc">//</span> textareas with this class name will have custom configuration</span>
-            <span class="pl-k">if</span> (textarea.className.<span class="pl-sf">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-compact<span class="pl-pds">'</span></span>) <span class="pl-ko">!=</span> <span class="pl-ko">-</span><span class="pl-cn">1</span>)
-                <span class="pl-k">return</span> CKEDITOR.<span class="pl-sf">replace</span>(textarea, setCustomConfig());
-            <span class="pl-c"><span class="pl-pdc">//</span> all other textareas won't be initialized as ckeditors</span>
+<span class="pl-c">// executed each time an inline is added</span>
+<span class="pl-st">function</span> <span class="pl-en">onAddInline</span> (<span class="pl-vpf">rows</span>) {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> CKEDITOR <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+        <span class="pl-c">// for each of the new rows containing textareas</span>
+        $(<span class="pl-s1"><span class="pl-pds">'</span>textarea<span class="pl-pds">'</span></span>, rows).each(<span class="pl-st">function</span> (<span class="pl-vpf">index</span>) {
+            <span class="pl-c">// get the DOM instance</span>
+            <span class="pl-s">var</span> textarea <span class="pl-k">=</span> $(<span class="pl-v">this</span>)[<span class="pl-c1">0</span>];
+            <span class="pl-c">// textareas with this class name will get the default configuration</span>
+            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-full<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> CKEDITOR.<span class="pl-s3">replace</span>(textarea);
+            <span class="pl-c">// textareas with this class name will have custom configuration</span>
+            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-compact<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>)
+                <span class="pl-k">return</span> CKEDITOR.<span class="pl-s3">replace</span>(textarea, setCustomConfig());
+            <span class="pl-c">// all other textareas won't be initialized as ckeditors</span>
             <span class="pl-k">return</span> <span class="pl-c1">false</span>;
         });
     }
 
-    <span class="pl-k">if</span> (<span class="pl-ko">typeof</span> tinyMCE <span class="pl-ko">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
-        <span class="pl-c"><span class="pl-pdc">//</span> init tinymce editors</span>
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+        <span class="pl-c">// init tinymce editors</span>
         $(<span class="pl-s1"><span class="pl-pds">'</span>.tinymce<span class="pl-pds">'</span></span>, rows).tinymce({});
     }
 }</pre></div>

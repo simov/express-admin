@@ -23,44 +23,35 @@
 </head>
 <body>
     <div class="markdown-body">
-<h2>
-<a id="tools" class="anchor" href="#tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools</h2>
+<h1>
+<a id="express-admin" class="anchor" href="#express-admin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Express Admin</h1>
+
+<p>Express Admin is a NodeJS tool for easy creation of user friendly administrative interface for MySQL, MariaDB, SQLite and PostgreSQL databases.</p>
+
+<p>It's built with: <a href="http://twitter.github.io/hogan.js/">Hogan.js</a> (<a href="https://github.com/janl/mustache.js/">mustache.js</a>), <a href="http://expressjs.com/">Express</a>, <a href="https://github.com/felixge/node-mysql">mysql</a> and <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>.</p>
+
+<p>The configuration is done through hand editing <code>json</code> files, although in the future there might be some kind of a GUI tool for that.</p>
 
 <h3>
-<a id="shell" class="anchor" href="#shell" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shell</h3>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
 
-<h4>
-<a id="debugging" class="anchor" href="#debugging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Debugging</h4>
+<ul>
+<li>All types of sql table relationships</li>
+<li>Internationalization</li>
+<li>Custom views and events</li>
+<li>All kinds of browser side libraries and controls</li>
+<li>All themes from <a href="http://bootswatch.com/">Bootswatch</a>
+</li>
+</ul>
 
-<p>Set a <code>breakpoint</code> somewhere inside your custom view files and debug as usual.</p>
+<h3>
+<a id="resources" class="anchor" href="#resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources</h3>
 
-<div class="highlight highlight-bash"><pre>$ admin --debug-brk path/to/project/config/
-<span class="pl-c"># or</span>
-$ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
-
-<h4>
-<a id="supervisor" class="anchor" href="#supervisor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supervisor</h4>
-
-<p>Auto reload your project while configuring it using <a href="https://github.com/isaacs/node-supervisor">supervisior</a></p>
-
-<p>Create a folder for your project's configuration files.</p>
-
-<div class="highlight highlight-bash"><pre>$ mkdir project</pre></div>
-
-<p>Then while you're still there you can use <code>supervisor</code> to watch your <code>project</code> folder, specifying that the extensions are <code>json</code></p>
-
-<div class="highlight highlight-bash"><pre>$ supervisor -w project -e json -- path/to/express-admin/app -v project/</pre></div>
-
-<p>The <code>-v</code> flag that you're passing to the <em>Express Admin</em> app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
-
-<p>Additionally you can pass the <code>-l</code> flag as well, which will <code>log</code> out all sql queries that <em>Express Admin</em> generates.</p>
-
-<h4>
-<a id="forever" class="anchor" href="#forever" aria-hidden="true"><span class="octicon octicon-link"></span></a>Forever</h4>
-
-<p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a></p>
-
-<div class="highlight highlight-bash"><pre>$ forever start path/to/express-admin/app path/to/project/config/</pre></div>
+<ul>
+<li><a href="http://www.youtube.com/watch?v=1CdoCB96QNk">Introductory Screencast</a></li>
+<li><a href="https://github.com/simov/express-admin">GitHub Repository</a></li>
+<li><a href="https://github.com/simov/express-admin-examples">Examples</a></li>
+</ul>
     
     
     <nav id="navigation" class="repository-sidebar">

@@ -31,36 +31,36 @@
 
 <p>In case some of your custom view's requests needs to be handled by <a href="http://httpd.apache.org/">Apache</a>, then add this to the nginx vhost file.</p>
 
-<div class="highlight highlight-bash"><pre><span class="pl-c"><span class="pl-pdc">#</span> apache</span>
+<div class="highlight highlight-bash"><pre><span class="pl-c"># apache</span>
 location /some-slug/ {
-    proxy_pass http://127.0.0.1:8008/some-slug/<span class="pl-ko">;</span>
-    proxy_set_header Host <span class="pl-v"><span class="pl-pdv">$</span>http_host</span><span class="pl-ko">;</span>
-    proxy_set_header X-Real-IP <span class="pl-v"><span class="pl-pdv">$</span>remote_addr</span><span class="pl-ko">;</span>
-    proxy_set_header X-Forwarded-For <span class="pl-v"><span class="pl-pdv">$</span>proxy_add_x_forwarded_for</span><span class="pl-ko">;</span>
+    proxy_pass http://127.0.0.1:8008/some-slug/<span class="pl-k">;</span>
+    proxy_set_header Host <span class="pl-vo">$http_host</span><span class="pl-k">;</span>
+    proxy_set_header X-Real-IP <span class="pl-vo">$remote_addr</span><span class="pl-k">;</span>
+    proxy_set_header X-Forwarded-For <span class="pl-vo">$proxy_add_x_forwarded_for</span><span class="pl-k">;</span>
 }</pre></div>
 
 <p>Edit <code>/etc/apache2/ports.conf</code>.</p>
 
-<div class="highlight highlight-bash"><pre><span class="pl-c"><span class="pl-pdc">#</span> When nginx is set as proxy</span>
+<div class="highlight highlight-bash"><pre><span class="pl-c"># When nginx is set as proxy</span>
 NameVirtualHost 127.0.0.1:8008
 Listen 127.0.0.1:8008</pre></div>
 
 <p>Create apache's virtual host file.</p>
 
-<div class="highlight highlight-bash"><pre><span class="pl-ko">&lt;</span>VirtualHost 127.0.0.1:<span class="pl-ko">8008&gt;</span>
+<div class="highlight highlight-bash"><pre><span class="pl-k">&lt;</span>VirtualHost 127.0.0.1:<span class="pl-k">8008&gt;</span>
     ServerAdmin admin@localhost
-    <span class="pl-c"><span class="pl-pdc">#</span> apache's vhost name MUST MATCH the nginx's vhost name</span>
+    <span class="pl-c"># apache's vhost name MUST MATCH the nginx's vhost name</span>
     ServerName admin.example.com
     ServerAlias admin.example.com
-    <span class="pl-c"><span class="pl-pdc">#</span> some aliases etc.</span>
+    <span class="pl-c"># some aliases etc.</span>
     Alias /some-slug /path/to/some/dir
-    <span class="pl-ko">&lt;</span>Location /some-slug<span class="pl-ko">&gt;</span>
-        <span class="pl-c"><span class="pl-pdc">#</span> some options ...</span>
-    <span class="pl-ko">&lt;</span>/Location<span class="pl-ko">&gt;</span>
-    <span class="pl-c"><span class="pl-pdc">#</span> log</span>
+    <span class="pl-k">&lt;</span>Location /some-slug<span class="pl-k">&gt;</span>
+        <span class="pl-c"># some options ...</span>
+    <span class="pl-k">&lt;</span>/Location<span class="pl-k">&gt;</span>
+    <span class="pl-c"># log</span>
     ErrorLog /var/log/apache2/admin-error.log
     CustomLog /var/log/apache2/admin-access.log combined
-<span class="pl-ko">&lt;</span>/VirtualHost<span class="pl-ko">&gt;</span></pre></div>
+<span class="pl-k">&lt;</span>/VirtualHost<span class="pl-k">&gt;</span></pre></div>
     
     
     <nav id="navigation" class="repository-sidebar">

@@ -31,33 +31,33 @@
 
 <p>All settings related to the default Express Admin views are set inside the <code>settings.json</code> file, which is automatically generated with default values at first start up.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>pk_name<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>
-        <span class="pl-c"><span class="pl-pdc">//</span> "schema": "name" // pg: set specific schema for this table only</span>
+<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>pk_name<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>
+        <span class="pl-c">// "schema": "name" // pg: set specific schema for this table only</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [
-        {...}, <span class="pl-c"><span class="pl-pdc">//</span> see column definition below</span>
-        <span class="pl-c"><span class="pl-pdc">//</span> { "manyToMany" ... } // see 'Many to Many' documentation</span>
+    <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        {...}, <span class="pl-c">// see column definition below</span>
+        <span class="pl-c">// { "manyToMany" ... } // see 'Many to Many' documentation</span>
     ],
-    <span class="pl-s1"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s1"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>order<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>asc<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>desc<span class="pl-pds">"</span></span>
+    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>order<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s1"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>asc<span class="pl-pds">"</span></span>,
+            <span class="pl-s1"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>desc<span class="pl-pds">"</span></span>
         },
-        <span class="pl-s1"><span class="pl-pds">"</span>page<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-cn">25</span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>filter<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span> ...]
+        <span class="pl-s1"><span class="pl-pds">"</span>page<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">25</span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>filter<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span> ...]
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>readonly<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">false</span>,
-        <span class="pl-c"><span class="pl-pdc">//</span> "manyToOne": { ... }, // see 'Many to One' documentation</span>
-        <span class="pl-c"><span class="pl-pdc">//</span> "oneToOne": { ... } // see 'One to One' documentation</span>
+    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>readonly<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+        <span class="pl-c">// "manyToOne": { ... }, // see 'Many to One' documentation</span>
+        <span class="pl-c">// "oneToOne": { ... } // see 'One to One' documentation</span>
     }
 }</pre></div>
 
@@ -122,21 +122,21 @@
 <p>Each <code>table</code> object contains an array of colums. Each <code>column</code> object have:</p>
 
 <div class="highlight highlight-js"><pre>{
-    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>column_name<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>column_name<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">false</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>defaultValue<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">null</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>defaultValue<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">null</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-ko">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-c"><span class="pl-pdc">//</span> "oneToMany": { ... }, // see 'One to Many' documentation</span>
+    <span class="pl-c">// "oneToMany": { ... }, // see 'One to Many' documentation</span>
 }</pre></div>
 
 <ul>
@@ -148,20 +148,20 @@
 <li>
 <p><strong>control</strong> - one of these</p>
 
-<div class="highlight highlight-js"><pre>{<span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> input type="text"</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> textarea</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>some-class<span class="pl-pds">"</span></span>} <span class="pl-c"><span class="pl-pdc">//</span> html editor (see the docs)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> input type="number"</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>date<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> datepicker</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>time<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> timepicker</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>datetime<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> datetimepicker</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>year<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> yearpicker</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> input type="file" (uploads to file system)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>binary<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> input type="file" (uploads to blob|bytea fields)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>radio<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>True<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>False<span class="pl-pds">"</span></span>]} <span class="pl-c"><span class="pl-pdc">//</span> input type="radio"</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> select (used for one-to-many relationships)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>} <span class="pl-c"><span class="pl-pdc">//</span> select multiple (used for many-to-many relationships)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-ko">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>value&amp;text<span class="pl-pds">"</span></span>,{<span class="pl-s1"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-ko">:</span><span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>}]} <span class="pl-c"><span class="pl-pdc">//</span> select with static options</span></pre></div>
+<div class="highlight highlight-js"><pre>{<span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="text"</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// textarea</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>some-class<span class="pl-pds">"</span></span>} <span class="pl-c">// html editor (see the docs)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="number"</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>date<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// datepicker</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>time<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// timepicker</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>datetime<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// datetimepicker</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>year<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// yearpicker</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="file" (uploads to file system)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>binary<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="file" (uploads to blob|bytea fields)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>radio<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>True<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>False<span class="pl-pds">"</span></span>]} <span class="pl-c">// input type="radio"</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// select (used for one-to-many relationships)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// select multiple (used for many-to-many relationships)</span>
+{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>value&amp;text<span class="pl-pds">"</span></span>,{<span class="pl-s1"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>}]} <span class="pl-c">// select with static options</span></pre></div>
 </li>
 <li><p><strong>type</strong> - column's data type <em>(typically you won't change this)</em></p></li>
 <li>

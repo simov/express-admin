@@ -32,51 +32,51 @@
 <p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a></p>
 
 <div class="highlight highlight-bash"><pre>server {
-    listen 80<span class="pl-ko">;</span>
+    listen 80<span class="pl-k">;</span>
 
-    <span class="pl-c"><span class="pl-pdc">#</span> vhost</span>
-    server_name admin.example.com<span class="pl-ko">;</span>
+    <span class="pl-c"># vhost</span>
+    server_name admin.example.com<span class="pl-k">;</span>
 
-    <span class="pl-c"><span class="pl-pdc">#</span>log</span>
-    access_log /var/log/nginx/admin-access.log<span class="pl-ko">;</span>
-    error_log /var/log/nginx/admin-error.log debug<span class="pl-ko">;</span>
+    <span class="pl-c">#log</span>
+    access_log /var/log/nginx/admin-access.log<span class="pl-k">;</span>
+    error_log /var/log/nginx/admin-error.log debug<span class="pl-k">;</span>
 
-    <span class="pl-c"><span class="pl-pdc">#</span> NODE</span>
+    <span class="pl-c"># NODE</span>
     location / {
-        proxy_pass http://127.0.0.1:3000<span class="pl-ko">;</span>
-        proxy_set_header Host <span class="pl-v"><span class="pl-pdv">$</span>http_host</span><span class="pl-ko">;</span>
-        proxy_set_header X-Real-IP <span class="pl-v"><span class="pl-pdv">$</span>remote_addr</span><span class="pl-ko">;</span>
-        proxy_set_header X-Forwarded-For <span class="pl-v"><span class="pl-pdv">$</span>proxy_add_x_forwarded_for</span><span class="pl-ko">;</span>
+        proxy_pass http://127.0.0.1:3000<span class="pl-k">;</span>
+        proxy_set_header Host <span class="pl-vo">$http_host</span><span class="pl-k">;</span>
+        proxy_set_header X-Real-IP <span class="pl-vo">$remote_addr</span><span class="pl-k">;</span>
+        proxy_set_header X-Forwarded-For <span class="pl-vo">$proxy_add_x_forwarded_for</span><span class="pl-k">;</span>
     }
 
-    <span class="pl-c"><span class="pl-pdc">#</span> NGINX</span>
+    <span class="pl-c"># NGINX</span>
 
-    <span class="pl-c"><span class="pl-pdc">#</span> static</span>
-    location <span class="pl-ko">~</span> <span class="pl-cce">\.</span>(jpg<span class="pl-ko">|</span>jpeg<span class="pl-ko">|</span>png<span class="pl-ko">|</span>gif<span class="pl-ko">|</span>swf<span class="pl-ko">|</span>flv<span class="pl-ko">|</span>mp4<span class="pl-ko">|</span>mov<span class="pl-ko">|</span>avi<span class="pl-ko">|</span>wmv<span class="pl-ko">|</span>m4v<span class="pl-ko">|</span>mkv<span class="pl-ko">|</span>ico<span class="pl-ko">|</span>css<span class="pl-ko">|</span>js<span class="pl-ko">|</span>txt<span class="pl-ko">|</span>html<span class="pl-ko">|</span>htm)$ {
-        root /<span class="pl-ko">;</span>
+    <span class="pl-c"># static</span>
+    location <span class="pl-k">~</span> <span class="pl-cce">\.</span>(jpg<span class="pl-k">|</span>jpeg<span class="pl-k">|</span>png<span class="pl-k">|</span>gif<span class="pl-k">|</span>swf<span class="pl-k">|</span>flv<span class="pl-k">|</span>mp4<span class="pl-k">|</span>mov<span class="pl-k">|</span>avi<span class="pl-k">|</span>wmv<span class="pl-k">|</span>m4v<span class="pl-k">|</span>mkv<span class="pl-k">|</span>ico<span class="pl-k">|</span>css<span class="pl-k">|</span>js<span class="pl-k">|</span>txt<span class="pl-k">|</span>html<span class="pl-k">|</span>htm)$ {
+        root /<span class="pl-k">;</span>
         try_files
-            <span class="pl-c"><span class="pl-pdc">#</span> express admin</span>
-            /absolute/path/to/express-admin/public/<span class="pl-v"><span class="pl-pdv">$</span>uri</span>
+            <span class="pl-c"># express admin</span>
+            /absolute/path/to/express-admin/public/<span class="pl-vo">$uri</span>
 
-            <span class="pl-c"><span class="pl-pdc">#</span> custom views</span>
-            /absolute/path/to/your/project/custom/app1/public/<span class="pl-v"><span class="pl-pdv">$</span>uri</span>
-            /absolute/path/to/your/project/custom/app2/public/<span class="pl-v"><span class="pl-pdv">$</span>uri</span>
-        /<span class="pl-ko">;</span>
+            <span class="pl-c"># custom views</span>
+            /absolute/path/to/your/project/custom/app1/public/<span class="pl-vo">$uri</span>
+            /absolute/path/to/your/project/custom/app2/public/<span class="pl-vo">$uri</span>
+        /<span class="pl-k">;</span>
     }
 
-    <span class="pl-c"><span class="pl-pdc">#</span> LIBS</span>
+    <span class="pl-c"># LIBS</span>
 
-    <span class="pl-c"><span class="pl-pdc">#</span> csslib</span>
+    <span class="pl-c"># csslib</span>
     location ^~ /csslib/ {
-        <span class="pl-sf">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/<span class="pl-ko">;</span>
+        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/<span class="pl-k">;</span>
     }
-    <span class="pl-c"><span class="pl-pdc">#</span> jslib</span>
+    <span class="pl-c"># jslib</span>
     location ^~ /jslib/ {
-        <span class="pl-sf">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/<span class="pl-ko">;</span>
+        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/<span class="pl-k">;</span>
     }
-    <span class="pl-c"><span class="pl-pdc">#</span> bootswatch</span>
+    <span class="pl-c"># bootswatch</span>
     location ^~ /bootswatch/ {
-        <span class="pl-sf">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/<span class="pl-ko">;</span>
+        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/<span class="pl-k">;</span>
     }
 }</pre></div>
     
