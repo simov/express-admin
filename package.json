@@ -14,13 +14,10 @@
     ],
     "license"   : "MIT",
     "homepage"  : "https://github.com/simov/express-admin",
-    "author": {
-        "name"  : "simo",
-        "email" : "simeonvelichkov@gmail.com"
-    },
+    "author": "Simeon Velichkov <simeonvelichkov@gmail.com> (http://simov.github.io)",
     "repository": {
         "type"  : "git",
-        "url"   : "git://github.com/simov/express-admin.git"
+        "url"   : "https://github.com/simov/grant.git"
     },
     "dependencies": {
         "express"          : "4.4.4",
@@ -48,8 +45,8 @@
         "express-admin-static": "2.2.2"
     },
     "devDependencies": {
-        "mocha" : "*",
-        "should": "*",
+        "mocha" : "1.20.1",
+        "should": "4.0.4",
         "supertest": "*",
         "recursive-fs": "*"
     },
