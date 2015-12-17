@@ -95,12 +95,12 @@ function initDatabase (args, done) {
 // modifies args
 function initSettings (args) {
     // route variables
-    
+
     // upload
     var upload = args.config.app.upload || path.join(__dirname, 'public/upload');
     args.config.app.upload = upload;
     if (!fs.existsSync(upload)) fs.mkdirSync(upload);
-    
+
     // languages
     args.langs = (function () {
         var dpath = path.join(__dirname, 'config/lang'),
@@ -157,7 +157,7 @@ function initSettings (args) {
     args.layouts = args.config.app.layouts;
     args.themes = args.config.app.themes
         ? {theme: require(path.join(__dirname, 'config/themes'))} : null;
-    
+
     args.languages = (function () {
         if (!args.config.app.languages) return null;
         var langs = [];
@@ -199,11 +199,11 @@ function initServer (args) {
         .use(multipart())
 
         .use(cookieParser())
-        .use(session({name: 'express-admin', secret: 'very secret - required',
+        .use(args.session || session({name: 'express-admin', secret: 'very secret - required',
                         saveUninitialized: true, resave: true}))
         .use(r.auth.status)// session middleware
         .use(csrf())
-        
+
         .use(methodOverride())
         .use(serveStatic(path.join(__dirname, 'public')))
         .use(serveStatic(path.join(__dirname, 'node_modules/express-admin-static')));
@@ -227,7 +227,7 @@ function initServer (args) {
         var lang = req.cookies.lang || 'en';
         res.cookie('lang', lang, {path: '/', maxAge: 900000000});
         moment.locale(lang == 'cn' ? 'zh-cn' : lang);
-        
+
         // template vars
         res.locals.string = args.langs[lang];
         res.locals.root = args.config.app.root;
@@ -243,7 +243,7 @@ function initServer (args) {
     });
 
     // routes
-    
+
     // init regexes
     var _routes = routes.init(args.settings, args.custom);
 
@@ -302,11 +302,11 @@ if (require.main === module) {
 
             // extended settings
             initSettings(args);
-            
+
             var app = initServer(args);
 
             app.listen(args.config.server.port, function () {
-                console.log('Express Admin listening on port'.grey, 
+                console.log('Express Admin listening on port'.grey,
                             args.config.server.port.toString().green);
             });
         });
