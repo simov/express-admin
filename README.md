@@ -1,7 +1,5 @@
 
-<div style="text-align: center">
 ![img-screenshot]
-</div>
 
 ---
 
