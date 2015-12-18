@@ -11,11 +11,11 @@
         "favicon": "css/favicon.ico"
     },
     "path": {
-        "markdown"    : "/home/mighty/docs/express-admin/markdown",
-        "html"        : "/home/mighty/docs/express-admin/html",
+        "markdown"    : "/home/mighty/web/docs/express-admin/markdown",
+        "html"        : "/home/mighty/web/docs/express-admin/html",
         "static"      : "github-wiki/",
-        "credentials" : "/home/mighty/docs/express-admin/config/credentials.json",
-        "navigation"  : "/home/mighty/docs/express-admin/template/navigation.html",
+        "credentials" : "/home/mighty/web/docs/express-admin/config/credentials.json",
+        "navigation"  : "/home/mighty/web/docs/express-admin/template/navigation.html",
         "css": [
             "css/style.css"
         ],
