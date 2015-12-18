@@ -26,6 +26,8 @@ var config = {
     settings: require('./express-admin-config/settings.json'),
     custom: require('./express-admin-config/custom.json'),
     users: require('./express-admin-config/users.json')
+    // additionally you can pass your own session middleware to use
+    session: session({...})
 };
 
 xAdmin.init(config, function (err, admin) {
