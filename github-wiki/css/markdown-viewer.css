@@ -4,13 +4,13 @@
   overflow: auto;
 
   min-width: 200px;
-  max-width: 728px;
+  max-width: 888px;
 
   background-color: #fff;
   border: 1px solid #ddd;
   /*border-radius: 3px;*/
 
-  padding: 30px;
+  padding: 45px;
   margin: 20px auto;
 }
 .markdown-body .file:first-child>*:first-child {
