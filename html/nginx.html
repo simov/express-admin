@@ -32,7 +32,7 @@
 
 <p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a></p>
 
-<div class="highlight highlight-bash"><pre>server {
+<div class="highlight highlight-source-shell"><pre>server {
     listen 80<span class="pl-k">;</span>
 
     <span class="pl-c"># vhost</span>
@@ -45,9 +45,9 @@
     <span class="pl-c"># NODE</span>
     location / {
         proxy_pass http://127.0.0.1:3000<span class="pl-k">;</span>
-        proxy_set_header Host <span class="pl-vo">$http_host</span><span class="pl-k">;</span>
-        proxy_set_header X-Real-IP <span class="pl-vo">$remote_addr</span><span class="pl-k">;</span>
-        proxy_set_header X-Forwarded-For <span class="pl-vo">$proxy_add_x_forwarded_for</span><span class="pl-k">;</span>
+        proxy_set_header Host <span class="pl-smi">$http_host</span><span class="pl-k">;</span>
+        proxy_set_header X-Real-IP <span class="pl-smi">$remote_addr</span><span class="pl-k">;</span>
+        proxy_set_header X-Forwarded-For <span class="pl-smi">$proxy_add_x_forwarded_for</span><span class="pl-k">;</span>
     }
 
     <span class="pl-c"># NGINX</span>
@@ -57,11 +57,11 @@
         root /<span class="pl-k">;</span>
         try_files
             <span class="pl-c"># express admin</span>
-            /absolute/path/to/express-admin/public/<span class="pl-vo">$uri</span>
+            /absolute/path/to/express-admin/public/<span class="pl-smi">$uri</span>
 
             <span class="pl-c"># custom views</span>
-            /absolute/path/to/your/project/custom/app1/public/<span class="pl-vo">$uri</span>
-            /absolute/path/to/your/project/custom/app2/public/<span class="pl-vo">$uri</span>
+            /absolute/path/to/your/project/custom/app1/public/<span class="pl-smi">$uri</span>
+            /absolute/path/to/your/project/custom/app2/public/<span class="pl-smi">$uri</span>
         /<span class="pl-k">;</span>
     }
 
@@ -69,15 +69,15 @@
 
     <span class="pl-c"># csslib</span>
     location ^~ /csslib/ {
-        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/<span class="pl-k">;</span>
+        <span class="pl-c1">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/<span class="pl-k">;</span>
     }
     <span class="pl-c"># jslib</span>
     location ^~ /jslib/ {
-        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/<span class="pl-k">;</span>
+        <span class="pl-c1">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/<span class="pl-k">;</span>
     }
     <span class="pl-c"># bootswatch</span>
     location ^~ /bootswatch/ {
-        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/<span class="pl-k">;</span>
+        <span class="pl-c1">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/<span class="pl-k">;</span>
     }
 }</pre></div>
     
@@ -126,7 +126,7 @@
             </li>
         </ul>
     </nav>
-    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+        <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
     </div>
 </body>
 </html>

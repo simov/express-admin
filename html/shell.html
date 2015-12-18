@@ -35,7 +35,7 @@
 
 <p>Set a <code>breakpoint</code> somewhere inside your custom view files and debug as usual.</p>
 
-<div class="highlight highlight-bash"><pre>$ admin --debug-brk path/to/project/config/
+<div class="highlight highlight-source-shell"><pre>$ admin --debug-brk path/to/project/config/
 <span class="pl-c"># or</span>
 $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
@@ -46,11 +46,11 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
 <p>Create a folder for your project's configuration files.</p>
 
-<div class="highlight highlight-bash"><pre>$ mkdir project</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ mkdir project</pre></div>
 
 <p>Then while you're still there you can use <code>supervisor</code> to watch your <code>project</code> folder, specifying that the extensions are <code>json</code></p>
 
-<div class="highlight highlight-bash"><pre>$ supervisor -w project -e json -- path/to/express-admin/app -v project/</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ supervisor -w project -e json -- path/to/express-admin/app -v project/</pre></div>
 
 <p>The <code>-v</code> flag that you're passing to the <em>Express Admin</em> app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
 
@@ -61,7 +61,7 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
 <p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a></p>
 
-<div class="highlight highlight-bash"><pre>$ forever start path/to/express-admin/app path/to/project/config/</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ forever start path/to/express-admin/app path/to/project/config/</pre></div>
     
     
     <nav id="gw-nav" class="repository-sidebar">
@@ -108,7 +108,7 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
             </li>
         </ul>
     </nav>
-    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+        <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
     </div>
 </body>
 </html>

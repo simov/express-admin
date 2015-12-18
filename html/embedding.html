@@ -32,9 +32,9 @@
 <h3>
 <a id="configjson" class="anchor" href="#configjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>config.json</h3>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
     ...
-    <span class="pl-s1"><span class="pl-pds">"</span>root<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/some-path<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>root<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/some-path<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h3>
@@ -42,32 +42,34 @@
 
 <p>In this example <em>Express Admin</em> will be located under the <code>/admin</code> path of your app.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s">var</span> express <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>),
-    xAdmin <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>express-admin<span class="pl-pds">'</span></span>);
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> express <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>),
+    xAdmin <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express-admin<span class="pl-pds">'</span></span>);
 
-<span class="pl-s">var</span> config <span class="pl-k">=</span> {
-    dpath<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/<span class="pl-pds">'</span></span>,
-    config<span class="pl-k">:</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/config.json<span class="pl-pds">'</span></span>),
-    settings<span class="pl-k">:</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/settings.json<span class="pl-pds">'</span></span>),
-    custom<span class="pl-k">:</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/custom.json<span class="pl-pds">'</span></span>),
-    users<span class="pl-k">:</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/users.json<span class="pl-pds">'</span></span>)
+<span class="pl-k">var</span> config <span class="pl-k">=</span> {
+    dpath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/<span class="pl-pds">'</span></span>,
+    config<span class="pl-k">:</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/config.json<span class="pl-pds">'</span></span>),
+    settings<span class="pl-k">:</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/settings.json<span class="pl-pds">'</span></span>),
+    custom<span class="pl-k">:</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/custom.json<span class="pl-pds">'</span></span>),
+    users<span class="pl-k">:</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/users.json<span class="pl-pds">'</span></span>)
+    <span class="pl-c">// additionally you can pass your own session middleware to use</span>
+    session<span class="pl-k">:</span> <span class="pl-en">session</span>({...})
 };
 
-xAdmin.init(config, <span class="pl-st">function</span> (<span class="pl-vpf">err</span>, <span class="pl-vpf">admin</span>) {
-    <span class="pl-k">if</span> (err) <span class="pl-k">return</span> <span class="pl-en">console</span><span class="pl-s3">.log</span>(err);
+<span class="pl-smi">xAdmin</span>.<span class="pl-en">init</span>(config, <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">admin</span>) {
+    <span class="pl-k">if</span> (err) <span class="pl-k">return</span> <span class="pl-en">console</span>.<span class="pl-c1">log</span>(err);
     <span class="pl-c">// web site</span>
-    <span class="pl-s">var</span> app <span class="pl-k">=</span> express();
+    <span class="pl-k">var</span> app <span class="pl-k">=</span> <span class="pl-en">express</span>();
     <span class="pl-c">// mount express-admin before any other middlewares</span>
-    app.use(<span class="pl-s1"><span class="pl-pds">'</span>/admin<span class="pl-pds">'</span></span>, admin);
+    <span class="pl-smi">app</span>.<span class="pl-en">use</span>(<span class="pl-s"><span class="pl-pds">'</span>/admin<span class="pl-pds">'</span></span>, admin);
     <span class="pl-c">// site specific middlewares</span>
-    app.use(express.bodyParser());
+    <span class="pl-smi">app</span>.<span class="pl-en">use</span>(<span class="pl-smi">express</span>.<span class="pl-en">bodyParser</span>());
     <span class="pl-c">// site routes</span>
-    app.get(<span class="pl-s1"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>, <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>) {
-        res.<span class="pl-s3">send</span>(<span class="pl-s1"><span class="pl-pds">'</span>Hello World<span class="pl-pds">'</span></span>);
+    <span class="pl-smi">app</span>.<span class="pl-en">get</span>(<span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) {
+        <span class="pl-smi">res</span>.<span class="pl-c1">send</span>(<span class="pl-s"><span class="pl-pds">'</span>Hello World<span class="pl-pds">'</span></span>);
     });
     <span class="pl-c">// site server</span>
-    app.listen(<span class="pl-c1">3000</span>, <span class="pl-st">function</span> () {
-        <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>My awesome site listening on port 3000<span class="pl-pds">'</span></span>);
+    <span class="pl-smi">app</span>.<span class="pl-en">listen</span>(<span class="pl-c1">3000</span>, <span class="pl-k">function</span> () {
+        <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>My awesome site listening on port 3000<span class="pl-pds">'</span></span>);
     });
 });</pre></div>
     
@@ -116,7 +118,7 @@ xAdmin.init(config, <span class="pl-st">function</span> (<span class="pl-vpf">er
             </li>
         </ul>
     </nav>
-    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+        <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
     </div>
 </body>
 </html>

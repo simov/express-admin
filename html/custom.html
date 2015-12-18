@@ -32,35 +32,35 @@
 
 <p>All objects in this file are user created. The <code>public</code> key is related entirely to inclusion of custom <em>static files</em>. It's possible to have an object containing only public key in it, as well as object containing an <code>app</code> key only, or both.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/app.js<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/app.js<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
         }
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/public/dir<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>css<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/global.css<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/public/dir<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>css<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/global.css<span class="pl-pds">"</span></span>
             ],
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/global.js<span class="pl-pds">"</span></span>
+            <span class="pl-s"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/global.js<span class="pl-pds">"</span></span>
             ]
         },
-        <span class="pl-s1"><span class="pl-pds">"</span>external<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>css<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>//absolute/url/external.css<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>external<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>css<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>//absolute/url/external.css<span class="pl-pds">"</span></span>
             ],
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>//absolute/url/external.js<span class="pl-pds">"</span></span>
+            <span class="pl-s"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>//absolute/url/external.js<span class="pl-pds">"</span></span>
             ]
         }
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>events<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/events.js<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>events<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/events.js<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <ul>
@@ -163,7 +163,7 @@
             </li>
         </ul>
     </nav>
-    <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
+        <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
     </div>
 </body>
 </html>

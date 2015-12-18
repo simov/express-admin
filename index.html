@@ -59,7 +59,7 @@
 <h3>
 <a id="get-the-module" class="anchor" href="#get-the-module" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get the module</h3>
 
-<div class="highlight highlight-bash"><pre>$ [sudo] npm install [-g] express-admin
+<div class="highlight highlight-source-shell"><pre>$ [sudo] npm install [-g] express-admin
 <span class="pl-c"># PostgreSQL only: run this inside the express-admin folder</span>
 $ npm install pg@2.8.2
 <span class="pl-c"># SQLite only: run this inside the express-admin folder</span>
@@ -70,7 +70,7 @@ $ npm install sqlite3@2.2.0</pre></div>
 
 <p>Depending on how you installed it, creating a new project is as simple as</p>
 
-<div class="highlight highlight-bash"><pre>$ admin path/to/config/dir
+<div class="highlight highlight-source-shell"><pre>$ admin path/to/config/dir
 <span class="pl-c"># or</span>
 $ node path/to/express-admin/app.js path/to/config/dir</pre></div>
 
@@ -93,22 +93,22 @@ $ node path/to/express-admin/app.js path/to/config/dir</pre></div>
 <li>When using SQLite, the <code>sqlite</code> key will contain only a <code>database</code> key with the absolute path to the database set as a value.</li>
 </ul>
 
-<div class="highlight highlight-js"><pre>{
-    <span class="pl-s1"><span class="pl-pds">"</span>mysql<span class="pl-pds">"</span></span><span class="pl-k">:</span> { <span class="pl-c">// or "pg" or "sqlite"</span>
-        <span class="pl-s1"><span class="pl-pds">"</span>database<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>express-admin-examples<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>liolio<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>karamba<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>mysql<span class="pl-pds">"</span></span><span class="pl-k">:</span> { <span class="pl-c">// or "pg" or "sqlite"</span>
+        <span class="pl-s"><span class="pl-pds">"</span>database<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>express-admin-examples<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>liolio<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>karamba<span class="pl-pds">"</span></span>
         <span class="pl-c">// "schema": "schema-name"</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>server<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>port<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">3000</span>
+    <span class="pl-s"><span class="pl-pds">"</span>server<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>port<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">3000</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>layouts<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>themes<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>languages<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>root<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/admin<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>upload<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/upload/folder<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>layouts<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>themes<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>languages<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>root<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/admin<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>upload<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/upload/folder<span class="pl-pds">"</span></span>
     }
 }</pre></div>
 
@@ -160,31 +160,31 @@ $ node path/to/express-admin/app.js path/to/config/dir</pre></div>
 
 <p>All settings related to the default Express Admin views are set inside the <code>settings.json</code> file, which is automatically generated with default values at first start up.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>pk_name<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>table_name<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>pk_name<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>
         <span class="pl-c">// "schema": "name" // pg: set specific schema for this table only</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+    <span class="pl-s"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
         {...}, <span class="pl-c">// see column definition below</span>
         <span class="pl-c">// { "manyToMany" ... } // see 'Many to Many' documentation</span>
     ],
-    <span class="pl-s1"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>order<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>asc<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>desc<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>order<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>asc<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>desc<span class="pl-pds">"</span></span>
         },
-        <span class="pl-s1"><span class="pl-pds">"</span>page<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">25</span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>filter<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span> ...]
+        <span class="pl-s"><span class="pl-pds">"</span>page<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">25</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>filter<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>column_name1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>column_name2<span class="pl-pds">"</span></span> ...]
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>readonly<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>readonly<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
         <span class="pl-c">// "manyToOne": { ... }, // see 'Many to One' documentation</span>
         <span class="pl-c">// "oneToOne": { ... } // see 'One to One' documentation</span>
     }
@@ -250,20 +250,20 @@ $ node path/to/express-admin/app.js path/to/config/dir</pre></div>
 
 <p>Each <code>table</code> object contains an array of colums. Each <code>column</code> object have:</p>
 
-<div class="highlight highlight-js"><pre>{
-    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>column_name<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>column_name<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>defaultValue<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">null</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>defaultValue<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">null</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
     <span class="pl-c">// "oneToMany": { ... }, // see 'One to Many' documentation</span>
 }</pre></div>
@@ -277,20 +277,20 @@ $ node path/to/express-admin/app.js path/to/config/dir</pre></div>
 <li>
 <p><strong>control</strong> - one of these</p>
 
-<div class="highlight highlight-js"><pre>{<span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="text"</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// textarea</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>some-class<span class="pl-pds">"</span></span>} <span class="pl-c">// html editor (see the docs)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="number"</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>date<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// datepicker</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>time<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// timepicker</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>datetime<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// datetimepicker</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>year<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// yearpicker</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="file" (uploads to file system)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>binary<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="file" (uploads to blob|bytea fields)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>radio<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>True<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>False<span class="pl-pds">"</span></span>]} <span class="pl-c">// input type="radio"</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// select (used for one-to-many relationships)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// select multiple (used for many-to-many relationships)</span>
-{<span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s1"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>value&amp;text<span class="pl-pds">"</span></span>,{<span class="pl-s1"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>}]} <span class="pl-c">// select with static options</span></pre></div>
+<div class="highlight highlight-source-js"><pre>{<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="text"</span>
+{<span class="pl-s"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// textarea</span>
+{<span class="pl-s"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>some-class<span class="pl-pds">"</span></span>} <span class="pl-c">// html editor (see the docs)</span>
+{<span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="number"</span>
+{<span class="pl-s"><span class="pl-pds">"</span>date<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// datepicker</span>
+{<span class="pl-s"><span class="pl-pds">"</span>time<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// timepicker</span>
+{<span class="pl-s"><span class="pl-pds">"</span>datetime<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// datetimepicker</span>
+{<span class="pl-s"><span class="pl-pds">"</span>year<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// yearpicker</span>
+{<span class="pl-s"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="file" (uploads to file system)</span>
+{<span class="pl-s"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s"><span class="pl-pds">"</span>binary<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// input type="file" (uploads to blob|bytea fields)</span>
+{<span class="pl-s"><span class="pl-pds">"</span>radio<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>True<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>False<span class="pl-pds">"</span></span>]} <span class="pl-c">// input type="radio"</span>
+{<span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// select (used for one-to-many relationships)</span>
+{<span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>} <span class="pl-c">// select multiple (used for many-to-many relationships)</span>
+{<span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">"</span>value&amp;text<span class="pl-pds">"</span></span>,{<span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>}]} <span class="pl-c">// select with static options</span></pre></div>
 </li>
 <li><p><strong>type</strong> - column's data type <em>(typically you won't change this)</em></p></li>
 <li>
@@ -327,35 +327,35 @@ Columns that are not allowed to be <code>null</code> inside the database, can't 
 
 <p>All objects in this file are user created. The <code>public</code> key is related entirely to inclusion of custom <em>static files</em>. It's possible to have an object containing only public key in it, as well as object containing an <code>app</code> key only, or both.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/app.js<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/app.js<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>unique-slug<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Verbose Name<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
         }
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/public/dir<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>css<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/global.css<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/public/dir<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>css<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/global.css<span class="pl-pds">"</span></span>
             ],
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/global.js<span class="pl-pds">"</span></span>
+            <span class="pl-s"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/global.js<span class="pl-pds">"</span></span>
             ]
         },
-        <span class="pl-s1"><span class="pl-pds">"</span>external<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>css<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>//absolute/url/external.css<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>external<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>css<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>//absolute/url/external.css<span class="pl-pds">"</span></span>
             ],
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>//absolute/url/external.js<span class="pl-pds">"</span></span>
+            <span class="pl-s"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>//absolute/url/external.js<span class="pl-pds">"</span></span>
             ]
         }
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>events<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/events.js<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>events<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/events.js<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <ul>
@@ -428,15 +428,15 @@ Columns that are not allowed to be <code>null</code> inside the database, can't 
 </li>
 </ol>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
 },
-<span class="pl-s1"><span class="pl-pds">"</span>oneToMany<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-        <span class="pl-s1"><span class="pl-pds">"</span>firstname<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>lastname<span class="pl-pds">"</span></span>
+<span class="pl-s"><span class="pl-pds">"</span>oneToMany<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        <span class="pl-s"><span class="pl-pds">"</span>firstname<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>lastname<span class="pl-pds">"</span></span>
     ]
 }</pre></div>
 
@@ -472,32 +472,32 @@ Columns that are not allowed to be <code>null</code> inside the database, can't 
 <li>Add the object from below inside that table's columns array</li>
 </ol>
 
-<div class="highlight highlight-js"><pre>{
-    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Recipe Types<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_type<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Recipe Types<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>recipe_type<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>int(11)<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>
+    <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>int(11)<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>manyToMany<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>link<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_has_recipe_types<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>parentPk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_id<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>childPk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_type_id<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>manyToMany<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>link<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>recipe_has_recipe_types<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>parentPk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>recipe_id<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>childPk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>recipe_type_id<span class="pl-pds">"</span></span>
         },
-        <span class="pl-s1"><span class="pl-pds">"</span>ref<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>recipe_type<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>ref<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>recipe_type<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>
             ]
         }
     }
@@ -589,9 +589,9 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 <li>Inside that table's <code>editview</code> key add a <code>manyToOne</code> key</li>
 </ol>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>manyToOne<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>repair<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>car_id<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>driver<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>car_id<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>manyToOne<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>repair<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>car_id<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>driver<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>car_id<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <ul>
@@ -618,9 +618,9 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 <li>Inside that table's <code>editview</code> key add a <code>oneToOne</code> key</li>
 </ol>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>oneToOne<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>address<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>user_id<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>user_id<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>oneToOne<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>address<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>user_id<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>user_id<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <ul>
@@ -641,13 +641,13 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Inside the <code>settings.json</code> file each table can be configured to have multiple primary keys through its <code>pk</code> field <em>(set automatically on project's first run)</em></p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tbl<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-        <span class="pl-s1"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>tbl<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        <span class="pl-s"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
     ],
-    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tbl<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>tbl<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h3>
@@ -661,32 +661,32 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>The <code>fk</code> key specifies the foreign keys in this table that are referencing the other one.</p>
 
-<div class="highlight highlight-js"><pre>{
-    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>fk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-        <span class="pl-s1"><span class="pl-pds">"</span>otm_id1<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>otm_id2<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>fk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        <span class="pl-s"><span class="pl-pds">"</span>otm_id1<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>otm_id2<span class="pl-pds">"</span></span>
     ],
-    <span class="pl-s1"><span class="pl-pds">"</span>oneToMany<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-            <span class="pl-s1"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>oneToMany<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>otm<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+            <span class="pl-s"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
         ],
-        <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-            <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+            <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>
         ]
     }
 }</pre></div>
@@ -698,41 +698,41 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>In case tables with multiple primary keys are part of a Many to Many table relationship, the regular <a href="#many-to-many">Many to Many</a> setting is used, but additionally the <code>parentPk</code> and <code>childPk</code> keys inside the <code>link</code> table, and the <code>pk</code> key inside the <code>ref</code> table, can be set to array of foreign and primary keys respectively to accommodate that design.</p>
 
-<div class="highlight highlight-js"><pre>{
-    <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>varchar(45)<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>allowNull<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>listview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+    <span class="pl-s"><span class="pl-pds">"</span>editview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
     },
-    <span class="pl-s1"><span class="pl-pds">"</span>manyToMany<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>link<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tbl_has_mtm<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>parentPk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
-                <span class="pl-s1"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>manyToMany<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>link<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>tbl_has_mtm<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>parentPk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
             ],
-            <span class="pl-s1"><span class="pl-pds">"</span>childPk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>mtm_id1<span class="pl-pds">"</span></span>,
-                <span class="pl-s1"><span class="pl-pds">"</span>mtm_id2<span class="pl-pds">"</span></span>
+            <span class="pl-s"><span class="pl-pds">"</span>childPk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>mtm_id1<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>mtm_id2<span class="pl-pds">"</span></span>
             ]
         },
-        <span class="pl-s1"><span class="pl-pds">"</span>ref<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
-                <span class="pl-s1"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>ref<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>mtm<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>pk<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>id1<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>id2<span class="pl-pds">"</span></span>
             ],
-            <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>
+            <span class="pl-s"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>
             ]
         }
     }
@@ -745,10 +745,10 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Same as the regular <a href="#many-to-one">Many to One</a> setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>manyToOne<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>mto<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-        <span class="pl-s1"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>manyToOne<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>mto<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        <span class="pl-s"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
     ]
 }</pre></div>
 
@@ -757,10 +757,10 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Same as the regular <a href="#one-to-one">one to One</a> setting, but additionally the value for each table listed there can be set to array of foreign keys referencing this table.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>oneToOne<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>oto<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-        <span class="pl-s1"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>oneToOne<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>oto<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        <span class="pl-s"><span class="pl-pds">"</span>tbl_id1<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>tbl_id2<span class="pl-pds">"</span></span>
     ]
 }</pre></div>
 <p><br /></p><hr /></div><div class="file"><h2>
@@ -779,9 +779,9 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Inside the <code>settings.json</code> file, find the column you are looking for, and add an additional <code>editor</code> property to its <code>control</code> type key, specifying the class name to use for this instance.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>class-name<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>class-name<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h4>
@@ -789,13 +789,13 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/ckeditor/ckeditor.js<span class="pl-pds">"</span></span>,
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/my-custom.js<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/path/ckeditor/ckeditor.js<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/path/my-custom.js<span class="pl-pds">"</span></span>
             ]
         }
     }
@@ -821,13 +821,13 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Your custom editor is initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-st">function</span> () {
-    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> CKEDITOR <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
-        CKEDITOR.replaceAll(<span class="pl-st">function</span> (<span class="pl-vpf">textarea</span>, <span class="pl-vpf">config</span>) {
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-k">function</span> () {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> <span class="pl-c1">CKEDITOR</span> <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+        <span class="pl-smi">CKEDITOR</span>.<span class="pl-en">replaceAll</span>(<span class="pl-k">function</span> (<span class="pl-smi">textarea</span>, <span class="pl-smi">config</span>) {
             <span class="pl-c">// exclude textareas that are inside hidden inline rows</span>
-            <span class="pl-k">if</span> ($(textarea).parents(<span class="pl-s1"><span class="pl-pds">'</span>tr<span class="pl-pds">'</span></span>).hasClass(<span class="pl-s1"><span class="pl-pds">'</span>blank<span class="pl-pds">'</span></span>)) <span class="pl-k">return</span> <span class="pl-c1">false</span>;
+            <span class="pl-k">if</span> (<span class="pl-en">$</span>(textarea).<span class="pl-en">parents</span>(<span class="pl-s"><span class="pl-pds">'</span>tr<span class="pl-pds">'</span></span>).<span class="pl-en">hasClass</span>(<span class="pl-s"><span class="pl-pds">'</span>blank<span class="pl-pds">'</span></span>)) <span class="pl-k">return</span> <span class="pl-c1">false</span>;
             <span class="pl-c">// textareas with this class name will get the default configuration</span>
-            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>class-name<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> <span class="pl-c1">true</span>;
+            <span class="pl-k">if</span> (<span class="pl-smi">textarea</span>.<span class="pl-c1">className</span>.<span class="pl-c1">indexOf</span>(<span class="pl-s"><span class="pl-pds">'</span>class-name<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> <span class="pl-c1">true</span>;
             <span class="pl-c">// all other textareas won't be initialized as ckeditors</span>
             <span class="pl-k">return</span> <span class="pl-c1">false</span>;
         });
@@ -835,14 +835,14 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 });
 
 <span class="pl-c">// executed each time an inline is added</span>
-<span class="pl-st">function</span> <span class="pl-en">onAddInline</span> (<span class="pl-vpf">rows</span>) {
-    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> CKEDITOR <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+<span class="pl-k">function</span> <span class="pl-en">onAddInline</span> (<span class="pl-smi">rows</span>) {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> <span class="pl-c1">CKEDITOR</span> <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
         <span class="pl-c">// for each of the new rows containing textareas</span>
-        $(<span class="pl-s1"><span class="pl-pds">'</span>textarea<span class="pl-pds">'</span></span>, rows).each(<span class="pl-st">function</span> (<span class="pl-vpf">index</span>) {
+        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>textarea<span class="pl-pds">'</span></span>, rows).<span class="pl-en">each</span>(<span class="pl-k">function</span> (<span class="pl-smi">index</span>) {
             <span class="pl-c">// get the DOM instance</span>
-            <span class="pl-s">var</span> textarea <span class="pl-k">=</span> $(<span class="pl-v">this</span>)[<span class="pl-c1">0</span>];
+            <span class="pl-k">var</span> textarea <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-v">this</span>)[<span class="pl-c1">0</span>];
             <span class="pl-c">// textareas with this class name will get the default configuration</span>
-            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>class-name<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> CKEDITOR.<span class="pl-s3">replace</span>(textarea);
+            <span class="pl-k">if</span> (<span class="pl-smi">textarea</span>.<span class="pl-c1">className</span>.<span class="pl-c1">indexOf</span>(<span class="pl-s"><span class="pl-pds">'</span>class-name<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> <span class="pl-smi">CKEDITOR</span>.<span class="pl-c1">replace</span>(textarea);
             <span class="pl-c">// all other textareas won't be initialized as ckeditors</span>
             <span class="pl-k">return</span> <span class="pl-c1">false</span>;
         });
@@ -870,9 +870,9 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Inside the <code>settings.json</code> file, find the column you are looking for, and add an additional <code>editor</code> property to its <code>control</code> type key, specifying the class name to use for this instance.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>class-name<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>class-name<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h4>
@@ -880,14 +880,14 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js<span class="pl-pds">"</span></span>,
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js<span class="pl-pds">"</span></span>,
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/my-custom.js<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/path/my-custom.js<span class="pl-pds">"</span></span>
             ]
         }
     }
@@ -913,18 +913,18 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Your custom editor is initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-st">function</span> () {
-    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-k">function</span> () {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
         <span class="pl-c">// it's important to initialize only the visible textareas</span>
-        $(<span class="pl-s1"><span class="pl-pds">'</span>tr:not(.blank) .class-name<span class="pl-pds">'</span></span>).tinymce({});
+        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>tr:not(.blank) .class-name<span class="pl-pds">'</span></span>).<span class="pl-en">tinymce</span>({});
     }
 });
 
 <span class="pl-c">// executed each time an inline is added</span>
-<span class="pl-st">function</span> <span class="pl-en">onAddInline</span> (<span class="pl-vpf">rows</span>) {
-    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+<span class="pl-k">function</span> <span class="pl-en">onAddInline</span> (<span class="pl-smi">rows</span>) {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
         <span class="pl-c">// init tinymce editors</span>
-        $(<span class="pl-s1"><span class="pl-pds">'</span>.class-name<span class="pl-pds">'</span></span>, rows).tinymce({});
+        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.class-name<span class="pl-pds">'</span></span>, rows).<span class="pl-en">tinymce</span>({});
     }
 }</pre></div>
 
@@ -949,19 +949,19 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Inside the <code>settings.json</code> file, find the columns you are looking for, and add an additional <code>editor</code> property to each column's <code>control</code> type key, specifying the class name to use for this instance.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>ck-full<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>ck-full<span class="pl-pds">"</span></span>
 }</pre></div>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>ck-compact<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>ck-compact<span class="pl-pds">"</span></span>
 }</pre></div>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
-    <span class="pl-s1"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>tinymce<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>control<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>editor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>tinymce<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h4>
@@ -969,19 +969,19 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Inside the <code>custom.json</code> file add a unique key for your custom stuff.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>external<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.4.1/ckeditor.js<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>unique-key-here<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>external<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.4.1/ckeditor.js<span class="pl-pds">"</span></span>
             ]
         },
-        <span class="pl-s1"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
-            <span class="pl-s1"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js<span class="pl-pds">"</span></span>,
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js<span class="pl-pds">"</span></span>,
-                <span class="pl-s1"><span class="pl-pds">"</span>/relative/to/above/path/my-custom.js<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>local<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/files/location<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>js<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/tiny_mce.js<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/path/tinymce/jscripts/tiny_mce/jquery.tinymce.min.js<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>/relative/to/above/path/my-custom.js<span class="pl-pds">"</span></span>
             ]
         }
     }
@@ -1007,62 +1007,62 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 
 <p>Your custom editors are initialized here. It's just plain javascript/jquery code, and you can write whatever you want to. However there are a few requirements.</p>
 
-<div class="highlight highlight-js"><pre>$(<span class="pl-st">function</span> () {
-    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> CKEDITOR <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
-        CKEDITOR.replaceAll(<span class="pl-st">function</span> (<span class="pl-vpf">textarea</span>, <span class="pl-vpf">config</span>) {
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-k">function</span> () {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> <span class="pl-c1">CKEDITOR</span> <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+        <span class="pl-smi">CKEDITOR</span>.<span class="pl-en">replaceAll</span>(<span class="pl-k">function</span> (<span class="pl-smi">textarea</span>, <span class="pl-smi">config</span>) {
             <span class="pl-c">// exclude textareas that are inside hidden inline rows</span>
-            <span class="pl-k">if</span> ($(textarea).parents(<span class="pl-s1"><span class="pl-pds">'</span>tr<span class="pl-pds">'</span></span>).hasClass(<span class="pl-s1"><span class="pl-pds">'</span>blank<span class="pl-pds">'</span></span>)) <span class="pl-k">return</span> <span class="pl-c1">false</span>;
+            <span class="pl-k">if</span> (<span class="pl-en">$</span>(textarea).<span class="pl-en">parents</span>(<span class="pl-s"><span class="pl-pds">'</span>tr<span class="pl-pds">'</span></span>).<span class="pl-en">hasClass</span>(<span class="pl-s"><span class="pl-pds">'</span>blank<span class="pl-pds">'</span></span>)) <span class="pl-k">return</span> <span class="pl-c1">false</span>;
             <span class="pl-c">// textareas with this class name will get the default configuration</span>
-            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-full<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> <span class="pl-c1">true</span>;
+            <span class="pl-k">if</span> (<span class="pl-smi">textarea</span>.<span class="pl-c1">className</span>.<span class="pl-c1">indexOf</span>(<span class="pl-s"><span class="pl-pds">'</span>ck-full<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> <span class="pl-c1">true</span>;
             <span class="pl-c">// textareas with this class name will have custom configuration</span>
-            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-compact<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>)
-                <span class="pl-k">return</span> setCustomConfig(config);
+            <span class="pl-k">if</span> (<span class="pl-smi">textarea</span>.<span class="pl-c1">className</span>.<span class="pl-c1">indexOf</span>(<span class="pl-s"><span class="pl-pds">'</span>ck-compact<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>)
+                <span class="pl-k">return</span> <span class="pl-en">setCustomConfig</span>(config);
             <span class="pl-c">// all other textareas won't be initialized as ckeditors</span>
             <span class="pl-k">return</span> <span class="pl-c1">false</span>;
         });
     }
 
-    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
         <span class="pl-c">// it's important to initialize only the visible textareas</span>
-        $(<span class="pl-s1"><span class="pl-pds">'</span>tr:not(.blank) .tinymce<span class="pl-pds">'</span></span>).tinymce({});
+        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>tr:not(.blank) .tinymce<span class="pl-pds">'</span></span>).<span class="pl-en">tinymce</span>({});
     }
 });
 
 <span class="pl-c">// ckeditor only</span>
-<span class="pl-st">function</span> <span class="pl-en">setCustomConfig</span> (<span class="pl-vpf">config</span>) {
+<span class="pl-k">function</span> <span class="pl-en">setCustomConfig</span> (<span class="pl-smi">config</span>) {
     config <span class="pl-k">=</span> config <span class="pl-k">||</span> {};
     <span class="pl-c">// toolbar</span>
-    config.toolbarGroups <span class="pl-k">=</span> [
-        { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>basicstyles<span class="pl-pds">'</span></span>, groups<span class="pl-k">:</span> [ <span class="pl-s1"><span class="pl-pds">'</span>basicstyles<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>cleanup<span class="pl-pds">'</span></span> ] },
-        { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>paragraph<span class="pl-pds">'</span></span>,   groups<span class="pl-k">:</span> [ <span class="pl-s1"><span class="pl-pds">'</span>list<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>indent<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>blocks<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>align<span class="pl-pds">'</span></span> ] },
-        <span class="pl-s1"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>,
-        { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>styles<span class="pl-pds">'</span></span> },
-        { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>colors<span class="pl-pds">'</span></span> }
+    <span class="pl-smi">config</span>.<span class="pl-smi">toolbarGroups</span> <span class="pl-k">=</span> [
+        { name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>basicstyles<span class="pl-pds">'</span></span>, groups<span class="pl-k">:</span> [ <span class="pl-s"><span class="pl-pds">'</span>basicstyles<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>cleanup<span class="pl-pds">'</span></span> ] },
+        { name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>paragraph<span class="pl-pds">'</span></span>,   groups<span class="pl-k">:</span> [ <span class="pl-s"><span class="pl-pds">'</span>list<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>indent<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>blocks<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>align<span class="pl-pds">'</span></span> ] },
+        <span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>,
+        { name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>styles<span class="pl-pds">'</span></span> },
+        { name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>colors<span class="pl-pds">'</span></span> }
     ];
-    config.removeButtons <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>Smiley,SpecialChar,PageBreak,Iframe,CreateDiv<span class="pl-pds">'</span></span>;
+    <span class="pl-smi">config</span>.<span class="pl-smi">removeButtons</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Smiley,SpecialChar,PageBreak,Iframe,CreateDiv<span class="pl-pds">'</span></span>;
     <span class="pl-k">return</span> config;
 }
 
 <span class="pl-c">// executed each time an inline is added</span>
-<span class="pl-st">function</span> <span class="pl-en">onAddInline</span> (<span class="pl-vpf">rows</span>) {
-    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> CKEDITOR <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+<span class="pl-k">function</span> <span class="pl-en">onAddInline</span> (<span class="pl-smi">rows</span>) {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> <span class="pl-c1">CKEDITOR</span> <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
         <span class="pl-c">// for each of the new rows containing textareas</span>
-        $(<span class="pl-s1"><span class="pl-pds">'</span>textarea<span class="pl-pds">'</span></span>, rows).each(<span class="pl-st">function</span> (<span class="pl-vpf">index</span>) {
+        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>textarea<span class="pl-pds">'</span></span>, rows).<span class="pl-en">each</span>(<span class="pl-k">function</span> (<span class="pl-smi">index</span>) {
             <span class="pl-c">// get the DOM instance</span>
-            <span class="pl-s">var</span> textarea <span class="pl-k">=</span> $(<span class="pl-v">this</span>)[<span class="pl-c1">0</span>];
+            <span class="pl-k">var</span> textarea <span class="pl-k">=</span> <span class="pl-en">$</span>(<span class="pl-v">this</span>)[<span class="pl-c1">0</span>];
             <span class="pl-c">// textareas with this class name will get the default configuration</span>
-            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-full<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> CKEDITOR.<span class="pl-s3">replace</span>(textarea);
+            <span class="pl-k">if</span> (<span class="pl-smi">textarea</span>.<span class="pl-c1">className</span>.<span class="pl-c1">indexOf</span>(<span class="pl-s"><span class="pl-pds">'</span>ck-full<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-k">return</span> <span class="pl-smi">CKEDITOR</span>.<span class="pl-c1">replace</span>(textarea);
             <span class="pl-c">// textareas with this class name will have custom configuration</span>
-            <span class="pl-k">if</span> (textarea.<span class="pl-sc">className</span>.<span class="pl-s3">indexOf</span>(<span class="pl-s1"><span class="pl-pds">'</span>ck-compact<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>)
-                <span class="pl-k">return</span> CKEDITOR.<span class="pl-s3">replace</span>(textarea, setCustomConfig());
+            <span class="pl-k">if</span> (<span class="pl-smi">textarea</span>.<span class="pl-c1">className</span>.<span class="pl-c1">indexOf</span>(<span class="pl-s"><span class="pl-pds">'</span>ck-compact<span class="pl-pds">'</span></span>) <span class="pl-k">!=</span> <span class="pl-k">-</span><span class="pl-c1">1</span>)
+                <span class="pl-k">return</span> <span class="pl-smi">CKEDITOR</span>.<span class="pl-c1">replace</span>(textarea, <span class="pl-en">setCustomConfig</span>());
             <span class="pl-c">// all other textareas won't be initialized as ckeditors</span>
             <span class="pl-k">return</span> <span class="pl-c1">false</span>;
         });
     }
 
-    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s1"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> tinyMCE <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">'</span>undefined<span class="pl-pds">'</span></span>) {
         <span class="pl-c">// init tinymce editors</span>
-        $(<span class="pl-s1"><span class="pl-pds">'</span>.tinymce<span class="pl-pds">'</span></span>, rows).tinymce({});
+        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.tinymce<span class="pl-pds">'</span></span>, rows).<span class="pl-en">tinymce</span>({});
     }
 }</pre></div>
 
@@ -1083,13 +1083,13 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 <h3>
 <a id="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>view1<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s1"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/app.js<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>view1<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>My Custom View<span class="pl-pds">"</span></span>,
-        <span class="pl-s1"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s1"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>view1<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/app.js<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>slug<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>view1<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>verbose<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>My Custom View<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>mainview<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
         }
     }
 }</pre></div>
@@ -1097,29 +1097,29 @@ See <a href="#compound-many-to-many">compound primary key</a> documentation.</p>
 <h3>
 <a id="appjs" class="anchor" href="#appjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>app.js</h3>
 
-<div class="highlight highlight-js"><pre><span class="pl-s">var</span> express <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>);
-<span class="pl-s">var</span> app <span class="pl-k">=</span> <span class="pl-sv">module</span>.exports <span class="pl-k">=</span> express();
-<span class="pl-s">var</span> path <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>path<span class="pl-pds">'</span></span>);
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> express <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> app <span class="pl-k">=</span> <span class="pl-smi">module</span>.<span class="pl-smi">exports</span> <span class="pl-k">=</span> <span class="pl-en">express</span>();
+<span class="pl-k">var</span> path <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>path<span class="pl-pds">'</span></span>);
 
 <span class="pl-c">// set your custom views path</span>
-app.set(<span class="pl-s1"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>, path.<span class="pl-s3">join</span>(<span class="pl-sv">__dirname</span>, <span class="pl-s1"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>));
+<span class="pl-smi">app</span>.<span class="pl-en">set</span>(<span class="pl-s"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>, <span class="pl-smi">path</span>.<span class="pl-c1">join</span>(<span class="pl-c1">__dirname</span>, <span class="pl-s"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>));
 
-app.get(<span class="pl-s1"><span class="pl-pds">'</span>/view1<span class="pl-pds">'</span></span>, <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">next</span>) {
+<span class="pl-smi">app</span>.<span class="pl-en">get</span>(<span class="pl-s"><span class="pl-pds">'</span>/view1<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">next</span>) {
 
     <span class="pl-c">// create a realtive from the admin's view folder to your custom folder</span>
-    <span class="pl-s">var</span> relative <span class="pl-k">=</span> path.relative(res.locals._admin.views, app.get(<span class="pl-s1"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>));
+    <span class="pl-k">var</span> relative <span class="pl-k">=</span> <span class="pl-smi">path</span>.<span class="pl-en">relative</span>(<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">_admin</span>.<span class="pl-smi">views</span>, <span class="pl-smi">app</span>.<span class="pl-en">get</span>(<span class="pl-s"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>));
 
-    res.locals.partials <span class="pl-k">=</span> {
+    <span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">partials</span> <span class="pl-k">=</span> {
 
         <span class="pl-c">// set the path to your templates like this</span>
         <span class="pl-c">// the content partial is declared inside the admin's base.html</span>
         <span class="pl-c">// this is the entry point for all your custom stuff</span>
-        content<span class="pl-k">:</span> path.<span class="pl-s3">join</span>(relative, <span class="pl-s1"><span class="pl-pds">'</span>template<span class="pl-pds">'</span></span>)
+        content<span class="pl-k">:</span> <span class="pl-smi">path</span>.<span class="pl-c1">join</span>(relative, <span class="pl-s"><span class="pl-pds">'</span>template<span class="pl-pds">'</span></span>)
     };
 
     <span class="pl-c">// typically you want your stuff to be rendered inside the admin's UI</span>
     <span class="pl-c">// so no need to render here</span>
-    next();
+    <span class="pl-en">next</span>();
 });</pre></div>
 
 <p>You should definitely run the examples from the <a href="https://github.com/simov/express-admin-examples">examples repository</a> as each of the custom views (apps) presented there is really well commented.</p>
@@ -1129,21 +1129,21 @@ app.get(<span class="pl-s1"><span class="pl-pds">'</span>/view1<span class="pl-p
 
 <p>Several variables are exposed to every route callback.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-c">// _admin's variable content is for internal purposes only and is not being rendered</span>
-res.locals._admin.db.connection<span class="pl-c">// the admin's database connection can be reused from here</span>
-res.locals._admin.config       <span class="pl-c">// the contents of the config.json file</span>
-res.locals._admin.settings     <span class="pl-c">// the contents of the settings.json file</span>
-res.locals._admin.custom       <span class="pl-c">// the contents of the custom.json file</span>
-res.locals._admin.users        <span class="pl-c">// the contents of the users.json file</span>
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// _admin's variable content is for internal purposes only and is not being rendered</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">_admin</span>.<span class="pl-smi">db</span>.<span class="pl-smi">connection</span><span class="pl-c">// the admin's database connection can be reused from here</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">_admin</span>.<span class="pl-smi">config</span>       <span class="pl-c">// the contents of the config.json file</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">_admin</span>.<span class="pl-smi">settings</span>     <span class="pl-c">// the contents of the settings.json file</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">_admin</span>.<span class="pl-smi">custom</span>       <span class="pl-c">// the contents of the custom.json file</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">_admin</span>.<span class="pl-smi">users</span>        <span class="pl-c">// the contents of the users.json file</span>
 
 <span class="pl-c">// shortcut variables that are being rendered</span>
-res.locals.libs       <span class="pl-c">// list of all client side libraries</span>
-res.locals.themes     <span class="pl-c">// list of all themes</span>
-res.locals.layouts    <span class="pl-c">// flag indicating layouts button visibility</span>
-res.locals.languages  <span class="pl-c">// list of all languages</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">libs</span>       <span class="pl-c">// list of all client side libraries</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">themes</span>     <span class="pl-c">// list of all themes</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">layouts</span>    <span class="pl-c">// flag indicating layouts button visibility</span>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">languages</span>  <span class="pl-c">// list of all languages</span>
 
 <span class="pl-c">// holds the absolute path to the admin's view directory</span>
-res.locals._admin.views</pre></div>
+<span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-smi">_admin</span>.<span class="pl-smi">views</span></pre></div>
 <p><br /></p><hr /></div><div class="file"><h2>
 <a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
 
@@ -1161,8 +1161,8 @@ res.locals._admin.views</pre></div>
 <h3>
 <a id="customjson" class="anchor" href="#customjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>custom.json</h3>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>some-key<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>events<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/absolute/path/to/custom/events.js<span class="pl-pds">"</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>some-key<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>events<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/absolute/path/to/custom/events.js<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h3>
@@ -1170,15 +1170,15 @@ res.locals._admin.views</pre></div>
 
 <p>Run the admin with the <code>--debug-brk</code> flag and use <a href="https://github.com/node-inspector/node-inspector">node-inspector</a> to drill down into the event hook parameters</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s3">exports</span>.<span class="pl-en">preSave</span> <span class="pl-k">=</span> <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
-    <span class="pl-k">if</span> (args.debug) <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>preSave<span class="pl-pds">'</span></span>);
+<div class="highlight highlight-source-js"><pre><span class="pl-c1">exports</span>.<span class="pl-en">preSave</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">args</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-smi">debug</span>) <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>preSave<span class="pl-pds">'</span></span>);
     <span class="pl-k">debugger</span>;
-    next();
+    <span class="pl-en">next</span>();
 }
-<span class="pl-s3">exports</span>.<span class="pl-en">postSave</span> <span class="pl-k">=</span> <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
-    <span class="pl-k">if</span> (args.debug) <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>postSave<span class="pl-pds">'</span></span>);
+<span class="pl-c1">exports</span>.<span class="pl-en">postSave</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">args</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-smi">debug</span>) <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>postSave<span class="pl-pds">'</span></span>);
     <span class="pl-k">debugger</span>;
-    next();
+    <span class="pl-en">next</span>();
 }</pre></div>
 
 <p>Take a look at the event examples <a href="https://github.com/simov/express-admin-examples/blob/master/config/custom/events/events.js">here</a> and <a href="https://github.com/simov/express-admin-tests/blob/master/config/x-relationships-compound/custom/events.js">here</a></p>
@@ -1203,10 +1203,10 @@ res.locals._admin.views</pre></div>
 <li>
 <p><strong>oneToOne | manyToOne</strong> - inline tables data</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table's name<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>records<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-        <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> {<span class="pl-s1"><span class="pl-pds">"</span>column's name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>column's value<span class="pl-pds">"</span></span>, ...},
-        <span class="pl-s1"><span class="pl-pds">"</span>insert|update|remove<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-c">// only for inline records</span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>table's name<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>records<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        <span class="pl-s"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> {<span class="pl-s"><span class="pl-pds">"</span>column's name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>column's value<span class="pl-pds">"</span></span>, ...},
+        <span class="pl-s"><span class="pl-pds">"</span>insert|update|remove<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-c">// only for inline records</span>
     ]
 }</pre></div>
 </li>
@@ -1235,21 +1235,21 @@ res.locals._admin.views</pre></div>
 <li>use the code below to set the <code>created_at</code> and <code>updated_at</code> columns, before the record is saved</li>
 </ul>
 
-<div class="highlight highlight-js"><pre><span class="pl-s">var</span> moment <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>moment<span class="pl-pds">'</span></span>);
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> moment <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>moment<span class="pl-pds">'</span></span>);
 
-<span class="pl-s3">exports</span>.<span class="pl-en">preSave</span> <span class="pl-k">=</span> <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
-    <span class="pl-k">if</span> (args.<span class="pl-sc">name</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>user<span class="pl-pds">'</span></span>) {
-        <span class="pl-s">var</span> now <span class="pl-k">=</span> moment(<span class="pl-k">new</span> <span class="pl-en">Date</span>()).format(<span class="pl-s1"><span class="pl-pds">'</span>YYYY-MM-DD hh:mm:ss<span class="pl-pds">'</span></span>),
-            record <span class="pl-k">=</span> args.<span class="pl-sc">data</span>.view.user.records[<span class="pl-c1">0</span>].columns;
-        <span class="pl-k">if</span> (args.<span class="pl-sc">action</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>insert<span class="pl-pds">'</span></span>) {
-            record.created_at <span class="pl-k">=</span> now;
-            record.updated_at <span class="pl-k">=</span> now;
+<span class="pl-c1">exports</span>.<span class="pl-en">preSave</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">args</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">name</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>user<span class="pl-pds">'</span></span>) {
+        <span class="pl-k">var</span> now <span class="pl-k">=</span> <span class="pl-en">moment</span>(<span class="pl-k">new</span> <span class="pl-en">Date</span>()).<span class="pl-en">format</span>(<span class="pl-s"><span class="pl-pds">'</span>YYYY-MM-DD hh:mm:ss<span class="pl-pds">'</span></span>),
+            record <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-c1">data</span>.<span class="pl-smi">view</span>.<span class="pl-smi">user</span>.<span class="pl-smi">records</span>[<span class="pl-c1">0</span>].<span class="pl-smi">columns</span>;
+        <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">action</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>insert<span class="pl-pds">'</span></span>) {
+            <span class="pl-smi">record</span>.<span class="pl-smi">created_at</span> <span class="pl-k">=</span> now;
+            <span class="pl-smi">record</span>.<span class="pl-smi">updated_at</span> <span class="pl-k">=</span> now;
         }
-        <span class="pl-k">else</span> <span class="pl-k">if</span> (args.<span class="pl-sc">action</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>update<span class="pl-pds">'</span></span>) {
-            record.updated_at <span class="pl-k">=</span> now;
+        <span class="pl-k">else</span> <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">action</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>update<span class="pl-pds">'</span></span>) {
+            <span class="pl-smi">record</span>.<span class="pl-smi">updated_at</span> <span class="pl-k">=</span> now;
         }
     }
-    next();
+    <span class="pl-en">next</span>();
 }</pre></div>
 
 <h5>
@@ -1262,25 +1262,25 @@ res.locals._admin.views</pre></div>
 <li>use the code below to set the columns that needs to be generated, before the record is saved</li>
 </ul>
 
-<div class="highlight highlight-js"><pre><span class="pl-s">var</span> shortid <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>shortid<span class="pl-pds">'</span></span>);
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> shortid <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>shortid<span class="pl-pds">'</span></span>);
 
-<span class="pl-s3">exports</span>.<span class="pl-en">preSave</span> <span class="pl-k">=</span> <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
-    <span class="pl-k">if</span> (args.<span class="pl-sc">name</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>car<span class="pl-pds">'</span></span>) {
-        <span class="pl-k">if</span> (args.<span class="pl-sc">action</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>insert<span class="pl-pds">'</span></span>) {
-            <span class="pl-s">var</span> table <span class="pl-k">=</span> args.<span class="pl-sc">name</span>,
-                record <span class="pl-k">=</span> args.<span class="pl-sc">data</span>.view[table].records[<span class="pl-c1">0</span>].columns;
-            record.<span class="pl-sc">id</span> <span class="pl-k">=</span> shortid.generate();
+<span class="pl-c1">exports</span>.<span class="pl-en">preSave</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">args</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">name</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>car<span class="pl-pds">'</span></span>) {
+        <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">action</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>insert<span class="pl-pds">'</span></span>) {
+            <span class="pl-k">var</span> table <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-c1">name</span>,
+                record <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-c1">data</span>.<span class="pl-smi">view</span>[table].<span class="pl-smi">records</span>[<span class="pl-c1">0</span>].<span class="pl-smi">columns</span>;
+            <span class="pl-smi">record</span>.<span class="pl-c1">id</span> <span class="pl-k">=</span> <span class="pl-smi">shortid</span>.<span class="pl-en">generate</span>();
         }
-        <span class="pl-k">for</span> (<span class="pl-s">var</span> table <span class="pl-k">in</span> args.<span class="pl-sc">data</span>.manyToOne) {
-            <span class="pl-s">var</span> inline <span class="pl-k">=</span> args.<span class="pl-sc">data</span>.manyToOne[table];
-            <span class="pl-k">if</span> (<span class="pl-k">!</span>inline.records) <span class="pl-k">continue</span>;
-            <span class="pl-k">for</span> (<span class="pl-s">var</span> i<span class="pl-k">=</span><span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> inline.records.<span class="pl-sc">length</span>; i<span class="pl-k">++</span>) {
-                <span class="pl-k">if</span> (inline.records[i].insert <span class="pl-k">!=</span> <span class="pl-s1"><span class="pl-pds">'</span>true<span class="pl-pds">'</span></span>) <span class="pl-k">continue</span>;
-                inline.records[i].columns.<span class="pl-sc">id</span> <span class="pl-k">=</span> shortid.generate();
+        <span class="pl-k">for</span> (<span class="pl-k">var</span> table <span class="pl-k">in</span> <span class="pl-smi">args</span>.<span class="pl-c1">data</span>.<span class="pl-smi">manyToOne</span>) {
+            <span class="pl-k">var</span> inline <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-c1">data</span>.<span class="pl-smi">manyToOne</span>[table];
+            <span class="pl-k">if</span> (<span class="pl-k">!</span><span class="pl-smi">inline</span>.<span class="pl-smi">records</span>) <span class="pl-k">continue</span>;
+            <span class="pl-k">for</span> (<span class="pl-k">var</span> i<span class="pl-k">=</span><span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">inline</span>.<span class="pl-smi">records</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+                <span class="pl-k">if</span> (<span class="pl-smi">inline</span>.<span class="pl-smi">records</span>[i].<span class="pl-smi">insert</span> <span class="pl-k">!=</span> <span class="pl-s"><span class="pl-pds">'</span>true<span class="pl-pds">'</span></span>) <span class="pl-k">continue</span>;
+                <span class="pl-smi">inline</span>.<span class="pl-smi">records</span>[i].<span class="pl-smi">columns</span>.<span class="pl-c1">id</span> <span class="pl-k">=</span> <span class="pl-smi">shortid</span>.<span class="pl-en">generate</span>();
             }
         }
     }
-    next();
+    <span class="pl-en">next</span>();
 }</pre></div>
 
 <h5>
@@ -1294,35 +1294,35 @@ res.locals._admin.views</pre></div>
 <li>use the code below to set the <code>deleted</code> and <code>deleted_at</code> columns, before the record is saved</li>
 </ul>
 
-<div class="highlight highlight-js"><pre><span class="pl-s">var</span> moment <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>moment<span class="pl-pds">'</span></span>);
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> moment <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>moment<span class="pl-pds">'</span></span>);
 
-<span class="pl-s3">exports</span>.<span class="pl-en">preSave</span> <span class="pl-k">=</span> <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
-    <span class="pl-k">if</span> (args.<span class="pl-sc">name</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>) {
-        <span class="pl-s">var</span> now <span class="pl-k">=</span> moment(<span class="pl-k">new</span> <span class="pl-en">Date</span>()).format(<span class="pl-s1"><span class="pl-pds">'</span>YYYY-MM-DD hh:mm:ss<span class="pl-pds">'</span></span>);
+<span class="pl-c1">exports</span>.<span class="pl-en">preSave</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">args</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">name</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>) {
+        <span class="pl-k">var</span> now <span class="pl-k">=</span> <span class="pl-en">moment</span>(<span class="pl-k">new</span> <span class="pl-en">Date</span>()).<span class="pl-en">format</span>(<span class="pl-s"><span class="pl-pds">'</span>YYYY-MM-DD hh:mm:ss<span class="pl-pds">'</span></span>);
         <span class="pl-c">// all inline oneToOne and manyToOne records should be marked as deleted</span>
-        <span class="pl-k">for</span> (<span class="pl-s">var</span> table <span class="pl-k">in</span> args.<span class="pl-sc">data</span>.manyToOne) {
-            <span class="pl-s">var</span> inline <span class="pl-k">=</span> args.<span class="pl-sc">data</span>.manyToOne[table];
-            <span class="pl-k">if</span> (<span class="pl-k">!</span>inline.records) <span class="pl-k">continue</span>;
-            <span class="pl-k">for</span> (<span class="pl-s">var</span> i<span class="pl-k">=</span><span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> inline.records.<span class="pl-sc">length</span>; i<span class="pl-k">++</span>) {
-                <span class="pl-k">if</span> (args.<span class="pl-sc">action</span> <span class="pl-k">!=</span> <span class="pl-s1"><span class="pl-pds">'</span>remove<span class="pl-pds">'</span></span> <span class="pl-k">&amp;&amp;</span> <span class="pl-k">!</span>inline.records[i].remove) <span class="pl-k">continue</span>;
+        <span class="pl-k">for</span> (<span class="pl-k">var</span> table <span class="pl-k">in</span> <span class="pl-smi">args</span>.<span class="pl-c1">data</span>.<span class="pl-smi">manyToOne</span>) {
+            <span class="pl-k">var</span> inline <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-c1">data</span>.<span class="pl-smi">manyToOne</span>[table];
+            <span class="pl-k">if</span> (<span class="pl-k">!</span><span class="pl-smi">inline</span>.<span class="pl-smi">records</span>) <span class="pl-k">continue</span>;
+            <span class="pl-k">for</span> (<span class="pl-k">var</span> i<span class="pl-k">=</span><span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">inline</span>.<span class="pl-smi">records</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+                <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">action</span> <span class="pl-k">!=</span> <span class="pl-s"><span class="pl-pds">'</span>remove<span class="pl-pds">'</span></span> <span class="pl-k">&amp;&amp;</span> <span class="pl-k">!</span><span class="pl-smi">inline</span>.<span class="pl-smi">records</span>[i].<span class="pl-smi">remove</span>) <span class="pl-k">continue</span>;
                 <span class="pl-c">// instead of deleting the record</span>
-                <span class="pl-k">delete</span> inline.records[i].remove;
+                <span class="pl-k">delete</span> <span class="pl-smi">inline</span>.<span class="pl-smi">records</span>[i].<span class="pl-smi">remove</span>;
                 <span class="pl-c">// update it</span>
-                inline.records[i].columns.deleted <span class="pl-k">=</span> <span class="pl-c1">true</span>;
-                inline.records[i].columns.deleted_at <span class="pl-k">=</span> now;
+                <span class="pl-smi">inline</span>.<span class="pl-smi">records</span>[i].<span class="pl-smi">columns</span>.<span class="pl-smi">deleted</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;
+                <span class="pl-smi">inline</span>.<span class="pl-smi">records</span>[i].<span class="pl-smi">columns</span>.<span class="pl-smi">deleted_at</span> <span class="pl-k">=</span> now;
             }
         }
         <span class="pl-c">// parent record</span>
-        <span class="pl-k">if</span> (args.<span class="pl-sc">action</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>remove<span class="pl-pds">'</span></span>) {
+        <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">action</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>remove<span class="pl-pds">'</span></span>) {
             <span class="pl-c">// instead of deleting the record</span>
-            args.<span class="pl-sc">action</span> <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>update<span class="pl-pds">'</span></span>;
+            <span class="pl-smi">args</span>.<span class="pl-c1">action</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>update<span class="pl-pds">'</span></span>;
             <span class="pl-c">// update it</span>
-            <span class="pl-s">var</span> record <span class="pl-k">=</span> args.<span class="pl-sc">data</span>.view.purchase.records[<span class="pl-c1">0</span>].columns;
-            record.deleted <span class="pl-k">=</span> <span class="pl-c1">true</span>;
-            record.deleted_at <span class="pl-k">=</span> now;
+            <span class="pl-k">var</span> record <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-c1">data</span>.<span class="pl-smi">view</span>.<span class="pl-smi">purchase</span>.<span class="pl-smi">records</span>[<span class="pl-c1">0</span>].<span class="pl-smi">columns</span>;
+            <span class="pl-smi">record</span>.<span class="pl-smi">deleted</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;
+            <span class="pl-smi">record</span>.<span class="pl-smi">deleted_at</span> <span class="pl-k">=</span> now;
         }
     }
-    next();
+    <span class="pl-en">next</span>();
 }</pre></div>
 
 <h3>
@@ -1345,10 +1345,10 @@ res.locals._admin.views</pre></div>
 <li>
 <p><strong>oneToOne | manyToOne</strong> - inline tables data</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>table's name<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-    <span class="pl-s1"><span class="pl-pds">"</span>records<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
-        <span class="pl-s1"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> {<span class="pl-s1"><span class="pl-pds">"</span>column's name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>column's value<span class="pl-pds">"</span></span>, ...},
-        <span class="pl-s1"><span class="pl-pds">"</span>insert|update|remove<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-c">// only for inline records</span>
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>table's name<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>records<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        <span class="pl-s"><span class="pl-pds">"</span>columns<span class="pl-pds">"</span></span><span class="pl-k">:</span> {<span class="pl-s"><span class="pl-pds">"</span>column's name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>column's value<span class="pl-pds">"</span></span>, ...},
+        <span class="pl-s"><span class="pl-pds">"</span>insert|update|remove<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-c">// only for inline records</span>
     ]
 }</pre></div>
 </li>
@@ -1377,32 +1377,32 @@ res.locals._admin.views</pre></div>
 <li>use the code below to upload the image, after the record is saved</li>
 </ul>
 
-<div class="highlight highlight-js"><pre><span class="pl-s">var</span> cloudinary <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>cloudinary<span class="pl-pds">'</span></span>),
-    fs <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>fs<span class="pl-pds">'</span></span>),
-    path <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>path<span class="pl-pds">'</span></span>);
-cloudinary.config({
-    cloud_name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
-    api_key<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
-    api_secret<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> cloudinary <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>cloudinary<span class="pl-pds">'</span></span>),
+    fs <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>fs<span class="pl-pds">'</span></span>),
+    path <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>path<span class="pl-pds">'</span></span>);
+<span class="pl-smi">cloudinary</span>.<span class="pl-en">config</span>({
+    cloud_name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+    api_key<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+    api_secret<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
 });
-<span class="pl-s3">exports</span>.<span class="pl-en">postSave</span> <span class="pl-k">=</span> <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
-    <span class="pl-k">if</span> (args.<span class="pl-sc">name</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>item<span class="pl-pds">'</span></span>) {
+<span class="pl-c1">exports</span>.<span class="pl-en">postSave</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">args</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">name</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>item<span class="pl-pds">'</span></span>) {
         <span class="pl-c">// file upload control data</span>
-        <span class="pl-s">var</span> image <span class="pl-k">=</span> args.upload.view.item.records[<span class="pl-c1">0</span>].columns.image;
+        <span class="pl-k">var</span> image <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-smi">upload</span>.<span class="pl-smi">view</span>.<span class="pl-smi">item</span>.<span class="pl-smi">records</span>[<span class="pl-c1">0</span>].<span class="pl-smi">columns</span>.<span class="pl-smi">image</span>;
         <span class="pl-c">// in case file is chosen through the file input control</span>
-        <span class="pl-k">if</span> (image.<span class="pl-sc">name</span>) {
+        <span class="pl-k">if</span> (<span class="pl-smi">image</span>.<span class="pl-c1">name</span>) {
             <span class="pl-c">// file name of the image already uploaded to the upload folder</span>
-            <span class="pl-s">var</span> fname <span class="pl-k">=</span> args.<span class="pl-sc">data</span>.view.item.records[<span class="pl-c1">0</span>].columns.image;
+            <span class="pl-k">var</span> fname <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-c1">data</span>.<span class="pl-smi">view</span>.<span class="pl-smi">item</span>.<span class="pl-smi">records</span>[<span class="pl-c1">0</span>].<span class="pl-smi">columns</span>.<span class="pl-smi">image</span>;
             <span class="pl-c">// upload</span>
-            <span class="pl-s">var</span> fpath <span class="pl-k">=</span> path.<span class="pl-s3">join</span>(args.upath, fname);
-            cloudinary.uploader.upload(fpath, <span class="pl-st">function</span> (<span class="pl-vpf">result</span>) {
-                <span class="pl-en">console</span><span class="pl-s3">.log</span>(result);
-                next();
+            <span class="pl-k">var</span> fpath <span class="pl-k">=</span> <span class="pl-smi">path</span>.<span class="pl-c1">join</span>(<span class="pl-smi">args</span>.<span class="pl-smi">upath</span>, fname);
+            <span class="pl-smi">cloudinary</span>.<span class="pl-smi">uploader</span>.<span class="pl-en">upload</span>(fpath, <span class="pl-k">function</span> (<span class="pl-smi">result</span>) {
+                <span class="pl-en">console</span>.<span class="pl-c1">log</span>(result);
+                <span class="pl-en">next</span>();
             });
         }
-        <span class="pl-k">else</span> next();
+        <span class="pl-k">else</span> <span class="pl-en">next</span>();
     }
-    <span class="pl-k">else</span> next();
+    <span class="pl-k">else</span> <span class="pl-en">next</span>();
 }</pre></div>
 
 <h3>
@@ -1464,23 +1464,23 @@ cloudinary.config({
 <li>check out the <em>preSave</em> example about <em>soft deleted records</em> above</li>
 </ul>
 
-<div class="highlight highlight-js"><pre><span class="pl-s3">exports</span>.<span class="pl-en">preList</span> <span class="pl-k">=</span> <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">args</span>, <span class="pl-vpf">next</span>) {
-    <span class="pl-k">if</span> (args.<span class="pl-sc">name</span> <span class="pl-k">==</span> <span class="pl-s1"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>) {
+<div class="highlight highlight-source-js"><pre><span class="pl-c1">exports</span>.<span class="pl-en">preList</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">args</span>, <span class="pl-smi">next</span>) {
+    <span class="pl-k">if</span> (<span class="pl-smi">args</span>.<span class="pl-c1">name</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>purchase<span class="pl-pds">'</span></span>) {
         <span class="pl-c">// check if we're using listview's filter</span>
         <span class="pl-c">// and actually want to see soft deleted records</span>
-        <span class="pl-s">var</span> filter <span class="pl-k">=</span> args.filter.columns;
-        <span class="pl-k">if</span> (filter <span class="pl-k">&amp;&amp;</span> (filter.deleted<span class="pl-k">==</span><span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span> <span class="pl-k">||</span> filter.deleted_at <span class="pl-k">&amp;&amp;</span> filter.deleted_at[<span class="pl-c1">0</span>])) {
-            <span class="pl-k">return</span> next();
+        <span class="pl-k">var</span> filter <span class="pl-k">=</span> <span class="pl-smi">args</span>.<span class="pl-smi">filter</span>.<span class="pl-smi">columns</span>;
+        <span class="pl-k">if</span> (filter <span class="pl-k">&amp;&amp;</span> (<span class="pl-smi">filter</span>.<span class="pl-smi">deleted</span><span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span> <span class="pl-k">||</span> <span class="pl-smi">filter</span>.<span class="pl-smi">deleted_at</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-smi">filter</span>.<span class="pl-smi">deleted_at</span>[<span class="pl-c1">0</span>])) {
+            <span class="pl-k">return</span> <span class="pl-en">next</span>();
         }
         <span class="pl-c">// otherwise hide the soft deleted records by default</span>
-        <span class="pl-s">var</span> filter <span class="pl-k">=</span> 
-            <span class="pl-s1"><span class="pl-pds">'</span> `purchase`.`deleted` IS NULL OR `purchase`.`deleted` = 0<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
-            <span class="pl-s1"><span class="pl-pds">'</span> OR `purchase`.`deleted_at` IS NULL <span class="pl-pds">'</span></span>;
-        args.statements.where
-            <span class="pl-k">?</span> args.statements.where <span class="pl-k">+=</span> <span class="pl-s1"><span class="pl-pds">'</span> AND <span class="pl-pds">'</span></span> <span class="pl-k">+</span> filter
-            <span class="pl-k">:</span> args.statements.where <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span> WHERE <span class="pl-pds">'</span></span> <span class="pl-k">+</span> filter
+        <span class="pl-k">var</span> filter <span class="pl-k">=</span> 
+            <span class="pl-s"><span class="pl-pds">'</span> `purchase`.`deleted` IS NULL OR `purchase`.`deleted` = 0<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+            <span class="pl-s"><span class="pl-pds">'</span> OR `purchase`.`deleted_at` IS NULL <span class="pl-pds">'</span></span>;
+        <span class="pl-smi">args</span>.<span class="pl-smi">statements</span>.<span class="pl-smi">where</span>
+            <span class="pl-k">?</span> <span class="pl-smi">args</span>.<span class="pl-smi">statements</span>.<span class="pl-smi">where</span> <span class="pl-k">+=</span> <span class="pl-s"><span class="pl-pds">'</span> AND <span class="pl-pds">'</span></span> <span class="pl-k">+</span> filter
+            <span class="pl-k">:</span> <span class="pl-smi">args</span>.<span class="pl-smi">statements</span>.<span class="pl-smi">where</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span> WHERE <span class="pl-pds">'</span></span> <span class="pl-k">+</span> filter
     }
-    next();
+    <span class="pl-en">next</span>();
 }</pre></div>
 <p><br /></p><hr /></div><div class="file"><h2>
 <a id="embedding" class="anchor" href="#embedding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embedding</h2>
@@ -1490,9 +1490,9 @@ cloudinary.config({
 <h3>
 <a id="configjson" class="anchor" href="#configjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>config.json</h3>
 
-<div class="highlight highlight-js"><pre><span class="pl-s1"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+<div class="highlight highlight-source-js"><pre><span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
     ...
-    <span class="pl-s1"><span class="pl-pds">"</span>root<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>/some-path<span class="pl-pds">"</span></span>
+    <span class="pl-s"><span class="pl-pds">"</span>root<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>/some-path<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h3>
@@ -1500,32 +1500,34 @@ cloudinary.config({
 
 <p>In this example <em>Express Admin</em> will be located under the <code>/admin</code> path of your app.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-s">var</span> express <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>),
-    xAdmin <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>express-admin<span class="pl-pds">'</span></span>);
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> express <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>),
+    xAdmin <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express-admin<span class="pl-pds">'</span></span>);
 
-<span class="pl-s">var</span> config <span class="pl-k">=</span> {
-    dpath<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/<span class="pl-pds">'</span></span>,
-    config<span class="pl-k">:</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/config.json<span class="pl-pds">'</span></span>),
-    settings<span class="pl-k">:</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/settings.json<span class="pl-pds">'</span></span>),
-    custom<span class="pl-k">:</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/custom.json<span class="pl-pds">'</span></span>),
-    users<span class="pl-k">:</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>./express-admin-config/users.json<span class="pl-pds">'</span></span>)
+<span class="pl-k">var</span> config <span class="pl-k">=</span> {
+    dpath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/<span class="pl-pds">'</span></span>,
+    config<span class="pl-k">:</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/config.json<span class="pl-pds">'</span></span>),
+    settings<span class="pl-k">:</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/settings.json<span class="pl-pds">'</span></span>),
+    custom<span class="pl-k">:</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/custom.json<span class="pl-pds">'</span></span>),
+    users<span class="pl-k">:</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./express-admin-config/users.json<span class="pl-pds">'</span></span>)
+    <span class="pl-c">// additionally you can pass your own session middleware to use</span>
+    session<span class="pl-k">:</span> <span class="pl-en">session</span>({...})
 };
 
-xAdmin.init(config, <span class="pl-st">function</span> (<span class="pl-vpf">err</span>, <span class="pl-vpf">admin</span>) {
-    <span class="pl-k">if</span> (err) <span class="pl-k">return</span> <span class="pl-en">console</span><span class="pl-s3">.log</span>(err);
+<span class="pl-smi">xAdmin</span>.<span class="pl-en">init</span>(config, <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">admin</span>) {
+    <span class="pl-k">if</span> (err) <span class="pl-k">return</span> <span class="pl-en">console</span>.<span class="pl-c1">log</span>(err);
     <span class="pl-c">// web site</span>
-    <span class="pl-s">var</span> app <span class="pl-k">=</span> express();
+    <span class="pl-k">var</span> app <span class="pl-k">=</span> <span class="pl-en">express</span>();
     <span class="pl-c">// mount express-admin before any other middlewares</span>
-    app.use(<span class="pl-s1"><span class="pl-pds">'</span>/admin<span class="pl-pds">'</span></span>, admin);
+    <span class="pl-smi">app</span>.<span class="pl-en">use</span>(<span class="pl-s"><span class="pl-pds">'</span>/admin<span class="pl-pds">'</span></span>, admin);
     <span class="pl-c">// site specific middlewares</span>
-    app.use(express.bodyParser());
+    <span class="pl-smi">app</span>.<span class="pl-en">use</span>(<span class="pl-smi">express</span>.<span class="pl-en">bodyParser</span>());
     <span class="pl-c">// site routes</span>
-    app.get(<span class="pl-s1"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>, <span class="pl-st">function</span> (<span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>) {
-        res.<span class="pl-s3">send</span>(<span class="pl-s1"><span class="pl-pds">'</span>Hello World<span class="pl-pds">'</span></span>);
+    <span class="pl-smi">app</span>.<span class="pl-en">get</span>(<span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) {
+        <span class="pl-smi">res</span>.<span class="pl-c1">send</span>(<span class="pl-s"><span class="pl-pds">'</span>Hello World<span class="pl-pds">'</span></span>);
     });
     <span class="pl-c">// site server</span>
-    app.listen(<span class="pl-c1">3000</span>, <span class="pl-st">function</span> () {
-        <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>My awesome site listening on port 3000<span class="pl-pds">'</span></span>);
+    <span class="pl-smi">app</span>.<span class="pl-en">listen</span>(<span class="pl-c1">3000</span>, <span class="pl-k">function</span> () {
+        <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>My awesome site listening on port 3000<span class="pl-pds">'</span></span>);
     });
 });</pre></div>
 <p><br /></p><hr /></div><div class="file"><h2>
@@ -1543,7 +1545,7 @@ xAdmin.init(config, <span class="pl-st">function</span> (<span class="pl-vpf">er
 
 <p>Set a <code>breakpoint</code> somewhere inside your custom view files and debug as usual.</p>
 
-<div class="highlight highlight-bash"><pre>$ admin --debug-brk path/to/project/config/
+<div class="highlight highlight-source-shell"><pre>$ admin --debug-brk path/to/project/config/
 <span class="pl-c"># or</span>
 $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
@@ -1554,11 +1556,11 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
 <p>Create a folder for your project's configuration files.</p>
 
-<div class="highlight highlight-bash"><pre>$ mkdir project</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ mkdir project</pre></div>
 
 <p>Then while you're still there you can use <code>supervisor</code> to watch your <code>project</code> folder, specifying that the extensions are <code>json</code></p>
 
-<div class="highlight highlight-bash"><pre>$ supervisor -w project -e json -- path/to/express-admin/app -v project/</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ supervisor -w project -e json -- path/to/express-admin/app -v project/</pre></div>
 
 <p>The <code>-v</code> flag that you're passing to the <em>Express Admin</em> app means that you are running the admin in <code>development</code> mode. In this mode the authentication and the database record updates are disabled.</p>
 
@@ -1569,7 +1571,7 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
 <p>Run an admin instance continuously in the background using <a href="https://github.com/nodejitsu/forever">forever</a></p>
 
-<div class="highlight highlight-bash"><pre>$ forever start path/to/express-admin/app path/to/project/config/</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ forever start path/to/express-admin/app path/to/project/config/</pre></div>
 <p><br /></p><hr /></div><div class="file"><h2>
 <a id="tools" class="anchor" href="#tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools</h2>
 
@@ -1578,7 +1580,7 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
 <p>You can serve all your static files with <a href="http://nginx.org/en/">NginX</a></p>
 
-<div class="highlight highlight-bash"><pre>server {
+<div class="highlight highlight-source-shell"><pre>server {
     listen 80<span class="pl-k">;</span>
 
     <span class="pl-c"># vhost</span>
@@ -1591,9 +1593,9 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
     <span class="pl-c"># NODE</span>
     location / {
         proxy_pass http://127.0.0.1:3000<span class="pl-k">;</span>
-        proxy_set_header Host <span class="pl-vo">$http_host</span><span class="pl-k">;</span>
-        proxy_set_header X-Real-IP <span class="pl-vo">$remote_addr</span><span class="pl-k">;</span>
-        proxy_set_header X-Forwarded-For <span class="pl-vo">$proxy_add_x_forwarded_for</span><span class="pl-k">;</span>
+        proxy_set_header Host <span class="pl-smi">$http_host</span><span class="pl-k">;</span>
+        proxy_set_header X-Real-IP <span class="pl-smi">$remote_addr</span><span class="pl-k">;</span>
+        proxy_set_header X-Forwarded-For <span class="pl-smi">$proxy_add_x_forwarded_for</span><span class="pl-k">;</span>
     }
 
     <span class="pl-c"># NGINX</span>
@@ -1603,11 +1605,11 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
         root /<span class="pl-k">;</span>
         try_files
             <span class="pl-c"># express admin</span>
-            /absolute/path/to/express-admin/public/<span class="pl-vo">$uri</span>
+            /absolute/path/to/express-admin/public/<span class="pl-smi">$uri</span>
 
             <span class="pl-c"># custom views</span>
-            /absolute/path/to/your/project/custom/app1/public/<span class="pl-vo">$uri</span>
-            /absolute/path/to/your/project/custom/app2/public/<span class="pl-vo">$uri</span>
+            /absolute/path/to/your/project/custom/app1/public/<span class="pl-smi">$uri</span>
+            /absolute/path/to/your/project/custom/app2/public/<span class="pl-smi">$uri</span>
         /<span class="pl-k">;</span>
     }
 
@@ -1615,15 +1617,15 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
     <span class="pl-c"># csslib</span>
     location ^~ /csslib/ {
-        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/<span class="pl-k">;</span>
+        <span class="pl-c1">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/csslib/<span class="pl-k">;</span>
     }
     <span class="pl-c"># jslib</span>
     location ^~ /jslib/ {
-        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/<span class="pl-k">;</span>
+        <span class="pl-c1">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/jslib/<span class="pl-k">;</span>
     }
     <span class="pl-c"># bootswatch</span>
     location ^~ /bootswatch/ {
-        <span class="pl-s3">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/<span class="pl-k">;</span>
+        <span class="pl-c1">alias</span> /absolute/path/to/express-admin/node_modules/express-admin-static/bootswatch/<span class="pl-k">;</span>
     }
 }</pre></div>
 <p><br /></p><hr /></div><div class="file"><h2>
@@ -1634,23 +1636,23 @@ $ node --debug-brk path/to/express-admin/app path/to/project/config/</pre></div>
 
 <p>In case some of your custom view's requests needs to be handled by <a href="http://httpd.apache.org/">Apache</a>, then add this to the nginx vhost file.</p>
 
-<div class="highlight highlight-bash"><pre><span class="pl-c"># apache</span>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># apache</span>
 location /some-slug/ {
     proxy_pass http://127.0.0.1:8008/some-slug/<span class="pl-k">;</span>
-    proxy_set_header Host <span class="pl-vo">$http_host</span><span class="pl-k">;</span>
-    proxy_set_header X-Real-IP <span class="pl-vo">$remote_addr</span><span class="pl-k">;</span>
-    proxy_set_header X-Forwarded-For <span class="pl-vo">$proxy_add_x_forwarded_for</span><span class="pl-k">;</span>
+    proxy_set_header Host <span class="pl-smi">$http_host</span><span class="pl-k">;</span>
+    proxy_set_header X-Real-IP <span class="pl-smi">$remote_addr</span><span class="pl-k">;</span>
+    proxy_set_header X-Forwarded-For <span class="pl-smi">$proxy_add_x_forwarded_for</span><span class="pl-k">;</span>
 }</pre></div>
 
 <p>Edit <code>/etc/apache2/ports.conf</code>.</p>
 
-<div class="highlight highlight-bash"><pre><span class="pl-c"># When nginx is set as proxy</span>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># When nginx is set as proxy</span>
 NameVirtualHost 127.0.0.1:8008
 Listen 127.0.0.1:8008</pre></div>
 
 <p>Create apache's virtual host file.</p>
 
-<div class="highlight highlight-bash"><pre><span class="pl-k">&lt;</span>VirtualHost 127.0.0.1:<span class="pl-k">8008&gt;</span>
+<div class="highlight highlight-source-shell"><pre><span class="pl-k">&lt;</span>VirtualHost 127.0.0.1:<span class="pl-k">8008&gt;</span>
     ServerAdmin admin@localhost
     <span class="pl-c"># apache's vhost name MUST MATCH the nginx's vhost name</span>
     ServerName admin.example.com
@@ -1709,7 +1711,7 @@ Listen 127.0.0.1:8008</pre></div>
             </li>
         </ul>
     </nav>
-
+    
         <a href="https://github.com/simov/express-admin" id="code" target="_blank">view on GitHub</a>
     </div>
 </body>
