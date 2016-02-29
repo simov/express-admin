@@ -16,7 +16,8 @@ var express = require('express'),
     methodOverride = require('method-override'),
     serveStatic = require('serve-static'),
     consolidate = require('consolidate'),
-    hogan = require('hogan.js');
+    hogan = require('hogan.js'),
+    getInstalledPath = require('get-installed-path');
 
 var moment = require('moment'),
     async = require('async');
@@ -206,7 +207,7 @@ function initServer (args) {
 
         .use(methodOverride())
         .use(serveStatic(path.join(__dirname, 'public')))
-        .use(serveStatic(path.join(__dirname, 'node_modules/express-admin-static')));
+        .use(serveStatic(getInstalledPath('express-admin-static', true)));
 
     if (!args.debug) app.set('view cache', true);
 
