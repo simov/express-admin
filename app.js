@@ -206,7 +206,13 @@ function initServer (args) {
 
         .use(methodOverride())
         .use(serveStatic(path.join(__dirname, 'public')))
-        .use(serveStatic(path.join(__dirname, 'node_modules/express-admin-static')));
+        .use(serveStatic((function () {
+            var dpath = path.resolve(__dirname, 'node_modules/express-admin-static');
+            if (!fs.existsSync(dpath)) {
+                dpath = path.resolve(__dirname, '../express-admin-static');
+            }
+            return dpath;
+        })()));
 
     if (!args.debug) app.set('view cache', true);
 
