@@ -1,7 +1,7 @@
 {
     "name": "express-admin",
-    "version": "1.2.7",
-    "description": "MySql, MariaDB, SQLite and PostgreSQL database admin built with Express and Bootstrap.",
+    "version": "1.2.8",
+    "description": "MySql, MariaDB, SQLite and PostgreSQL database admin built with Express and Bootstrap",
     "keywords": [
         "mysql",
         "mariadb",
@@ -14,10 +14,10 @@
     ],
     "license"   : "MIT",
     "homepage"  : "https://github.com/simov/express-admin",
-    "author": "Simeon Velichkov <simeonvelichkov@gmail.com> (http://simov.github.io)",
+    "author"    : "Simeon Velichkov <simeonvelichkov@gmail.com> (http://simov.github.io)",
     "repository": {
         "type"  : "git",
-        "url"   : "https://github.com/simov/grant.git"
+        "url"   : "https://github.com/simov/express-admin.git"
     },
     "dependencies": {
         "express"          : "4.4.4",
