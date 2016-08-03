@@ -74,6 +74,10 @@ function initDatabase (args, done) {
             });
         },
         function (done) {
+            if (args.config.app.syncSettings === false) {
+                return done();
+            }
+
             schema.getData(client, function (err, data) {
                 if (err) return done(err);
                 // write back the settings
