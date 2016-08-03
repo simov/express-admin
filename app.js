@@ -129,18 +129,20 @@ function initSettings (args) {
     args.log = args.config.app.log || (cli.log ? true : false);
 
     // events
-    for (var key in args.custom) {
-        var fpath = args.custom[key].events;
-        if (fpath) break;
-    }
-    var events = fpath ? require(fpath) : {};
-    if (!events.hasOwnProperty('preSave'))
-        events.preSave = function (req, res, args, next) {next()};
-    if (!events.hasOwnProperty('postSave'))
-        events.postSave = function (req, res, args, next) {next()};
-    if (!events.hasOwnProperty('preList'))
-        events.preList = function (req, res, args, next) {next()};
-    args.events = events;
+	if (!args.events) {
+		for (var key in args.custom) {
+			var fpath = args.custom[key].events;
+			if (fpath) break;
+		}
+		var events = fpath ? require(fpath) : {};
+		if (!events.hasOwnProperty('preSave'))
+			events.preSave = function(req, res, args, next) {next()};
+		if (!events.hasOwnProperty('postSave'))
+			events.postSave = function(req, res, args, next) {next()};
+		if (!events.hasOwnProperty('preList'))
+			events.preList = function(req, res, args, next) {next()};
+		args.events = events;
+	}
 
 
     // template variables
