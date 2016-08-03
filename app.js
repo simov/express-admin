@@ -74,7 +74,7 @@ function initDatabase (args, done) {
             });
         },
         function (done) {
-            if (args.config.app.syncSettings === false) {
+            if (args.config.app && args.config.app.syncSettings === false) {
                 return done();
             }
 
