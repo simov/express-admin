@@ -164,3 +164,6 @@ footer p { margin-bottom: 0; }
     background-color: #ddd;
     -webkit-border-radius: 8px;
 }
+.img-preview {
+    width: 150px;
+}
