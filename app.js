@@ -190,6 +190,32 @@ function initSettings (args) {
     }
 }
 
+function detectCustomPublicPath(localPath) {
+    if (!localPath) {
+        return null;
+    }
+
+    // projectRoot/localPath first for production
+    var result = path.join(__dirname, '../../', localPath);
+    if (fs.existsSync(result)) {
+        return result;
+    }
+
+    // projectRoot/src/localPath first for dev
+    var result = path.join(__dirname, '../../src', localPath);
+    if (fs.existsSync(result)) {
+        return result;
+    }
+
+    // projectRoot/src/localPath first for dev
+    var result = path.join(__dirname, '../../src', localPath.replace('.js', '.ts'));
+    if (fs.existsSync(result)) {
+        return result;
+    }
+
+    return null;
+}
+
 function initServer (args) {
     var r = require('./routes');
 
@@ -225,8 +251,9 @@ function initServer (args) {
     // register custom static local paths
     for (var key in args.custom) {
         var assets = args.custom[key].public;
-        if (!assets || !assets.local || !assets.local.path ||
-            !fs.existsSync(assets.local.path)) continue;
+        var customPath = detectCustomPublicPath(assets && assets.local && assets.local.path);
+        if (!customPath) continue;
+
         app.use(serveStatic(assets.local.path));
     }
 
@@ -264,8 +291,9 @@ function initServer (args) {
         var have = false;
         for (var key in args.custom) {
             var _app = args.custom[key].app;
-            if (_app && _app.path && fs.existsSync(_app.path)) {
-                var view = require(_app.path);
+            var customPath = detectCustomPublicPath(_app && _app.path);
+            if (customPath) {
+                var view = require(customPath);
                 app.use(view);
                 have = true;
             }
