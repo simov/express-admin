@@ -23,7 +23,7 @@
 
 The MIT License (MIT)
 
-Copyright (c) 2012-2016 Simeon Velichkov &lt;simeonvelichkov@gmail.com&gt;
+Copyright (c) 2012-2017 Simeon Velichkov &lt;simeonvelichkov@gmail.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -44,15 +44,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-  [url-screencast]: http://www.youtube.com/watch?v=1CdoCB96QNk
-  [url-docs]: http://simov.github.io/express-admin
-  [url-examples]: http://github.com/simov/express-admin-examples
+  [url-screencast]: https://www.youtube.com/watch?v=1CdoCB96QNk
+  [url-docs]: https://simov.github.io/express-admin
+  [url-examples]: https://github.com/simov/express-admin-examples
   [url-tests]: https://github.com/simov/express-admin-tests
-  [url-npm]: https://www.npmjs.org/package/express-admin
+  [url-npm]: https://www.npmjs.com/package/express-admin
   [url-travis]: https://travis-ci.org/simov/express-admin
 
-  [img-screenshot]: http://i.imgur.com/6wFggqg.png (Express Admin)
+  [img-screenshot]: https://i.imgur.com/6wFggqg.png (Express Admin)
   [img-npm-install]: https://nodei.co/npm/express-admin.png?mini=true (NPM Install)
-  [img-npm-version]: http://img.shields.io/npm/v/express-admin.svg?style=flat-square (NPM Version)
-  [img-npm-downloads]: http://img.shields.io/npm/dm/express-admin.svg?style=flat-square (NPM Downloads)
-  [img-travis]: http://img.shields.io/travis/simov/express-admin.svg?style=flat-square (Build Status)
+  [img-npm-version]: https://img.shields.io/npm/v/express-admin.svg?style=flat-square (NPM Version)
+  [img-npm-downloads]: https://img.shields.io/npm/dm/express-admin.svg?style=flat-square (NPM Downloads)
+  [img-travis]: https://img.shields.io/travis/simov/express-admin.svg?style=flat-square (Build Status)
