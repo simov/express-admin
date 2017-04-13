@@ -1,0 +1,51 @@
+{
+    "name"              : "Español",
+
+    "logo"              : "Express Admin",
+
+    "layout"            : "Disposición",
+    "centered"          : "Centrado",
+    "streched"          : "Estirado",
+    "theme"             : "Tema",
+    "language"          : "Languaje",
+
+    "login"             : "Login",
+    "logout"            : "Logout",
+    "username"          : "Nombre de Usuario",
+    "password"          : "Clave",
+    "access-denied"     : "¡Acceso Denegado!",
+    "find-user"         : "¡Usuario inexistente!",
+    "invalid-password"  : "¡Clave inválida!",
+
+    "home"              : "Inicio",
+    "site-admin"        : "Sitio de Administración",
+    "tables"            : "Tablas",
+    "views"             : "Vistas",
+    "others"            : "Otros",
+
+    "select"            : "Seleccionar",
+    "to-change"         : "a modificar",
+    "filter"            : "Filtrar",
+    "clear"             : "Limpiar",
+    "order"             : "Ordenado por",
+    "asc"               : "Asc.",
+    "desc"              : "Desc.",
+    "or"                : "o",
+    "today"             : "Hoy",
+
+    "add-another"       : "Agregar otro/a",
+    "remove"            : "Eliminar",
+    "add"               : "Agregar",
+    "change"            : "Cambiar",
+    "delete"            : "Borrar",
+    "save"              : "Guardar",
+    "save-continue"     : "Guardar y continuar editando",
+    "save-add"          : "Guardar y agregar otro/a",
+
+    "success"           : "Éxito",
+    "error"             : "Error",
+    "saved"             : "El registro ha sido guardado",
+    "checkout"          : "Revisar los campos resaltados debajo",
+
+    "notfound"          : "Página no encontrada."
+}
