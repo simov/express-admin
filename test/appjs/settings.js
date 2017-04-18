@@ -163,6 +163,7 @@ describe('settings initialization', function () {
         it('load static libs', function (done) {
             var args = {config:{app:{}}};
             app.initSettings(args);
+            delete args.libs.external
             should.deepEqual(args.libs, require('../../config/libs'));
             done();
         });
