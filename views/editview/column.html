@@ -2,9 +2,9 @@
 <td>
     <div class="form-horizontal {{#error}}has-error{{/error}}">
         <div class="form-group">
-    
+
         <label class="control-label col-sm-3 col-md-3 col-lg-2">{{verbose}}</label>
-    
+
     {{#control}}
     {{! data-type-name="type.name" data-allow-null="allowNull" data-default-value="defaultValue"}}
 
@@ -48,12 +48,15 @@
     {{#file}}
     {{^binary}}
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
+    {{#value}}
+        <img src="{{imageEndPoint}}{{value}}" class="img-preview"/>
+    {{/value}}
     {{/binary}}
     {{/file}}
     {{#binary}}
     <img src="{{value}}" alt="" />
     {{/binary}}
-    
+
     {{#radio}}
     {{#value}}
     <label class="radio-inline">

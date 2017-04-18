@@ -5,6 +5,7 @@ exports.admin = function (req, res) {
     res.locals.partials.breadcrumbs = 'breadcrumbs';
     res.locals.partials.theme = 'js/theme';
     res.locals.partials.layout = 'js/layout';
+	res.locals.defaultTheme = res.locals._admin.config.app.defaultTheme || 'default';
 
     res.render('base', {
         
@@ -15,4 +16,4 @@ exports.admin = function (req, res) {
             home: '/'
         }
     });
-}
+};

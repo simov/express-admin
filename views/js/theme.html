@@ -2,7 +2,7 @@
     var xAdmin = {root: '{{root}}'};
     (function () {
         var bootstrap = document.getElementById('bootstrap'),
-            theme = localStorage.getItem('theme') || 'default';
+            theme = localStorage.getItem('theme') || '{{defaultTheme}}';
         bootstrap.href = xAdmin.root+'/bootswatch/'+theme+'/bootstrap.min.css';
     }());
 </script>

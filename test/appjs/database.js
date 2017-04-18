@@ -82,6 +82,26 @@ describe('database initialization', function () {
         });
     });
 
+    it('stop refreshing the settings', function (done) {
+        var args = {
+            config: {
+                mysql:{
+                    database:'express-admin-simple', user: 'liolio', password: 'karamba'
+                },
+                app: {
+                    syncSettings: false
+                }
+            },
+            dpath: __dirname,
+            settings: {}
+        };
+        app.initDatabase(args, function (err) {
+            if (err) return done(err);
+            should.deepEqual(args.settings, {});
+            done();
+        });
+    });
+
     after(function () {
         fs.unlinkSync(path.join(__dirname, 'settings.json'));
     });

@@ -75,6 +75,10 @@ function initDatabase (args, done) {
             });
         },
         function (done) {
+            if (args.config.app && args.config.app.syncSettings === false) {
+                return done();
+            }
+
             schema.getData(client, function (err, data) {
                 if (err) return done(err);
                 // write back the settings
@@ -130,18 +134,20 @@ function initSettings (args) {
     args.log = args.config.app.log || (cli.log ? true : false);
 
     // events
-    for (var key in args.custom) {
-        var fpath = args.custom[key].events;
-        if (fpath) break;
-    }
-    var events = fpath ? require(fpath) : {};
-    if (!events.hasOwnProperty('preSave'))
-        events.preSave = function (req, res, args, next) {next()};
-    if (!events.hasOwnProperty('postSave'))
-        events.postSave = function (req, res, args, next) {next()};
-    if (!events.hasOwnProperty('preList'))
-        events.preList = function (req, res, args, next) {next()};
-    args.events = events;
+	if (!args.events) {
+		for (var key in args.custom) {
+			var fpath = args.custom[key].events;
+			if (fpath) break;
+		}
+		var events = fpath ? require(fpath) : {};
+		if (!events.hasOwnProperty('preSave'))
+			events.preSave = function(req, res, args, next) {next()};
+		if (!events.hasOwnProperty('postSave'))
+			events.postSave = function(req, res, args, next) {next()};
+		if (!events.hasOwnProperty('preList'))
+			events.preList = function(req, res, args, next) {next()};
+		args.events = events;
+	}
 
 
     // template variables
@@ -185,6 +191,32 @@ function initSettings (args) {
     }
 }
 
+function detectCustomPublicPath(localPath) {
+    if (!localPath) {
+        return null;
+    }
+
+    // projectRoot/localPath first for production
+    var result = path.join(__dirname, '../../', localPath);
+    if (fs.existsSync(result)) {
+        return result;
+    }
+
+    // projectRoot/src/localPath first for dev
+    var result = path.join(__dirname, '../../src', localPath);
+    if (fs.existsSync(result)) {
+        return result;
+    }
+
+    // projectRoot/src/localPath first for dev
+    var result = path.join(__dirname, '../../src', localPath.replace('.js', '.ts'));
+    if (fs.existsSync(result)) {
+        return result;
+    }
+
+    return null;
+}
+
 function initServer (args) {
     var r = require('./routes');
 
@@ -220,8 +252,9 @@ function initServer (args) {
     // register custom static local paths
     for (var key in args.custom) {
         var assets = args.custom[key].public;
-        if (!assets || !assets.local || !assets.local.path ||
-            !fs.existsSync(assets.local.path)) continue;
+        var customPath = detectCustomPublicPath(assets && assets.local && assets.local.path);
+        if (!customPath) continue;
+
         app.use(serveStatic(assets.local.path));
     }
 
@@ -259,8 +292,9 @@ function initServer (args) {
         var have = false;
         for (var key in args.custom) {
             var _app = args.custom[key].app;
-            if (_app && _app.path && fs.existsSync(_app.path)) {
-                var view = require(_app.path);
+            var customPath = detectCustomPublicPath(_app && _app.path);
+            if (customPath) {
+                var view = require(customPath);
                 app.use(view);
                 have = true;
             }
