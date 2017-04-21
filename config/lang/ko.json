@@ -19,12 +19,12 @@
 
     "home"              : "",
     "site-admin"        : "사이트 관리",
-    "tables"            : "테이블들",
-    "views"             : "Views",
+    "tables"            : "테이블 ,
+    "views"             : "뷰",
     "others"            : "기타",
     
     "select"            : "선택하세요",
-    "to-change"         : "를 수정합니다",
+    "to-change"         : "을(를) 수정합니다",
     "filter"            : "필터",
     "clear"             : "삭제",
     "order"             : "순서",
