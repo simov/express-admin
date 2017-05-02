@@ -18,19 +18,19 @@
 <form class="form-horizontal" action="{{root}}{{view.action}}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     {{>view}}
     {{>inline}}
-    
+
     {{^view.readonly}}
     <fieldset id="controls">
         {{#show.delete}}
-        <button type="submit" class="btn btn-danger form-control" name="action[remove]">{{string.delete}}</button>
+        <button class="btn btn-danger form-control" name="action[remove]">{{string.delete}}</button>
         {{/show.delete}}
 
         <button type="submit" class="btn btn-default form-control" name="action[another]">{{string.save-add}}</button>
-        
+
         <button type="submit" class="btn btn-default form-control" name="action[continue]">{{string.save-continue}}</button>
-        
+
         <button type="submit" class="btn btn-primary form-control" name="action[save]">{{string.save}}</button>
-        
+
         <input type="hidden" name="_csrf" value="{{csrf}}" />
     </fieldset>
     {{/view.readonly}}
