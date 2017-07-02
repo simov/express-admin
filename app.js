@@ -365,6 +365,7 @@ if (require.main === module) {
 exports = module.exports = {
     initCommandLine: initCommandLine,
     initDatabase: initDatabase,
+    initDatabase: initDatabaseSync,
     initSettings: initSettings,
     initServer: initServer,
     initSync: function(config) {
