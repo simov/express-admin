@@ -370,7 +370,7 @@ exports = module.exports = {
     initSync: function(config) {
       this.initDatabaseSync(config);
       this.initSettings(config);
-      this.initServer(config);
+      return this.initServer(config);
     },
     init: function (config, done) {
         this.initDatabase(config, function (err) {
