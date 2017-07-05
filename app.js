@@ -96,15 +96,6 @@ function initDatabase (args, done) {
     });
 }
 
-function initDatabaseSync(args) {
-  var client = new Client(args.config);
-  var x = new Xsql({
-    dialect: client.name,
-    schema: client.config.schema});
-  if ('function'===typeof qb) qb = qb(x);
-  args.db = {client:client};
-}
-
 // modifies args
 function initSettings (args) {
     // route variables
@@ -365,14 +356,8 @@ if (require.main === module) {
 exports = module.exports = {
     initCommandLine: initCommandLine,
     initDatabase: initDatabase,
-    initDatabaseSync: initDatabaseSync,
     initSettings: initSettings,
     initServer: initServer,
-    initSync: function(config) {
-      this.initDatabaseSync(config);
-      this.initSettings(config);
-      return this.initServer(config);
-    },
     init: function (config, done) {
         this.initDatabase(config, function (err) {
             if (err) return done(err);
