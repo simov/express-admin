@@ -195,20 +195,22 @@ function detectCustomPublicPath(localPath) {
         return null;
     }
 
+    var rootDir = process.cwd();
+
     // projectRoot/localPath first for production
-    var result = path.join(__dirname, '../../', localPath);
+    var result = path.join(rootDir, '../../', localPath);
     if (fs.existsSync(result)) {
         return result;
     }
 
     // projectRoot/src/localPath first for dev
-    var result = path.join(__dirname, '../../src', localPath);
+    var result = path.join(rootDir, '../../src', localPath);
     if (fs.existsSync(result)) {
         return result;
     }
 
     // projectRoot/src/localPath first for dev
-    var result = path.join(__dirname, '../../src', localPath.replace('.js', '.ts'));
+    var result = path.join(rootDir, '../../src', localPath.replace('.js', '.ts'));
     if (fs.existsSync(result)) {
         return result;
     }
