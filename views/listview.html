@@ -42,8 +42,16 @@
         {{/pk}}
         {{#values}}
             <td>
-                {{^mtm}}{{.}}{{/mtm}}
-                {{#mtm}}<span class="label label-default">{{.}}</span>{{/mtm}}
+                {{^file}}
+                    {{^mtm}}{{.}}{{/mtm}}
+                    {{#mtm}}<span class="label label-default">{{.}}</span>{{/mtm}}
+                {{/file}}
+                {{#file}}
+                    {{#img}}
+                        {{^mtm}}<span type="image">{{img}}</span>{{/mtm}}
+                        {{#mtm}}<span type="image" class="label label-default">{{.}}</span>{{/mtm}}
+                    {{/img}}
+                {{/file}}
             </td>
         {{/values}}
         </tr>
