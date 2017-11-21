@@ -23,7 +23,7 @@
     "views"             : "Views",
     "others"            : "其它",
     
-    "select"            : "对",
+    "select"            : "选择",
     "to-change"         : "进行修改",
     "filter"            : "按条件过滤",
     "clear"             : "清除",
@@ -33,14 +33,14 @@
     "or"                : "或",
     "today"             : "今天",
 
-    "add-another"       : "载追加",
+    "add-another"       : "添加",
     "remove"            : "移除",
     "add"               : "增加",
     "change"            : "修改",
     "delete"            : "删除",
     "save"              : "保存",
-    "save-continue"     : "保存然后继续修改",
-    "save-add"          : "保存然后增加",
+    "save-continue"     : "保存并继续编辑本条",
+    "save-add"          : "保存并添加下一条",
 
     "success"           : "成功",
     "error"             : "错误",
