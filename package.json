@@ -23,7 +23,7 @@
         "express": "^4.16.3",
         "morgan": "^1.9.0",
         "body-parser": "^1.18.3",
-        "connect-multiparty": "^1.2.5",
+        "connect-multiparty": "^2.1.1",
         "cookie-parser": "^1.4.3",
         "express-session": "^1.15.6",
         "csurf": "^1.9.0",
