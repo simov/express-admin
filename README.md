@@ -3,10 +3,7 @@
 
 ---
 
-[![img-npm-install]][url-npm]
-
 [![img-npm-version]][url-npm]
-[![img-npm-downloads]][url-npm]
 [![img-travis]][url-travis]
 
 
