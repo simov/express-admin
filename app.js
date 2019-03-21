@@ -312,9 +312,11 @@ if (require.main === module) {
 
             var app = initServer(args);
 
-            app.listen(args.config.server.port, function () {
+            var port = process.env.PORT || args.config.server.port
+
+            app.listen(port, function () {
                 console.log('Express Admin listening on port'.grey,
-                            args.config.server.port.toString().green);
+                            port.toString().green);
             });
         });
     });
