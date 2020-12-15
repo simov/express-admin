@@ -11,7 +11,7 @@ pipeline {
 		                	verbose: false,
 		                	transfers: [
 		                  		sshTransfer(
-		                    		execCommand: "echo hay",
+		                    		execCommand: "/home/safrudin/appliction/./clone.sh",
 		                    		execTimeout: 120000
 		                  		)
 		                	]
