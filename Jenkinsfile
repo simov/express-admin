@@ -59,7 +59,7 @@ pipeline {
 		                	verbose: false,
 		                	transfers: [
 		                  		sshTransfer(
-		                    		execCommand: "/home/safrudin/appliction/./run.sh",
+		                    		execCommand: "/home/safrudin/application/./run.sh",
 		                    		execTimeout: 120000
 		                  		)
 		                	]
