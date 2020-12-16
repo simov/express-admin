@@ -1,72 +1,74 @@
 pipeline {
 	agent any
 
-	parameters {
-		booleanParam(name: 'Deploy', defaultValue: false, description: 'Deploy to Server Prod?')
-	}
-
 	stages{
 		stage('clone repo') {
-			steps {
-				sshPublisher(
-		            publishers: [
-		              	sshPublisherDesc(
-		                	configName: "serverDev",
-		                	verbose: false,
-		                	transfers: [
-		                  		sshTransfer(
-		                    		execCommand: "/home/safrudin/appliction/./clone.sh",
-		                    		execTimeout: 120000
-		                  		)
-		                	]
-		              	)
-		            ]
-		        )
-			}
-		}
-
-		stage('build & run') {
-			steps {
-				sshPublisher(
-		            publishers: [
-		              	sshPublisherDesc(
-		                	configName: "serverDev",
-		                	verbose: false,
-		                	transfers: [
-		                  		sshTransfer(
-		                    		execCommand: "/home/safrudin/appliction/./run.sh",
-		                    		execTimeout: 120000
-		                  		)
-		                	]
-		              	)
-		            ]
-		        )
-			}
-		}
-
-		stage('Deploy to Prod') {
 			when {
 				expression {
-					params.Deploy
+					env.GIT_BRANCH == 'master' || env.GIT_BRANCH == 'develop'
 				}
 			}
 
 			steps {
-				sshPublisher(
-		            publishers: [
-		              	sshPublisherDesc(
-		                	configName: "serverProd",
-		                	verbose: false,
-		                	transfers: [
-		                  		sshTransfer(
-		                    		execCommand: "/home/safrudin/application/./run.sh",
-		                    		execTimeout: 120000
-		                  		)
-		                	]
-		              	)
-		            ]
-		        )
+
+				script {
+					if (env.GIT_BRANCH == 'master') {
+						server = "serverProd"
+					} else if (env.GIT_BRANCH == 'develop') {
+						server = "serverDev"
+					}
+
+					sshPublisher(
+			            publishers: [
+			              	sshPublisherDesc(
+			                	configName: "${server}",
+			                	verbose: false,
+			                	transfers: [
+			                  		sshTransfer(
+			                    		execCommand: "/home/safrudin/application/./clone.sh",
+			                    		execTimeout: 120000
+			                  		)
+			                	]
+			              	)
+			            ]
+			        )
+				}
 			}
 		}
+
+		stage('build & run') {
+			when {
+				expression {
+					env.GIT_BRANCH == 'master' || env.GIT_BRANCH == 'develop'
+				}
+			}
+
+			steps {
+
+				script {
+					if (env.GIT_BRANCH == 'master') {
+						server = "serverProd"
+					} else if (env.GIT_BRANCH == 'develop') {
+						server = "serverDev"
+					}
+
+					sshPublisher(
+			            publishers: [
+			              	sshPublisherDesc(
+			                	configName: "${server}",
+			                	verbose: false,
+			                	transfers: [
+			                  		sshTransfer(
+			                    		execCommand: "/home/safrudin/application/./run.sh",
+			                    		execTimeout: 120000
+			                  		)
+			                	]
+			              	)
+			            ]
+			        )
+			    }
+			}
+		}
+
 	}
 }
