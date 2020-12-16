@@ -3,13 +3,14 @@ pipeline {
 
 	stages{
 		stage('clone repo') {
-			steps {
-				when {
-					expression {
-						env.GIT_BRANCH == 'master' || env.GIT_BRANCH == 'develop'
-					}
+			when {
+				expression {
+					env.GIT_BRANCH == 'master' || env.GIT_BRANCH == 'develop'
 				}
-				
+			}
+
+			steps {
+
 				script {
 					if (env.GIT_BRANCH == 'master') {
 						server = "serverProd"
@@ -36,12 +37,13 @@ pipeline {
 		}
 
 		stage('build & run') {
-			steps {
-				when {
-					expression {
-						env.GIT_BRANCH == 'master' || env.GIT_BRANCH == 'develop'
-					}
+			when {
+				expression {
+					env.GIT_BRANCH == 'master' || env.GIT_BRANCH == 'develop'
 				}
+			}
+
+			steps {
 
 				script {
 					if (env.GIT_BRANCH == 'master') {
