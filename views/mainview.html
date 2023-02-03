@@ -1,83 +1,83 @@
 
 <h2>
-    {{string.site-admin}}
-    <a href="#" class="glyphicon glyphicon-filter" title="{{string.filter}}"></a>
+  {{string.site-admin}}
+  <a href="#" class="glyphicon glyphicon-filter" title="{{string.filter}}"></a>
 </h2>
 
 <form action="#" method="post" accept-charset="utf-8" class="panel panel-default x-mv x-filter x-collapsed">
-    <div class="panel-heading">
-        <h3 class="panel-title">{{string.filter}}</h3>
+  <div class="panel-heading">
+    <h3 class="panel-title">{{string.filter}}</h3>
+  </div>
+  <div class="panel-footer form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-lg-3 col-md-3 col-sm-3">{{string.tables}}</label>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <input type="text" name="table" class="form-control" />
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <button type="button" name="clear" class="btn btn-default form-control">{{string.clear}}</button>
+      </div>
     </div>
-    <div class="panel-footer form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-lg-3 col-md-3 col-sm-3">{{string.tables}}</label>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <input type="text" name="table" class="form-control" />
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <button type="button" name="clear" class="btn btn-default form-control">{{string.clear}}</button>
-            </div>
-        </div>
-    </div>
+  </div>
 </form>
 
 {{#tables}}
 <table class="table table-bordered table-striped table-hover x-table">
-    <thead>
-        <tr class="label-default">
-            <th>{{string.tables}}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{#items}}
-        <tr>
-            <td>
-                <a href="{{root}}/{{slug}}">{{name}}</a>
-                <a href="{{root}}/{{slug}}/add" class="glyphicon glyphicon-plus" title="{{string.add}} {{name}}"></a>
-            </td>
-        </tr>
-    {{/items}}
-    </tbody>
+  <thead>
+    <tr class="label-default">
+      <th>{{string.tables}}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#items}}
+    <tr>
+      <td>
+        <a href="{{root}}/{{slug}}">{{name}}</a>
+        <a href="{{root}}/{{slug}}/add" class="glyphicon glyphicon-plus" title="{{string.add}} {{name}}"></a>
+      </td>
+    </tr>
+  {{/items}}
+  </tbody>
 </table>
 {{/tables}}
 
 {{#views}}
 <table class="table table-bordered table-striped table-hover x-table">
-    <thead>
-        <tr class="label-default">
-            <th>{{string.views}}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{#items}}
-        <tr>
-            <td>
-                <a href="{{root}}/{{slug}}">{{name}}</a>
-            </td>
-        </tr>
-    {{/items}}
-    </tbody>
+  <thead>
+    <tr class="label-default">
+      <th>{{string.views}}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#items}}
+    <tr>
+      <td>
+        <a href="{{root}}/{{slug}}">{{name}}</a>
+      </td>
+    </tr>
+  {{/items}}
+  </tbody>
 </table>
 {{/views}}
 
 {{#custom}}
 <table class="table table-bordered table-striped table-hover x-table">
-    <thead>
-        <tr class="label-default">
-            <th>{{string.others}}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{#items}}
-        <tr>
-            <td>
-                <a href="{{root}}/{{slug}}">{{name}}</a>
-            </td>
-        </tr>
-    {{/items}}
-    </tbody>
+  <thead>
+    <tr class="label-default">
+      <th>{{string.others}}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#items}}
+    <tr>
+      <td>
+        <a href="{{root}}/{{slug}}">{{name}}</a>
+      </td>
+    </tr>
+  {{/items}}
+  </tbody>
 </table>
 {{/custom}}

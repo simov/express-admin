@@ -3,35 +3,35 @@
 
 {{#show.success}}
 <div class="alert alert-success alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{string.success}}:</strong> {{string.saved}}.
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>{{string.success}}:</strong> {{string.saved}}.
 </div>
 {{/show.success}}
 
 {{#show.error}}
 <div class="alert alert-danger alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{string.error}}:</strong> {{string.checkout}}.
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>{{string.error}}:</strong> {{string.checkout}}.
 </div>
 {{/show.error}}
 
 <form class="form-horizontal" action="{{root}}{{view.action}}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-    {{>view}}
-    {{>inline}}
+  {{>view}}
+  {{>inline}}
 
-    {{^view.readonly}}
-    <fieldset id="controls">
-        <button type="submit" class="btn btn-default form-control" name="action[another]">{{string.save-add}}</button>
+  {{^view.readonly}}
+  <fieldset id="controls">
+    <button type="submit" class="btn btn-default form-control" name="action[another]">{{string.save-add}}</button>
 
-        <button type="submit" class="btn btn-default form-control" name="action[continue]">{{string.save-continue}}</button>
+    <button type="submit" class="btn btn-default form-control" name="action[continue]">{{string.save-continue}}</button>
 
-        <button type="submit" class="btn btn-primary form-control" name="action[save]">{{string.save}}</button>
+    <button type="submit" class="btn btn-primary form-control" name="action[save]">{{string.save}}</button>
 
-        {{#show.delete}}
-        <button type="submit" class="btn btn-danger form-control" name="action[remove]">{{string.delete}}</button>
-        {{/show.delete}}
+    {{#show.delete}}
+    <button type="submit" class="btn btn-danger form-control" name="action[remove]">{{string.delete}}</button>
+    {{/show.delete}}
 
-        <input type="hidden" name="_csrf" value="{{csrf}}" />
-    </fieldset>
-    {{/view.readonly}}
+    <input type="hidden" name="_csrf" value="{{csrf}}" />
+  </fieldset>
+  {{/view.readonly}}
 </form>

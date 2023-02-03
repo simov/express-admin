@@ -1,54 +1,54 @@
 
 {{#view}}
 <h2>
-    {{#table}}{{string.select}} {{name}} {{string.to-change}}.{{/table}}
-    {{^table}}{{name}}{{/table}}
-    <a href="#" class="glyphicon glyphicon-filter" title="{{string.filter}}"></a>
-    {{#table}}
-    <a href="{{root}}/{{slug}}/add" class="btn btn-default">{{string.add}} {{name}}</a>
-    {{/table}}
+  {{#table}}{{string.select}} {{name}} {{string.to-change}}.{{/table}}
+  {{^table}}{{name}}{{/table}}
+  <a href="#" class="glyphicon glyphicon-filter" title="{{string.filter}}"></a>
+  {{#table}}
+  <a href="{{root}}/{{slug}}/add" class="btn btn-default">{{string.add}} {{name}}</a>
+  {{/table}}
 </h2>
 {{/view}}
 
 {{#show.success}}
 <div class="alert alert-success alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{string.success}}:</strong> {{string.saved}}.
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>{{string.success}}:</strong> {{string.saved}}.
 </div>
 {{/show.success}}
 
 {{#show.error}}
 <div class="alert alert-danger alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{string.error}}:</strong> {{show.error}}.
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>{{string.error}}:</strong> {{show.error}}.
 </div>
 {{/show.error}}
 
 {{>filter}}
 
 <table class="table table-bordered table-striped table-hover x-table">
-    <thead>
-        <tr class="label-default">
-        {{#columns}}
-            <th>{{.}}</th>
-        {{/columns}}
-        </tr>
-    </thead>
-    <tbody>
-    {{#records}}
-        <tr>
-        {{#pk}}
-            <td><a href="{{root}}/{{view.slug}}/{{id}}">{{text}}</a></td>
-        {{/pk}}
-        {{#values}}
-            <td>
-                {{^mtm}}{{.}}{{/mtm}}
-                {{#mtm}}<span class="label label-default">{{.}}</span>{{/mtm}}
-            </td>
-        {{/values}}
-        </tr>
-    {{/records}}
-    </tbody>
+  <thead>
+    <tr class="label-default">
+    {{#columns}}
+      <th>{{.}}</th>
+    {{/columns}}
+    </tr>
+  </thead>
+  <tbody>
+  {{#records}}
+    <tr>
+    {{#pk}}
+      <td><a href="{{root}}/{{view.slug}}/{{id}}">{{text}}</a></td>
+    {{/pk}}
+    {{#values}}
+      <td>
+        {{^mtm}}{{.}}{{/mtm}}
+        {{#mtm}}<span class="label label-default">{{.}}</span>{{/mtm}}
+      </td>
+    {{/values}}
+    </tr>
+  {{/records}}
+  </tbody>
 </table>
 
 {{>pagination}}

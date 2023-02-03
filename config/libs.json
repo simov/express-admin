@@ -1,16 +1,16 @@
 {
-    "bootstrap": "/csslib/bootstrap.min.css",
-    "css": [
-        "/csslib/bootstrap-datetimepicker.min.css",
-        "/csslib/chosen.min.css",
-        "/express-admin.css"
-    ],
-    "js": [
-        "/jslib/jquery-1.9.1.min.js",
-        "/jslib/bootstrap.min.js",
-        "/jslib/bootstrap-datetimepicker.min.js",
-        "/jslib/chosen.jquery.min.js",
-        "/jslib/cookie.js",
-        "/express-admin.js"
-    ]
+  "bootstrap": "/csslib/bootstrap.min.css",
+  "css": [
+    "/csslib/bootstrap-datetimepicker.min.css",
+    "/csslib/chosen.min.css",
+    "/express-admin.css"
+  ],
+  "js": [
+    "/jslib/jquery-1.9.1.min.js",
+    "/jslib/bootstrap.min.js",
+    "/jslib/bootstrap-datetimepicker.min.js",
+    "/jslib/chosen.jquery.min.js",
+    "/jslib/cookie.js",
+    "/express-admin.js"
+  ]
 }

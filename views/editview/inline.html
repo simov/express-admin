@@ -1,59 +1,59 @@
 {{#inline}}
 <fieldset id="{{type}}">
-    {{#tables}}
-    <table class="table table-bordered x-table" data-table="{{name}}">
-        <thead>
-            <tr class="label-default">
-                <th>{{verbose}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {{#records}}
-            <tr class="head">
-                <td class="jumbotron">
-                    {{#pk}}
-                    <input type="hidden" name="{{key}}" value="{{value}}" />
-                    {{/pk}}
-                    {{#insert}}
-                    <input type="hidden" name="{{key}}" value="{{value}}" />
-                    <a href="#" class="remove text-muted btn-xs pull-right" data-table="{{name}}"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                    {{/insert}}
-                    {{^insert}}
-                    <label>
-                        {{#remove}}
-                        <input type="checkbox" name="{{key}}" {{#value}}checked="checked"{{/value}} /> <small>{{string.remove}}</small>
-                        {{/remove}}
-                    </label>
-                    {{/insert}}
-                </td>
-            </tr>
-            {{#columns}}
-            <tr>
-                {{>column}}
-            </tr>
-            {{/columns}}
-        {{/records}}
+  {{#tables}}
+  <table class="table table-bordered x-table" data-table="{{name}}">
+    <thead>
+      <tr class="label-default">
+        <th>{{verbose}}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#records}}
+      <tr class="head">
+        <td class="jumbotron">
+          {{#pk}}
+          <input type="hidden" name="{{key}}" value="{{value}}" />
+          {{/pk}}
+          {{#insert}}
+          <input type="hidden" name="{{key}}" value="{{value}}" />
+          <a href="#" class="remove text-muted btn-xs pull-right" data-table="{{name}}"><span class="glyphicon glyphicon-remove-sign"></span></a>
+          {{/insert}}
+          {{^insert}}
+          <label>
+            {{#remove}}
+            <input type="checkbox" name="{{key}}" {{#value}}checked="checked"{{/value}} /> <small>{{string.remove}}</small>
+            {{/remove}}
+          </label>
+          {{/insert}}
+        </td>
+      </tr>
+      {{#columns}}
+      <tr>
+        {{>column}}
+      </tr>
+      {{/columns}}
+    {{/records}}
 
-            <tr class="head blank hidden">
-                <td class="jumbotron">
-                    {{#insert}}
-                    <input type="hidden" name="{{key}}" value="{{value}}" />
-                    {{/insert}}
-                    <a href="#" class="remove text-muted btn-xs pull-right" data-table="{{name}}"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                </td>
-            </tr>
-            {{#blank}}
-            <tr class="blank hidden">
-                {{>column}}
-            </tr>	
-            {{/blank}}
-        </tbody>
-        <tfoot {{#one}}{{#records}}class="hidden"{{/records}}{{/one}}>
-            <tr>
-                <td><a href="#" class="add-another" data-table="{{name}}"><small>{{string.add-another}} {{verbose}}</small></a></td>
-            </tr>
-        </tfoot>
-    </table>
-    {{/tables}}
+      <tr class="head blank hidden">
+        <td class="jumbotron">
+          {{#insert}}
+          <input type="hidden" name="{{key}}" value="{{value}}" />
+          {{/insert}}
+          <a href="#" class="remove text-muted btn-xs pull-right" data-table="{{name}}"><span class="glyphicon glyphicon-remove-sign"></span></a>
+        </td>
+      </tr>
+      {{#blank}}
+      <tr class="blank hidden">
+        {{>column}}
+      </tr>
+      {{/blank}}
+    </tbody>
+    <tfoot {{#one}}{{#records}}class="hidden"{{/records}}{{/one}}>
+      <tr>
+        <td><a href="#" class="add-another" data-table="{{name}}"><small>{{string.add-another}} {{verbose}}</small></a></td>
+      </tr>
+    </tfoot>
+  </table>
+  {{/tables}}
 </fieldset>
 {{/inline}}

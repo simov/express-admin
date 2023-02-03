@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>{{string.logo}}</title>
-    <link rel="shortcut icon" href="{{root}}/favicon.ico" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>{{string.logo}}</title>
+  <link rel="shortcut icon" href="{{root}}/favicon.ico" />
 
-    <link id="bootstrap" href="{{root}}{{libs.bootstrap}}" rel="stylesheet" type="text/css" media="all" />
-    {{>theme}}
+  <link id="bootstrap" href="{{root}}{{libs.bootstrap}}" rel="stylesheet" type="text/css" media="all" />
+  {{>theme}}
 
-    {{#libs.external.css}}
-    <link href="{{.}}" rel="stylesheet" type="text/css" media="all" />
-    {{/libs.external.css}}
-    
-    {{#libs.css}}
-    <link href="{{root}}{{.}}" rel="stylesheet" type="text/css" media="all" />
-    {{/libs.css}}
+  {{#libs.external.css}}
+  <link href="{{.}}" rel="stylesheet" type="text/css" media="all" />
+  {{/libs.external.css}}
 
-    {{#libs.external.js}}
-    <script src="{{.}}" type="text/javascript" charset="utf-8"></script>
-    {{/libs.external.js}}
-    
-    {{#libs.js}}
-    <script src="{{root}}{{.}}" type="text/javascript" charset="utf-8"></script>
-    {{/libs.js}}
+  {{#libs.css}}
+  <link href="{{root}}{{.}}" rel="stylesheet" type="text/css" media="all" />
+  {{/libs.css}}
+
+  {{#libs.external.js}}
+  <script src="{{.}}" type="text/javascript" charset="utf-8"></script>
+  {{/libs.external.js}}
+
+  {{#libs.js}}
+  <script src="{{root}}{{.}}" type="text/javascript" charset="utf-8"></script>
+  {{/libs.js}}
 </head>
 <body id="express-admin" class="container">
 
 <div id="wrapper">
-    {{>header}}
-    {{>layout}}
+  {{>header}}
+  {{>layout}}
 
-    <section id="content">
-        {{>breadcrumbs}}
-        
-        {{>content}}
-    </section>
+  <section id="content">
+    {{>breadcrumbs}}
 
-    <div id="footer-push">&nbsp;</div>
+    {{>content}}
+  </section>
+
+  <div id="footer-push">&nbsp;</div>
 </div>
 <footer>
-    <p><small><a href="http://simov.github.io/express-admin-site/" target="_blank" class="text-muted">Express Admin</a></small></p>
+  <p><small><a href="http://simov.github.io/express-admin-site/" target="_blank" class="text-muted">Express Admin</a></small></p>
 </footer>
 </body>
 </html>

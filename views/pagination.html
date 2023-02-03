@@ -1,32 +1,32 @@
 
 <div class="text-center">
-    <ul class="pagination">
-    {{#pagination}}
-        
-        {{#first}}
-        <li><a href="{{root}}/{{view.slug}}">«</a></li>
-        {{/first}}
+  <ul class="pagination">
+  {{#pagination}}
 
-        {{#prev}}
-        <li><a href="{{root}}/{{view.slug}}/?p={{index}}">‹</a></li>
-        {{/prev}}
+    {{#first}}
+    <li><a href="{{root}}/{{view.slug}}">«</a></li>
+    {{/first}}
 
-        {{#page}}
-        <li><a href="{{root}}/{{view.slug}}/?p={{index}}">{{index}}</a></li>
-        {{/page}}
+    {{#prev}}
+    <li><a href="{{root}}/{{view.slug}}/?p={{index}}">‹</a></li>
+    {{/prev}}
 
-        {{#active}}
-        <li class="active"><a href="">{{index}}</a></li>
-        {{/active}}
+    {{#page}}
+    <li><a href="{{root}}/{{view.slug}}/?p={{index}}">{{index}}</a></li>
+    {{/page}}
 
-        {{#next}}
-        <li><a href="{{root}}/{{view.slug}}/?p={{index}}">›</a></li>
-        {{/next}}
+    {{#active}}
+    <li class="active"><a href="">{{index}}</a></li>
+    {{/active}}
 
-        {{#last}}
-        <li><a href="{{root}}/{{view.slug}}/?p={{index}}">»</a></li>
-        {{/last}}
+    {{#next}}
+    <li><a href="{{root}}/{{view.slug}}/?p={{index}}">›</a></li>
+    {{/next}}
 
-    {{/pagination}}
-    </ul>
+    {{#last}}
+    <li><a href="{{root}}/{{view.slug}}/?p={{index}}">»</a></li>
+    {{/last}}
+
+  {{/pagination}}
+  </ul>
 </div>

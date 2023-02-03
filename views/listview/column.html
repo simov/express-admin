@@ -1,74 +1,74 @@
 
-    <label class="control-label col-sm-3 col-md-3 col-lg-3">{{verbose}}</label>
-    
-    {{#control}}
-    {{! data-type-name="type.name" data-allow-null="allowNull" data-default-value="defaultValue"}}
+  <label class="control-label col-sm-3 col-md-3 col-lg-3">{{verbose}}</label>
 
-    <div class="{{#text}}col-sm-3 col-md-3 col-lg-3{{/text}}{{#number}}col-sm-3 col-md-3 col-lg-3{{/number}}{{#date}}col-sm-3 col-md-3 col-lg-3{{/date}}{{#time}}col-sm-3 col-md-3 col-lg-3{{/time}}{{#datetime}}col-sm-3 col-md-3 col-lg-3{{/datetime}}{{#year}}col-sm-3 col-md-3 col-lg-3{{/year}}{{#select}}col-sm-3 col-md-3 col-lg-3{{/select}}{{#file}}col-sm-3 col-md-3 col-lg-3{{/file}}{{#radio}}col-sm-3 col-md-3 col-lg-3{{/radio}}{{#textarea}}col-sm-3 col-md-3 col-lg-3{{/textarea}}">
+  {{#control}}
+  {{! data-type-name="type.name" data-allow-null="allowNull" data-default-value="defaultValue"}}
 
-    {{#number}}
-    <input type="number" name="{{key}}" value="{{value}}" step="any" class="form-control" />
-    {{/number}}
+  <div class="{{#text}}col-sm-3 col-md-3 col-lg-3{{/text}}{{#number}}col-sm-3 col-md-3 col-lg-3{{/number}}{{#date}}col-sm-3 col-md-3 col-lg-3{{/date}}{{#time}}col-sm-3 col-md-3 col-lg-3{{/time}}{{#datetime}}col-sm-3 col-md-3 col-lg-3{{/datetime}}{{#year}}col-sm-3 col-md-3 col-lg-3{{/year}}{{#select}}col-sm-3 col-md-3 col-lg-3{{/select}}{{#file}}col-sm-3 col-md-3 col-lg-3{{/file}}{{#radio}}col-sm-3 col-md-3 col-lg-3{{/radio}}{{#textarea}}col-sm-3 col-md-3 col-lg-3{{/textarea}}">
 
-    {{#text}}
-    <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
-    {{/text}}
+  {{#number}}
+  <input type="number" name="{{key}}" value="{{value}}" step="any" class="form-control" />
+  {{/number}}
 
-    {{#textarea}}
-    <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
-    {{/textarea}}
+  {{#text}}
+  <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
+  {{/text}}
 
-    {{#select}}
-    <select name="{{key}}" class="chosen-select form-control" data-placeholder="{{string.select}}" {{#multiple}}multiple="multiple"{{/multiple}}>
-        <option value="" {{#selected}}selected="selected"{{/selected}}></option>
-        {{!oneToMany}}
-        {{#value}}
-        <option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}}>{{__text}}</option>
-        {{/value}}
-    </select>
-    {{/select}}
+  {{#textarea}}
+  <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
+  {{/textarea}}
 
-    {{#date}}
-    <input type="text" name="{{key}}" value="{{value.0}}" class="datepicker form-control" autocomplete="off" />
-    <label class="glyphicon glyphicon-resize-vertical"></label>
-    <input type="text" name="{{key}}" value="{{value.1}}" class="datepicker form-control" autocomplete="off" />
-    {{/date}}
-    {{#time}}
-    <input type="text" name="{{key}}" value="{{value.0}}" class="timepicker form-control" autocomplete="off" />
-    <label class="glyphicon glyphicon-resize-vertical"></label>
-    <input type="text" name="{{key}}" value="{{value.1}}" class="timepicker form-control" autocomplete="off" />
-    {{/time}}
-    {{#datetime}}
-    <input type="text" name="{{key}}" value="{{value.0}}" class="datetime-picker form-control" autocomplete="off" />
-    <label class="glyphicon glyphicon-resize-vertical"></label>
-    <input type="text" name="{{key}}" value="{{value.1}}" class="datetime-picker form-control" autocomplete="off" />
-    {{/datetime}}
-    {{#year}}
-    <input type="text" name="{{key}}" value="{{value.0}}" class="yearpicker form-control" autocomplete="off" />
-    <label class="glyphicon glyphicon-resize-vertical"></label>
-    <input type="text" name="{{key}}" value="{{value.1}}" class="yearpicker form-control" autocomplete="off" />
-    {{/year}}
-
-    {{#file}}
-    <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
-    {{/file}}
-    
-    {{#radio}}
+  {{#select}}
+  <select name="{{key}}" class="chosen-select form-control" data-placeholder="{{string.select}}" {{#multiple}}multiple="multiple"{{/multiple}}>
+    <option value="" {{#selected}}selected="selected"{{/selected}}></option>
+    {{!oneToMany}}
     {{#value}}
-    <label class="radio-inline">
-        <input type="radio" name="{{key}}" value="{{value}}" {{#active}}checked="checked"{{/active}} /> {{text}}
-    </label>
+    <option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}}>{{__text}}</option>
     {{/value}}
-    {{/radio}}
+  </select>
+  {{/select}}
 
-    {{#error}}
-    <strong class="help-block" data-error="{{type}}">{{message}}</strong>
-    {{/error}}
+  {{#date}}
+  <input type="text" name="{{key}}" value="{{value.0}}" class="datepicker form-control" autocomplete="off" />
+  <label class="glyphicon glyphicon-resize-vertical"></label>
+  <input type="text" name="{{key}}" value="{{value.1}}" class="datepicker form-control" autocomplete="off" />
+  {{/date}}
+  {{#time}}
+  <input type="text" name="{{key}}" value="{{value.0}}" class="timepicker form-control" autocomplete="off" />
+  <label class="glyphicon glyphicon-resize-vertical"></label>
+  <input type="text" name="{{key}}" value="{{value.1}}" class="timepicker form-control" autocomplete="off" />
+  {{/time}}
+  {{#datetime}}
+  <input type="text" name="{{key}}" value="{{value.0}}" class="datetime-picker form-control" autocomplete="off" />
+  <label class="glyphicon glyphicon-resize-vertical"></label>
+  <input type="text" name="{{key}}" value="{{value.1}}" class="datetime-picker form-control" autocomplete="off" />
+  {{/datetime}}
+  {{#year}}
+  <input type="text" name="{{key}}" value="{{value.0}}" class="yearpicker form-control" autocomplete="off" />
+  <label class="glyphicon glyphicon-resize-vertical"></label>
+  <input type="text" name="{{key}}" value="{{value.1}}" class="yearpicker form-control" autocomplete="off" />
+  {{/year}}
 
-    {{#hidden}}
-    <input type="hidden" name="{{key}}" value="{{value}}" />
-    {{/hidden}}
+  {{#file}}
+  <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
+  {{/file}}
 
-    </div>
+  {{#radio}}
+  {{#value}}
+  <label class="radio-inline">
+    <input type="radio" name="{{key}}" value="{{value}}" {{#active}}checked="checked"{{/active}} /> {{text}}
+  </label>
+  {{/value}}
+  {{/radio}}
 
-    {{/control}}
+  {{#error}}
+  <strong class="help-block" data-error="{{type}}">{{message}}</strong>
+  {{/error}}
+
+  {{#hidden}}
+  <input type="hidden" name="{{key}}" value="{{value}}" />
+  {{/hidden}}
+
+  </div>
+
+  {{/control}}
