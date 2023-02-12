@@ -1,0 +1,717 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Express Admin</title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <link id="bootstrap" href="/csslib/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+  <script type="text/javascript">
+      var xAdmin = {root: ''};
+      (function () {
+          var bootstrap = document.getElementById('bootstrap'),
+              theme = localStorage.getItem('theme') || 'default';
+          bootstrap.href = xAdmin.root+'bootswatch/'+theme+'/bootstrap.min.css';
+          console.log(bootstrap.href);
+      }());
+  </script>
+
+
+  <link href="csslib/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="csslib/chosen.min.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="public/express-admin.css" rel="stylesheet" type="text/css" media="all" />
+
+  <script src="jslib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jslib/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jslib/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="jslib/chosen.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="public/express-admin.js" type="text/javascript" charset="utf-8"></script>
+  <script src="public/editors.js" type="text/javascript" charset="utf-8"></script>
+  <script src="public/examples.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body id="express-admin" class="container">
+
+<div id="wrapper">
+  
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <div id="navbar" class="container">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">Express Admin</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="top-nav" class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Layout <b class="caret"></b></a>
+            <ul id="x-layout" class="dropdown-menu">
+              <li class="active"><a href="#fixed">Centered</a></li>
+              <li><a href="#fluid">Streched</a></li>
+            </ul>
+          </li>
+  
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
+            <ul id="x-theme" class="dropdown-menu">
+              <li><a href="#default">Default</a></li>
+              <li><a href="#cerulean">Cerulean</a></li>
+              <li><a href="#cosmo">Cosmo</a></li>
+              <li><a href="#cyborg">Cyborg</a></li>
+              <li><a href="#darkly">Darkly</a></li>
+              <li><a href="#flatly">Flatly</a></li>
+              <li><a href="#journal">Journal</a></li>
+              <li><a href="#lumen">Lumen</a></li>
+              <li><a href="#paper">Paper</a></li>
+              <li><a href="#readable">Readable</a></li>
+              <li><a href="#sandstone">Sandstone</a></li>
+              <li><a href="#simplex">Simplex</a></li>
+              <li><a href="#slate">Slate</a></li>
+              <li><a href="#spacelab">Spacelab</a></li>
+              <li><a href="#superhero">Superhero</a></li>
+              <li><a href="#united">United</a></li>
+              <li><a href="#yeti">Yeti</a></li>
+            </ul>
+          </li>
+  
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
+            <ul id="x-lang" class="dropdown-menu">
+              <li><a href="#bg">Български</a></li>
+              <li><a href="#cn">Chinese/中文</a></li>
+              <li><a href="#de">Deutsch</a></li>
+              <li><a href="#en">English</a></li>
+              <li><a href="#es">Español</a></li>
+              <li><a href="#ko">한국어</a></li>
+              <li><a href="#ru">Русский</a></li>
+              <li><a href="#tr">Türk</a></li>
+            </ul>
+          </li>
+  
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    (function () {
+      var body = document.getElementById('express-admin'),
+        navbar = document.getElementById('navbar'),
+        layout = localStorage.getItem('layout') || 'fixed';
+      body.className = navbar.className =
+        (layout == 'fixed') ? 'container' : 'container container-fluid';
+    }());
+  </script>
+
+  <section id="content">
+    
+    <ul class="breadcrumb">
+    
+      <li><a href="/">Home</a></li>
+    
+    
+    
+    
+      <li class="active">Controls</li>
+    
+    </ul>
+    
+    
+    <h2>
+      Select Controls to change.
+      
+      <a href="#" class="glyphicon glyphicon-filter" title="Filter"></a>
+      <a href="/controls/add" class="btn btn-default">Add Controls</a>
+    </h2>
+    
+    
+    
+    
+<form action="/controls" method="post" accept-charset="utf-8" class="panel panel-default x-filter  x-collapsed">
+  <div class="panel-heading">
+    <h3 class="panel-title">Filter</h3>
+    <div class="checkbox">
+      <label><input type="checkbox" name="or"  /> or</label>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped form-horizontal">
+      <tbody>
+        <tr>
+          <td>
+            <div class="form-group">
+                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">one to many single</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                  <select name="filter[controls_otm_single_id]" class="chosen-select form-control" data-placeholder="Select" >
+                    <option value="" ></option>
+                    <option value="1" >one</option>
+                    <option value="2" >two</option>
+                    <option value="3" >three</option>
+                  </select>
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">one to many multiple</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                  <select name="filter[controls_otm_multiple_id]" class="chosen-select form-control" data-placeholder="Select" >
+                    <option value="" ></option>
+                    <option value="1" >one two</option>
+                    <option value="2" >three</option>
+                    <option value="3" >four five</option>
+                  </select>
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">many to many single</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                  <select name="filter[controls_mtm_single]" class="chosen-select form-control" data-placeholder="Select" multiple="multiple">
+                    <option value="" ></option>
+                    <option value="1" >one</option>
+                    <option value="2" >two</option>
+                    <option value="3" >three</option>
+                  </select>
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">many to many multiple</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                  <select name="filter[controls_mtm_multiple]" class="chosen-select form-control" data-placeholder="Select" multiple="multiple">
+                    <option value="" ></option>
+                    <option value="1" >one two</option>
+                    <option value="2" >three</option>
+                    <option value="3" >four five</option>
+                  </select>
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">static</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                  <select name="filter[static]" class="chosen-select form-control" data-placeholder="Select" >
+                    <option value="" ></option>
+                    <option value="one" >one</option>
+                    <option value="two" >two</option>
+                    <option value="three" >three</option>
+                  </select>
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">text</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                  <input type="text" name="filter[text]" value="" class="form-control" />
+                
+                
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">boolean</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                
+                
+                
+                  <label class="radio-inline">
+                    <input type="radio" name="filter[boolean]" value="1"  /> Yes
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="filter[boolean]" value="0"  /> No
+                  </label>
+                
+                
+                
+                  </div>
+
+                                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">bigint</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                  <input type="number" name="filter[bigint]" value="" step="any" class="form-control" />
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">double</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                  <input type="number" name="filter[double]" value="" step="any" class="form-control" />
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">upload</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                
+                
+                  <input type="text" name="filter[upload]" value="" class="form-control" />
+                
+                
+                
+                
+                  </div>
+
+                            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">date</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                
+                  <input type="text" name="filter[date]" value="" class="datepicker form-control" autocomplete="off" />
+                  <label class="glyphicon glyphicon-resize-vertical"></label>
+                  <input type="text" name="filter[date]" value="" class="datepicker form-control" autocomplete="off" />
+                
+                
+                
+                
+                
+                  </div>
+
+                                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">time</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                
+                  <input type="text" name="filter[time]" value="" class="timepicker form-control" autocomplete="off" />
+                  <label class="glyphicon glyphicon-resize-vertical"></label>
+                  <input type="text" name="filter[time]" value="" class="timepicker form-control" autocomplete="off" />
+                
+                
+                
+                
+                
+                  </div>
+
+                            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">datetime</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                
+                  <input type="text" name="filter[datetime]" value="" class="datetime-picker form-control" autocomplete="off" />
+                  <label class="glyphicon glyphicon-resize-vertical"></label>
+                  <input type="text" name="filter[datetime]" value="" class="datetime-picker form-control" autocomplete="off" />
+                
+                
+                
+                
+                
+                  </div>
+
+                                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">year</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                
+                
+                  <input type="text" name="filter[year]" value="" class="yearpicker form-control" autocomplete="off" />
+                  <label class="glyphicon glyphicon-resize-vertical"></label>
+                  <input type="text" name="filter[year]" value="" class="yearpicker form-control" autocomplete="off" />
+                
+                
+                
+                
+                
+                  </div>
+
+                            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+                
+                  <label class="control-label col-sm-3 col-md-3 col-lg-3">textarea</label>
+
+                
+                  <div class="col-sm-3 col-md-3 col-lg-3">
+
+                
+                
+                  <input type="text" name="filter[textarea]" value="" class="form-control" />
+                
+                
+                
+                
+                
+                
+                
+                  </div>
+
+                            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-lg-3 col-md-3 col-sm-3">Order By</label>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <select name="order" class="chosen-select form-control" data-placeholder="Select">
+          <option value="" ></option>
+          <option value="id" >id</option>
+          <option value="controls_otm_single_id" >one to many single</option>
+          <option value="controls_otm_multiple_id" >one to many multiple</option>
+          <option value="controls_mtm_single" >many to many single</option>
+          <option value="controls_mtm_multiple" >many to many multiple</option>
+          <option value="static" >static</option>
+          <option value="text" >text</option>
+          <option value="boolean" >boolean</option>
+          <option value="bigint" >bigint</option>
+          <option value="double" >double</option>
+          <option value="upload" >upload</option>
+          <option value="binary" >binary</option>
+          <option value="date" >date</option>
+          <option value="time" >time</option>
+          <option value="datetime" >datetime</option>
+          <option value="year" >year</option>
+          <option value="textarea" >textarea</option>
+        </select>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <label class="radio-inline">
+          <input type="radio" name="direction" value="asc"  /> Asc
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="direction" value="desc"  /> Desc
+        </label>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <button type="submit" class="btn btn-default form-control" name="action[filter]">Filter</button>
+        <button type="submit" class="btn btn-default form-control" name="action[clear]">Clear</button>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" name="_csrf" value="TRVZBzY3-QF_qXVOgDLw5BRdU1RfJfCbmJEc" />
+</form>
+
+    <table class="table table-bordered table-striped table-hover x-table">
+      <thead>
+        <tr class="label-default">
+          <th>id</th>
+          <th>one to many single</th>
+          <th>one to many multiple</th>
+          <th>many to many single</th>
+          <th>many to many multiple</th>
+          <th>static</th>
+          <th>text</th>
+          <th>boolean</th>
+          <th>bigint</th>
+          <th>double</th>
+          <th>upload</th>
+          <th>binary</th>
+          <th>date</th>
+          <th>time</th>
+          <th>datetime</th>
+          <th>year</th>
+          <th>textarea</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="/controls/1">1</a></td>
+          <td>
+            one
+            
+          </td>
+          <td>
+            one two
+            
+          </td>
+          <td>
+            
+            <span class="label label-default">one</span>
+          </td>
+          <td>
+            
+            <span class="label label-default">four five</span><span class="label label-default">one two</span><span class="label label-default">three</span>
+          </td>
+          <td>
+            two
+            
+          </td>
+          <td>
+            text
+            
+          </td>
+          <td>
+            Yes
+            
+          </td>
+          <td>
+            150000
+            
+          </td>
+          <td>
+            14.87
+            
+          </td>
+          <td>
+            file
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            Tue Dec 10 2013
+            
+          </td>
+          <td>
+            20:36:00
+            
+          </td>
+          <td>
+            Wed Dec 10 2014 07:50:00
+            
+          </td>
+          <td>
+            2015
+            
+          </td>
+          <td>
+            text
+            
+          </td>
+        </tr>
+        <tr>
+          <td><a href="/controls/2">2</a></td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            <span class="label label-default">one</span>
+          </td>
+          <td>
+            
+            <span class="label label-default">four five</span><span class="label label-default">one two</span><span class="label label-default">three</span>
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            all other empty
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+          <td>
+            
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+<div class="text-center">
+  <ul class="pagination">
+  </ul>
+</div>
+  </section>
+
+  <div id="footer-push">&nbsp;</div>
+</div>
+<footer>
+  <p><small><a href="https://github.com/simov/express-admin" target="_blank" class="text-muted">Express Admin</a></small></p>
+</footer>
+</body>
+</html>
