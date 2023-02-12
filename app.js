@@ -92,6 +92,13 @@ function initSettings (args) {
       var name = files[i].replace(path.extname(files[i]), '')
       langs[name] = require(path.join(dpath, files[i]))
     }
+    if (args.config.admin.locale) {
+      var fpath = args.config.admin.locale
+      var fname = path.basename(fpath)
+      var locale = fname.replace(path.extname(fname), '')
+      langs[locale] = require(fpath)
+      args.locale = locale
+    }
     return langs
   })()
 
@@ -131,18 +138,21 @@ function initSettings (args) {
     var root = args.config.admin.root
     if (/.*\/$/.test(root)) args.config.admin.root = root.slice(0, -1)
   }
-else {
+  else {
     args.config.admin.root = ''
   }
 
-  // layouts/themes/languages
+  // layouts
   args.layouts = args.config.admin.layouts !== undefined
     ? args.config.admin.layouts
     : true
+
+  // themes
   args.themes = args.config.admin.themes === undefined || args.config.admin.themes
     ? {theme: require(path.join(__dirname, 'config/themes'))}
     : null
 
+  // languages
   args.languages = (() => {
     if (args.config.admin.languages !== undefined && !args.config.admin.languages) return null
     var langs = []
@@ -151,6 +161,12 @@ else {
     }
     return {language: langs}
   })()
+
+  // footer
+  args.footer = args.config.admin.footer || {
+    text: 'Express Admin',
+    url: 'https://github.com/simov/express-admin'
+  }
 
   // static
   args.libs = dcopy(require(path.join(__dirname, 'config/libs')))
@@ -178,29 +194,34 @@ function initServer (args) {
     .set('view engine', 'html')
     .engine('html', consolidate.hogan)
 
-    // .use(bodyParser.json())
+    .use(bodyParser.json())
     .use(bodyParser.urlencoded({extended: true}))
     .use(multipart())
 
     .use(cookieParser())
-    .use(args.session || session({
+    .use(session(args.config.admin.session || {
       name: 'express-admin',
-      secret: 'very secret - required',
+      secret: 'very secret',
       saveUninitialized: true,
       resave: true
     }))
     .use(r.auth.status)// session middleware
     .use(csrf())
-
     .use(methodOverride())
-    .use(serveStatic(path.join(__dirname, 'public')))
-    .use(serveStatic((() => {
-      var dpath = path.resolve(__dirname, 'node_modules/express-admin-static')
-      if (!fs.existsSync(dpath)) {
-        dpath = path.resolve(__dirname, '../express-admin-static')
-      }
-      return dpath
-    })()))
+
+  // custom favicon
+  if (args.config.admin.favicon) {
+    app.use(serveStatic(args.config.admin.favicon))
+  }
+
+  app.use(serveStatic(path.join(__dirname, 'public')))
+  app.use(serveStatic((() => {
+    var dpath = path.resolve(__dirname, 'node_modules/express-admin-static')
+    if (!fs.existsSync(dpath)) {
+      dpath = path.resolve(__dirname, '../express-admin-static')
+    }
+    return dpath
+  })()))
 
   if (!args.readonly) app.set('view cache', true)
 
@@ -218,9 +239,9 @@ function initServer (args) {
     res.locals._admin = args
 
     // i18n
-    var lang = req.cookies.lang || 'en'
+    var lang = req.cookies.lang || args.locale || 'en'
     res.cookie('lang', lang, {path: '/', maxAge: 900000000})
-    moment.locale(lang == 'cn' ? 'zh-cn' : lang)
+    moment.locale(lang === 'cn' ? 'zh-cn' : lang)
 
     // template vars
     res.locals.string = args.langs[lang]
@@ -229,6 +250,7 @@ function initServer (args) {
     res.locals.themes = args.themes
     res.locals.layouts = args.layouts
     res.locals.languages = args.languages
+    res.locals.footer = args.footer
 
     // required for custom views
     res.locals._admin.views = app.get('views')
@@ -278,6 +300,10 @@ function initServer (args) {
 }
 
 function init (config, done) {
+  if (!config.config) throw new Error('Admin `config` is required!')
+  if (!config.settings) config.settings = {}
+  if (!config.users) config.users = {}
+  if (!config.custom) config.custom = {}
   initDatabase(config, (err) => {
     if (err) return done(err)
     initSettings(config)

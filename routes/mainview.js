@@ -29,7 +29,7 @@ exports.get = (req, res, next) => {
   res.locals.custom = !customs.length ? null : {items: customs}
 
   res.locals.partials = {
-    content:  'mainview'
+    content: 'mainview'
   }
 
   next()
