@@ -41,9 +41,7 @@ Get the admin up and running on your localhost in less than 10 minutes and play 
 
 **Tests**
 
-Express Admin comes with a comprehensive integration **[tests]** suite:
-
-<div style="padding:59% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/795985128?h=e359e3e6bd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="x-admin-tests.mkv"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+Express Admin comes with a comprehensive integration **[tests]** suite: https://vimeo.com/795985128
 
 </details>
 
